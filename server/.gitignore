@@ -89,9 +89,7 @@ typings/
 
 # End of https://www.gitignore.io/api/node
 
-#IDE
-.vscode/*
 
 avatars/
 images/
-react-material-dashboard-master/
+uploads/
