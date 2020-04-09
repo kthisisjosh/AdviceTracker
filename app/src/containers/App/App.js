@@ -1,11 +1,21 @@
-import React from 'react';
+import React from "react"
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import HomePage from "../HomePage/HomePage"
+import LoginPage from "../LoginPage/LoginPage"
+
+//Redux
+//import { Provider } from 'react-redux';
+//import store from './store';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Testing</h1>
-    </div>
-  );
+    return (
+        <Router>
+            <Switch>
+                <Route component={HomePage} exact path="/" />
+                <Route component={LoginPage} path="/login" />
+            </Switch>
+        </Router>
+    )
 }
 
-export default App;
+export default App
