@@ -9,7 +9,10 @@ const Navbar = () => {
                 <Typography variant="button">Dashboard</Typography>
             </Link>
             <Link to="/friends" style={{ margin: "0 5vw 0 5vw", textDecoration: "none", color: "black" }}>
-                <Typography variant="button">Friends</Typography>
+                <Typography variant="button">Browse</Typography>
+            </Link>
+            <Link to="/friends" style={{ margin: "0 5vw 0 5vw", textDecoration: "none", color: "black" }}>
+                <Typography variant="button">Submit</Typography>
             </Link>
         </div>
     )

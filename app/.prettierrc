@@ -1,14 +1,6 @@
 {
-<<<<<<< HEAD
     "printWidth": 200,
     "tabWidth": 4,
     "semi": false,
     "trailingComma": "es5"
 }
-=======
-  "printWidth": 200,
-  "tabWidth": 4,
-  "semi": false,
-  "trailingComma": "es5"
-}
->>>>>>> 50b710dd37ce49c0d6b020b38f28bbb3bea0e107
