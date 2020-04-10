@@ -1,28 +1,18 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, Fragment } from "react"
+import Grid from "@material-ui/core/Grid"
+import Header from "../../components/Header/Header"
+import Navbar from "../../components/Navbar/Navbar"
 
-const HomePage = () => {
-    const [data, setData] = useState([{}])
-
-    useEffect(() => {
-        fetch("http://localhost:8080/api/mock")
-            .then((response) => response.json())
-            .then((data) => {
-                setData(data)
-            })
-    })
+const HomePage = (props) => {
 
     return (
-        <div>
-            <h1>Home Page</h1>
-            {data.map((person) => {
-                return (
-                    <>
-                    <h4>{person.name}</h4>
-                    <p>{person.hobbies}</p>
-                    </>
-                )
-            })}
-        </div>
+        <Fragment>
+            <Header />
+            <Navbar />
+            <Grid container style={{margin: "1vw"}} justify="center" direction="column">
+                
+            </Grid>
+        </Fragment>
     )
 }
 
