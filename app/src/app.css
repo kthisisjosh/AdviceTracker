@@ -1,0 +1,6 @@
+html, body {
+    margin: 0;
+    position: relative;
+    background-color: #FCFCFC;
+    width: 100vw !important;
+}
