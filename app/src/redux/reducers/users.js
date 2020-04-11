@@ -1,5 +1,4 @@
 import { GET_USERS, CREATE_USER, DELETE_USER } from "../types/users"
-import { v4 as uuidv4 } from "uuid"
 
 export default (state = { users: [] }, action) => {
     switch (action.type) {
@@ -7,7 +6,6 @@ export default (state = { users: [] }, action) => {
             return {
                 ...state,
                 users: action.payload.map((person) => {
-                    person.id = uuidv4()
                     return { ...person }
                 }),
             }

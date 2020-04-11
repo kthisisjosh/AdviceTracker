@@ -7,8 +7,6 @@ const mockRouter = require("./routes/mock");
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.use(express.urlencoded());
-
 app.use(function (req, res, next) {
     // Website you wish to allow to connect
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -27,6 +25,7 @@ app.use(function (req, res, next) {
     // Pass to next layer of middleware
     next();
 });
+app.use(express.urlencoded());
 app.use(express.json());
 app.use(mockRouter);
 
