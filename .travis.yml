@@ -21,7 +21,10 @@ before_script:
 
 script:
     # Run tests
-    - cd .. && npm run test
+    - npm run test
+
+script:
+    - cd ..
 
 deploy:
     provider: script
