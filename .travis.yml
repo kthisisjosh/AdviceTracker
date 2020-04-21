@@ -17,7 +17,7 @@ install:
 
 before_script:
     # Start server and client for tests
-    - cd .. && npm run dev
+    - cd .. && npm run dev &
 
 script:
     # Run tests
