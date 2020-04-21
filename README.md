@@ -5,6 +5,8 @@ Advice Tracker
 Made with MySQL, Express.js, React/Redux, Node.js
 </p>
 
+[![CircleCI](https://circleci.com/gh/kthisisjosh/AdviceTracker.svg?style=svg)](https://circleci.com/gh/kthisisjosh/AdviceTracker)
+
 Never forget great advice again. Track, sort, and discover advice from people around the world.
 
 # Progress
