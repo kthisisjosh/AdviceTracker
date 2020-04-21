@@ -23,9 +23,6 @@ script:
     # Run tests
     - npm run test
 
-script:
-    - cd ..
-
 deploy:
     provider: script
     script: bash deploy.sh
