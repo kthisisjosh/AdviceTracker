@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 
 const Header = () => {
     return (
-        <div style={{ backgroundColor: "#434343", margin: "0" }}>
+        <header style={{ backgroundColor: "#434343", margin: "0" }}>
         <Grid container direction="row" alignItems="center">
             <Typography variant="h4" justify="left" style={{marginLeft: "5vw", paddingTop: "1vh", paddingBottom: "1vh", color: "white"}}>Advice Tracker</Typography>
                 <Grid item style={{marginLeft: "50vw"}}>
@@ -13,7 +13,7 @@ const Header = () => {
                     <Link to="/" style={{margin: "0 5vw 0 5vw", textDecoration: "none", color: "white" }}><Typography variant="button">Logout</Typography></Link>
                 </Grid>
             </Grid>
-        </div>
+        </header>
     )
 }
 

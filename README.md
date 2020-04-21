@@ -2,7 +2,7 @@
 Advice Tracker
 </h1>
 <p align="center">
-Made with MySQL, React/Redux, Node.js
+Made with MySQL, Express.js, React/Redux, Node.js
 </p>
 
 Never forget great advice again. Track, sort, and discover advice from people around the world.
