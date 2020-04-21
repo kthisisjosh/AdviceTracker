@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+    client:
+        container_name: client
+        build:
+            context: ./app
+            dockerfile: Dockerfile
+        volumes:
+            - /app/node_modules
+            - ./app:/app
+        ports:
+            - 3000:3000
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        stdin_open: true # react-scripts bug ?
+    server:
+        container_name: server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        ports:
+            - 8080:8080
+        volumes:
+            - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
+            - ./server:/app # Look at the server directory and copy everything into the app folder in the container
+    db:
+        container_name: db
+        image: mysql:latest
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            MYSQL_ROOT_PASSWORD: p^pvCB9XSD2i
+        ports:
+            - 3306:3306
+        volumes:
+            - db_data:/var/lib/mysql
+
+volumes:
+    db_data:

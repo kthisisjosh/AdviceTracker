@@ -10,7 +10,7 @@ import Input from "@material-ui/core/Input"
 import FriendDisplay from "./FriendDisplay/FriendDisplay"
 import Button from "@material-ui/core/Button"
 import { Typography } from "@material-ui/core"
-import {v4 as uuidv4} from "uuid"
+import { v4 as uuidv4 } from "uuid"
 
 const FriendsPage = (props) => {
     const { users, getUsers, createUser } = props
@@ -41,9 +41,7 @@ const FriendsPage = (props) => {
                         <form autoComplete="off" onSubmit={handleSubmit}>
                             <Input fullWidth required placeholder="name" type="text" disableUnderline name="name" />
                             <Input fullWidth required placeholder="hobbies" type="text" disableUnderline name="hobbies" />
-                            <Button type="submit">
-                                Submit
-                            </Button>
+                            <Button type="submit">Submit</Button>
                         </form>
                     </Paper>
                 )}
@@ -60,6 +58,6 @@ const mapStateToProps = ({ userState }) => ({
     users: userState.users,
 })
 
-const mapDispatchToProps = { getUsers, createUser}
+const mapDispatchToProps = { getUsers, createUser }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsPage)
