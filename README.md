@@ -3,9 +3,8 @@ Advice Tracker
 </h1>
 <p align="center">
 Made with MySQL, Express.js, React/Redux, Node.js
+[![Build Status](https://travis-ci.org/kthisisjosh/AdviceTracker.svg?branch=master)](https://travis-ci.org/kthisisjosh/AdviceTracker)
 </p>
-
-[![CircleCI](https://circleci.com/gh/kthisisjosh/AdviceTracker.svg?style=svg)](https://circleci.com/gh/kthisisjosh/AdviceTracker)
 
 Never forget great advice again. Track, sort, and discover advice from people around the world.
 
