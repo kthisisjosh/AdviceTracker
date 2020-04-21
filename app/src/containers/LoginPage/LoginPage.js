@@ -13,7 +13,7 @@ const LoginPage = (props) => {
             <LandingHeader />
             <section>
                 <Grid container>
-                    <Grid item xl={5} md={5} xs={0} style={{ height: "700px", backgroundColor: "#EDEDED" }}>
+                    <Grid item xl={5} md={5} xs={1} style={{ height: "700px", backgroundColor: "#EDEDED" }}>
                         <image href="login-sample.JPG" style={{ height: "500px", width: "500px" }} />
                     </Grid>
                     <Grid item xl={7} md={7} xs={12} style={{ height: "700px", backgroundColor: "#FCFCFC" }}>

@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid"
 import Header from "../../components/Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 
-const HomePage = (props) => {
+const DashboardPage = (props) => {
 
     return (
         <Fragment>
@@ -16,4 +16,4 @@ const HomePage = (props) => {
     )
 }
 
-export default HomePage
+export default DashboardPage
