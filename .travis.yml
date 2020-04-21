@@ -1,6 +1,8 @@
 # Set the language
 language: node_js
 
+cache: npm
+
 # Set the Node version
 node_js:
     - "12"
@@ -19,7 +21,7 @@ before_script:
 
 script:
     # Run tests
-    - npm run test
+    - cd .. && npm run test
 
 deploy:
     provider: script
