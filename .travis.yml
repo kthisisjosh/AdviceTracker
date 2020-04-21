@@ -17,7 +17,7 @@ install:
 
 script:
     # Run tests
-    - npm run build && cd .. && npm test
+    - cd .. $$ cd app && npm run build && cd .. && npm test
 
 deploy:
     provider: script
