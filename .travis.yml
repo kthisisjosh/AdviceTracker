@@ -13,11 +13,11 @@ services:
 
 install:
     # Install dependencies for tests
-    - npm ci && cd app && npm ci
+    - npm ci && cd app && npm ci && cd .. && cd server && npm ci
 
 before_script:
     # Start server and client for tests
-    - npm run dev &
+    - cd .. && npm run dev &
 
 script:
     # Run tests
