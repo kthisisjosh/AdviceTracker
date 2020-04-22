@@ -1,0 +1,33 @@
+version: "3.7"
+
+services:
+    client:
+        restart: always
+        container_name: client
+        image: kthisisjosh/advicetracker:client
+        ports:
+            - 3000:3000
+        stdin_open: true # react-scripts bug ?
+    server:
+        restart: always
+        container_name: server
+        images: kthisisjosh/advicetracker:server
+        ports:
+            - 8080:8080
+        enviornment:
+            NODE_ENV: production
+            PORT: 8080
+    db:
+        restart: always
+        container_name: db
+        image: mysql:latest
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+        ports:
+            - 3306:3306
+        volumes:
+            - db_data:/var/lib/mysql
+
+volumes:
+    db_data:

@@ -1,6 +1,50 @@
-html, body {
+html,
+body {
     margin: 0;
     position: relative;
-    background-color: #FCFCFC;
+    background-color: #fcfcfc;
     width: 100vw !important;
+    overflow-x: hidden;
+}
+
+.github-login-btn {
+    background-color: #ffffff;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+    color: rgba(0,0,0,0.54);
+    padding: 0px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: Roboto, sans-serif;
+    width: 180px;
+    height: 40px;
+    text-align: center;
+}
+
+.github-login-btn:hover {
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 1300px) {
+  .navbar-grid {
+      display: none;
+  }
+  .login-demo-grid {
+      display: none
+  }
+  .login-grid {
+      border: 0 !important;
+  }
+}
+@media only screen and (max-width: 770px) {
+  .login-paper {
+      margin: 10px 10px 10px 10px !important;
+  }
+  .login-grid {
+      text-align: center;
+  }
 }
