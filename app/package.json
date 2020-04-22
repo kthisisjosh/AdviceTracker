@@ -10,6 +10,7 @@
         "@testing-library/user-event": "^7.2.1",
         "coveralls": "^3.0.13",
         "react": "^16.13.1",
+        "react-burger-menu": "^2.6.13",
         "react-dom": "^16.13.1",
         "react-github-login": "^1.0.3",
         "react-google-login": "^5.1.3",
