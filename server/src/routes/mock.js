@@ -3,10 +3,10 @@ const mysql = require("mysql");
 const router = new express.Router();
 
 const connection = mysql.createConnection({
-    host: "192.168.99.100",
-    user: "root",
-    password: "p^pvCB9XSD2i",
-    database: "advicetracker",
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
 });
 
 router.get("/api/mock", (req, res) => {

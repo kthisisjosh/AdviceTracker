@@ -24,12 +24,14 @@ services:
         volumes:
             - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
             - ./server:/app # Look at the server directory and copy everything into the app folder in the container
+        #enviornment:
+            #-NODE_ENV=production
     db:
         container_name: db
         image: mysql:latest
         command: --default-authentication-plugin=mysql_native_password
         environment:
-            MYSQL_ROOT_PASSWORD: p^pvCB9XSD2i
+            MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
         ports:
             - 3306:3306
         volumes:

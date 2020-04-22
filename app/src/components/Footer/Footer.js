@@ -7,11 +7,18 @@ export const Footer = () => {
             <Typography variant="h5" justify="center" style={{ color: "black", paddingTop: "75px" }}>
                 Advice Tracker
             </Typography>
-            <Typography variant="h8" style={{marginTop: "55px", marginLeft: "-77px", position: "absolute", lineHeight: "24px"}} >
+            <Typography variant="body2" style={{ margin: "auto", marginTop: "50px", lineHeight: "24px" }}>
                 © Advice Tracker 2020
             </Typography>
-            <Typography variant="h8" style={{marginTop: "75px", marginLeft: "-110px", position: "absolute", lineHeight: "24px"}} >
-                Made with ❤️ by <a style={{textDecoration: "none", color: "inherit"}} href="https://www.joshbautista.com">Joshua Bautista</a>
+            <Typography variant="body2" style={{ margin: "auto", lineHeight: "24px" }}>
+                Made with{" "}
+                <span role="img" aria-label="Heart">
+                    ❤️
+                </span>{" "}
+                by{" "}
+                <a style={{ textDecoration: "none", color: "inherit" }} href="https://www.joshbautista.com">
+                    Joshua Bautista
+                </a>
             </Typography>
         </footer>
     )

@@ -12,6 +12,7 @@
   "author": "Joshua Bautista <joshbautista.com>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.3"
