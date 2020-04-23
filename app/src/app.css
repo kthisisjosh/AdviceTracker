@@ -95,6 +95,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
     }
 }
 
+
+
 @media only screen and (max-width: 1300px) {
     .navbar-grid {
         display: none;
@@ -118,12 +120,22 @@ Note: Beware of modifying this element as it can break the animations - you shou
         left: 50vw;
         right: 50vw;
     }
+
 }
-@media only screen and (max-width: 770px) {
+
+
+
+@media only screen and (max-width: 960px) {
     .login-paper {
         margin: 10px 10px 10px 10px !important;
     }
     .login-grid {
         text-align: center;
+    }
+    .landing-demo {
+        display: none
+    }
+    body {
+        background-color: black;
     }
 }

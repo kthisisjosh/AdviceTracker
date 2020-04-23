@@ -14,7 +14,7 @@ const Header = () => {
     return (
         <header style={{ backgroundColor: "#FFFFFF", margin: "0", }}>
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
-                <Grid item style={{ marginLeft: "7vw" }}>
+                <Grid item style={{ marginLeft: "10vw" }}>
                     <img alt="logo" src="Logo.svg" x="50" y="18" height="40" width="40" />
                 </Grid>
                 <Grid item style={{ marginRight: "auto" }}>
@@ -42,7 +42,7 @@ const Header = () => {
                 <Grid item className="navbar-grid" style={{ marginLeft: "5vw", marginRight: "1vw" }}>
                     <LoginButton />
                 </Grid>
-                <Grid item className="navbar-grid" style={{ marginLeft: "1vw", marginRight: "5vw" }}>
+                <Grid item className="navbar-grid" style={{ marginLeft: "1vw", marginRight: "15vw" }}>
                     <RegisterButton />
                 </Grid>
             </Grid>
