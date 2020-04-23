@@ -6,16 +6,15 @@ import { slide as Menu } from "react-burger-menu"
 import Toggle from "react-toggle"
 import useDarkMode from "use-dark-mode"
 
-
 const Header = () => {
     const darkMode = useDarkMode(false)
 
     return (
-        <header id="header" style={{ margin: "0" }}>
+        <header id="header" style={{ margin: "0", backgroundColor: "#434343" }}>
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
                 <Grid item className="landing-logo" style={{ marginLeft: "14vw", marginTop: "1vh" }}>
-                    <a href="/" >
-                        <img alt="logo" src={darkMode.value ? "./AdviceLogoLight.png": "./AdviceLogo.png"} />
+                    <a href="/">
+                        <img alt="logo" src={"./AdviceLogoLight.png"} />
                     </a>
                 </Grid>
 

@@ -5,6 +5,7 @@ import LoginPage from "../LoginPage/LoginPage"
 import LandingPage from "../LandingPage/LandingPage"
 import ProfilePage from "../ProfilePage/ProfilePage"
 import FriendsPage from "../FriendsPage/FriendsPage"
+import SubmitPage from "../SubmitPage/SubmitPage"
 import "../../app.css"
 
 //Redux
@@ -19,8 +20,9 @@ function App() {
                     <Route component={LandingPage} exact path="/" />
                     <Route component={LoginPage} path="/login" />
                     <Route component={DashboardPage} path="/dashboard" />
-                    <Route component={ProfilePage} exact path="/profile" />
+                    <Route component={ProfilePage} path="/profile" />
                     <Route component={FriendsPage} path="/browse" />
+                    <Route component={SubmitPage} path="/submit" />
                 </Switch>
             </Router>
         </Provider>

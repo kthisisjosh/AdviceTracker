@@ -2,17 +2,17 @@ import React, { Fragment } from "react"
 import Header from "../../components/Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import Inbox from "../../components/DashboardPage/Inbox"
+import { Typography } from "@material-ui/core"
 
-const DashboardPage = () => {
+const SubmitPage = () => {
     return (
         <Fragment>
             <Header />
             <Navbar />
-            <Inbox />
+            <Typography variant="h1">Coming soon!</Typography>
             <Footer />
         </Fragment>
     )
 }
 
-export default DashboardPage
+export default SubmitPage

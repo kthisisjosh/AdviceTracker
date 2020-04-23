@@ -34,7 +34,7 @@ const BodyA = () => {
                 <Grow in={true} timeout={1750}>
                     <img
                         alt="demo"
-                        style={{ height: "575px", width: "475px", margin: "auto", marginRight: "3vw", borderRadius: "15px" }}
+                        style={{ height: "600px", width: "475px", margin: "auto", marginRight: "3vw", borderRadius: "15px" }}
                         src="./login-sample2.png"
                     />
                 </Grow>
