@@ -11,6 +11,7 @@ import FriendDisplay from "./FriendDisplay/FriendDisplay"
 import Button from "@material-ui/core/Button"
 import { Typography } from "@material-ui/core"
 import { v4 as uuidv4 } from "uuid"
+import Footer from "../../components/Footer/Footer"
 
 const FriendsPage = (props) => {
     const { users, getUsers, createUser } = props
@@ -50,6 +51,7 @@ const FriendsPage = (props) => {
                     <FriendDisplay key={person.id} person={person} />
                 ))}
             </Grid>
+            <Footer />
         </Fragment>
     )
 }

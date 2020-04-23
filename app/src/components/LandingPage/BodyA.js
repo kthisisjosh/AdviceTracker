@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Typography } from "@material-ui/core"
+import { Grid, Typography, Grow } from "@material-ui/core"
 
 const BodyA = () => {
     return (
@@ -30,8 +30,14 @@ const BodyA = () => {
                 </Grid>
             </Grid>
 
-            <Grid item md={6} xs={12} className="landing-bodya-demo">
-                <img alt="demo" style={{ height: "500px", width: "450px", margin: "0px 10vw 100px 10vw" }} src="./login-sample.JPG"></img>
+            <Grid item md={6} xs={12} className="landing-bodya-demo" style={{ textAlign: "center" }}>
+                <Grow in={true} timeout={1750}>
+                    <img
+                        alt="demo"
+                        style={{ height: "575px", width: "475px", margin: "auto", marginRight: "3vw", borderRadius: "15px" }}
+                        src="./login-sample2.png"
+                    />
+                </Grow>
             </Grid>
         </Grid>
     )

@@ -4,7 +4,7 @@ body {
     padding: 0;
     position: relative;
     background-color: #fcfcfc;
-    width: 99vw !important;
+    width: 100vw !important;
     overflow-x: hidden;
 }
 
@@ -360,7 +360,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     .signupcall-btn {
         text-align: center !important;
     }
-    .landing-header-title {
+    .landing-logo {
         margin-top: 30px !important;
         margin-left: 5px !important;
     }

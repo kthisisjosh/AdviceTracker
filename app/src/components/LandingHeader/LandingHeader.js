@@ -9,18 +9,15 @@ import Toggle from "react-toggle"
 import useDarkMode from "use-dark-mode"
 
 const Header = () => {
-    const darkMode = useDarkMode(false)
+    const darkMode = useDarkMode(true)
 
     return (
         <header id="header" style={{ margin: "0" }}>
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
-                <Grid className="landing-header-title" item style={{ marginLeft: "14vw", marginTop: "10px" }}>
-                    <img alt="logo" src="Logo.svg" x="50" y="18" height="40" width="40" />
-                </Grid>
-                <Grid className="landing-header-title" item style={{ marginRight: "auto", marginTop: "10px"}}>
-                    <Typography variant="h4" justify="left" style={{ marginTop: "0vh", marginBottom: "1vh", marginLeft: "0.5vw" }}>
-                        Advice Tracker
-                    </Typography>
+                <Grid item className="landing-logo" style={{marginLeft: "14vw", marginTop:"1vh"}}>
+                    <a href="/">
+                        <img alt="logo" src={darkMode.value ? "./AdviceLogoLight.png": "./AdviceLogo.png"}/>
+                    </a>
                 </Grid>
 
                 <Grid item style={{ marginLeft: "auto", marginRight: "5vw" }}>

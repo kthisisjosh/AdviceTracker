@@ -1,23 +1,27 @@
 import React from "react"
 import { Typography } from "@material-ui/core"
+import useDarkMode from "use-dark-mode"
 
 export const Footer = () => {
+    const darkMode = useDarkMode()
+
     return (
         <footer
             style={{
-                backgroundColor: "#FFFFFF",
                 margin: "0",
                 width: "100vw",
                 right: "0",
-                height: "190px",
+                height: "auto",
                 textAlign: "center",
                 boxSizing: "border-box",
-                display: "inline",
+                display: "inline-block",
             }}
         >
-            <Typography variant="h5" justify="center" style={{ paddingTop: "60px", paddingBottom: "15px" }}>
-                Advice Tracker
-            </Typography>
+            <div style={{marginTop: "5vh"}}>
+                <a href="/">
+                    <img alt="logo" src={darkMode.value ? "./AdviceLogoLight.png" : "./AdviceLogo.png"} />
+                </a>
+            </div>
 
             <hr style={{ width: "auto" }} />
 
