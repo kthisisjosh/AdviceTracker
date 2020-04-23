@@ -1,11 +1,15 @@
 html,
 body {
     margin: 0;
+    padding: 0;
     position: relative;
     background-color: #fcfcfc;
-    width: 100vw !important;
-    overflow-x: hidden;
+    width: 99vw !important;
 }
+
+/** {
+  border: 1px solid #f00 !important;
+} */
 
 .github-login-btn {
     background-color: #ffffff;
@@ -120,7 +124,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
         left: 50vw;
         right: 50vw;
     }
-
+    .landing-hero {
+        text-align: center;
+    }
 }
 
 
@@ -138,6 +144,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     .landing-hero {
         margin: 50px auto !important;
         width: 90vw !important;
+        text-align: center;
     }
     .landing-hero .landing-hero-h2 {
         font-size: xx-large;
