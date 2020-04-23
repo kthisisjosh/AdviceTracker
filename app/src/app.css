@@ -11,7 +11,7 @@ body {
     background-color: #ffffff;
     align-items: center;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
-    color: rgba(0,0,0,0.54);
+    color: rgba(0, 0, 0, 0.54);
     padding: 0px;
     border-radius: 2px;
     border: 1px solid transparent;
@@ -29,22 +29,95 @@ body {
 }
 
 
+
+
+/* Position and sizing of burger button */
+.bm-burger-button {
+    position: relative;
+    width: 30px;
+    height: 24px;
+}
+
+/* Color/shape of burger icon bars */
+.bm-burger-bars {
+    background: #373a47;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+    background: #a90000;
+}
+
+/* Position and sizing of clickable cross button */
+.bm-cross-button {
+    height: 24px;
+    width: 24px;
+}
+
+/* Color/shape of close button cross */
+.bm-cross {
+    background: #bdc3c7;
+}
+
+/*
+Sidebar wrapper styles
+Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
+*/
+.bm-menu-wrap {
+    position: fixed;
+    height: 100%;
+    margin-top: -30px;
+}
+
+/* General sidebar styles */
+.bm-menu {
+    background: #373a47;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
+}
+
+/* Morph shape necessary with bubble or elastic */
+.bm-morph-shape {
+    fill: #373a47;
+}
+
+/* Wrapper for item list */
+.bm-item-list {
+    color: #b8b7ad;
+    padding: 0.8em;
+}
+
+/* Individual item */
+.bm-item {
+    display: inline-block;
+}
+
+
+@media only screen and (max-width: 7000px) {
+    .bm-burger-button {
+        display: none;
+    }
+}
+
 @media only screen and (max-width: 1300px) {
-  .navbar-grid {
-      display: none;
-  }
-  .login-demo-grid {
-      display: none
-  }
-  .login-grid {
-      border: 0 !important;
-  }
+    .navbar-grid {
+        display: none;
+    }
+    .login-demo-grid {
+        display: none;
+    }
+    .login-grid {
+        border: 0 !important;
+    }
+    .bm-burger-button {
+        display: block;
+    }
 }
 @media only screen and (max-width: 770px) {
-  .login-paper {
-      margin: 10px 10px 10px 10px !important;
-  }
-  .login-grid {
-      text-align: center;
-  }
+    .login-paper {
+        margin: 10px 10px 10px 10px !important;
+    }
+    .login-grid {
+        text-align: center;
+    }
 }
