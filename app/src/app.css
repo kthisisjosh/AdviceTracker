@@ -5,6 +5,7 @@ body {
     position: relative;
     background-color: #fcfcfc;
     width: 99vw !important;
+    overflow-x: hidden;
 }
 
 /** {
@@ -99,8 +100,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
     }
 }
 
-
-
 @media only screen and (max-width: 1300px) {
     .navbar-grid {
         display: none;
@@ -129,34 +128,52 @@ Note: Beware of modifying this element as it can break the animations - you shou
     }
 }
 
-
-
 @media only screen and (max-width: 960px) {
+    html, body {
+        width: 98vw;
+    }
     .login-paper {
         margin: 10px 10px 10px 10px !important;
     }
     .login-grid {
         text-align: center;
     }
-    .landing-demo {
-        display: none
+    .landing-demo,
+    .landing-bodya-demo,
+    .landing-bodyb-demo {
+        display: none;
     }
-    .landing-hero {
+    .landing-hero-wrap {
+        text-align: center !important;
+    }
+    .landing-hero,
+    .landing-bodya,
+    .landing-bodyb {
         margin: 50px auto !important;
         width: 90vw !important;
         text-align: center;
     }
-    .landing-hero .landing-hero-h2 {
+    .landing-hero .landing-hero-h2,
+    .landing-bodya .landing-bodya-h4,
+    .landing-bodyb .landing-bodyb-h4 {
         font-size: xx-large;
         text-align: center;
     }
-    .landing-hero .landing-hero-body {
+    .landing-hero .landing-hero-body,
+    .landing-bodya .landing-bodya-h6,
+    .landing-bodyb .landing-bodyb-h6 {
         font-size: medium;
-        text-align: center;
+        text-align: center !important;
         margin-bottom: -25px;
+        margin-top: 50px;
     }
     .landing-hero .landing-hero-btn {
         height: 50px !important;
         width: 200px !important;
+    }
+    .landing-bodya .landing-bodya-body2, .landing-bodyb .landing-bodyb-body2 {
+        font-size: small;
+        text-align: center;
+        margin-bottom: -25px;
     }
 }

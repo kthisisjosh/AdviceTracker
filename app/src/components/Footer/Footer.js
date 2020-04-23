@@ -3,12 +3,12 @@ import { Typography } from "@material-ui/core"
 
 export const Footer = () => {
     return (
-        <footer style={{ backgroundColor: "#FFFFFF", margin: "0", width: "98.5vw", height: "190px", textAlign: "center" }}>
+        <footer style={{ backgroundColor: "#FFFFFF",margin: "0", width: "100vw", right: "0", height: "190px", textAlign: "center", margin: "0", boxSizing: "border-box", display: "inline"}}>
             <Typography variant="h5" justify="center" style={{ color: "black", paddingTop: "60px", paddingBottom: "15px" }}>
                 Advice Tracker
             </Typography>
 
-            <hr />
+            <hr style={{width: "auto"}}/>
 
             <Typography variant="body2" style={{ margin: "auto", marginTop: "35px", lineHeight: "24px" }}>
                 © Advice Tracker 2020
