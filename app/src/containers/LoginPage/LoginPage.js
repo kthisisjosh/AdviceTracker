@@ -41,7 +41,7 @@ const LoginPage = (props) => {
                         style={{ height: "715px", backgroundColor: "#FCFCFC", borderTop: "1px solid black", borderBottom: "1px solid black", padding: "auto",}}
                     >
                         <Paper className="login-paper" elevation={3} style={{ margin: "70px 350px 50px 150px", position: "absolute", width: "460px", height: "500px" }}>
-                            <div style={{ width: "460px, height: 200px", backgroundColor: "#FFFFFF" }}>
+                            <div style={{ width: "460px, height: 200px" }}>
                                 <Button style={{ marginTop: "50px" }}>Registration</Button>
                                 <Button style={{ marginTop: "50px" }}>Sign-in</Button>
                             </div>

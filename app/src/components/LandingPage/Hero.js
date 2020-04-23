@@ -1,6 +1,6 @@
 import React from "react"
 import Grid from "@material-ui/core/Grid"
-import { Typography, Button } from "@material-ui/core"
+import { Typography } from "@material-ui/core"
 import RegisterButton from "./RegisterButton"
 import LoginButton from "./LoginButton"
 
