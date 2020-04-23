@@ -163,7 +163,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
     .landing-bodya .landing-bodya-h6,
     .landing-bodyb .landing-bodyb-h6 {
         font-size: medium;
-        text-align: center !important;
+        text-align: center;
         margin-bottom: -25px;
         margin-top: 50px;
     }
@@ -175,5 +175,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
         font-size: small;
         text-align: center;
         margin-bottom: -25px;
+    }
+    .signupcall-btn {
+        text-align: center !important;
     }
 }

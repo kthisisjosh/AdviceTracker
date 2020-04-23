@@ -4,8 +4,8 @@ import { Grid, Typography } from "@material-ui/core"
 const BodyB = () => {
     return (
         <Grid container>
-            <Grid item md={6} xs={12}>
-                <img className="landing-bodyb-demo" alt="demo"style={{ height: "500px", width: "450px", margin: "0px 5vw 100px 20vw" }} src="./login-sample.JPG"></img>
+            <Grid className="landing-bodyb-demo" item md={6} xs={12}>
+                <img alt="demo" style={{ height: "500px", width: "450px", padding: "0px 10vw 100px 10vw" }} src="./login-sample.JPG"></img>
             </Grid>
 
             <Grid item className="landing-bodyb" md={6} xs={12} style={{ height: "auto", display: "block", width: "100vw", textAlign: "center" }}>

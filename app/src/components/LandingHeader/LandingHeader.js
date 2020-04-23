@@ -1,8 +1,8 @@
 import React from "react"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
-import LoginButton from "../../components/LoginButtons/LoginButton"
-import RegisterButton from "../../components/LoginButtons/RegisterButton"
+import LoginButton from "./LoginButton"
+import RegisterButton from "./RegisterButton"
 import { Link } from "react-router-dom"
 import { slide as Menu } from "react-burger-menu"
 
@@ -22,10 +22,10 @@ const Header = () => {
 
                 <Grid item style={{ marginLeft: "auto", marginRight: "5vw" }}>
                     <Menu right noOverlay>
-                        <Link to="/browse" style={{ margin: "0 0 0 5vw", textDecoration: "none", color: "black" }}>
+                        <Link to="/browse" style={{ marginBottom: "2vw", textDecoration: "none", color: "white" }}>
                             <Typography variant="button">Browse</Typography>
                         </Link>
-                        <Link to="/login" style={{ margin: "0 0 0 5vw", textDecoration: "none", color: "black" }}>
+                        <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
                             <Typography variant="button">Login/Register</Typography>
                         </Link>
                     </Menu>

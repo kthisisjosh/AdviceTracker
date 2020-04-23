@@ -4,6 +4,7 @@ import Hero from "../../components/LandingPage/Hero"
 import BodyA from "../../components/LandingPage/BodyA"
 import BodyB from "../../components/LandingPage/BodyB"
 import Footer from "../../components/Footer/Footer"
+import SignupCall from "../../components/LandingPage/SignupCall"
 
 const LandingPage = () => {
     return (
@@ -12,6 +13,7 @@ const LandingPage = () => {
             <Hero />
             <BodyA />
             <BodyB />
+            <SignupCall />
             <Footer />
         </>
     )
