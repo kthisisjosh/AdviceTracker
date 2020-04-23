@@ -1,48 +1,71 @@
 import React from "react"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
-import LoginButton from "../../components/LoginButtons/LoginButton"
-import RegisterButton from "../../components/LoginButtons/RegisterButton"
+import LoginButton from "./LoginButton"
+import RegisterButton from "./RegisterButton"
 import { Link } from "react-router-dom"
 import { slide as Menu } from "react-burger-menu"
+import Toggle from "react-toggle"
+import useDarkMode from "use-dark-mode"
 
 const Header = () => {
-    const showSettings = (event) => {
-        event.preventDefault()
-    }
+    const darkMode = useDarkMode(false)
 
     return (
-        <header style={{ backgroundColor: "#FFFFFF", margin: "0", }}>
+        <header id="header" style={{ margin: "0" }}>
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
-                <Grid item style={{ marginLeft: "7vw" }}>
+                <Grid className="landing-header-title" item style={{ marginLeft: "14vw", marginTop: "10px" }}>
                     <img alt="logo" src="Logo.svg" x="50" y="18" height="40" width="40" />
                 </Grid>
-                <Grid item style={{ marginRight: "auto" }}>
-                    <Typography variant="h4" justify="left" style={{ marginTop: "0.5vh", marginBottom: "1vh", marginLeft: "0.5vw", color: "black" }}>
+                <Grid className="landing-header-title" item style={{ marginRight: "auto", marginTop: "10px"}}>
+                    <Typography variant="h4" justify="left" style={{ marginTop: "0vh", marginBottom: "1vh", marginLeft: "0.5vw" }}>
                         Advice Tracker
                     </Typography>
                 </Grid>
 
                 <Grid item style={{ marginLeft: "auto", marginRight: "5vw" }}>
-                    <Menu right noOverlay>
-                        <Link to="/browse" style={{ margin: "0 0 0 5vw", textDecoration: "none", color: "black" }}>
-                            <Typography variant="button">Browse</Typography>
-                        </Link>
-                        <Link to="/login" style={{ margin: "0 0 0 5vw", textDecoration: "none", color: "black" }}>
-                            <Typography variant="button">Login/Register</Typography>
-                        </Link>
-                    </Menu>
+                    <Grid item className="toggle-grid" md={6}>
+                        <Toggle
+                        className="react-toggle-small"
+                            defaultChecked={darkMode.value}
+                            onChange={darkMode.toggle}
+                            icons={{
+                                checked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="moon" aria-hidden src={"./moon.png"} />,
+                                unchecked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="sun" aria-hidden src={"./sun.png"} />,
+                            }}
+                        />
+                    </Grid>
+                    <Grid item md={6}>
+                        <Menu right noOverlay>
+                            <Link to="/browse" style={{ marginBottom: "2vw", textDecoration: "none", color: "white" }}>
+                                <Typography variant="button">Browse</Typography>
+                            </Link>
+                            <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
+                                <Typography variant="button">Login/Register</Typography>
+                            </Link>
+                        </Menu>
+                    </Grid>
                 </Grid>
 
-                <Grid item className="navbar-grid" style={{ marginLeft: "auto" }}>
-                    <Link to="/browse" style={{ margin: "0 0 0 5vw", textDecoration: "none", color: "black" }}>
-                        <Typography variant="button">Browse</Typography>
+                <Grid item className="navbar-grid" style={{ marginLeft: "auto", textAlign: "center"}}>
+                    <Toggle
+                        defaultChecked={darkMode.value}
+                        onChange={darkMode.toggle}
+                        icons={{
+                            checked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="moon" aria-hidden src={"./moon.png"} />,
+                            unchecked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="sun" aria-hidden src={"./sun.png"} />,
+                        }}
+                    />
+                    <Link to="/browse" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none"}}>
+                        <Typography variant="button" style={{ textDecoration: "none" }}>
+                            Browse
+                        </Typography>
                     </Link>
                 </Grid>
                 <Grid item className="navbar-grid" style={{ marginLeft: "5vw", marginRight: "1vw" }}>
                     <LoginButton />
                 </Grid>
-                <Grid item className="navbar-grid" style={{ marginLeft: "1vw", marginRight: "5vw" }}>
+                <Grid item className="navbar-grid" style={{ marginLeft: "1vw", marginRight: "15vw" }}>
                     <RegisterButton />
                 </Grid>
             </Grid>
