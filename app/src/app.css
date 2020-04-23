@@ -28,9 +28,6 @@ body {
     cursor: pointer;
 }
 
-
-
-
 /* Position and sizing of burger button */
 .bm-burger-button {
     position: relative;
@@ -92,7 +89,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
     display: inline-block;
 }
 
-
 @media only screen and (max-width: 7000px) {
     .bm-burger-button {
         display: none;
@@ -111,6 +107,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
     }
     .bm-burger-button {
         display: block;
+    }
+    .login-grid {
+        max-width: 100% !important;
+        flex-basis: 100% !important;
+    }
+    .login-grid .login-paper {
+        margin: 70px auto !important;
+        position: inherit !important;
+        left: 50vw;
+        right: 50vw;
     }
 }
 @media only screen and (max-width: 770px) {
