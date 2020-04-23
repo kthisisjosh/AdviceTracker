@@ -135,7 +135,21 @@ Note: Beware of modifying this element as it can break the animations - you shou
     .landing-demo {
         display: none
     }
-    body {
-        background-color: black;
+    .landing-hero {
+        margin: 50px auto !important;
+        width: 90vw !important;
+    }
+    .landing-hero .landing-hero-h2 {
+        font-size: xx-large;
+        text-align: center;
+    }
+    .landing-hero .landing-hero-body {
+        font-size: medium;
+        text-align: center;
+        margin-bottom: -25px;
+    }
+    .landing-hero .landing-hero-btn {
+        height: 50px !important;
+        width: 200px !important;
     }
 }
