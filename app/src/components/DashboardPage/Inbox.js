@@ -1,5 +1,5 @@
 import React, { Fragment } from "react"
-import { Grid, Typography, Paper } from "@material-ui/core"
+import { Grid, Typography } from "@material-ui/core"
 import AddNewButton from "./AddNewButton"
 import InboxScrollPane from "./InboxScrollPane"
 

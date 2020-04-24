@@ -1,6 +1,7 @@
 import React from "react"
 import Scroll from "react-scroll"
-import { Paper, Grid, Typography } from "@material-ui/core"
+import InboxElement from "./InboxElement"
+import Inbox from "./Inbox"
 
 var Element = Scroll.Element
 var Events = Scroll.Events
@@ -10,6 +11,16 @@ var scrollSpy = Scroll.scrollSpy
 class InboxScrollPane extends React.Component {
     constructor(props) {
         super(props)
+    }
+
+    handleAdd(event) {
+        console.log("add")
+        console.log(event);
+    }
+
+    handleDelete(event) {
+        console.log("Delete")
+        console.log(event);
     }
 
     componentDidMount() {
@@ -42,17 +53,8 @@ class InboxScrollPane extends React.Component {
                     marginTop: "1vh",
                 }}
             >
-                <Element style={{margin: "2vh"}}>
-                    <Grid item style={{ width: "100%" }}>
-                        <Paper>
-                            <Typography variant="body1" style={{marginLeft: "1.5vw", marginRight: "1.5vw", paddingTop: "1.5vh", paddingBottom: "1.5vh"}}>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas efficitur lobortis ex a vulputate. Duis tempor purus
-                                in nisl tempor dignissim vitae eget lectus. Proin dignissim aliquet felis, placerat aliquam tellus ultrices in. Etiam
-                                condimentum fringilla urna, vel commodo metus cursus vel. Donec nulla justo, consequat ut pretium vitae, mattis ut.
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                </Element>
+                
+                <InboxElement handleAdd={this.handleAdd} handleDelete={this.handleDelete} key="1"/>
 
             </Element>
         )
