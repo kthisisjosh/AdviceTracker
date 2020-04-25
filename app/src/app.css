@@ -41,6 +41,26 @@ body.light-mode {
     transition-property: background-color, color;
 }
 
+
+#containerElement::-webkit-scrollbar {
+  width: 10px;
+}
+
+#containerElement::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+
+#containerElement::-webkit-scrollbar-thumb {
+  background: #07080a; 
+  border-radius: 10px;
+}
+
+#containerElement::-webkit-scrollbar-thumb:hover {
+  background: #1c1f27; 
+}
+
+
 .github-login-btn {
     background-color: #fff;
     align-items: center;
