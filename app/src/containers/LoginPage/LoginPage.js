@@ -9,13 +9,17 @@ import Button from "@material-ui/core/Button"
 import Footer from "../../components/Footer/Footer"
 import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
+import { useHistory } from "react-router-dom"
 
 const LoginPage = (props) => {
     const {googleLogin, githubLogin, isAuthenticated, user} = props;
+    const history = useHistory();
 
     useEffect(() => {
         if (isAuthenticated) {
-            //
+            history.push("/dashboard")
+        } else {
+            
         }
     }, [isAuthenticated, user])
 

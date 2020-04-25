@@ -6,14 +6,20 @@ import Inbox from "../../components/DashboardPage/Inbox"
 import { connect } from "react-redux"
 
 import { getInboxAdvice, submitInboxAdvice } from "../../redux/actions/advice"
+import { useHistory } from "react-router-dom"
 
 const DashboardPage = (props) => {
     const { getInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user } = props
+    const history = useHistory()
     const [toAdd, setToAdd] = useState(false)
     const [submitAdvice, setSubmitAdvice] = useState("")
 
     useEffect(() => {
-        if (!inboxAdvice.length && isAuthenticated) getInboxAdvice(user.id)
+        if (!inboxAdvice.length && isAuthenticated) {
+            getInboxAdvice(user.id)
+        } else if (!isAuthenticated) {
+            history.push("/")
+        }
     }, [getInboxAdvice, inboxAdvice, isAuthenticated])
 
     const handleAddClick = () => {
