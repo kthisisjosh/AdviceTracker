@@ -9,34 +9,29 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
-const inbox = [
-    {
-        content: "<p>Lorem ipsum from server.</p>",
-        category: "",
-        userID: "",
-        likes: null,
-        datePosted: null,
-        comments: [],
-        id: "",
-    },
-    {
-        content: "<p>Lorem ipsum from server 2.</p>",
-        category: "",
-        userID: "",
-        likes: null,
-        datePosted: null,
-        comments: [],
-        id: "",
-    },
-];
+router.get("/api/advice/inbox/:id", (req, res) => {
+    const queryString = "SELECT * FROM advice WHERE InInbox = " + req.params.id + ";";
 
-router.get("/api/advice/inbox", (req, res) => {
-    res.send();
+    connection.query(queryString, (err, results, fields) => {
+        if (!err) res.json(results);
+        else console.log(err);
+    });
 });
 
-router.get("/api/advice/inbox", (req, res) => {
-    inbox.push(req.body);
-    console.log("Advice: " + req.body);
+router.post("/api/advice/inbox/:id", (req, res) => {
+    const newAdvice = req.body;
+
+    const queryString = "INSERT INTO advice (AdviceID, UserID, InInbox, Content, Category, NumOfLikes, DatePosted) VALUES (?, ?, ?, ?, NULL, NULL, NULL)";
+
+    connection.query(queryString, [newAdvice.adviceID, req.params.id, newAdvice.inInbox, newAdvice.content], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            console.log(`Successfully created advice with content ${newAdvice.content}`);
+            res.sendStatus(200);
+        }
+    });
 });
 
 module.exports = router;

@@ -36,18 +36,7 @@ export default (state = initialState, action) => {
         case SUBMIT_INBOX_ADVICE:
             return {
                 ...state,
-                inboxAdvice: [
-                    {
-                        content: action.payload,
-                        category: "",
-                        userID: "",
-                        likes: null,
-                        datePosted: null,
-                        comments: [],
-                        id: "",
-                    },
-                    ...state.inboxAdvice,
-                ],
+                inboxAdvice: [action.payload, ...state.inboxAdvice],
             }
 
         default:

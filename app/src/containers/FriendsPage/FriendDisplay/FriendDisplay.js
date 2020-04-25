@@ -16,9 +16,9 @@ const FriendDisplay = (props) => {
         <div>
             <Paper elevation={3} variant="outlined" style={{ margin: "auto", width: "30vw", height: "auto", marginBottom: "1vh" }}>
                 <h4 style={{ margin: "2px 2px 2px 2px" }}>
-                    <Typography variant="button">{props.person.name}</Typography>
+                    <Typography variant="button">{props.person.username}</Typography>
                 </h4>
-                <p style={{ margin: "2px 2px 2px 2px" }}>{props.person.hobbies}</p>
+                <p style={{ margin: "2px 2px 2px 2px" }}>{props.person.userID}</p>
                 <Button onClick={handleDelete}>Delete</Button>
             </Paper>
         </div>

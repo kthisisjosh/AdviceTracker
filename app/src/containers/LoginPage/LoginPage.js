@@ -1,5 +1,6 @@
-import React from "react"
+import React, {useEffect} from "react"
 import { googleLogin, githubLogin } from "../../redux/actions/auth"
+import { connect } from "react-redux"
 import Typography from "@material-ui/core/Typography"
 import LandingHeader from "../../components/LandingHeader/LandingHeader"
 import GoogleLogin from "react-google-login"
@@ -10,6 +11,14 @@ import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 
 const LoginPage = (props) => {
+    const {googleLogin, githubLogin, isAuthenticated, user} = props;
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            //
+        }
+    }, [isAuthenticated, user])
+
     return (
         <>
             <LandingHeader />
@@ -29,7 +38,11 @@ const LoginPage = (props) => {
                             textAlign: "center",
                         }}
                     >
-                        <img alt="login-demo" src="./login-sample.JPG" style={{ height: "550px", width: "500px", margin: "35px 15px 35px 15px", borderRadius: "15px"}} />
+                        <img
+                            alt="login-demo"
+                            src="./login-sample.JPG"
+                            style={{ height: "550px", width: "500px", margin: "35px 15px 35px 15px", borderRadius: "15px" }}
+                        />
                     </Grid>
                     <Grid
                         item
@@ -91,4 +104,9 @@ const LoginPage = (props) => {
     )
 }
 
-export default LoginPage
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.authState.isAuthenticated,
+    user: state.authState.user,
+})
+
+export default connect(mapStateToProps, { googleLogin, githubLogin })(LoginPage)

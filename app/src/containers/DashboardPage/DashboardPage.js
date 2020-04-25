@@ -8,7 +8,7 @@ import { connect } from "react-redux"
 import { getInboxAdvice, submitInboxAdvice } from "../../redux/actions/advice"
 
 const DashboardPage = (props) => {
-    const { getInboxAdvice, inboxAdvice } = props
+    const { getInboxAdvice, inboxAdvice, submitInboxAdvice } = props
     const [toAdd, setToAdd] = useState(false)
     const [submitAdvice, setSubmitAdvice] = useState("")
 
@@ -49,6 +49,6 @@ const mapStateToProps = ({ adviceState }) => ({
     inboxAdvice: adviceState.inboxAdvice,
 })
 
-const mapDispatchToProps = { getInboxAdvice }
+const mapDispatchToProps = { getInboxAdvice, submitInboxAdvice }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)

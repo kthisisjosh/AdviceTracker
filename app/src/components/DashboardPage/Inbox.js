@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment } from "react"
 import { Grid, Typography } from "@material-ui/core"
 import AddNewButton from "./AddNewButton"
 import InboxScrollPane from "./InboxScrollPane"

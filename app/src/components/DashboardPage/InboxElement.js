@@ -11,9 +11,7 @@ const InboxElement = (props) => {
         <Element style={{ margin: "2vh", height: "auto" }}>
             <Paper style={{ width: "100%" }}>
                 <Grid item style={{ marginLeft: "1.5vw", marginRight: "1.5vw", paddingTop: "1.5vh" }}>
-                    <Typography variant="body1">
-                        <td dangerouslySetInnerHTML={{__html: props.advice.content}} />
-                    </Typography>
+                    <Typography variant="body1" dangerouslySetInnerHTML={{__html: props.advice.content}} />
                 </Grid>
                 <Grid item style={{ marginBottom: "1vh", marginLeft: "1vw" }}>
                     <Tooltip title="Add to category">

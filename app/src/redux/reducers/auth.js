@@ -11,7 +11,7 @@ export default (state = initialState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
             //localStorage.setItem("jwtToken", payload.token)
-            return { ...state, isAuthenticated: true, loading: false }
+            return { ...state, isAuthenticated: true, loading: false, user: action.payload}
         case LOGIN_FAIL:
         case LOGOUT:
             //localStorage.removeItem("jwtToken")

@@ -5,7 +5,6 @@ import AddElement from "./AddElement"
 
 var Element = Scroll.Element
 var Events = Scroll.Events
-var scroll = Scroll.animateScroll
 var scrollSpy = Scroll.scrollSpy
 
 const InboxScrollPane = (props) => {
@@ -49,7 +48,7 @@ const InboxScrollPane = (props) => {
             {props.toAdd && <AddElement handleEditorChange={props.handleEditorChange} handleSubmit={props.handleSubmit} />}
 
             {props.inbox.map((advice) => (
-                <InboxElement advice={advice} handleAdd={handleAdd} handleDelete={handleDelete} key={advice.content} />
+                <InboxElement advice={advice} handleAdd={handleAdd} handleDelete={handleDelete} key={advice.adviceID} />
             ))}
         </Element>
     )
