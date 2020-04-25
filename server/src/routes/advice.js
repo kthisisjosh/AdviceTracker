@@ -9,27 +9,34 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
+const inbox = [
+    {
+        content: "<p>Lorem ipsum from server.</p>",
+        category: "",
+        userID: "",
+        likes: null,
+        datePosted: null,
+        comments: [],
+        id: "",
+    },
+    {
+        content: "<p>Lorem ipsum from server 2.</p>",
+        category: "",
+        userID: "",
+        likes: null,
+        datePosted: null,
+        comments: [],
+        id: "",
+    },
+];
+
 router.get("/api/advice/inbox", (req, res) => {
-    res.send([
-        {
-            content: "<p>Lorem ipsum from server.</p>",
-            category: "",
-            userID: "",
-            likes: null,
-            datePosted: null,
-            comments: [],
-            id: "",
-        },
-        {
-            content: "<p>Lorem ipsum from server 2.</p>",
-            category: "",
-            userID: "",
-            likes: null,
-            datePosted: null,
-            comments: [],
-            id: "",
-        },
-    ]);
+    res.send();
+});
+
+router.get("/api/advice/inbox", (req, res) => {
+    inbox.push(req.body);
+    console.log("Advice: " + req.body);
 });
 
 module.exports = router;

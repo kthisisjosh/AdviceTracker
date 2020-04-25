@@ -46,10 +46,10 @@ const InboxScrollPane = (props) => {
                 marginTop: "1vh",
             }}
         >
-            {props.toAdd && <AddElement handleEditorChange={props.handleEditorChange} />}
+            {props.toAdd && <AddElement handleEditorChange={props.handleEditorChange} handleSubmit={props.handleSubmit} />}
 
             {props.inbox.map((advice) => (
-                <InboxElement advice={advice} handleAdd={handleAdd} handleDelete={handleDelete} key="1" />
+                <InboxElement advice={advice} handleAdd={handleAdd} handleDelete={handleDelete} key={advice.content} />
             ))}
         </Element>
     )
