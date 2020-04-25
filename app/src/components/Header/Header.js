@@ -48,7 +48,7 @@ const Header = () => {
                             unchecked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="sun" aria-hidden src={"./sun.png"} />,
                         }}
                     />
-                    <Link to="/browse" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
+                    <Link to="/profile" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
                         <Typography variant="button" style={{ textDecoration: "none" }}>
                             Profile
                         </Typography>

@@ -1,7 +1,6 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL } from "../types/auth"
 
 export const googleLogin = ({ profileObj }) => async (dispatch) => {
-    dispatch({ type: LOGIN_SUCCESS })
     try {
         const newUser = {
             id: profileObj.googleId,
