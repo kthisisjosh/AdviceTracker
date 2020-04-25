@@ -10,7 +10,7 @@ const ProfilePage = (props) => {
 
     useEffect(() => {
         if (!isAuthenticated) {
-            history.push("/")
+            history.push("/login")
         }
     })
 

@@ -21,7 +21,7 @@ const LoginPage = (props) => {
         } else {
             
         }
-    }, [isAuthenticated, user])
+    }, [isAuthenticated, user, history])
 
     return (
         <>

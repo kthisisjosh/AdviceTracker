@@ -5,11 +5,11 @@ import Footer from "../../components/Footer/Footer"
 import Inbox from "../../components/DashboardPage/Inbox"
 import { connect } from "react-redux"
 
-import { getInboxAdvice, submitInboxAdvice } from "../../redux/actions/advice"
+import { getInboxAdvice, submitInboxAdvice, deleteInboxAdvice} from "../../redux/actions/advice"
 import { useHistory } from "react-router-dom"
 
 const DashboardPage = (props) => {
-    const { getInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user } = props
+    const { getInboxAdvice, deleteInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user } = props
     const history = useHistory()
     const [toAdd, setToAdd] = useState(false)
     const [submitAdvice, setSubmitAdvice] = useState("")
@@ -18,9 +18,9 @@ const DashboardPage = (props) => {
         if (!inboxAdvice.length && isAuthenticated) {
             getInboxAdvice(user.id)
         } else if (!isAuthenticated) {
-            history.push("/")
+            history.push("/login")
         }
-    }, [getInboxAdvice, inboxAdvice, isAuthenticated])
+    }, [getInboxAdvice, inboxAdvice, isAuthenticated, history])
 
     const handleAddClick = () => {
         setToAdd(true)
@@ -28,11 +28,21 @@ const DashboardPage = (props) => {
 
     const handleSubmit = () => {
         submitInboxAdvice(submitAdvice, user.id)
+        setSubmitAdvice("")
         setToAdd(false)
     }
 
     const handleEditorChange = (content, editor) => {
         setSubmitAdvice(content)
+    }
+
+    const handleAddToCategory = (event) => {
+        console.log("add")
+        console.log(event)
+    }
+
+    const handleDelete = (advice) => {
+        deleteInboxAdvice(advice)
     }
 
     return (
@@ -42,6 +52,8 @@ const DashboardPage = (props) => {
             {isAuthenticated && (
                 <Inbox
                     inbox={inboxAdvice}
+                    handleAddToCategory={handleAddToCategory}
+                    handleDelete={handleDelete}
                     handleAddClick={handleAddClick}
                     handleSubmit={handleSubmit}
                     handleEditorChange={handleEditorChange}
@@ -59,6 +71,6 @@ const mapStateToProps = ({ adviceState, authState }) => ({
     user: authState.user,
 })
 
-const mapDispatchToProps = { getInboxAdvice, submitInboxAdvice }
+const mapDispatchToProps = { getInboxAdvice, submitInboxAdvice, deleteInboxAdvice }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)

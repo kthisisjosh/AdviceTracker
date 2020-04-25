@@ -34,4 +34,19 @@ router.post("/api/advice/inbox/:id", (req, res) => {
     });
 });
 
+router.delete("/api/advice/inbox/:id", (req, res) => {
+    const queryString = "DELETE FROM advice WHERE adviceID = ?";
+
+    connection.query(queryString, [req.params.id], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            console.log(`Successfully deleted advice with ID ${req.params.id}`);
+
+            res.sendStatus(200);
+        }
+    });
+});
+
 module.exports = router;

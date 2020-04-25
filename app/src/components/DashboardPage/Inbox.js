@@ -16,7 +16,7 @@ const Inbox = (props) => {
                 </Grid>
 
                 <Grid container style={{width: "100%", height: "15vw"}}>
-                    <InboxScrollPane handleSubmit={props.handleSubmit} handleEditorChange={props.handleEditorChange} toAdd={props.toAdd} inbox={props.inbox}/>
+                    <InboxScrollPane handleSubmit={props.handleSubmit} handleAddToCategory={props.handleAddToCategory} handleDelete={props.handleDelete} handleEditorChange={props.handleEditorChange} toAdd={props.toAdd} inbox={props.inbox}/>
                 </Grid>
             </Grid>
         </Fragment>

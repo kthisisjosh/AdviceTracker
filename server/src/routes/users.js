@@ -2,6 +2,8 @@ const express = require("express");
 const mysql = require("mysql");
 const router = new express.Router();
 
+const verifyToken = require("../middleware/verifyToken");
+
 const connection = mysql.createConnection({
     host: "192.168.99.100",
     user: "root",
@@ -9,7 +11,7 @@ const connection = mysql.createConnection({
     database: "advicetracker",
 });
 
-router.get("/api/users", (req, res) => {
+router.get("/api/users", verifyToken, (req, res) => {
     const queryString = "SELECT * FROM users";
 
     connection.query(queryString, (err, results, fields) => {
@@ -18,7 +20,7 @@ router.get("/api/users", (req, res) => {
     });
 });
 
-router.post("/api/users/", (req, res) => {
+router.post("/api/users/", verifyToken, (req, res) => {
     const newUser = req.body;
 
     // check if already user with same id
@@ -28,7 +30,6 @@ router.post("/api/users/", (req, res) => {
             console.log(err);
             res.sendStatus(500);
         } else {
-
             if (results.length != 0) {
                 console.log(`Already a user with userID: ${newUser.id}`);
                 res.sendStatus(200);
@@ -49,7 +50,7 @@ router.post("/api/users/", (req, res) => {
     });
 });
 
-router.delete("/api/users/:id", (req, res) => {
+router.delete("/api/users/:id", verifyToken, (req, res) => {
     const queryString = "DELETE FROM users WHERE id = ?";
 
     connection.query(queryString, [req.params.id], (err, results, fields) => {
