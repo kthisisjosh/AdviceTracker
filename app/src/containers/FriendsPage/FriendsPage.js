@@ -5,7 +5,6 @@ import Header from "../../components/Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Grid from "@material-ui/core/Grid"
 import Paper from "@material-ui/core/Paper"
-import Fab from "@material-ui/core/Fab"
 import Input from "@material-ui/core/Input"
 import FriendDisplay from "./FriendDisplay/FriendDisplay"
 import Button from "@material-ui/core/Button"
@@ -32,10 +31,7 @@ const FriendsPage = (props) => {
             <Header />
             <Navbar />
             <Grid container direction="column" justify="center" style={{ margin: "1vw", textAlign: "center", width: "98vw" }}>
-                <Fab color="primary" aria-label="add" style={{ margin: "auto", marginBottom: "2vh" }} onClick={() => setToAdd(true)}>
-                    + Add
-                </Fab>
-                <Typography variant="h3">Your Friends</Typography>
+                <Typography variant="h3">Users</Typography>
 
                 {toAdd && (
                     <Paper style={{ width: "30vw", margin: "auto" }}>
@@ -48,7 +44,7 @@ const FriendsPage = (props) => {
                 )}
 
                 {users.map((person) => (
-                    <FriendDisplay key={person.id} person={person} />
+                    <FriendDisplay key={person.userID} person={person} />
                 ))}
             </Grid>
             <Footer />

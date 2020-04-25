@@ -1,8 +1,9 @@
 import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE } from "../types/advice"
+import { v4 as uuidv4 } from 'uuid';
 
-export const getInboxAdvice = () => async (dispatch) => {
+export const getInboxAdvice = (id) => async (dispatch) => {
     try {
-        const url = "http://192.168.99.100:8080/api/advice/inbox/1" // add user id?
+        const url = "http://192.168.99.100:8080/api/advice/inbox/" + id // add user id?
         await fetch(url, {
             method: "GET",
             headers: { "Content-Type": "application/json" },
@@ -17,18 +18,18 @@ export const getInboxAdvice = () => async (dispatch) => {
     }
 }
 
-export const submitInboxAdvice = (advice) => async (dispatch) => {
+export const submitInboxAdvice = (advice, id) => async (dispatch) => {
     try {
-        const url = "http://192.168.99.100:8080/api/advice/inbox/1" // add user id?
+        const url = "http://192.168.99.100:8080/api/advice/inbox/" + id // add user id?
         const newInboxAdvice = {
             content: advice,
             inInbox: 1,
             category: "",
-            userID: "1",
+            userID: id,
             likes: null,
             datePosted: null,
             comments: [],
-            adviceID: "1"
+            adviceID: uuidv4(),
         }
         await fetch(url, {
             method: "POST",

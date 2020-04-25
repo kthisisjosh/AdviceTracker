@@ -8,20 +8,20 @@ import { connect } from "react-redux"
 import { getInboxAdvice, submitInboxAdvice } from "../../redux/actions/advice"
 
 const DashboardPage = (props) => {
-    const { getInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated } = props
+    const { getInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user } = props
     const [toAdd, setToAdd] = useState(false)
     const [submitAdvice, setSubmitAdvice] = useState("")
 
     useEffect(() => {
-        if (!inboxAdvice.length) getInboxAdvice()
-    }, [getInboxAdvice, inboxAdvice])
+        if (!inboxAdvice.length && isAuthenticated) getInboxAdvice(user.id)
+    }, [getInboxAdvice, inboxAdvice, isAuthenticated, user.id])
 
     const handleAddClick = () => {
         setToAdd(true)
     }
 
     const handleSubmit = () => {
-        submitInboxAdvice(submitAdvice)
+        submitInboxAdvice(submitAdvice, user.id)
         setToAdd(false)
     }
 
@@ -50,6 +50,7 @@ const DashboardPage = (props) => {
 const mapStateToProps = ({ adviceState, authState }) => ({
     inboxAdvice: adviceState.inboxAdvice,
     isAuthenticated: authState.isAuthenticated,
+    user: authState.user,
 })
 
 const mapDispatchToProps = { getInboxAdvice, submitInboxAdvice }

@@ -11,7 +11,7 @@ export const SignupCall = () => {
             </Grid>
 
             <Grid item className="signupcall-btn" md={6} xs={12} style={{textAlign: "left", marginBottom: "15px"}}>
-                <Grid item justify="left" style={{ marginTop: "25px" }}>
+                <Grid item style={{ marginTop: "25px" }}>
                     <RegisterButton />
                 </Grid>
                 <Grid item style={{ marginTop: "25px" }}>

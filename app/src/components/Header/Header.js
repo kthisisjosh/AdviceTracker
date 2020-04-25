@@ -53,7 +53,7 @@ const Header = () => {
                             Profile
                         </Typography>
                     </Link>
-                    <Link to="/browse" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
+                    <Link to="/" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
                         <Typography variant="button" style={{ textDecoration: "none" }}>
                             Logout
                         </Typography>

@@ -10,7 +10,7 @@ const connection = mysql.createConnection({
 });
 
 router.get("/api/advice/inbox/:id", (req, res) => {
-    const queryString = "SELECT * FROM advice WHERE InInbox = " + req.params.id + ";";
+    const queryString = "SELECT * FROM advice WHERE inInbox = 1 AND userID =" + req.params.id + ";";
 
     connection.query(queryString, (err, results, fields) => {
         if (!err) res.json(results);
