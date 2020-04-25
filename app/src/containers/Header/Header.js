@@ -1,13 +1,23 @@
 import React from "react"
 import Typography from "@material-ui/core/Typography"
 import Grid from "@material-ui/core/Grid"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { slide as Menu } from "react-burger-menu"
 import Toggle from "react-toggle"
 import useDarkMode from "use-dark-mode"
+import { Button } from "@material-ui/core"
+import { useDispatch } from "react-redux"
+import { LOGOUT } from "../../redux/types/auth"
 
 const Header = () => {
     const darkMode = useDarkMode(false)
+    const history = useHistory()
+    const dispatch = useDispatch()
+
+    const handleLogout = () => {
+        dispatch({ type: LOGOUT })
+        history.push("/")
+    }
 
     return (
         <header id="header" style={{ margin: "0", backgroundColor: "#434343" }}>
@@ -53,11 +63,11 @@ const Header = () => {
                             Profile
                         </Typography>
                     </Link>
-                    <Link to="/" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
+                    <Button onClick={handleLogout} className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
                         <Typography variant="button" style={{ textDecoration: "none" }}>
                             Logout
                         </Typography>
-                    </Link>
+                    </Button>
                 </Grid>
             </Grid>
         </header>

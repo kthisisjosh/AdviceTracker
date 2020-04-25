@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment, useState } from "react"
 import { connect } from "react-redux"
 import { getUsers, createUser } from "../../redux/actions/users"
-import Header from "../../components/Header/Header"
+import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Grid from "@material-ui/core/Grid"
 import Paper from "@material-ui/core/Paper"

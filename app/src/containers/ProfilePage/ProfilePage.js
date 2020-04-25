@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react"
-import Header from "../../components/Header/Header"
+import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import { connect } from "react-redux"
 import { useHistory } from "react-router-dom"

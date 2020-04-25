@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react"
-import Header from "../../components/Header/Header"
+import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import Inbox from "../../components/DashboardPage/Inbox"
