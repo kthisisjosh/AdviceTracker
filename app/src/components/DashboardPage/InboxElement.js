@@ -8,13 +8,11 @@ var Element = Scroll.Element
 
 const InboxElement = (props) => {
     return (
-        <Element style={{ margin: "2vh" }}>
+        <Element style={{ margin: "2vh", height: "auto" }}>
             <Paper style={{ width: "100%" }}>
                 <Grid item style={{ marginLeft: "1.5vw", marginRight: "1.5vw", paddingTop: "1.5vh" }}>
                     <Typography variant="body1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas efficitur lobortis ex a vulputate. Duis tempor purus in nisl
-                        tempor dignissim vitae eget lectus. Proin dignissim aliquet felis, placerat aliquam tellus ultrices in. Etiam condimentum
-                        fringilla urna, vel commodo metus cursus vel. Donec nulla justo, consequat ut pretium vitae, mattis ut.
+                        <td dangerouslySetInnerHTML={{__html: props.advice.content}} />
                     </Typography>
                 </Grid>
                 <Grid item style={{ marginBottom: "1vh", marginLeft: "1vw" }}>

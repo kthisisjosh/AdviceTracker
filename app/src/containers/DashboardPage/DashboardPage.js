@@ -1,18 +1,33 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useEffect } from "react"
 import Header from "../../components/Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import Inbox from "../../components/DashboardPage/Inbox"
+import { connect } from "react-redux"
 
-const DashboardPage = () => {
+import { getInboxAdvice } from "../../redux/actions/advice"
+
+const DashboardPage = (props) => {
+    const { getInboxAdvice, inboxAdvice } = props
+
+    useEffect(() => {
+        if (!inboxAdvice.length) getInboxAdvice()
+    }, [getInboxAdvice, inboxAdvice])
+
     return (
         <Fragment>
             <Header />
             <Navbar />
-            <Inbox />
+            <Inbox inbox={inboxAdvice} />
             <Footer />
         </Fragment>
     )
 }
 
-export default DashboardPage
+const mapStateToProps = ({ adviceState }) => ({
+    inboxAdvice: adviceState.inboxAdvice,
+})
+
+const mapDispatchToProps = { getInboxAdvice }
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)

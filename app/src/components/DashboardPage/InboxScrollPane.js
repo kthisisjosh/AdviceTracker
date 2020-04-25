@@ -1,29 +1,25 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Scroll from "react-scroll"
 import InboxElement from "./InboxElement"
-import Inbox from "./Inbox"
+import AddElement from "./AddElement"
 
 var Element = Scroll.Element
 var Events = Scroll.Events
 var scroll = Scroll.animateScroll
 var scrollSpy = Scroll.scrollSpy
 
-class InboxScrollPane extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    handleAdd(event) {
+const InboxScrollPane = (props) => {
+    const handleAdd = (event) => {
         console.log("add")
-        console.log(event);
+        console.log(event)
     }
 
-    handleDelete(event) {
+    const handleDelete = (event) => {
         console.log("Delete")
-        console.log(event);
+        console.log(event)
     }
 
-    componentDidMount() {
+    useEffect(() => {
         Events.scrollEvent.register("begin", function () {
             console.log("begin", arguments)
         })
@@ -31,34 +27,32 @@ class InboxScrollPane extends React.Component {
         Events.scrollEvent.register("end", function () {
             console.log("end", arguments)
         })
-
         scrollSpy.update()
-    }
+        return () => {
+            Events.scrollEvent.remove("begin")
+            Events.scrollEvent.remove("end")
+        }
+    })
 
-    componentWillUnmount() {
-        Events.scrollEvent.remove("begin")
-        Events.scrollEvent.remove("end")
-    }
+    return (
+        <Element
+            className="element"
+            id="containerElement"
+            style={{
+                overflow: "scroll",
+                overflowX: "hidden",
+                height: "15vw",
+                width: "100%",
+                marginTop: "1vh",
+            }}
+        >
+            {props.toAdd && <AddElement handleEditorChange={props.handleEditorChange} />}
 
-    render() {
-        return (
-            <Element
-                className="element"
-                id="containerElement"
-                style={{
-                    overflow: "scroll",
-                    overflowX: "hidden",
-                    height: "13vw",
-                    width: "100%",
-                    marginTop: "1vh",
-                }}
-            >
-                
-                <InboxElement handleAdd={this.handleAdd} handleDelete={this.handleDelete} key="1"/>
-
-            </Element>
-        )
-    }
+            {props.inbox.map((advice) => (
+                <InboxElement advice={advice} handleAdd={handleAdd} handleDelete={handleDelete} key="1" />
+            ))}
+        </Element>
+    )
 }
 
 export default InboxScrollPane

@@ -1,12 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-if (process.env.NODE_ENV !== 'production') {
-  require("dotenv").config();
+if (process.env.NODE_ENV !== "production") {
+    require("dotenv").config();
 }
 
 // Routes
 const mockRouter = require("./routes/mock");
+const adviceRouter = require("./routes/advice");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -32,5 +33,6 @@ app.use(function (req, res, next) {
 app.use(express.urlencoded());
 app.use(express.json());
 app.use(mockRouter);
+app.use(adviceRouter);
 
 app.listen(port, () => console.log(`Server is now running on port ${port}`));
