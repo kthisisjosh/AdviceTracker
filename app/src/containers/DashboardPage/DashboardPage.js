@@ -14,7 +14,7 @@ const DashboardPage = (props) => {
 
     useEffect(() => {
         if (!inboxAdvice.length && isAuthenticated) getInboxAdvice(user.id)
-    }, [getInboxAdvice, inboxAdvice, isAuthenticated, user.id])
+    }, [getInboxAdvice, inboxAdvice, isAuthenticated])
 
     const handleAddClick = () => {
         setToAdd(true)
