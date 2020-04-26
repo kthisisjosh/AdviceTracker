@@ -7,7 +7,7 @@
     "test": "cd app && npm run test && npm run coveralls",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "client": "cd app && npm start",
-    "server": "cd server/src && node index.js"
+    "server": "cd server/src && nodemon index.js"
   },
   "repository": {
     "type": "git",

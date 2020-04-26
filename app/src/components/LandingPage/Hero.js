@@ -18,7 +18,7 @@ const Hero = () => {
                         It's hard keeping track of good advice - there are so much awesome advice out there. Fix that by tracking all the advice you
                         think may help you in the future.
                     </Typography>
-                    <Grid item justify="left" style={{ marginTop: "50px" }}>
+                    <Grid item style={{ marginTop: "50px" }}>
                         <RegisterButton />
                     </Grid>
                     <Grid item style={{ marginTop: "25px" }}>

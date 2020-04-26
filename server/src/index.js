@@ -8,6 +8,7 @@ if (process.env.NODE_ENV !== "production") {
 // Routes
 const mockRouter = require("./routes/mock");
 const adviceRouter = require("./routes/advice");
+const userRouter = require("./routes/users");
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -33,6 +34,7 @@ app.use(function (req, res, next) {
 app.use(express.urlencoded());
 app.use(express.json());
 app.use(mockRouter);
+app.use(userRouter);
 app.use(adviceRouter);
 
 app.listen(port, () => console.log(`Server is now running on port ${port}`));
