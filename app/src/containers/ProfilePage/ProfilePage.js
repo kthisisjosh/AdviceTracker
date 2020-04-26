@@ -3,6 +3,7 @@ import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import { connect } from "react-redux"
 import { useHistory } from "react-router-dom"
+import { Grid, Typography } from "@material-ui/core"
 
 const ProfilePage = (props) => {
     const { isAuthenticated, user } = props
@@ -18,7 +19,13 @@ const ProfilePage = (props) => {
         <Fragment>
             <Header />
             <Navbar />
-            {isAuthenticated && <h2 style={{ textAlign: "center" }}>Welcome, {user.username}</h2>}
+            {isAuthenticated && (
+                <Grid style={{ height: "1000px" }}>
+                    <Typography style={{ marginTop: "50px" }} align="center" variant="h2">
+                        Welcome, {props.user.username}
+                    </Typography>
+                </Grid>
+            )}
         </Fragment>
     )
 }

@@ -19,11 +19,17 @@ body.dark-mode {
     color: rgb(255, 245, 245);
 }
 
+body.dark-mode .navbar {
+    background-color: #00203d !important;
+    color: rgb(255, 245, 245);
+}
+
 body.dark-mode .signup-call {
     background-color: #00172c !important;
 }
 
-body.dark-mode header, body.dark-mode .login-demo-grid {
+body.dark-mode header,
+body.dark-mode .login-demo-grid {
     background-color: #00172c !important;
 }
 
@@ -41,25 +47,31 @@ body.light-mode {
     transition-property: background-color, color;
 }
 
+body.light-mode .navbar {
+    color: black !important;
+}
 
 #containerElement::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 #containerElement::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
 }
 
 #containerElement::-webkit-scrollbar-thumb {
-  background: #07080a; 
-  border-radius: 10px;
+    background: #07080a;
+    border-radius: 10px;
 }
 
 #containerElement::-webkit-scrollbar-thumb:hover {
-  background: #1c1f27; 
+    background: #1c1f27;
 }
 
+a:-webkit-any-link {
+    color: black;
+}
 
 .github-login-btn {
     background-color: #fff;
@@ -86,6 +98,7 @@ body.light-mode {
 .bm-burger-button {
     position: relative;
     right: -25px;
+    top: -10px;
     width: 30px;
     height: 24px;
 }
@@ -145,152 +158,152 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .react-toggle {
-  touch-action: pan-x;
+    touch-action: pan-x;
 
-  display: inline-block;
-  position: relative;
-  top: 8px;
-  left: 40px;
-  cursor: pointer;
-  background-color: transparent;
-  border: 0;
-  padding: 0;
+    display: inline-block;
+    position: relative;
+    top: 8px;
+    left: 40px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
 
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-  -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
 }
 
 .react-toggle-small {
-    top: 28px;
+    top: 18px;
     left: -30px;
 }
 
 .react-toggle-screenreader-only {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
 .react-toggle--disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-  -webkit-transition: opacity 0.25s;
-  transition: opacity 0.25s;
+    cursor: not-allowed;
+    opacity: 0.5;
+    -webkit-transition: opacity 0.25s;
+    transition: opacity 0.25s;
 }
 
 .react-toggle-track {
-  width: 50px;
-  height: 24px;
-  padding: 0;
-  border-radius: 30px;
-  background-color: #4D4D4D;
-  -webkit-transition: all 0.2s ease;
-  -moz-transition: all 0.2s ease;
-  transition: all 0.2s ease;
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: #4d4d4d;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    transition: all 0.2s ease;
 }
 
 .react-toggle:hover:not(.react-toggle--disabled) .react-toggle-track {
-  background-color: #000000;
+    background-color: #000000;
 }
 
 .react-toggle--checked .react-toggle-track {
-  background-color: #19AB27;
+    background-color: #19ab27;
 }
 
 .react-toggle--checked:hover:not(.react-toggle--disabled) .react-toggle-track {
-  background-color: #128D15;
+    background-color: #128d15;
 }
 
 .react-toggle-track-check {
-  position: absolute;
-  width: 14px;
-  height: 10px;
-  top: 0px;
-  bottom: 0px;
-  margin-top: auto;
-  margin-bottom: auto;
-  line-height: 0;
-  left: 8px;
-  opacity: 0;
-  -webkit-transition: opacity 0.25s ease;
-  -moz-transition: opacity 0.25s ease;
-  transition: opacity 0.25s ease;
+    position: absolute;
+    width: 14px;
+    height: 10px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    left: 8px;
+    opacity: 0;
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
 }
 
 .react-toggle--checked .react-toggle-track-check {
-  opacity: 1;
-  -webkit-transition: opacity 0.25s ease;
-  -moz-transition: opacity 0.25s ease;
-  transition: opacity 0.25s ease;
+    opacity: 1;
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
 }
 
 .react-toggle-track-x {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  top: 0px;
-  bottom: 0px;
-  margin-top: auto;
-  margin-bottom: auto;
-  line-height: 0;
-  right: 10px;
-  opacity: 1;
-  -webkit-transition: opacity 0.25s ease;
-  -moz-transition: opacity 0.25s ease;
-  transition: opacity 0.25s ease;
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    right: 10px;
+    opacity: 1;
+    -webkit-transition: opacity 0.25s ease;
+    -moz-transition: opacity 0.25s ease;
+    transition: opacity 0.25s ease;
 }
 
 .react-toggle--checked .react-toggle-track-x {
-  opacity: 0;
+    opacity: 0;
 }
 
 .react-toggle-thumb {
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  width: 22px;
-  height: 22px;
-  border: 1px solid #4D4D4D;
-  border-radius: 50%;
-  background-color: #FAFAFA;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #4d4d4d;
+    border-radius: 50%;
+    background-color: #fafafa;
 
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 
-  -webkit-transition: all 0.25s ease;
-  -moz-transition: all 0.25s ease;
-  transition: all 0.25s ease;
+    -webkit-transition: all 0.25s ease;
+    -moz-transition: all 0.25s ease;
+    transition: all 0.25s ease;
 }
 
 .react-toggle--checked .react-toggle-thumb {
-  left: 27px;
-  border-color: #19AB27;
+    left: 27px;
+    border-color: #19ab27;
 }
 
 .react-toggle--focus .react-toggle-thumb {
-  -webkit-box-shadow: 0px 0px 3px 2px #0099E0;
-  -moz-box-shadow: 0px 0px 3px 2px #0099E0;
-  box-shadow: 0px 0px 2px 3px #0099E0;
+    -webkit-box-shadow: 0px 0px 3px 2px #0099e0;
+    -moz-box-shadow: 0px 0px 3px 2px #0099e0;
+    box-shadow: 0px 0px 2px 3px #0099e0;
 }
 
 .react-toggle:active:not(.react-toggle--disabled) .react-toggle-thumb {
-  -webkit-box-shadow: 0px 0px 5px 5px #0099E0;
-  -moz-box-shadow: 0px 0px 5px 5px #0099E0;
-  box-shadow: 0px 0px 5px 5px #0099E0;
+    -webkit-box-shadow: 0px 0px 5px 5px #0099e0;
+    -moz-box-shadow: 0px 0px 5px 5px #0099e0;
+    box-shadow: 0px 0px 5px 5px #0099e0;
 }
 
 @media only screen and (max-width: 7000px) {
@@ -330,8 +343,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 @media only screen and (max-width: 960px) {
-    html, body {
-        width: 98vw;
+    html,
+    body {
+        width: 100vw;
     }
     .login-paper {
         margin: 10px 10px 10px 10px !important;
@@ -372,7 +386,8 @@ Note: Beware of modifying this element as it can break the animations - you shou
         height: 50px !important;
         width: 200px !important;
     }
-    .landing-bodya .landing-bodya-body2, .landing-bodyb .landing-bodyb-body2 {
+    .landing-bodya .landing-bodya-body2,
+    .landing-bodyb .landing-bodyb-body2 {
         font-size: small;
         text-align: center;
         margin-bottom: -25px;
@@ -381,7 +396,13 @@ Note: Beware of modifying this element as it can break the animations - you shou
         text-align: center !important;
     }
     .landing-logo {
-        margin-top: 30px !important;
+        margin-top: 10px !important;
         margin-left: 5px !important;
+    }
+    .inbox-grid {
+        margin: 1vh 1vw 1vh 1vw !important;
+    }
+    #containerElement {
+        height: 25vh !important;
     }
 }

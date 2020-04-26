@@ -5,8 +5,9 @@ import Footer from "../../components/Footer/Footer"
 import Inbox from "../../components/DashboardPage/Inbox"
 import { connect } from "react-redux"
 
-import { getInboxAdvice, submitInboxAdvice, deleteInboxAdvice} from "../../redux/actions/advice"
+import { getInboxAdvice, submitInboxAdvice, deleteInboxAdvice } from "../../redux/actions/advice"
 import { useHistory } from "react-router-dom"
+import { Grid, Typography } from "@material-ui/core"
 
 const DashboardPage = (props) => {
     const { getInboxAdvice, deleteInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user } = props
@@ -60,6 +61,9 @@ const DashboardPage = (props) => {
                     toAdd={toAdd}
                 />
             )}
+            <Grid style={{ height: "500px" }}>
+                <Typography style={{ marginTop: "200px" }} align="center" variant="h2"></Typography>
+            </Grid>
             <Footer />
         </Fragment>
     )

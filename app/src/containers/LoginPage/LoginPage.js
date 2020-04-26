@@ -45,7 +45,7 @@ const LoginPage = (props) => {
                         <img
                             alt="login-demo"
                             src="./login-sample.JPG"
-                            style={{ height: "550px", width: "500px", margin: "35px 15px 35px 15px", borderRadius: "15px" }}
+                            style={{ height: "550px", width: "500px", margin: "75px 15px 35px 15px", borderRadius: "15px" }}
                         />
                     </Grid>
                     <Grid
@@ -73,9 +73,9 @@ const LoginPage = (props) => {
                                 <Button style={{ marginTop: "50px" }}>Sign-in</Button>
                             </div>
                             <div style={{ position: "relative", width: "460px", height: "50px", backgroundColor: "#FAFAFA", alignText: "center" }}>
-                                <Typography style={{ paddingLeft: "8px", paddingTop: "12.5px" }}>You can sign in with social</Typography>
+                                <Typography style={{ paddingLeft: "8px", paddingTop: "12.5px" }}>Sign in with social</Typography>
                             </div>
-                            <div style={{ textAlign: "center", height: "250px" }}>
+                            <div style={{ textAlign: "center", height: "300px", backgroundColor: "#FEFEFE" }}>
                                 <div style={{ display: "inline-block", paddingTop: "50px" }}>
                                     <GoogleLogin
                                         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
@@ -85,13 +85,7 @@ const LoginPage = (props) => {
                                     />
                                 </div>
                                 <div style={{ paddingTop: "50px" }}>
-                                    <GithubLogin
-                                        clientId={process.env.REACT_APP_GITHUB_CLIENT_ID}
-                                        buttonText="Sign in using Github"
-                                        onSuccess={githubLogin}
-                                        onFailure={githubLogin}
-                                        className="github-login-btn"
-                                    />
+                                    
                                 </div>
                                 <div style={{ paddingTop: "75px" }}>
                                     <Button style={{ width: "350px", height: "50px", backgroundColor: "#F2994A", color: "#FFFFFF" }}>
@@ -114,3 +108,12 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, { googleLogin, githubLogin })(LoginPage)
+
+
+//<GithubLogin
+//    
+//    buttonText="Sign in using Github"
+//    onSuccess={githubLogin}
+//    onFailure={githubLogin}
+//    className="github-login-btn"
+///>

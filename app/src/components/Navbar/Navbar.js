@@ -4,15 +4,21 @@ import Typography from "@material-ui/core/Typography"
 
 const Navbar = () => {
     return (
-        <nav style={{ backgroundColor: "#EBEBEB", margin: "0", padding: "2vh 10vw 2vh 10vw" }}>
-            <Link to="/dashboard" style={{ margin: "0 5vw 0 5vw", textDecoration: "none", color: "black" }}>
-                <Typography variant="button">Dashboard</Typography>
+        <nav className="navbar" style={{ backgroundColor: "#EBEBEB", margin: "0", padding: "2vh 10vw 2vh 10vw" }}>
+            <Link to="/dashboard" className="landing-header-link" style={{ margin: "0 5vw 0 5vw", textDecoration: "none" }}>
+                <Typography style={{ textDecoration: "none" }} variant="button">
+                    Dashboard
+                </Typography>
             </Link>
-            <Link to="/browse" style={{ margin: "0 5vw 0 5vw", textDecoration: "none", color: "black" }}>
-                <Typography variant="button">Browse</Typography>
+            <Link to="/browse" className="landing-header-link" style={{ margin: "0 5vw 0 5vw", textDecoration: "none" }}>
+                <Typography style={{ textDecoration: "none" }} variant="button">
+                    Browse
+                </Typography>
             </Link>
-            <Link to="/submit" style={{ margin: "0 5vw 0 5vw", textDecoration: "none", color: "black" }}>
-                <Typography variant="button">Submit</Typography>
+            <Link to="/submit" className="landing-header-link" style={{ margin: "0 5vw 0 5vw", textDecoration: "none" }}>
+                <Typography style={{ textDecoration: "none" }} variant="button">
+                    Submit
+                </Typography>
             </Link>
         </nav>
     )

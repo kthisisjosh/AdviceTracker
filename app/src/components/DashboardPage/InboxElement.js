@@ -8,9 +8,9 @@ var Element = Scroll.Element
 
 const InboxElement = (props) => {
     return (
-        <Element style={{ margin: "2vh", height: "auto" }}>
-            <Paper style={{ width: "100%" }}>
-                <Grid item style={{ marginLeft: "1.5vw", marginRight: "1.5vw", paddingTop: "1.5vh" }}>
+        <Element style={{ margin: "1vh", marginLeft: "0", height: "auto" }}>
+            <Paper variant="outlined" elevation={3} style={{ width: "100%" }}>
+                <Grid item style={{ marginLeft: "1.5vw", marginRight: "1.5vw", paddingTop: "0.25vh" }}>
                     <Typography variant="body1" dangerouslySetInnerHTML={{__html: props.advice.content}} />
                 </Grid>
                 <Grid item style={{ marginBottom: "1vh", marginLeft: "1vw" }}>

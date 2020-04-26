@@ -3,14 +3,9 @@ import { connect } from "react-redux"
 import { getUsers, createUser } from "../../redux/actions/users"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
-import Grid from "@material-ui/core/Grid"
-import Paper from "@material-ui/core/Paper"
-import Input from "@material-ui/core/Input"
-import FriendDisplay from "./FriendDisplay/FriendDisplay"
-import Button from "@material-ui/core/Button"
-import { Typography } from "@material-ui/core"
 import { v4 as uuidv4 } from "uuid"
 import Footer from "../../components/Footer/Footer"
+import { Grid, Typography } from "@material-ui/core"
 
 const FriendsPage = (props) => {
     const { users, getUsers, createUser } = props
@@ -30,22 +25,10 @@ const FriendsPage = (props) => {
         <Fragment>
             <Header />
             <Navbar />
-            <Grid container direction="column" justify="center" style={{ margin: "1vw", textAlign: "center", width: "98vw" }}>
-                <Typography variant="h3">Users</Typography>
-
-                {toAdd && (
-                    <Paper style={{ width: "30vw", margin: "auto" }}>
-                        <form autoComplete="off" onSubmit={handleSubmit}>
-                            <Input fullWidth required placeholder="name" type="text" disableUnderline name="name" />
-                            <Input fullWidth required placeholder="hobbies" type="text" disableUnderline name="hobbies" />
-                            <Button type="submit">Submit</Button>
-                        </form>
-                    </Paper>
-                )}
-
-                {users.map((person) => (
-                    <FriendDisplay key={person.userID} person={person} />
-                ))}
+            <Grid style={{ height: "1000px" }}>
+                <Typography style={{ marginTop: "200px" }} align="center" variant="h2">
+                    Coming soon!
+                </Typography>
             </Grid>
             <Footer />
         </Fragment>

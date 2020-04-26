@@ -42,9 +42,14 @@ const Header = () => {
                     </Grid>
                     <Grid item md={6}>
                         <Menu right noOverlay>
-                            <Link to="/browse" style={{ marginBottom: "2vw", textDecoration: "none", color: "white" }}>
+                            <Link to="/profile" style={{ marginBottom: "2vw", textDecoration: "none", color: "white" }}>
                                 <Typography variant="button">Profile</Typography>
                             </Link>
+                            <Button onClick={handleLogout} className="landing-header-link" style={{ margin: "0", textDecoration: "none" }}>
+                                <Typography variant="button" align="left" style={{ textDecoration: "none" }}>
+                                    Logout
+                                </Typography>
+                            </Button>
                         </Menu>
                     </Grid>
                 </Grid>
