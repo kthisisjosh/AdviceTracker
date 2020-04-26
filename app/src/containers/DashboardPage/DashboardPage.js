@@ -20,7 +20,7 @@ const DashboardPage = (props) => {
         } else if (!isAuthenticated) {
             history.push("/login")
         }
-    }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated, user.userID])
+    }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated])
 
     const handleAddClick = () => {
         setToAdd(true)
