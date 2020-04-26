@@ -16,18 +16,18 @@ const DashboardPage = (props) => {
 
     useEffect(() => {
         if (!inboxAdvice.length && isAuthenticated) {
-            getInboxAdvice(user.id)
+            getInboxAdvice(user.userID)
         } else if (!isAuthenticated) {
             history.push("/login")
         }
-    }, [getInboxAdvice, inboxAdvice, isAuthenticated, history])
+    }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated, user.userID])
 
     const handleAddClick = () => {
         setToAdd(true)
     }
 
     const handleSubmit = () => {
-        submitInboxAdvice(submitAdvice, user.id)
+        submitInboxAdvice(submitAdvice, user.userID)
         setSubmitAdvice("")
         setToAdd(false)
     }

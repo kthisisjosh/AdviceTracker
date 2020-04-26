@@ -12,13 +12,17 @@ export const googleLogin = ({ profileObj }) => async (dispatch) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser),
         }
-        dispatch({ type: LOGIN_SUCCESS, payload: newUser })
         const url = "http://192.168.99.100:8080/api/users/"
-        await fetch(url, options)
+        const response = await fetch(url, options)
+        const responseData = await response.json();
+        
+        if (response.ok) {
+            dispatch({ type: LOGIN_SUCCESS, payload: responseData })
+        }
 
-        //if (responseData.error) {
-        //    dispatch({ type: LOGIN_FAIL })
-        //}
+        if (responseData.error) {
+            dispatch({ type: LOGIN_FAIL })
+        }
     } catch (error) {
         dispatch({ type: LOGIN_FAIL })
     }

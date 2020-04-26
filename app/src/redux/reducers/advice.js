@@ -31,7 +31,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case GET_INBOX_ADVICE:
-            return { ...state, inboxAdvice: action.payload }
+            return { ...state, inboxAdvice: [...action.payload] }
 
         case SUBMIT_INBOX_ADVICE:
             return {
