@@ -1,0 +1,84 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Footer /> should render and match the snapshot 1`] = `
+<footer
+  style={
+    Object {
+      "boxSizing": "border-box",
+      "display": "inline-block",
+      "height": "auto",
+      "margin": "0",
+      "right": "0",
+      "textAlign": "center",
+      "width": "100vw",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "marginTop": "5vh",
+      }
+    }
+  >
+    <a
+      href="/"
+    >
+      <img
+        alt="logo"
+        src="./AdviceLogo.png"
+      />
+    </a>
+  </div>
+  <hr
+    style={
+      Object {
+        "width": "auto",
+      }
+    }
+  />
+  <p
+    className="MuiTypography-root MuiTypography-body2"
+    style={
+      Object {
+        "lineHeight": "24px",
+        "margin": "auto",
+        "marginTop": "35px",
+      }
+    }
+  >
+    © Advice Tracker 2020
+  </p>
+  <p
+    className="MuiTypography-root MuiTypography-body2"
+    style={
+      Object {
+        "lineHeight": "24px",
+        "margin": "auto",
+      }
+    }
+  >
+    Made with
+     
+    <span
+      aria-label="Heart"
+      role="img"
+    >
+      ❤️
+    </span>
+     
+    by
+     
+    <a
+      href="https://www.joshbautista.com"
+      style={
+        Object {
+          "color": "inherit",
+        }
+      }
+    >
+      Joshua Bautista
+    </a>
+  </p>
+</footer>
+`;

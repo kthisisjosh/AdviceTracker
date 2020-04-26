@@ -1,0 +1,666 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DashboardPage /> should render and match the snapshot 1`] = `
+Array [
+  <header
+    id="header"
+    style={
+      Object {
+        "backgroundColor": "#434343",
+        "margin": "0",
+      }
+    }
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-align-items-xs-center"
+      style={
+        Object {
+          "alignContent": "center",
+          "height": "60px",
+        }
+      }
+    >
+      <div
+        className="MuiGrid-root landing-logo MuiGrid-item"
+        style={
+          Object {
+            "marginLeft": "14vw",
+            "marginTop": "1vh",
+          }
+        }
+      >
+        <a
+          href="/"
+        >
+          <img
+            alt="logo"
+            src="./AdviceLogoLight.png"
+          />
+        </a>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item"
+        style={
+          Object {
+            "marginLeft": "auto",
+            "marginRight": "5vw",
+          }
+        }
+      >
+        <div
+          className="MuiGrid-root toggle-grid MuiGrid-item MuiGrid-grid-md-6"
+        >
+          <div
+            className="react-toggle react-toggle-small"
+            onClick={[Function]}
+            onTouchEnd={[Function]}
+            onTouchMove={[Function]}
+            onTouchStart={[Function]}
+          >
+            <div
+              className="react-toggle-track"
+            >
+              <div
+                className="react-toggle-track-check"
+              >
+                <img
+                  alt="moon"
+                  aria-hidden={true}
+                  height="14"
+                  src="./moon.png"
+                  style={
+                    Object {
+                      "pointerEvents": "none",
+                    }
+                  }
+                  width="16"
+                />
+              </div>
+              <div
+                className="react-toggle-track-x"
+              >
+                <img
+                  alt="sun"
+                  aria-hidden={true}
+                  height="14"
+                  src="./sun.png"
+                  style={
+                    Object {
+                      "pointerEvents": "none",
+                    }
+                  }
+                  width="16"
+                />
+              </div>
+            </div>
+            <div
+              className="react-toggle-thumb"
+            />
+            <input
+              className="react-toggle-screenreader-only"
+              defaultChecked={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              type="checkbox"
+            />
+          </div>
+        </div>
+        <div
+          className="MuiGrid-root MuiGrid-item MuiGrid-grid-md-6"
+        >
+          <div>
+            <div
+              className="bm-menu-wrap"
+              id=""
+              style={
+                Object {
+                  "MozTransform": "translate3d(100%, 0, 0)",
+                  "MsTransform": "translate3d(100%, 0, 0)",
+                  "OTransform": "translate3d(100%, 0, 0)",
+                  "WebkitTransform": "translate3d(100%, 0, 0)",
+                  "height": "100%",
+                  "position": "fixed",
+                  "right": 0,
+                  "transform": "translate3d(100%, 0, 0)",
+                  "transition": "all 0.5s",
+                  "width": "300px",
+                  "zIndex": 1100,
+                }
+              }
+            >
+              <div
+                className="bm-menu"
+                style={
+                  Object {
+                    "boxSizing": "border-box",
+                    "height": "100%",
+                    "overflow": "auto",
+                  }
+                }
+              >
+                <nav
+                  className="bm-item-list"
+                  style={
+                    Object {
+                      "height": "100%",
+                    }
+                  }
+                >
+                  <a
+                    className="bm-item"
+                    href="/profile"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "color": "white",
+                        "display": "block",
+                        "marginBottom": "2vw",
+                        "textDecoration": "none",
+                      }
+                    }
+                    tabIndex={-1}
+                  >
+                    <span
+                      className="MuiTypography-root MuiTypography-button"
+                    >
+                      Profile
+                    </span>
+                  </a>
+                  <button
+                    className="MuiButtonBase-root MuiButton-root MuiButton-text bm-item landing-header-link"
+                    disabled={false}
+                    onBlur={[Function]}
+                    onClick={[Function]}
+                    onDragLeave={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onKeyUp={[Function]}
+                    onMouseDown={[Function]}
+                    onMouseLeave={[Function]}
+                    onMouseUp={[Function]}
+                    onTouchEnd={[Function]}
+                    onTouchMove={[Function]}
+                    onTouchStart={[Function]}
+                    style={
+                      Object {
+                        "display": "block",
+                        "margin": "0",
+                        "textDecoration": "none",
+                      }
+                    }
+                    tabIndex={-1}
+                    type="button"
+                  >
+                    <span
+                      className="MuiButton-label"
+                    >
+                      <span
+                        className="MuiTypography-root MuiTypography-button MuiTypography-alignLeft"
+                        style={
+                          Object {
+                            "textDecoration": "none",
+                          }
+                        }
+                      >
+                        Logout
+                      </span>
+                    </span>
+                  </button>
+                </nav>
+              </div>
+              <div
+                style={Object {}}
+              >
+                <div
+                  className="bm-cross-button"
+                  style={
+                    Object {
+                      "height": 24,
+                      "position": "absolute",
+                      "right": 8,
+                      "top": 8,
+                      "width": 24,
+                    }
+                  }
+                >
+                  <span
+                    style={
+                      Object {
+                        "position": "absolute",
+                        "right": "14px",
+                        "top": "6px",
+                      }
+                    }
+                  >
+                    <span
+                      className="bm-cross"
+                      style={
+                        Object {
+                          "height": 14,
+                          "position": "absolute",
+                          "transform": "rotate(45deg)",
+                          "width": 3,
+                        }
+                      }
+                    />
+                    <span
+                      className="bm-cross"
+                      style={
+                        Object {
+                          "height": 14,
+                          "position": "absolute",
+                          "transform": "rotate(-45deg)",
+                          "width": 3,
+                        }
+                      }
+                    />
+                  </span>
+                  <button
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "background": "transparent",
+                        "border": "none",
+                        "cursor": "pointer",
+                        "fontSize": 0,
+                        "height": "100%",
+                        "left": 0,
+                        "margin": 0,
+                        "padding": 0,
+                        "position": "absolute",
+                        "top": 0,
+                        "width": "100%",
+                      }
+                    }
+                    tabIndex={-1}
+                  >
+                    Close Menu
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              style={Object {}}
+            >
+              <div
+                className="bm-burger-button"
+                style={
+                  Object {
+                    "zIndex": 1000,
+                  }
+                }
+              >
+                <span>
+                  <span
+                    className="bm-burger-bars"
+                    style={
+                      Object {
+                        "height": "20%",
+                        "left": 0,
+                        "opacity": 1,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": "0%",
+                      }
+                    }
+                  />
+                  <span
+                    className="bm-burger-bars"
+                    style={
+                      Object {
+                        "height": "20%",
+                        "left": 0,
+                        "opacity": 1,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": "40%",
+                      }
+                    }
+                  />
+                  <span
+                    className="bm-burger-bars"
+                    style={
+                      Object {
+                        "height": "20%",
+                        "left": 0,
+                        "opacity": 1,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": "80%",
+                      }
+                    }
+                  />
+                </span>
+                <button
+                  onClick={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseOver={[Function]}
+                  style={
+                    Object {
+                      "background": "transparent",
+                      "border": "none",
+                      "cursor": "pointer",
+                      "fontSize": 0,
+                      "height": "100%",
+                      "left": 0,
+                      "margin": 0,
+                      "padding": 0,
+                      "position": "absolute",
+                      "top": 0,
+                      "width": "100%",
+                    }
+                  }
+                >
+                  Open Menu
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="MuiGrid-root navbar-grid MuiGrid-item"
+        style={
+          Object {
+            "marginLeft": "auto",
+            "marginRight": "15vw",
+            "textAlign": "center",
+          }
+        }
+      >
+        <div
+          className="react-toggle"
+          onClick={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+        >
+          <div
+            className="react-toggle-track"
+          >
+            <div
+              className="react-toggle-track-check"
+            >
+              <img
+                alt="moon"
+                aria-hidden={true}
+                height="14"
+                src="./moon.png"
+                style={
+                  Object {
+                    "pointerEvents": "none",
+                  }
+                }
+                width="16"
+              />
+            </div>
+            <div
+              className="react-toggle-track-x"
+            >
+              <img
+                alt="sun"
+                aria-hidden={true}
+                height="14"
+                src="./sun.png"
+                style={
+                  Object {
+                    "pointerEvents": "none",
+                  }
+                }
+                width="16"
+              />
+            </div>
+          </div>
+          <div
+            className="react-toggle-thumb"
+          />
+          <input
+            className="react-toggle-screenreader-only"
+            defaultChecked={false}
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="checkbox"
+          />
+        </div>
+        <a
+          className="landing-header-link"
+          href="/profile"
+          onClick={[Function]}
+          style={
+            Object {
+              "margin": "0 0 0 5vw",
+              "textDecoration": "none",
+            }
+          }
+        >
+          <span
+            className="MuiTypography-root MuiTypography-button"
+            style={
+              Object {
+                "textDecoration": "none",
+              }
+            }
+          >
+            Profile
+          </span>
+        </a>
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-text landing-header-link"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          style={
+            Object {
+              "margin": "0 0 0 5vw",
+              "textDecoration": "none",
+            }
+          }
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            <span
+              className="MuiTypography-root MuiTypography-button"
+              style={
+                Object {
+                  "textDecoration": "none",
+                }
+              }
+            >
+              Logout
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </header>,
+  <nav
+    className="navbar"
+    style={
+      Object {
+        "backgroundColor": "#EBEBEB",
+        "margin": "0",
+        "padding": "2vh 10vw 2vh 10vw",
+      }
+    }
+  >
+    <a
+      className="landing-header-link"
+      href="/dashboard"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "0 5vw 0 5vw",
+          "textDecoration": "none",
+        }
+      }
+    >
+      <span
+        className="MuiTypography-root MuiTypography-button"
+        style={
+          Object {
+            "textDecoration": "none",
+          }
+        }
+      >
+        dashboard
+      </span>
+    </a>
+    <a
+      className="landing-header-link"
+      href="/browse"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "0 5vw 0 5vw",
+          "textDecoration": "none",
+        }
+      }
+    >
+      <span
+        className="MuiTypography-root MuiTypography-button"
+        style={
+          Object {
+            "textDecoration": "none",
+          }
+        }
+      >
+        browse
+      </span>
+    </a>
+    <a
+      className="landing-header-link"
+      href="/submit"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": "0 5vw 0 5vw",
+          "textDecoration": "none",
+        }
+      }
+    >
+      <span
+        className="MuiTypography-root MuiTypography-button"
+        style={
+          Object {
+            "textDecoration": "none",
+          }
+        }
+      >
+        submit
+      </span>
+    </a>
+  </nav>,
+  <div
+    className="MuiGrid-root"
+    style={
+      Object {
+        "height": "500px",
+      }
+    }
+  >
+    <h2
+      className="MuiTypography-root MuiTypography-h2 MuiTypography-alignCenter"
+      style={
+        Object {
+          "marginTop": "200px",
+        }
+      }
+    />
+  </div>,
+  <footer
+    style={
+      Object {
+        "boxSizing": "border-box",
+        "display": "inline-block",
+        "height": "auto",
+        "margin": "0",
+        "right": "0",
+        "textAlign": "center",
+        "width": "100vw",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "marginTop": "5vh",
+        }
+      }
+    >
+      <a
+        href="/"
+      >
+        <img
+          alt="logo"
+          src="./AdviceLogo.png"
+        />
+      </a>
+    </div>
+    <hr
+      style={
+        Object {
+          "width": "auto",
+        }
+      }
+    />
+    <p
+      className="MuiTypography-root MuiTypography-body2"
+      style={
+        Object {
+          "lineHeight": "24px",
+          "margin": "auto",
+          "marginTop": "35px",
+        }
+      }
+    >
+      © Advice Tracker 2020
+    </p>
+    <p
+      className="MuiTypography-root MuiTypography-body2"
+      style={
+        Object {
+          "lineHeight": "24px",
+          "margin": "auto",
+        }
+      }
+    >
+      Made with
+       
+      <span
+        aria-label="Heart"
+        role="img"
+      >
+        ❤️
+      </span>
+       
+      by
+       
+      <a
+        href="https://www.joshbautista.com"
+        style={
+          Object {
+            "color": "inherit",
+          }
+        }
+      >
+        Joshua Bautista
+      </a>
+    </p>
+  </footer>,
+]
+`;

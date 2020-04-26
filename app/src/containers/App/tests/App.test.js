@@ -1,8 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from '../App';
+import React from "react"
+import App from "../App"
+import ShallowRenderer from "react-test-renderer/shallow"
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-});
+const renderer = new ShallowRenderer()
+
+describe("<App />", () => {
+    it("should render and match the snapshot", () => {
+        renderer.render(<App />)
+        const renderedOutput = renderer.getRenderOutput()
+        expect(renderedOutput).toMatchSnapshot()
+    })
+})
+

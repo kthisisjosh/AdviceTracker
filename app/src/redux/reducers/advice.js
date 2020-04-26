@@ -2,29 +2,7 @@ import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE } from "../t
 
 const initialState = {
     inboxAdvice: [],
-    categories: [
-        {
-            name: "Career",
-            subCategories: [
-                {
-                    name: "Negotiation",
-                    advice: [
-                        {
-                            content: "Lorem ipsum.",
-                            category: "",
-                            userID: "",
-                            likes: null,
-                            datePosted: null,
-                            comments: [],
-                            id: "",
-                        },
-                    ],
-                    id: "",
-                },
-            ],
-            id: "",
-        },
-    ],
+    categories: [],
     browseAdvice: [],
 }
 

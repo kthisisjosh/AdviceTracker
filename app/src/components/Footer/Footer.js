@@ -35,7 +35,7 @@ export const Footer = () => {
                     ❤️
                 </span>{" "}
                 by{" "}
-                <a style={{ textDecoration: "none", color: "inherit" }} href="https://www.joshbautista.com">
+                <a style={{ color: "inherit" }} href="https://www.joshbautista.com">
                     Joshua Bautista
                 </a>
             </Typography>
