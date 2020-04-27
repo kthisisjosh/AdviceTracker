@@ -1,28 +1,22 @@
 language: node_js
 cache: npm
 node_js:
-    - "12"
-
+- '12'
 addons:
-    ssh_known_hosts: advicetracker.life
-
+  ssh_known_hosts: advicetracker.life
 services:
-    - docker
-
+- docker
 install:
-    - npm ci && cd app && npm ci && cd .. && cd server && npm ci
-
+- npm ci && cd app && npm ci && cd .. && cd server && npm ci
 script:
-    - cd .. && npm test
-
+- cd .. && npm test
 deploy:
-    provider: script
-    script: bash deploy.sh
-    on:
-        branch: master
-
+  provider: script
+  script: bash deploy.sh
+  on:
+    branch: master
 before_install:
-    - openssl aes-256-cbc -K $encrypted_0ddd2445e49f_key -iv $encrypted_0ddd2445e49f_iv
-      -in travis_rsa.enc -out travis_rsa -d
-    - chmod 600 travis_rsa
-    - mv travis_rsa ~/.ssh/id_rsa
+- openssl aes-256-cbc -K $encrypted_0ddd2445e49f_key -iv $encrypted_0ddd2445e49f_iv
+  -in travis_rsa.enc -out travis_rsa -d
+- chmod 600 travis_rsa
+- mv travis_rsa ~/.ssh/id_rsa
