@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e # Stop script from running if there are any errors
+set -xe # Stop script from running if there are any errors
 
 IMAGE="kthisisjosh/advicetracker" # Docker image
 GIT_VERSION=$(git describe --always --abbrev --tags --long) # Git hash and tags
@@ -14,3 +14,21 @@ echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker push kthisisjosh/advicetracker:client
 docker push kthisisjosh/advicetracker:server
 echo "Successfully deployed client and server to Docker Hub!"
+
+# copy ssh key into build server
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+
+echo sudo docker stop advicetracker-client
+echo sudo docker stop advicetracker-server
+
+echo sudo docker rm advicetracker_client
+echo sudo docker rm advicetracker_server
+
+echo sudo docker run --name=advicetracker-client -e REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID} -e REACT_APP_GITHUB_CLIENT_ID=${REACT_APP_GITHUB_CLIENT_ID} -e REACT_APP_TINY_API_KEY=${REACT_APP_TINY_API_KEY} --restart unless-stopped -i -p 3000:3000 kthisisjosh/advicetracker:client
+
+echo sudo docker run --name=advicetracker-server -e MYSQL_HOST=${MYSQL_HOST} -e MYSQL_USER=${MYSQL_ROOT} -e MYSQL_PASSWORD=${MYSQL_PASSWORD} -e MYSQL_DATABASE=${MYSQL_DATABASE} --restart unless-stopped -d -p 8080:8080 kthisisjosh/advicetracker:server
+
+echo sudo docker system prune -a -f
+
+fi
