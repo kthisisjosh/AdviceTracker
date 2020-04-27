@@ -12,7 +12,7 @@ export const googleLogin = ({ profileObj }) => async (dispatch) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser),
         }
-        const url = "/api/users/"
+        const url = "https://advicetracker.life/api/users/"
         const response = await fetch(url, options)
         const responseData = await response.json();
         

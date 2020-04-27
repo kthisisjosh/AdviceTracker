@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from "uuid"
 
 export const getInboxAdvice = (id) => async (dispatch) => {
     try {
-        const url = "/api/advice/inbox/" + id
+        const url = "https://advicetracker.life/api/advice/inbox/" + id
         const token = localStorage.getItem('jwtToken');
         await fetch(url, {
             method: "GET",
@@ -20,7 +20,7 @@ export const getInboxAdvice = (id) => async (dispatch) => {
 
 export const submitInboxAdvice = (advice, id) => async (dispatch) => {
     try {
-        const url = "/api/advice/inbox/" + id
+        const url = "https://advicetracker.life/api/advice/inbox/" + id
         const token = localStorage.getItem('jwtToken');
         const newInboxAdvice = {
             content: advice,
@@ -51,7 +51,7 @@ export const deleteInboxAdvice = (advice) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_INBOX_ADVICE, payload: advice.adviceID })
         const token = localStorage.getItem('jwtToken');
-        const url = "/api/advice/inbox/" + advice.adviceID
+        const url = "https://advicetracker.life/api/advice/inbox/" + advice.adviceID
         await fetch(url, {
             method: "DELETE",
             headers: {

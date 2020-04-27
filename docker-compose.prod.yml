@@ -6,12 +6,12 @@ services:
         build:
             context: ./app
             dockerfile: Dockerfile.prod
-        ports:
-            - 3000:3000
-        environment:
+            args:
             - REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID}
             - REACT_APP_GITHUB_CLIENT_ID=${REACT_APP_GITHUB_CLIENT_ID}
             - REACT_APP_TINY_API_KEY=${REACT_APP_TINY_API_KEY}
+        ports:
+            - 3000:3000
         stdin_open: true # react-scripts bug ?
         depends_on:
             - server
