@@ -12,7 +12,7 @@ export const googleLogin = ({ profileObj }) => async (dispatch) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newUser),
         }
-        const url = "http://192.168.99.100:8080/api/users/"
+        const url = "/api/users/"
         const response = await fetch(url, options)
         const responseData = await response.json();
         

@@ -6,10 +6,10 @@ const verifyToken = require("../middleware/verifyToken");
 const jwt = require("jsonwebtoken");
 
 const connection = mysql.createConnection({
-    host: "192.168.99.100",
-    user: "root",
-    password: "2CjqvNH^%45W",
-    database: "advicetracker",
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
 });
 
 router.get("/api/users", verifyToken, (req, res) => {

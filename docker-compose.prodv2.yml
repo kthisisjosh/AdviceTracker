@@ -2,34 +2,26 @@ version: "3.7"
 
 services:
     client:
+        restart: always
         container_name: client
-        build:
-            context: ./app
-            dockerfile: Dockerfile.prod
+        image: kthisisjosh/advicetracker:client
         ports:
             - 3000:3000
-        env_file: ./app/.env
-        stdin_open: true # react-scripts bug ?
-        depends_on:
-            - server
+        #stdin_open: true # react-scripts bug ?
     server:
+        restart: always
         container_name: server
-        build:
-            context: ./server
-            dockerfile: Dockerfile
+        images: kthisisjosh/advicetracker:server
         ports:
             - 8080:8080
-        env_file: ./server/.env
-        environment:
-            - NODE_ENV=production
-            - PORT=8080
-        depends_on:
-            - db
+        enviornment:
+            NODE_ENV: production
+            PORT: 8080
     db:
+        restart: always
         container_name: db
         image: mysql:latest
         command: --default-authentication-plugin=mysql_native_password
-        env_file: .env
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
         ports:

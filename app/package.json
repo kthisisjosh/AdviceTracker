@@ -52,5 +52,5 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "http://localhost:8080"
+    "proxy": "http://advicetracker.life/"
 }
