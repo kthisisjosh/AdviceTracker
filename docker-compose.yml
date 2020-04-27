@@ -29,7 +29,7 @@ services:
         volumes:
             - /app/node_modules # Inside the container, don't try to override this folder, just leave as is
             - ./server:/app # Look at the server directory and copy everything into the app folder in the container
-        enviornment:
+        environnment:
             - NODE_ENV=production
             - MYSQL_HOST=${MYSQL_HOST}
             - MYSQL_USER=${MYSQL_USER}
