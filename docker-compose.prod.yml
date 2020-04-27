@@ -8,7 +8,10 @@ services:
             dockerfile: Dockerfile.prod
         ports:
             - 3000:3000
-        env_file: ./app/.env
+        environment:
+            - REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID}
+            - REACT_APP_GITHUB_CLIENT_ID=${REACT_APP_GITHUB_CLIENT_ID}
+            - REACT_APP_TINY_API_KEY=${REACT_APP_TINY_API_KEY}
         stdin_open: true # react-scripts bug ?
         depends_on:
             - server
@@ -23,6 +26,10 @@ services:
         environment:
             - NODE_ENV=production
             - PORT=8080
+            - MYSQL_HOST=${MYSQL_HOST}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
         depends_on:
             - db
     db:
