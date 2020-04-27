@@ -5,7 +5,7 @@ IMAGE="kthisisjosh/advicetracker" # Docker image
 GIT_VERSION=$(git describe --always --abbrev --tags --long) # Git hash and tags
 
 # Build and tag image in root directory
-docker-compose -f docker-compose.prod.yml build --build-arg REACT_APP_GOOGLE_CLIENT_ID=$REACT_APP_GOOGLE_CLIENT_ID --build-arg REACT_APP_GITHUB_CLIENT_ID=$REACT_APP_GITHUB_CLIENT_ID --build-arg REACT_APP_TINY_API_KEY=$REACT_APP_TINY_API_KEY
+docker-compose -f docker-compose.prod.yml build --build-arg REACT_APP_GOOGLE_CLIENT_ID=$REACT_APP_GOOGLE_CLIENT_ID REACT_APP_GITHUB_CLIENT_ID=$REACT_APP_GITHUB_CLIENT_ID REACT_APP_TINY_API_KEY=$REACT_APP_TINY_API_KEY
 docker tag advicetracker_client:latest kthisisjosh/advicetracker:client
 docker tag advicetracker_server:latest kthisisjosh/advicetracker:server
 
