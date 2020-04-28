@@ -89,7 +89,7 @@ const LoginPage = (props) => {
                                 </div>
                                 <div style={{ paddingTop: "75px" }}>
                                     <Button style={{ width: "350px", height: "50px", backgroundColor: "#F2994A", color: "#FFFFFF" }}>
-                                        Register Coming Soon
+                                        Register Coming Soon!
                                     </Button>
                                 </div>
                             </div>

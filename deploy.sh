@@ -20,9 +20,11 @@ echo "Successfully deployed client and server to Docker Hub!"
 #ssh-add ~/.ssh/id_rsa
 #
 #sudo docker stop advicetracker-client
-#sudo docker stop advicetracker-se
-#sudo docker rm advicetracker_client
-#sudo docker rm advicetracker_se
+#sudo docker stop advicetracker-server
+#sudo docker rm advicetracker-client
+#sudo docker rm advicetracker-server
+#sudo docker pull kthisisjosh/advicetracker:client
+#sudo docker pull kthisisjosh/advicetracker:server
 #sudo docker run --name=advicetracker-client -e REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID} -e REACT_APP_GITHUB_CLIENT_ID=${REACT_APP_GITHUB_CLIENT_ID} -e REACT_APP_TINY_API_KEY=${REACT_APP_TINY_API_KEY} --restart unless-stopped -i -p 3000:3000 kthisisjosh/advicetracker:cl
 #sudo docker run --name=advicetracker-server -e MYSQL_HOST=${MYSQL_HOST} -e MYSQL_USER=${MYSQL_ROOT} -e MYSQL_PASSWORD=${MYSQL_PASSWORD} -e MYSQL_DATABASE=${MYSQL_DATABASE} --restart unless-stopped -d -p 8080:8080 kthisisjosh/advicetracker:se
 #sudo docker system prune -a -f
