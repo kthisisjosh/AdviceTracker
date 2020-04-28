@@ -81,7 +81,7 @@ const LoginPage = (props) => {
                                         clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                                         onSuccess={googleLogin}
                                         onFailure={googleLogin}
-                                        cookiePolicy={"single_host_origin"}
+                                        disabled={false}
                                     />
                                 </div>
                                 <div style={{ paddingTop: "50px" }}>
