@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar"
 import { connect } from "react-redux"
 import { useHistory } from "react-router-dom"
 import { Grid, Typography } from "@material-ui/core"
+import { Helmet } from "react-helmet"
 
 const ProfilePage = (props) => {
     const { isAuthenticated, user } = props
@@ -17,6 +18,10 @@ const ProfilePage = (props) => {
 
     return (
         <Fragment>
+            <Helmet>
+                <title>{props.user.username}'s Profile | AdviceTracker</title>
+                <meta name="description" content="Profile - Find & save valuable advice on the way by browsing user submitted advice." />
+            </Helmet>
             <Header />
             <Navbar />
             {isAuthenticated && (

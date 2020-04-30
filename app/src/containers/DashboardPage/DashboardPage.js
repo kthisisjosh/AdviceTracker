@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import Inbox from "../../components/DashboardPage/Inbox"
 import { connect } from "react-redux"
+import { Helmet } from "react-helmet"
 
 import { getInboxAdvice, submitInboxAdvice, deleteInboxAdvice } from "../../redux/actions/advice"
 import { useHistory } from "react-router-dom"
@@ -48,6 +49,13 @@ const DashboardPage = (props) => {
 
     return (
         <Fragment>
+            <Helmet>
+                <title>Dashboard | AdviceTracker</title>
+                <meta
+                    name="description"
+                    content="Sort & organize your advice by categories, sub-categories, and genre. Format it however you'd like! Track all of the awesome advice you are given, so you are always one step ahead."
+                />
+            </Helmet>
             <Header />
             <Navbar />
             {isAuthenticated && (

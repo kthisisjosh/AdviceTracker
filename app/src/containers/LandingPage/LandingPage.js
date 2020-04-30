@@ -5,10 +5,19 @@ import BodyA from "../../components/LandingPage/BodyA"
 import BodyB from "../../components/LandingPage/BodyB"
 import Footer from "../../components/Footer/Footer"
 import SignupCall from "../../components/LandingPage/SignupCall"
+import { Helmet } from "react-helmet"
 
 const LandingPage = () => {
     return (
         <>
+            <Helmet>
+                <title>AdviceTracker | Never Forget Valuable Advice</title>
+                <meta
+                    name="description"
+                    content="Track all of the awesome advice you are given, so you are always one step ahead. Find & save valuable advice on the way by browsing
+                    user submitted advice."
+                />
+            </Helmet>
             <LandingHeader />
             <Hero />
             <BodyA />

@@ -5,6 +5,7 @@ import Footer from "../../components/Footer/Footer"
 import { Typography, Grid } from "@material-ui/core"
 import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
+import { Helmet } from "react-helmet"
 
 const SubmitPage = (props) => {
     const { isAuthenticated, user } = props
@@ -18,6 +19,13 @@ const SubmitPage = (props) => {
 
     return (
         <Fragment>
+            <Helmet>
+                <title>Submit Advice | AdviceTracker</title>
+                <meta
+                    name="description"
+                    content="Help others by submitting and sharing your advice for others to see. Track all of the awesome advice you are given, so you are always one step ahead."
+                />
+            </Helmet>
             <Header />
             <Navbar />
             <Grid style={{ height: "1000px" }}>

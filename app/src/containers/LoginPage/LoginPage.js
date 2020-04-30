@@ -1,4 +1,4 @@
-import React, {useEffect} from "react"
+import React, { useEffect } from "react"
 import { googleLogin, githubLogin } from "../../redux/actions/auth"
 import { connect } from "react-redux"
 import Typography from "@material-ui/core/Typography"
@@ -10,21 +10,29 @@ import Footer from "../../components/Footer/Footer"
 import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 import { useHistory } from "react-router-dom"
+import { Helmet } from "react-router"
 
 const LoginPage = (props) => {
-    const {googleLogin, githubLogin, isAuthenticated, user} = props;
-    const history = useHistory();
+    const { googleLogin, githubLogin, isAuthenticated, user } = props
+    const history = useHistory()
 
     useEffect(() => {
         if (isAuthenticated) {
             history.push("/dashboard")
         } else {
-            
         }
     }, [isAuthenticated, user, history])
 
     return (
         <>
+            <Helmet>
+                <title>Login | AdviceTracker</title>
+                <meta
+                    name="description"
+                    content="Login today to track the awesome advice you are given, so you are always one step ahead. Find & save valuable advice on the way by browsing
+                    user submitted advice."
+                />
+            </Helmet>
             <LandingHeader />
             <section>
                 <Grid container style={{ height: "750px" }}>
@@ -84,9 +92,7 @@ const LoginPage = (props) => {
                                         disabled={false}
                                     />
                                 </div>
-                                <div style={{ paddingTop: "50px" }}>
-                                    
-                                </div>
+                                <div style={{ paddingTop: "50px" }}></div>
                                 <div style={{ paddingTop: "75px" }}>
                                     <Button style={{ width: "350px", height: "50px", backgroundColor: "#F2994A", color: "#FFFFFF" }}>
                                         Register Coming Soon!
@@ -109,9 +115,8 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, { googleLogin, githubLogin })(LoginPage)
 
-
 //<GithubLogin
-//    
+//
 //    buttonText="Sign in using Github"
 //    onSuccess={githubLogin}
 //    onFailure={githubLogin}

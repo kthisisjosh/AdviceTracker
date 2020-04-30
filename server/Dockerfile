@@ -13,4 +13,4 @@ RUN npm install
 COPY . ./
 
 # start app
-CMD ["sudo", "npm", "run", "start"]
+CMD ["npm", "run", "start"]
