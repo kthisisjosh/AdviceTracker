@@ -32,6 +32,7 @@ const LoginPage = (props) => {
                     content="Login today to track the awesome advice you are given, so you are always one step ahead. Find & save valuable advice on the way by browsing
                     user submitted advice."
                 />
+                <link rel="canonical" href="https://advicetracker.life/login"/>
             </Helmet>
             <LandingHeader />
             <section>

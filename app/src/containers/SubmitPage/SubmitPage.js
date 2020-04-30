@@ -25,6 +25,7 @@ const SubmitPage = (props) => {
                     name="description"
                     content="Help others by submitting and sharing your advice for others to see. Track all of the awesome advice you are given, so you are always one step ahead."
                 />
+                <link rel="canonical" href="https://advicetracker.life/submit" />
             </Helmet>
             <Header />
             <Navbar />

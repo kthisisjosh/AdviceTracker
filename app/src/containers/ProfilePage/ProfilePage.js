@@ -21,6 +21,7 @@ const ProfilePage = (props) => {
             <Helmet>
                 <title>{props.user.username}'s Profile | AdviceTracker</title>
                 <meta name="description" content="Profile - Find & save valuable advice on the way by browsing user submitted advice." />
+                <link rel="canonical" href="https://advicetracker.life/profile" />
             </Helmet>
             <Header />
             <Navbar />

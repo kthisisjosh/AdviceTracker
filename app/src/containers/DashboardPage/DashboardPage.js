@@ -55,6 +55,7 @@ const DashboardPage = (props) => {
                     name="description"
                     content="Sort & organize your advice by categories, sub-categories, and genre. Format it however you'd like! Track all of the awesome advice you are given, so you are always one step ahead."
                 />
+                <link rel="canonical" href="https://advicetracker.life/dashboard"/>
             </Helmet>
             <Header />
             <Navbar />

@@ -17,6 +17,7 @@ const LandingPage = () => {
                     content="Track all of the awesome advice you are given, so you are always one step ahead. Find & save valuable advice on the way by browsing
                     user submitted advice."
                 />
+                <link rel="canonical" href="https://advicetracker.life/"/>
             </Helmet>
             <LandingHeader />
             <Hero />
