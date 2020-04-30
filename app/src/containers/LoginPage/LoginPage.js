@@ -10,7 +10,7 @@ import Footer from "../../components/Footer/Footer"
 import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
 import { useHistory } from "react-router-dom"
-import { Helmet } from "react-router"
+import { Helmet } from "react-helmet"
 
 const LoginPage = (props) => {
     const { googleLogin, githubLogin, isAuthenticated, user } = props
