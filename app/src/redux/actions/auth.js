@@ -1,17 +1,13 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL } from "../types/auth"
 
 export const googleLogin = (response) => async (dispatch) => {
-    console.log(response)
     const profileObj = response.profileObj;
-
     try {
         const newUser = {
             id: profileObj.googleId,
             username: profileObj.name,
             email: profileObj.email,
         }
-        console.log(newUser)
-
         const options = {
             method: "POST",
             headers: { "Content-Type": "application/json" },

@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
-router.get("/api/users", verifyToken, (req, res) => {
+router.get("/api/users", verifyToken, async (req, res) => {
     const queryString = "SELECT * FROM users";
 
     connection.query(queryString, (err, results, fields) => {
@@ -21,7 +21,7 @@ router.get("/api/users", verifyToken, (req, res) => {
     });
 });
 
-router.post("/api/users/", (req, res) => {
+router.post("/api/users/", async (req, res) => {
     const newUser = req.body;
 
     // check if already user with same id

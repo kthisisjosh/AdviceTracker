@@ -3,7 +3,6 @@ const mysql = require("mysql");
 const router = new express.Router();
 
 const verifyToken = require("../middleware/verifyToken");
-const jwt = require("jsonwebtoken");
 
 const connection = mysql.createConnection({
     host: process.env.MYSQL_HOST,
@@ -12,7 +11,7 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
-router.get("/api/advice/inbox/:id", verifyToken, (req, res) => {
+router.get("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     const queryString = "SELECT * FROM advice WHERE inInbox = 1 AND userID =" + req.params.id + ";";
 
     connection.query(queryString, (err, results, fields) => {
@@ -21,7 +20,7 @@ router.get("/api/advice/inbox/:id", verifyToken, (req, res) => {
     });
 });
 
-router.post("/api/advice/inbox/:id", verifyToken, (req, res) => {
+router.post("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     const newAdvice = req.body;
 
     const queryString = "INSERT INTO advice (AdviceID, UserID, InInbox, Content, Category, NumOfLikes, DatePosted) VALUES (?, ?, ?, ?, NULL, NULL, NULL)";
@@ -37,7 +36,7 @@ router.post("/api/advice/inbox/:id", verifyToken, (req, res) => {
     });
 });
 
-router.delete("/api/advice/inbox/:id", verifyToken, (req, res) => {
+router.delete("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     const queryString = "DELETE FROM advice WHERE adviceID = ?";
 
     connection.query(queryString, [req.params.id], (err, results, fields) => {

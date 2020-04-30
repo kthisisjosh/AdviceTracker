@@ -7,10 +7,10 @@ WORKDIR /app
 # install app dependencies
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install --silent
+RUN npm install
 
 # add server
 COPY . ./
 
 # start app
-CMD ["npm", "run", "dev"]
+CMD ["sudo", "npm", "run", "start"]
