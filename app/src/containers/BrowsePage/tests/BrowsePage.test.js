@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import FriendsPage from "../FriendsPage"
+import BrowsePage from "../BrowsePage"
 import { BrowserRouter as Router } from "react-router-dom"
 import store from "../../../redux"
 import { Provider } from "react-redux"
@@ -11,7 +11,7 @@ it("renders without crashing", () => {
     ReactDOM.render(
         <Provider store={store}>
             <Router>
-                <FriendsPage />
+                <BrowsePage />
             </Router>
         </Provider>,
         div

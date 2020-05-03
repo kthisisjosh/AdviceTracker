@@ -4,15 +4,18 @@ import Grid from "@material-ui/core/Grid"
 import { Link, useHistory } from "react-router-dom"
 import { slide as Menu } from "react-burger-menu"
 import Toggle from "react-toggle"
+import { connect } from "react-redux"
 import useDarkMode from "use-dark-mode"
 import { Button } from "@material-ui/core"
 import { useDispatch } from "react-redux"
 import { LOGOUT } from "../../redux/types/auth"
 
-const Header = () => {
+const Header = (props) => {
+    const { isAuthenticated } = props
     const darkMode = useDarkMode(false)
     const history = useHistory()
     const dispatch = useDispatch()
+    const logout = isAuthenticated ? "Logout" : "Login"
 
     const handleLogout = () => {
         dispatch({ type: LOGOUT })
@@ -42,12 +45,14 @@ const Header = () => {
                     </Grid>
                     <Grid item md={6}>
                         <Menu right noOverlay>
-                            <Link to="/profile" style={{ marginBottom: "2vw", textDecoration: "none", color: "white" }}>
-                                <Typography variant="button">Profile</Typography>
-                            </Link>
+                            {isAuthenticated && (
+                                <Link to="/profile" style={{ marginBottom: "2vw", textDecoration: "none", color: "white" }}>
+                                    <Typography variant="button">Profile</Typography>
+                                </Link>
+                            )}
                             <Button onClick={handleLogout} className="landing-header-link" style={{ margin: "0", textDecoration: "none" }}>
                                 <Typography variant="button" align="left" style={{ textDecoration: "none" }}>
-                                    Logout
+                                    {logout}
                                 </Typography>
                             </Button>
                         </Menu>
@@ -63,14 +68,16 @@ const Header = () => {
                             unchecked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="sun" aria-hidden src={"./sun.png"} />,
                         }}
                     />
-                    <Link to="/profile" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
-                        <Typography variant="button" style={{ textDecoration: "none" }}>
-                            Profile
-                        </Typography>
-                    </Link>
+                    {isAuthenticated && (
+                        <Link to="/profile" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
+                            <Typography variant="button" style={{ textDecoration: "none" }}>
+                                Profile
+                            </Typography>
+                        </Link>
+                    )}
                     <Button onClick={handleLogout} className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
                         <Typography variant="button" style={{ textDecoration: "none" }}>
-                            Logout
+                            {logout}
                         </Typography>
                     </Button>
                 </Grid>
@@ -79,4 +86,8 @@ const Header = () => {
     )
 }
 
-export default Header
+const mapStateToProps = ({ authState }) => ({
+    isAuthenticated: authState.isAuthenticated,
+})
+
+export default connect(mapStateToProps)(Header)

@@ -24,8 +24,8 @@ const BodyB = () => {
                             Submit your own advice for others to enjoy
                         </Typography>
                         <Typography className="landing-bodyb-body2" variant="body2" align="right">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                            ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                            If you're feeling generous, share your advice with others! Submit it under a specific category to reach the people who
+                            will benefit the most - teenagers looking for ways to maximize their youth, adults who are looking to find purpose, and more.
                         </Typography>
                     </Grid>
                     <Grid item style={{ marginTop: "25px" }}>
@@ -33,8 +33,7 @@ const BodyB = () => {
                             Save useful advice to your own dashboard
                         </Typography>
                         <Typography className="landing-bodyb-body2" variant="body2" align="right">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                            ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                            If you find a user-submitted advice helpful, add them to your own dashboard.
                         </Typography>
                     </Grid>
                 </Grid>

@@ -147,26 +147,6 @@ Array [
                     }
                   }
                 >
-                  <a
-                    className="bm-item"
-                    href="/profile"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "color": "white",
-                        "display": "block",
-                        "marginBottom": "2vw",
-                        "textDecoration": "none",
-                      }
-                    }
-                    tabIndex={-1}
-                  >
-                    <span
-                      className="MuiTypography-root MuiTypography-button"
-                    >
-                      Profile
-                    </span>
-                  </a>
                   <button
                     className="MuiButtonBase-root MuiButton-root MuiButton-text bm-item landing-header-link"
                     disabled={false}
@@ -203,7 +183,7 @@ Array [
                           }
                         }
                       >
-                        Logout
+                        Login
                       </span>
                     </span>
                   </button>
@@ -424,28 +404,6 @@ Array [
             type="checkbox"
           />
         </div>
-        <a
-          className="landing-header-link"
-          href="/profile"
-          onClick={[Function]}
-          style={
-            Object {
-              "margin": "0 0 0 5vw",
-              "textDecoration": "none",
-            }
-          }
-        >
-          <span
-            className="MuiTypography-root MuiTypography-button"
-            style={
-              Object {
-                "textDecoration": "none",
-              }
-            }
-          >
-            Profile
-          </span>
-        </a>
         <button
           className="MuiButtonBase-root MuiButton-root MuiButton-text landing-header-link"
           disabled={false}
@@ -481,7 +439,7 @@ Array [
                 }
               }
             >
-              Logout
+              Login
             </span>
           </span>
         </button>
@@ -565,6 +523,100 @@ Array [
       </span>
     </a>
   </nav>,
+  <div
+    className="MuiGrid-root inbox-grid MuiGrid-container"
+    style={
+      Object {
+        "height": "auto",
+        "marginBottom": "3vh",
+        "marginLeft": "15vw",
+        "marginRight": "15vw",
+        "marginTop": "2vh",
+        "width": "auto",
+      }
+    }
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container"
+    >
+      <h4
+        className="MuiTypography-root MuiTypography-h4 MuiTypography-alignLeft"
+        style={
+          Object {
+            "marginRight": "2.5vw",
+          }
+        }
+      >
+        Inbox
+      </h4>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "backgroundColor": "F2994A",
+          }
+        }
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <span
+            className="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              />
+            </svg>
+          </span>
+          Add New
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiGrid-root MuiGrid-container"
+      style={
+        Object {
+          "height": "auto",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="element"
+        id="containerElement"
+        style={
+          Object {
+            "height": "18vw",
+            "marginTop": "1vh",
+            "overflow": "scroll",
+            "overflowX": "hidden",
+            "width": "100%",
+          }
+        }
+      />
+    </div>
+  </div>,
   <div
     className="MuiGrid-root"
     style={

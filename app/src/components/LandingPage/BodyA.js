@@ -11,20 +11,19 @@ const BodyA = () => {
                     </Typography>
                     <Grid item style={{ marginTop: "25px" }}>
                         <Typography className="landing-bodya-h6" variant="h6" align="left" style={{ marginBottom: "15px" }}>
-                            Sort advice by how you want it
+                            Sort advice by how you want it sorted
                         </Typography>
                         <Typography className="landing-bodya-body2" variant="body2" align="left">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                            ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                            Create multiple categories to efficiently sort advice your way. Create sub-categories from those categories to have full
+                            customization and control.
                         </Typography>
                     </Grid>
                     <Grid item style={{ marginTop: "25px" }}>
                         <Typography className="landing-bodya-h6" variant="h6" align="left" style={{ marginBottom: "15px" }}>
-                            Sort advice by how you want it
+                            Format advice to highlight the most important part
                         </Typography>
                         <Typography className="landing-bodya-body2" variant="body2" align="left">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
-                            ratione voluptatem sequi nesciunt. Neque porro quisquam est.
+                            Each advice you create is fully formattable - bold, underline, title and more.
                         </Typography>
                     </Grid>
                 </Grid>

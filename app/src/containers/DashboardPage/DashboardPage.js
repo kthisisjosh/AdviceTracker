@@ -2,13 +2,14 @@ import React, { Fragment, useEffect, useState } from "react"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import Inbox from "../../components/DashboardPage/Inbox"
+import Inbox from "../../components/DashboardPage/Inbox/Inbox"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 
 import { getInboxAdvice, submitInboxAdvice, deleteInboxAdvice } from "../../redux/actions/advice"
 import { useHistory } from "react-router-dom"
 import { Grid, Typography } from "@material-ui/core"
+import Display from "../../components/DashboardPage/Display/Display"
 
 const DashboardPage = (props) => {
     const { getInboxAdvice, deleteInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user } = props
@@ -55,21 +56,23 @@ const DashboardPage = (props) => {
                     name="description"
                     content="Sort & organize your advice by categories, sub-categories, and genre. Format it however you'd like! Track all of the awesome advice you are given, so you are always one step ahead."
                 />
-                <link rel="canonical" href="https://advicetracker.life/dashboard"/>
+                <link rel="canonical" href="https://advicetracker.life/dashboard" />
             </Helmet>
             <Header />
             <Navbar />
-            {isAuthenticated && (
-                <Inbox
-                    inbox={inboxAdvice}
-                    handleAddToCategory={handleAddToCategory}
-                    handleDelete={handleDelete}
-                    handleAddClick={handleAddClick}
-                    handleSubmit={handleSubmit}
-                    handleEditorChange={handleEditorChange}
-                    toAdd={toAdd}
-                />
-            )}
+
+            <Inbox
+                inbox={inboxAdvice}
+                handleAddToCategory={handleAddToCategory}
+                handleDelete={handleDelete}
+                handleAddClick={handleAddClick}
+                handleSubmit={handleSubmit}
+                handleEditorChange={handleEditorChange}
+                toAdd={toAdd}
+            />
+
+            {false && <Display />}
+
             <Grid style={{ height: "500px" }}>
                 <Typography style={{ marginTop: "200px" }} align="center" variant="h2"></Typography>
             </Grid>

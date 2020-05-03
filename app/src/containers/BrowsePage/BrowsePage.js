@@ -3,28 +3,29 @@ import { connect } from "react-redux"
 import { getUsers, createUser } from "../../redux/actions/users"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
-import { v4 as uuidv4 } from "uuid"
 import Footer from "../../components/Footer/Footer"
 import { Grid, Typography } from "@material-ui/core"
+import { Helmet } from "react-helmet"
 
 const FriendsPage = (props) => {
-    const { users, getUsers, createUser } = props
-    const [toAdd, setToAdd] = useState(false)
+    const { users, getUsers, isAuthenticated } = props
 
     useEffect(() => {
         if (!users.length) getUsers()
     }, [getUsers, users])
 
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        createUser({ name: event.target.name.value, hobbies: event.target.hobbies.value, id: uuidv4() })
-        setToAdd(false)
-    }
-
     return (
         <Fragment>
+            <Helmet>
+                <title>Browse | AdviceTracker</title>
+                <meta
+                    name="description"
+                    content="Sort & organize your advice by categories, sub-categories, and genre. Format it however you'd like! Track all of the awesome advice you are given, so you are always one step ahead."
+                />
+                <link rel="canonical" href="https://advicetracker.life/browse" />
+            </Helmet>
             <Header />
-            <Navbar />
+            {isAuthenticated && <Navbar />}
             <Grid style={{ height: "1000px" }}>
                 <Typography style={{ marginTop: "200px" }} align="center" variant="h2">
                     Coming soon!
@@ -35,8 +36,9 @@ const FriendsPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ userState }) => ({
+const mapStateToProps = ({ userState, authState }) => ({
     users: userState.users,
+    isAuthenticated: authState.isAuthenticated,
 })
 
 const mapDispatchToProps = { getUsers, createUser }
