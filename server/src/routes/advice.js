@@ -11,6 +11,46 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
+router.get("/api/advice/:id", verifyToken, async (req, res) => {
+    const categories = [];
+
+    connection.query("SELECT * FROM categories WHERE isSubcategory = 0 AND userID =" + req.params.id + ";", async (err, results, fields) => {
+        if (!err) {
+            results.map((result) => {
+                let categoryToAdd = {
+                    name: result.name,
+                    categoryID: result.categoryID,
+                    description: result.description,
+                    subcategories: [],
+                };
+                connection.query("SELECT * FROM categories WHERE categoryID = " + categoryToAdd.categoryID + " AND isSubcategory = 1;", async (err, results, fields) => {
+                    if (!err) {
+                        results = JSON.parse(JSON.stringify(results));
+
+                        results.map((result) => categoryToAdd.subcategories.push({ name: result.name, subcategoryID: result.subcategoryID, advice: [] }));
+
+                        categoryToAdd.subcategories.map((subcategory) => {
+                            connection.query("SELECT * FROM advice WHERE subcategoryID = " + subcategory.subcategoryID + " AND inInbox = 0;", async (err, results, fields) => {
+                                results = JSON.parse(JSON.stringify(results));
+
+                                results.map((result) => subcategory.advice.push({ adviceID: result.adviceID, content: result.content }));
+                            });
+                        });
+                        categories.push(categoryToAdd);
+                    } else {
+                        console.log(err);
+                    }
+                });
+            });
+        } else {
+            console.log(err);
+        }
+    });
+    setTimeout(() => {
+        res.json(categories);
+    }, 350);
+});
+
 router.get("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     const queryString = "SELECT * FROM advice WHERE inInbox = 1 AND userID =" + req.params.id + ";";
 

@@ -10,8 +10,8 @@ const connection = mysql.createConnection({
 });
 
 router.get("/api/mock", (req, res) => {
-    const queryString = "SELECT * FROM users WHERE username = \"Josh Bautista\"";
-    
+    const queryString = 'SELECT * FROM users WHERE username = "Josh Bautista"';
+
     connection.query(queryString, (err, results, fields) => {
         if (!err) res.json(results);
         else console.log(err);

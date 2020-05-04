@@ -2,35 +2,7 @@ import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE, GET_ADVICE 
 
 const initialState = {
     inboxAdvice: [],
-    categories: [
-        {
-            name: "Career",
-            categoryID: "1",
-            description: "Career description advice",
-            subcategories: [
-                {
-                    name: "Negotiation",
-                    subcategoryID: "3",
-                    advice: [
-                        {
-                            adviceID: "1",
-                            content: "<p>Negotiation Advice</p>"
-                        }
-                    ]
-                },
-                {
-                    name: "Productivity",
-                    subcategoryID: "4",
-                    advice: [
-                        {
-                            adviceID: "2",
-                            content: "<p>Productivity Advice</p>"
-                        }
-                    ]
-                }
-            ],
-        },
-    ],
+    categories: [],
     browseAdvice: [],
 }
 
