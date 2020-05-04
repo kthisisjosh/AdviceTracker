@@ -10,6 +10,7 @@ const initialState = {
             subcategories: [
                 {
                     name: "Negotiation",
+                    subcategoryID: "3",
                     advice: [
                         {
                             adviceID: "1",
@@ -19,6 +20,7 @@ const initialState = {
                 },
                 {
                     name: "Productivity",
+                    subcategoryID: "4",
                     advice: [
                         {
                             adviceID: "2",

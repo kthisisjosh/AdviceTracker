@@ -621,6 +621,314 @@ Array [
     className="MuiGrid-root"
     style={
       Object {
+        "height": "auto",
+        "marginBottom": "3vh",
+        "marginLeft": "15vw",
+        "marginRight": "15vw",
+        "marginTop": "2vh",
+        "width": "auto",
+      }
+    }
+  >
+    <div
+      className="MuiGrid-root MuiGrid-container"
+      style={
+        Object {
+          "marginBottom": "2.5vh",
+        }
+      }
+    >
+      <h4
+        className="MuiTypography-root MuiTypography-h4 MuiTypography-alignLeft"
+        style={
+          Object {
+            "marginRight": "2.5vw",
+          }
+        }
+      >
+        Categories
+      </h4>
+      <button
+        className="MuiButtonBase-root MuiButton-root MuiButton-contained"
+        disabled={false}
+        onBlur={[Function]}
+        onClick={null}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        style={
+          Object {
+            "backgroundColor": "F2994A",
+          }
+        }
+        tabIndex={0}
+        type="button"
+      >
+        <span
+          className="MuiButton-label"
+        >
+          <span
+            className="MuiButton-startIcon MuiButton-iconSizeMedium"
+          >
+            <svg
+              aria-hidden="true"
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              />
+            </svg>
+          </span>
+          Add New
+        </span>
+      </button>
+    </div>
+    <div
+      className="MuiGrid-root"
+      style={
+        Object {
+          "height": "auto",
+          "marginBottom": "2vh",
+          "width": "100%",
+        }
+      }
+    >
+      <div
+        className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+        style={
+          Object {
+            "padding": "0.25vh 1vw 1vh 1vw",
+          }
+        }
+      >
+        <div
+          className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
+        >
+          <div
+            className="MuiGrid-root MuiGrid-item"
+          >
+            <h3
+              className="MuiTypography-root MuiTypography-h3"
+              style={
+                Object {
+                  "fontWeight": "bold",
+                }
+              }
+            >
+              Career
+            </h3>
+          </div>
+          <div
+            className="MuiGrid-root MuiGrid-item"
+            style={
+              Object {
+                "marginTop": "-0.75vh",
+              }
+            }
+          >
+            <span
+              className="MuiTypography-root MuiTypography-caption"
+            >
+              Career description advice
+            </span>
+          </div>
+          <div
+            className="MuiGrid-root MuiGrid-item"
+            style={
+              Object {
+                "marginTop": "1vh",
+              }
+            }
+          >
+            <div
+              className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+              style={
+                Object {
+                  "backgroundColor": "#AFF4E4",
+                  "padding": "1vh 1vw 1vh 1vw",
+                }
+              }
+            >
+              <div
+                className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
+              >
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                  style={
+                    Object {
+                      "marginBottom": "0.5vh",
+                      "marginTop": "-0.5vh",
+                    }
+                  }
+                >
+                  <h5
+                    className="MuiTypography-root MuiTypography-h5"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                      }
+                    }
+                  >
+                    Negotiation
+                  </h5>
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                  style={
+                    Object {
+                      "marginBottom": "0.5vh",
+                    }
+                  }
+                >
+                  <div
+                    className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+                    style={
+                      Object {
+                        "marginBottom": "1.5vh",
+                        "padding": "0.5vh 0.5vw 0.5vh 0.5vw",
+                      }
+                    }
+                  >
+                    <p
+                      className="MuiTypography-root MuiTypography-body1"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "<p>Negotiation Advice</p>",
+                        }
+                      }
+                    />
+                  </div>
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                  style={
+                    Object {
+                      "marginBottom": "-0.5vh",
+                      "marginTop": "-0.75vh",
+                    }
+                  }
+                >
+                  <span
+                    className="MuiTypography-root MuiTypography-button"
+                    style={
+                      Object {
+                        "color": "#0047FF",
+                      }
+                    }
+                  >
+                    Show More
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            className="MuiGrid-root MuiGrid-item"
+            style={
+              Object {
+                "marginTop": "1vh",
+              }
+            }
+          >
+            <div
+              className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+              style={
+                Object {
+                  "backgroundColor": "#AFF4E4",
+                  "padding": "1vh 1vw 1vh 1vw",
+                }
+              }
+            >
+              <div
+                className="MuiGrid-root MuiGrid-container MuiGrid-direction-xs-column"
+              >
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                  style={
+                    Object {
+                      "marginBottom": "0.5vh",
+                      "marginTop": "-0.5vh",
+                    }
+                  }
+                >
+                  <h5
+                    className="MuiTypography-root MuiTypography-h5"
+                    style={
+                      Object {
+                        "fontWeight": "bold",
+                      }
+                    }
+                  >
+                    Productivity
+                  </h5>
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                  style={
+                    Object {
+                      "marginBottom": "0.5vh",
+                    }
+                  }
+                >
+                  <div
+                    className="MuiPaper-root MuiPaper-elevation1 MuiPaper-rounded"
+                    style={
+                      Object {
+                        "marginBottom": "1.5vh",
+                        "padding": "0.5vh 0.5vw 0.5vh 0.5vw",
+                      }
+                    }
+                  >
+                    <p
+                      className="MuiTypography-root MuiTypography-body1"
+                      dangerouslySetInnerHTML={
+                        Object {
+                          "__html": "<p>Productivity Advice</p>",
+                        }
+                      }
+                    />
+                  </div>
+                </div>
+                <div
+                  className="MuiGrid-root MuiGrid-item"
+                  style={
+                    Object {
+                      "marginBottom": "-0.5vh",
+                      "marginTop": "-0.75vh",
+                    }
+                  }
+                >
+                  <span
+                    className="MuiTypography-root MuiTypography-button"
+                    style={
+                      Object {
+                        "color": "#0047FF",
+                      }
+                    }
+                  >
+                    Show More
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="MuiGrid-root"
+    style={
+      Object {
         "height": "500px",
       }
     }
