@@ -1,8 +1,10 @@
 import React from "react"
 import { Grid, Paper, Typography } from "@material-ui/core"
 import Advice from "./Advice"
+import { useHistory } from "react-router-dom"
 
 const AdviceSubCategory = (props) => {
+    const history = useHistory()
     let isTwo = false
 
     if (props.advice.length > 1) {

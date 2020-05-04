@@ -16,14 +16,13 @@ const Display = (props) => {
             </Grid>
             {props.toAdd && <AddNewCategory handleSubmit={props.handleSubmit} handleChange={props.handleChange} />}
             {props.categories.map((category) => (
-                <Link to={`/dashboard/category/${category.categoryID}`} style={{ textDecoration: "none" }}>
-                    <AdviceCategory
-                        title={category.name}
-                        description={category.description}
-                        subcategories={category.subcategories}
-                        key={category.categoryID}
-                    />
-                </Link>
+                <AdviceCategory
+                    title={category.name}
+                    description={category.description}
+                    subcategories={category.subcategories}
+                    categoryID={category.categoryID}
+                    key={category.categoryID}
+                />
             ))}
         </Grid>
     )

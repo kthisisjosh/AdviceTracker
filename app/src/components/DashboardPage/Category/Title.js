@@ -10,7 +10,7 @@ const Title = (props) => {
                 </Typography>
             </Grid>
             <Grid item>
-                <Typography variant="body">{props.category.description}</Typography>
+                <Typography variant="body1">{props.category.description}</Typography>
             </Grid>
         </Grid>
     )
