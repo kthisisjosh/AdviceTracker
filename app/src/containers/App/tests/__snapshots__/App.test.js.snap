@@ -59,7 +59,15 @@ exports[`<App /> should render and match the snapshot 1`] = `
         path="/dashboard/category/:id"
       />
       <Route
-        component={null}
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(SubCategoryPage)",
+            "type": [Function],
+          }
+        }
         exact={true}
         path="/dashboard/subcategory/:id"
       />
