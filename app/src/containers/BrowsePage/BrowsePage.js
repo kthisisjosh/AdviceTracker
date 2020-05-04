@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState } from "react"
+import React, { useEffect, Fragment } from "react"
 import { connect } from "react-redux"
 import { getUsers, createUser } from "../../redux/actions/users"
 import Header from "../Header/Header"

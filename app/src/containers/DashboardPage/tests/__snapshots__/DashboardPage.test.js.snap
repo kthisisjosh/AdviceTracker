@@ -480,7 +480,7 @@ Array [
     </a>
     <a
       className="landing-header-link"
-      href="/dashboard/category/1"
+      href="/browse"
       onClick={[Function]}
       style={
         Object {
@@ -497,7 +497,7 @@ Array [
           }
         }
       >
-        dashboard/category/1
+        browse
       </span>
     </a>
     <a

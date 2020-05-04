@@ -1,10 +1,9 @@
 import React from "react"
 import { Paper, Grid, Typography } from "@material-ui/core"
 import AdviceSubCategory from "./AdviceSubCategory"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const AdviceCategory = (props) => {
-    const history = useHistory()
     return (
         <Grid style={{ width: "100%", height: "auto", marginBottom: "2vh" }}>
             <Paper style={{ padding: "0.25vh 1vw 1vh 1vw" }}>
@@ -28,7 +27,7 @@ const AdviceCategory = (props) => {
                     {props.subcategories.length === 0 && (
                         <AdviceSubCategory title="There is currently no advice in this category." advice={[{ content: "<p>Add some!</p>" }]} />
                     )}
-                    {props.subcategories.length != 0 &&
+                    {props.subcategories.length !== 0 &&
                         props.subcategories.map((subcategory) => (
                             <Link
                                 to={`/dashboard/subcategory/${subcategory.subcategoryID}`}

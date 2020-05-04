@@ -3,7 +3,6 @@ import { Grid, Typography } from "@material-ui/core"
 import AddNewButton from "../Inbox/AddNewButton"
 import AdviceCategory from "./AdviceCategory.js"
 import AddNewCategory from "./AddNewCategory"
-import { Link } from "react-router-dom"
 
 const Display = (props) => {
     return (

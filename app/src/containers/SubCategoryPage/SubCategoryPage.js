@@ -2,12 +2,11 @@ import React, { Fragment, useEffect, useState } from "react"
 import Header from "../../components/LandingHeader/LandingHeader"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import { Typography, Grid } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 import { connect } from "react-redux"
 import Title from "../../components/DashboardPage/Category/Title"
-import AdviceSubCategory from "../../components/DashboardPage/Display/AdviceSubCategory"
-import { Link } from "react-router-dom"
 import Advice from "../../components/DashboardPage/Display/Advice"
+import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 
 const SubCategoryPage = (props) => {
     const { categories, match } = props
@@ -26,9 +25,15 @@ const SubCategoryPage = (props) => {
             <Header />
             <Navbar />
             <Grid container direction="column" style={{ margin: "2vh 15vw 2vh 15vw", width: "auto", height: "80vh" }}>
-                {currSubCategory.advice.map((advice) => (
-                    <Advice content={advice.content} key={advice.adviceID} />
-                ))}
+                <Grid container>
+                    <Title name={currSubCategory.name} isDescription={false} />
+                    <AddNewButton handleAddClick={props.handleAddClick} />
+                </Grid>
+                <Grid item style={{ marginTop: "2vh" }}>
+                    {currSubCategory.advice.map((advice) => (
+                        <Advice content={advice.content} key={advice.adviceID} />
+                    ))}
+                </Grid>
             </Grid>
             <Footer />
         </Fragment>

@@ -6,12 +6,14 @@ const Title = (props) => {
         <Grid container direction="column">
             <Grid item>
                 <Typography variant="h3" style={{ fontWeight: "bold" }}>
-                    {props.category.name}
+                    {props.name}
                 </Typography>
             </Grid>
-            <Grid item>
-                <Typography variant="body1">{props.category.description}</Typography>
-            </Grid>
+            {props.isDescription && (
+                <Grid item>
+                    <Typography variant="body1">{props.description}</Typography>
+                </Grid>
+            )}
         </Grid>
     )
 }
