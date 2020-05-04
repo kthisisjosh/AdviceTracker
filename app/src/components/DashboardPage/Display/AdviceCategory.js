@@ -13,13 +13,20 @@ const AdviceCategory = (props) => {
                         </Typography>
                     </Grid>
 
-                    <Grid item style={{ marginTop: "-0.75vh" }}>
+                    <Grid item style={{ marginTop: "-0.75vh", marginLeft: "0.15vw" }}>
                         <Typography variant="caption">{props.description}</Typography>
                     </Grid>
 
-                    {props.subcategories.length != 0 && props.subcategories.map((subcategory) => (
-                        <AdviceSubCategory title={subcategory.name} key={subcategory.subcategoryID} advice={subcategory.advice} />
-                    ))}
+                    {props.subcategories.length === 0 && (
+                        <AdviceSubCategory
+                            title="There is currently no advice in this category."
+                            advice={[{ content: "<p>Add some!</p>" }]}
+                        />
+                    )}
+                    {props.subcategories.length != 0 &&
+                        props.subcategories.map((subcategory) => (
+                            <AdviceSubCategory title={subcategory.name} key={subcategory.subcategoryID} advice={subcategory.advice} />
+                        ))}
                 </Grid>
             </Paper>
         </Grid>

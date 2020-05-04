@@ -66,7 +66,7 @@ export const submitInboxAdvice = (advice, id) => async (dispatch) => {
 
 export const submitCategory = (category, id) => async (dispatch) => {
     try {
-        const url = "https://advicetracker.life/api/advice/categories/" + id
+        const url = "http://localhost:8080/api/advice/categories/" + id
         const token = localStorage.getItem("jwtToken")
         const newCategory = {
             name: category.title,
@@ -76,7 +76,6 @@ export const submitCategory = (category, id) => async (dispatch) => {
             isSubcategory: 0,
             subcategoryID: null,
         }
-        dispatch({ type: SUBMIT_CATEGORY, payload: { ...newCategory, subcategories: [] } })
         await fetch(url, {
             method: "POST",
             headers: {
@@ -85,7 +84,7 @@ export const submitCategory = (category, id) => async (dispatch) => {
             },
             body: JSON.stringify(newCategory),
         }).then(() => {
-            dispatch({ type: SUBMIT_CATEGORY, payload: newCategory })
+            dispatch({ type: SUBMIT_CATEGORY, payload: { ...newCategory, subcategories: [] } })
         })
     } catch (error) {
         console.log(error)

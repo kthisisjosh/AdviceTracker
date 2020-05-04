@@ -5,11 +5,18 @@ const router = new express.Router();
 const verifyToken = require("../middleware/verifyToken");
 
 const connection = mysql.createConnection({
-    host: process.env.MYSQL_HOST,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    database: process.env.MYSQL_DATABASE,
+    host: "advicetracker.life",
+    user: "root",
+    password: "qV3sAzeSHPpkDF69Ot3unm",
+    database: "advicetracker",
 });
+
+//{
+//    host: process.env.MYSQL_HOST,
+//    user: process.env.MYSQL_USER,
+//    password: process.env.MYSQL_PASSWORD,
+//    database: process.env.MYSQL_DATABASE,
+//}
 
 router.get("/api/advice/:id", verifyToken, async (req, res) => {
     const categories = [];
@@ -76,6 +83,22 @@ router.post("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     });
 });
 
+router.post("/api/advice/categories/:id", verifyToken, async (req, res) => {
+    const newCategory = req.body;
+
+    const queryString = "INSERT INTO categories (name, categoryID, userID, description, isSubcategory, subcategoryID) VALUES (?, ?, ?, ?, ?, NULL)";
+
+    connection.query(queryString, [newCategory.name, newCategory.categoryID, req.params.id, newCategory.description, newCategory.isSubcategory], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            console.log(`Create category ${newCategory.name}`);
+            res.sendStatus(200);
+        }
+    });
+});
+
 router.delete("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     const queryString = "DELETE FROM advice WHERE adviceID = ?";
 
@@ -85,6 +108,20 @@ router.delete("/api/advice/inbox/:id", verifyToken, async (req, res) => {
             res.sendStatus(500);
         } else {
             console.log(`Successfully deleted advice with ID ${req.params.id}`);
+            res.sendStatus(200);
+        }
+    });
+});
+
+router.delete("/api/advice/categories/:id", verifyToken, async (req, res) => {
+    const queryString = "DELETE FROM categories WHERE categoryID = ? AND isSubcategory = 0;";
+
+    connection.query(queryString, [req.params.id], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            console.log(`Deleted advice with ID ${req.params.id}`);
             res.sendStatus(200);
         }
     });
