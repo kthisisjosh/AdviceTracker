@@ -5,20 +5,13 @@ const router = new express.Router();
 const verifyToken = require("../middleware/verifyToken");
 
 const connection = mysql.createConnection({
-    host: "advicetracker.life",
-    user: "root",
-    password: "qV3sAzeSHPpkDF69Ot3unm",
-    database: "advicetracker",
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
 });
 
-//{
-//    host: process.env.MYSQL_HOST,
-//    user: process.env.MYSQL_USER,
-//    password: process.env.MYSQL_PASSWORD,
-//    database: process.env.MYSQL_DATABASE,
-//}
-
-router.get("/api/advice/:id", verifyToken, async (req, res) => {
+router.get("/api/advice/:id", async (req, res) => {
     const categories = [];
 
     connection.query("SELECT * FROM categories WHERE isSubcategory = 0 AND userID =" + req.params.id + ";", async (err, results, fields) => {
@@ -30,7 +23,7 @@ router.get("/api/advice/:id", verifyToken, async (req, res) => {
                     description: result.description,
                     subcategories: [],
                 };
-                connection.query("SELECT * FROM categories WHERE categoryID = " + categoryToAdd.categoryID + " AND isSubcategory = 1;", async (err, results, fields) => {
+                connection.query('SELECT * FROM categories WHERE categoryID = "' + categoryToAdd.categoryID + '" AND isSubcategory = 1;', async (err, results, fields) => {
                     if (!err) {
                         results = JSON.parse(JSON.stringify(results));
 
@@ -55,7 +48,7 @@ router.get("/api/advice/:id", verifyToken, async (req, res) => {
     });
     setTimeout(() => {
         res.json(categories);
-    }, 350);
+    }, 650);
 });
 
 router.get("/api/advice/inbox/:id", verifyToken, async (req, res) => {
@@ -67,12 +60,23 @@ router.get("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     });
 });
 
-router.post("/api/advice/inbox/:id", verifyToken, async (req, res) => {
+router.put("/api/advice/inbox/:id", verifyToken, async (req, res) => {
+    const subcategoryID = req.body.subcategoryID;
+
+    const queryString = "UPDATE advice SET inInbox = 0, subcategoryID = " + subcategoryID + ' WHERE adviceID = "' + req.params.id + '";';
+
+    connection.query(queryString, (err, results, fields) => {
+        if (!err) res.sendStatus(200);
+        else console.log(err);
+    });
+});
+
+router.post("/api/advice/inbox/", verifyToken, async (req, res) => {
     const newAdvice = req.body;
 
-    const queryString = "INSERT INTO advice (AdviceID, UserID, InInbox, Content, Category, NumOfLikes, DatePosted) VALUES (?, ?, ?, ?, NULL, NULL, NULL)";
+    const queryString = "INSERT INTO advice (adviceID, userID, inInbox, content, numoflikes, datePosted) VALUES (?, ?, ?, ?, NULL, NULL, NULL)";
 
-    connection.query(queryString, [newAdvice.adviceID, req.params.id, newAdvice.inInbox, newAdvice.content], (err, results, fields) => {
+    connection.query(queryString, [newAdvice.adviceID, newAdvice.userID, newAdvice.inInbox, newAdvice.content], (err, results, fields) => {
         if (err) {
             console.log(err);
             res.sendStatus(500);
@@ -83,12 +87,12 @@ router.post("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     });
 });
 
-router.post("/api/advice/categories/:id", verifyToken, async (req, res) => {
+router.post("/api/advice/categories/", verifyToken, async (req, res) => {
     const newCategory = req.body;
 
     const queryString = "INSERT INTO categories (name, categoryID, userID, description, isSubcategory, subcategoryID) VALUES (?, ?, ?, ?, ?, NULL)";
 
-    connection.query(queryString, [newCategory.name, newCategory.categoryID, req.params.id, newCategory.description, newCategory.isSubcategory], (err, results, fields) => {
+    connection.query(queryString, [newCategory.name, newCategory.categoryID, newCategory.userID, newCategory.description, newCategory.isSubcategory], (err, results, fields) => {
         if (err) {
             console.log(err);
             res.sendStatus(500);
@@ -100,7 +104,21 @@ router.post("/api/advice/categories/:id", verifyToken, async (req, res) => {
 });
 
 router.delete("/api/advice/inbox/:id", verifyToken, async (req, res) => {
-    const queryString = "DELETE FROM advice WHERE adviceID = ?";
+    const queryString = "DELETE FROM advice WHERE inInbox = 1 AND adviceID = ?";
+
+    connection.query(queryString, [req.params.id], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            console.log(`Successfully deleted advice with ID ${req.params.id}`);
+            res.sendStatus(200);
+        }
+    });
+});
+
+router.delete("/api/advice/:id", verifyToken, async (req, res) => {
+    const queryString = "DELETE FROM advice WHERE inInbox = 0 AND adviceID = ?";
 
     connection.query(queryString, [req.params.id], (err, results, fields) => {
         if (err) {
@@ -115,6 +133,20 @@ router.delete("/api/advice/inbox/:id", verifyToken, async (req, res) => {
 
 router.delete("/api/advice/categories/:id", verifyToken, async (req, res) => {
     const queryString = "DELETE FROM categories WHERE categoryID = ? AND isSubcategory = 0;";
+
+    connection.query(queryString, [req.params.id], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            console.log(`Deleted advice with ID ${req.params.id}`);
+            res.sendStatus(200);
+        }
+    });
+});
+
+router.delete("/api/advice/subcategories/:id", verifyToken, async (req, res) => {
+    const queryString = "DELETE FROM categories WHERE subcategoryID = ? AND isSubcategory = 1;";
 
     connection.query(queryString, [req.params.id], (err, results, fields) => {
         if (err) {

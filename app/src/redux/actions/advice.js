@@ -28,6 +28,8 @@ export const getAdvice = (id) => async (dispatch) => {
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data)
+
                 dispatch({ type: GET_ADVICE, payload: data })
             })
     } catch (error) {
@@ -37,7 +39,7 @@ export const getAdvice = (id) => async (dispatch) => {
 
 export const submitInboxAdvice = (advice, id) => async (dispatch) => {
     try {
-        const url = "https://advicetracker.life/api/advice/inbox/" + id
+        const url = "https://advicetracker.life/api/advice/inbox/"
         const token = localStorage.getItem("jwtToken")
         const newInboxAdvice = {
             content: advice,
@@ -66,7 +68,7 @@ export const submitInboxAdvice = (advice, id) => async (dispatch) => {
 
 export const submitCategory = (category, id) => async (dispatch) => {
     try {
-        const url = "http://localhost:8080/api/advice/categories/" + id
+        const url = "https://advicetracker.life/api/advice/categories/"
         const token = localStorage.getItem("jwtToken")
         const newCategory = {
             name: category.title,
