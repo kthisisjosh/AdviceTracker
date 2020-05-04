@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core"
 import AddNewButton from "../Inbox/AddNewButton"
 import AdviceCategory from "./AdviceCategory.js"
 import AddNewCategory from "./AddNewCategory"
+import { Link } from "react-router-dom"
 
 const Display = (props) => {
     return (
@@ -15,12 +16,14 @@ const Display = (props) => {
             </Grid>
             {props.toAdd && <AddNewCategory handleSubmit={props.handleSubmit} handleChange={props.handleChange} />}
             {props.categories.map((category) => (
-                <AdviceCategory
-                    title={category.name}
-                    description={category.description}
-                    subcategories={category.subcategories}
-                    key={category.categoryID}
-                />
+                <Link to={`/dashboard/category/${category.categoryID}`} style={{ textDecoration: "none" }}>
+                    <AdviceCategory
+                        title={category.name}
+                        description={category.description}
+                        subcategories={category.subcategories}
+                        key={category.categoryID}
+                    />
+                </Link>
             ))}
         </Grid>
     )

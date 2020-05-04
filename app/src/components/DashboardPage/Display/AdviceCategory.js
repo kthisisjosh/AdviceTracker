@@ -1,6 +1,7 @@
 import React from "react"
 import { Paper, Grid, Typography } from "@material-ui/core"
 import AdviceSubCategory from "./AdviceSubCategory"
+import { Link } from "react-router-dom"
 
 const AdviceCategory = (props) => {
     return (
@@ -18,14 +19,13 @@ const AdviceCategory = (props) => {
                     </Grid>
 
                     {props.subcategories.length === 0 && (
-                        <AdviceSubCategory
-                            title="There is currently no advice in this category."
-                            advice={[{ content: "<p>Add some!</p>" }]}
-                        />
+                        <AdviceSubCategory title="There is currently no advice in this category." advice={[{ content: "<p>Add some!</p>" }]} />
                     )}
                     {props.subcategories.length != 0 &&
                         props.subcategories.map((subcategory) => (
-                            <AdviceSubCategory title={subcategory.name} key={subcategory.subcategoryID} advice={subcategory.advice} />
+                            <Link to={`/dashboard/subcategory/${subcategory.subcategoryID}`} style={{ textDecoration: "none" }}>
+                                <AdviceSubCategory title={subcategory.name} key={subcategory.subcategoryID} advice={subcategory.advice} />
+                            </Link>
                         ))}
                 </Grid>
             </Paper>
