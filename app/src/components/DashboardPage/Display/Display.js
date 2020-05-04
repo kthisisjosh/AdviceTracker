@@ -12,7 +12,14 @@ const Display = (props) => {
                 </Typography>
                 <AddNewButton handleAddClick={null} />
             </Grid>
-            <AdviceCategory title="Career" description="Career development advice." />
+            {props.categories.map((category) => (
+                <AdviceCategory
+                    title={category.name}
+                    description={category.description}
+                    subcategories={category.subcategories}
+                    key={category.categoryID}
+                />
+            ))}
         </Grid>
     )
 }

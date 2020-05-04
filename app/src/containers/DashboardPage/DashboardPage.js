@@ -12,7 +12,7 @@ import { Grid, Typography } from "@material-ui/core"
 import Display from "../../components/DashboardPage/Display/Display"
 
 const DashboardPage = (props) => {
-    const { getInboxAdvice, deleteInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user } = props
+    const { getInboxAdvice, deleteInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user, categories } = props
     const history = useHistory()
     const [toAdd, setToAdd] = useState(false)
     const [submitAdvice, setSubmitAdvice] = useState("")
@@ -21,7 +21,7 @@ const DashboardPage = (props) => {
         if (!inboxAdvice.length && isAuthenticated) {
             getInboxAdvice(user.userID)
         } else if (!isAuthenticated) {
-            history.push("/login")
+            //history.push("/login")
         }
     }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated])
 
@@ -40,8 +40,7 @@ const DashboardPage = (props) => {
     }
 
     const handleAddToCategory = (event) => {
-        console.log("add")
-        console.log(event)
+        console.log(categories)
     }
 
     const handleDelete = (advice) => {
@@ -60,7 +59,6 @@ const DashboardPage = (props) => {
             </Helmet>
             <Header />
             <Navbar />
-
             <Inbox
                 inbox={inboxAdvice}
                 handleAddToCategory={handleAddToCategory}
@@ -71,7 +69,7 @@ const DashboardPage = (props) => {
                 toAdd={toAdd}
             />
 
-            {false && <Display />}
+            {true && <Display categories={categories} />}
 
             <Grid style={{ height: "500px" }}>
                 <Typography style={{ marginTop: "200px" }} align="center" variant="h2"></Typography>
@@ -85,6 +83,7 @@ const mapStateToProps = ({ adviceState, authState }) => ({
     inboxAdvice: adviceState.inboxAdvice,
     isAuthenticated: authState.isAuthenticated,
     user: authState.user,
+    categories: adviceState.categories,
 })
 
 const mapDispatchToProps = { getInboxAdvice, submitInboxAdvice, deleteInboxAdvice }

@@ -13,8 +13,7 @@ const AdviceSubCategory = (props) => {
                         </Typography>
                     </Grid>
                     <Grid item style={{ marginBottom: "0.5vh" }}>
-                        <Advice />
-                        <Advice />
+                        {props.advice.map(advice => <Advice content={advice.content} key={advice.adviceID}/>)}
                     </Grid>
                     <Grid item style={{ marginTop: "-0.75vh", marginBottom: "-0.5vh"}}>
                         <Typography variant="button" style={{color: "#0047FF" }}>
