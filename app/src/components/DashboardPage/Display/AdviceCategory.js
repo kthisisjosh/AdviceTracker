@@ -4,7 +4,7 @@ import AdviceSubCategory from "./AdviceSubCategory"
 
 const AdviceCategory = (props) => {
     return (
-        <Grid style={{ width: "100%", height: "auto", marginBottom: "2vh"}}>
+        <Grid style={{ width: "100%", height: "auto", marginBottom: "2vh" }}>
             <Paper style={{ padding: "0.25vh 1vw 1vh 1vw" }}>
                 <Grid container direction="column">
                     <Grid item>
@@ -17,8 +17,9 @@ const AdviceCategory = (props) => {
                         <Typography variant="caption">{props.description}</Typography>
                     </Grid>
 
-                    <AdviceSubCategory title="Negotation" />
-                    <AdviceSubCategory title="Productivity" />
+                    {props.subcategories.map((subcategory) => (
+                        <AdviceSubCategory title={subcategory.name} key={subcategory.subcategoryID} advice={subcategory.advice} />
+                    ))}
                 </Grid>
             </Paper>
         </Grid>

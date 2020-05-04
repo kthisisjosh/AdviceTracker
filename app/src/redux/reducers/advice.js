@@ -1,4 +1,4 @@
-import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE } from "../types/advice"
+import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE, GET_ADVICE } from "../types/advice"
 
 const initialState = {
     inboxAdvice: [],
@@ -20,6 +20,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 inboxAdvice: state.inboxAdvice.filter((advice) => advice.adviceID !== action.payload),
+            }
+        case GET_ADVICE:
+            return {
+                ...state,
+                categories: [...action.payload, ...state.categories],
             }
         default:
             return state
