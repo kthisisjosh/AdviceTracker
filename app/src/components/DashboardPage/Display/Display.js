@@ -2,6 +2,7 @@ import React from "react"
 import { Grid, Typography } from "@material-ui/core"
 import AddNewButton from "../Inbox/AddNewButton"
 import AdviceCategory from "./AdviceCategory.js"
+import AddNewCategory from "./AddNewCategory"
 
 const Display = (props) => {
     return (
@@ -10,13 +11,15 @@ const Display = (props) => {
                 <Typography variant="h4" align="left" style={{ marginRight: "2.5vw" }}>
                     Categories
                 </Typography>
-                <AddNewButton handleAddClick={null} />
+                <AddNewButton handleAddClick={props.handleAddClick} />
             </Grid>
+            {props.toAdd && <AddNewCategory handleSubmit={props.handleSubmit} handleChange={props.handleChange} />}
             {props.categories.map((category) => (
                 <AdviceCategory
                     title={category.name}
                     description={category.description}
                     subcategories={category.subcategories}
+                    categoryID={category.categoryID}
                     key={category.categoryID}
                 />
             ))}

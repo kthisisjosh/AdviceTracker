@@ -34,7 +34,7 @@ Array [
         >
           <img
             alt="logo"
-            src="./AdviceLogoLight.png"
+            src="/AdviceLogoLight.png"
           />
         </a>
       </div>
@@ -652,7 +652,7 @@ Array [
         className="MuiButtonBase-root MuiButton-root MuiButton-contained"
         disabled={false}
         onBlur={[Function]}
-        onClick={null}
+        onClick={[Function]}
         onDragLeave={[Function]}
         onFocus={[Function]}
         onKeyDown={[Function]}

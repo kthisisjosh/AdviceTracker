@@ -27,7 +27,7 @@ const Header = (props) => {
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
                 <Grid item className="landing-logo" style={{ marginLeft: "14vw", marginTop: "1vh" }}>
                     <a href="/">
-                        <img alt="logo" src={"./AdviceLogoLight.png"} />
+                        <img alt="logo" src={process.env.PUBLIC_URL + "/AdviceLogoLight.png"} />
                     </a>
                 </Grid>
 

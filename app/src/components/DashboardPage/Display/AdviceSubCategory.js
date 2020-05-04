@@ -10,8 +10,8 @@ const AdviceSubCategory = (props) => {
     }
 
     return (
-        <Grid item style={{ marginTop: "1vh" }}>
-            <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw" }}>
+        <Grid item style={{ marginTop: "1vh", width: "auto" }}>
+            <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
                 <Grid container direction="column">
                     <Grid item style={{ marginBottom: "0.5vh", marginTop: "-0.5vh" }}>
                         <Typography variant="h5" style={{ fontWeight: "bold" }}>
@@ -25,9 +25,7 @@ const AdviceSubCategory = (props) => {
                                 <Advice content={props.advice[1].content} key={props.advice[1].adviceID} />
                             </>
                         )}
-                        {!isTwo && (
-                                <Advice content={props.advice[0].content} key={props.advice[0].adviceID} />
-                        )}
+                        {!isTwo && <Advice content={props.advice[0].content} key={props.advice[0].adviceID} />}
                     </Grid>
                     <Grid item style={{ marginTop: "-0.75vh", marginBottom: "-0.5vh" }}>
                         <Typography variant="button" style={{ color: "#0047FF" }}>

@@ -14,7 +14,7 @@ const ProfilePage = (props) => {
         if (!isAuthenticated) {
             history.push("/login")
         }
-    }, [isAuthenticated])
+    }, [isAuthenticated, history])
 
     return (
         <Fragment>
@@ -27,7 +27,7 @@ const ProfilePage = (props) => {
             <Navbar />
             <Grid style={{ height: "1000px" }}>
                 <Typography style={{ marginTop: "50px" }} align="center" variant="h2">
-                    Welcome, {props.user.username}
+                    Welcome, {user.username}
                 </Typography>
             </Grid>
         </Fragment>

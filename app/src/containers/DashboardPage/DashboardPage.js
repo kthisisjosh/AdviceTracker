@@ -6,15 +6,17 @@ import Inbox from "../../components/DashboardPage/Inbox/Inbox"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 
-import { getInboxAdvice, getAdvice, submitInboxAdvice, deleteInboxAdvice } from "../../redux/actions/advice"
+import { getInboxAdvice, getAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory } from "../../redux/actions/advice"
 import { useHistory } from "react-router-dom"
 import { Grid, Typography } from "@material-ui/core"
 import Display from "../../components/DashboardPage/Display/Display"
 
 const DashboardPage = (props) => {
-    const { getInboxAdvice, getAdvice, deleteInboxAdvice, inboxAdvice, submitInboxAdvice, isAuthenticated, user, categories } = props
+    const { getInboxAdvice, getAdvice, deleteInboxAdvice, inboxAdvice, submitCategory, submitInboxAdvice, isAuthenticated, user, categories } = props
     const history = useHistory()
-    const [toAdd, setToAdd] = useState(false)
+    const [toAddInbox, setToAddInbox] = useState(false)
+    const [toAddCategory, setToAddCategory] = useState(false)
+    const [submitCategoryInfo, setSubmitCategory] = useState({ title: "", description: "" })
     const [submitAdvice, setSubmitAdvice] = useState("")
 
     useEffect(() => {
@@ -22,18 +24,37 @@ const DashboardPage = (props) => {
             getInboxAdvice(user.userID)
             getAdvice(user.userID)
         } else if (!isAuthenticated) {
-            history.push("/login")
+            //history.push("/login")
         }
     }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated])
 
-    const handleAddClick = () => {
-        setToAdd(true)
+    // --------- Category --------- \\
+    const handleAddClickCategory = () => {
+        setToAddCategory(true)
     }
 
-    const handleSubmit = () => {
+    const handleSubmitCategory = () => {
+        submitCategory(submitCategoryInfo, user.userID)
+        setSubmitCategory({ title: "", description: "" })
+        setToAddCategory(false)
+    }
+
+    const handleCategoryChange = (e) => {
+        if (e.target.name === "title") {
+            setSubmitCategory({ title: e.target.value, description: submitCategoryInfo.description })
+        } else {
+            setSubmitCategory({ title: submitCategoryInfo.title, description: e.target.value })
+        }
+    }
+
+    const handleAddClickInbox = () => {
+        setToAddInbox(true)
+    }
+
+    const handleSubmitInbox = () => {
         submitInboxAdvice(submitAdvice, user.userID)
         setSubmitAdvice("")
-        setToAdd(false)
+        setToAddInbox(false)
     }
 
     const handleEditorChange = (content, editor) => {
@@ -41,7 +62,6 @@ const DashboardPage = (props) => {
     }
 
     const handleAddToCategory = (event) => {
-        console.log(categories)
     }
 
     const handleDelete = (advice) => {
@@ -64,13 +84,21 @@ const DashboardPage = (props) => {
                 inbox={inboxAdvice}
                 handleAddToCategory={handleAddToCategory}
                 handleDelete={handleDelete}
-                handleAddClick={handleAddClick}
-                handleSubmit={handleSubmit}
+                handleAddClick={handleAddClickInbox}
+                handleSubmit={handleSubmitInbox}
                 handleEditorChange={handleEditorChange}
-                toAdd={toAdd}
+                toAdd={toAddInbox}
             />
 
-            {true && <Display categories={categories} />}
+            {true && (
+                <Display
+                    handleAddClick={handleAddClickCategory}
+                    handleSubmit={handleSubmitCategory}
+                    handleChange={handleCategoryChange}
+                    toAdd={toAddCategory}
+                    categories={categories}
+                />
+            )}
 
             <Grid style={{ height: "500px" }}>
                 <Typography style={{ marginTop: "200px" }} align="center" variant="h2"></Typography>
@@ -87,6 +115,6 @@ const mapStateToProps = ({ adviceState, authState }) => ({
     categories: adviceState.categories,
 })
 
-const mapDispatchToProps = { getAdvice, getInboxAdvice, submitInboxAdvice, deleteInboxAdvice }
+const mapDispatchToProps = { getAdvice, getInboxAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)

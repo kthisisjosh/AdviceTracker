@@ -1,6 +1,5 @@
 import React from "react"
 import NavLink from "./NavLink"
-import Typography from "@material-ui/core/Typography"
 
 const Navbar = () => {
     return (
