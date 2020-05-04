@@ -28,8 +28,6 @@ export const getAdvice = (id) => async (dispatch) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
-
                 dispatch({ type: GET_ADVICE, payload: data })
             })
     } catch (error) {

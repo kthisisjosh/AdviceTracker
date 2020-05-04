@@ -62,7 +62,6 @@ const DashboardPage = (props) => {
     }
 
     const handleAddToCategory = (event) => {
-        console.log(categories)
     }
 
     const handleDelete = (advice) => {
