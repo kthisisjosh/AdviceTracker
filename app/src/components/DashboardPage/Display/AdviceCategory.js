@@ -17,7 +17,7 @@ const AdviceCategory = (props) => {
                         <Typography variant="caption">{props.description}</Typography>
                     </Grid>
 
-                    {props.subcategories.map((subcategory) => (
+                    {props.subcategories.length != 0 && props.subcategories.map((subcategory) => (
                         <AdviceSubCategory title={subcategory.name} key={subcategory.subcategoryID} advice={subcategory.advice} />
                     ))}
                 </Grid>
