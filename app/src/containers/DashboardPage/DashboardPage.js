@@ -24,9 +24,9 @@ const DashboardPage = (props) => {
             getInboxAdvice(user.userID)
             getAdvice(user.userID)
         } else if (!isAuthenticated) {
-            //history.push("/login")
+            history.push("/login")
         }
-    }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated])
+    }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated, getAdvice])
 
     // --------- Category --------- \\
     const handleAddClickCategory = () => {
@@ -61,8 +61,7 @@ const DashboardPage = (props) => {
         setSubmitAdvice(content)
     }
 
-    const handleAddToCategory = (event) => {
-    }
+    const handleAddToCategory = (event) => {}
 
     const handleDelete = (advice) => {
         deleteInboxAdvice(advice)

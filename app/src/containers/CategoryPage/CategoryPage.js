@@ -16,7 +16,7 @@ const CategoryPage = (props) => {
     useEffect(() => {
         const foundCategory = categories.find((category) => category.categoryID === match.params.id)
         setCurrCategory(foundCategory)
-    }, [])
+    }, [categories])
 
     return (
         <Fragment>

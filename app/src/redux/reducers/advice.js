@@ -1,4 +1,4 @@
-import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE, GET_ADVICE, SUBMIT_CATEGORY } from "../types/advice"
+import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE, GET_ADVICE, SUBMIT_CATEGORY, SUBMIT_ADVICE } from "../types/advice"
 
 const initialState = {
     inboxAdvice: [],
@@ -29,7 +29,15 @@ export default (state = initialState, action) => {
         case SUBMIT_CATEGORY:
             return {
                 ...state,
-                categories: [action.payload, ...state.categories]
+                categories: [action.payload, ...state.categories],
+            }
+        case SUBMIT_ADVICE:
+            const filteredCategories = state.categories.filter((category) => {
+                return category.categoryID !== action.payload.categoryID
+            })
+            return {
+                ...state,
+                categories: [action.payload, ...filteredCategories],
             }
         default:
             return state

@@ -1,4 +1,4 @@
-import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE, GET_ADVICE, SUBMIT_CATEGORY } from "../types/advice"
+import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE, GET_ADVICE, SUBMIT_CATEGORY, SUBMIT_ADVICE } from "../types/advice"
 import { v4 as uuidv4 } from "uuid"
 
 export const getInboxAdvice = (id) => async (dispatch) => {
@@ -42,7 +42,6 @@ export const submitInboxAdvice = (advice, id) => async (dispatch) => {
         const newInboxAdvice = {
             content: advice,
             inInbox: 1,
-            category: "",
             userID: id,
             likes: null,
             datePosted: null,
@@ -58,6 +57,42 @@ export const submitInboxAdvice = (advice, id) => async (dispatch) => {
             body: JSON.stringify(newInboxAdvice),
         }).then(() => {
             dispatch({ type: SUBMIT_INBOX_ADVICE, payload: newInboxAdvice })
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const submitAdvice = (advice, category, currSubcategory, id) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/advice/"
+        const token = localStorage.getItem("jwtToken")
+        const newAdvice = {
+            content: advice,
+            inInbox: 0,
+            subcategoryID: currSubcategory.subcategoryID,
+            userID: id,
+            likes: null,
+            datePosted: null,
+            comments: [],
+            adviceID: uuidv4(),
+        }
+        const filteredSubcategories = category.subcategories.filter((subcategory) => {
+            return subcategory.subcategoryID !== currSubcategory.subcategoryID
+        })
+
+        const newSubcategory = { ...currSubcategory, advice: [newAdvice, ...currSubcategory.advice] }
+
+        const newCategory = { ...category, subcategories: [newSubcategory, ...filteredSubcategories] }
+
+        dispatch({ type: SUBMIT_ADVICE, payload: newCategory })
+        await fetch(url, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newAdvice),
         })
     } catch (error) {
         console.log(error)

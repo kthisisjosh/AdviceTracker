@@ -74,9 +74,25 @@ router.put("/api/advice/inbox/:id", verifyToken, async (req, res) => {
 router.post("/api/advice/inbox/", verifyToken, async (req, res) => {
     const newAdvice = req.body;
 
-    const queryString = "INSERT INTO advice (adviceID, userID, inInbox, content, numoflikes, datePosted) VALUES (?, ?, ?, ?, NULL, NULL, NULL)";
+    const queryString = "INSERT INTO advice (adviceID, userID, inInbox, content, subcategoryID, numoflikes, datePosted) VALUES (?, ?, ?, ?, NULL, NULL, NULL)";
 
     connection.query(queryString, [newAdvice.adviceID, newAdvice.userID, newAdvice.inInbox, newAdvice.content], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            console.log(`Successfully created advice with content ${newAdvice.content}`);
+            res.sendStatus(200);
+        }
+    });
+});
+
+router.post("/api/advice/", verifyToken, async (req, res) => {
+    const newAdvice = req.body;
+
+    const queryString = "INSERT INTO advice (adviceID, userID, inInbox, content, subcategoryID, numoflikes, datePosted) VALUES (?, ?, ?, ?, ?, NULL, NULL)";
+
+    connection.query(queryString, [newAdvice.adviceID, newAdvice.userID, 0, newAdvice.content, newAdvice.subcategoryID], (err, results, fields) => {
         if (err) {
             console.log(err);
             res.sendStatus(500);
@@ -93,6 +109,22 @@ router.post("/api/advice/categories/", verifyToken, async (req, res) => {
     const queryString = "INSERT INTO categories (name, categoryID, userID, description, isSubcategory, subcategoryID) VALUES (?, ?, ?, ?, ?, NULL)";
 
     connection.query(queryString, [newCategory.name, newCategory.categoryID, newCategory.userID, newCategory.description, newCategory.isSubcategory], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            console.log(`Create category ${newCategory.name}`);
+            res.sendStatus(200);
+        }
+    });
+});
+
+router.post("/api/advice/subcategories/", verifyToken, async (req, res) => {
+    const newSubCategory = req.body;
+
+    const queryString = "INSERT INTO categories (name, categoryID, userID, description, isSubcategory, subcategoryID) VALUES (?, ?, ?, NULL, ?, ?)";
+
+    connection.query(queryString, [newSubCategory.name, newSubCategory.categoryID, newSubCategory.userID, 1, newSubCategory.subcategoryID], (err, results, fields) => {
         if (err) {
             console.log(err);
             res.sendStatus(500);

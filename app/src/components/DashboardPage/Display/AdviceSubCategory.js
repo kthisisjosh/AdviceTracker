@@ -4,9 +4,13 @@ import Advice from "./Advice"
 
 const AdviceSubCategory = (props) => {
     let isTwo = false
+    let isNone = false;
 
     if (props.advice.length > 1) {
         isTwo = true
+    }
+    if (props.advice.length === 0) {
+        isNone = true;
     }
 
     return (
@@ -19,13 +23,14 @@ const AdviceSubCategory = (props) => {
                         </Typography>
                     </Grid>
                     <Grid item style={{ marginBottom: "0.5vh" }}>
-                        {isTwo && (
+                        {(isTwo && !isNone) && (
                             <>
                                 <Advice content={props.advice[0].content} key={props.advice[0].adviceID} />
                                 <Advice content={props.advice[1].content} key={props.advice[1].adviceID} />
                             </>
                         )}
-                        {!isTwo && <Advice content={props.advice[0].content} key={props.advice[0].adviceID} />}
+                        {(!isTwo && !isNone) && <Advice content={props.advice[0].content} key={props.advice[0].adviceID} />}
+                        {isNone && <Advice content="There is currently no advice here, add some!" key="123"/>}
                     </Grid>
                     <Grid item style={{ marginTop: "-0.75vh", marginBottom: "-0.5vh" }}>
                         <Typography variant="button" style={{ color: "#0047FF" }}>
