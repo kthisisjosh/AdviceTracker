@@ -17,9 +17,12 @@ export const Footer = () => {
                 display: "inline-block",
             }}
         >
-            <div style={{marginTop: "5vh"}}>
+            <div style={{ marginTop: "5vh" }}>
                 <a href="/">
-                    <img alt="logo" src={darkMode.value ? "./AdviceLogoLight.png" : "./AdviceLogo.png"} />
+                    <img
+                        alt="logo"
+                        src={darkMode.value ? "https://advicetracker.life/AdviceLogoLight.png" : "https://advicetracker.life/AdviceLogo.png"}
+                    />
                 </a>
             </div>
 
