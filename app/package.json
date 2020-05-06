@@ -53,5 +53,6 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "https://advicetracker.life/"
+    "proxy": "https://advicetracker.life/",
+    "homepage": "https://advicetracker.life/"
 }
