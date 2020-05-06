@@ -33,7 +33,7 @@ Array [
         >
           <img
             alt="logo"
-            src="./AdviceLogoLight.png"
+            src="https://advicetracker.life/AdviceLogoLight.png"
           />
         </a>
       </div>
@@ -66,7 +66,7 @@ Array [
                   alt="moon"
                   aria-hidden={true}
                   height="14"
-                  src="./moon.png"
+                  src="https://advicetracker.life/moon.png"
                   style={
                     Object {
                       "pointerEvents": "none",
@@ -82,7 +82,7 @@ Array [
                   alt="sun"
                   aria-hidden={true}
                   height="14"
-                  src="./sun.png"
+                  src="https://advicetracker.life/sun.png"
                   style={
                     Object {
                       "pointerEvents": "none",
@@ -363,7 +363,7 @@ Array [
                 alt="moon"
                 aria-hidden={true}
                 height="14"
-                src="./moon.png"
+                src="https://advicetracker.life/moon.png"
                 style={
                   Object {
                     "pointerEvents": "none",
@@ -379,7 +379,7 @@ Array [
                 alt="sun"
                 aria-hidden={true}
                 height="14"
-                src="./sun.png"
+                src="https://advicetracker.life/sun.png"
                 style={
                   Object {
                     "pointerEvents": "none",
@@ -836,7 +836,7 @@ Array [
       >
         <img
           alt="logo"
-          src="./AdviceLogo.png"
+          src="https://advicetracker.life/AdviceLogo.png"
         />
       </a>
     </div>
