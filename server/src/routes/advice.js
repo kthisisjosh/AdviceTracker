@@ -14,41 +14,56 @@ const connection = mysql.createConnection({
 router.get("/api/advice/:id", async (req, res) => {
     const categories = [];
 
-    connection.query("SELECT * FROM categories WHERE isSubcategory = 0 AND userID =" + req.params.id + ";", async (err, results, fields) => {
+    connection.query("SELECT * FROM categories WHERE isSubcategory = 0 AND userID =" + req.params.id + ";", (err, results, fields) => {
         if (!err) {
-            results.map((result) => {
-                let categoryToAdd = {
-                    name: result.name,
-                    categoryID: result.categoryID,
-                    description: result.description,
-                    subcategories: [],
-                };
-                connection.query('SELECT * FROM categories WHERE categoryID = "' + categoryToAdd.categoryID + '" AND isSubcategory = 1;', async (err, results, fields) => {
-                    if (!err) {
-                        results = JSON.parse(JSON.stringify(results));
-
-                        results.map((result) => categoryToAdd.subcategories.push({ name: result.name, subcategoryID: result.subcategoryID, advice: [] }));
-
-                        categoryToAdd.subcategories.map((subcategory) => {
-                            connection.query("SELECT * FROM advice WHERE subcategoryID = " + subcategory.subcategoryID + " AND inInbox = 0;", async (err, results, fields) => {
+            try {
+                results.map((result) => {
+                    let categoryToAdd = {
+                        name: result.name,
+                        categoryID: result.categoryID,
+                        description: result.description,
+                        subcategories: [],
+                    };
+                    connection.query('SELECT * FROM categories WHERE categoryID = "' + categoryToAdd.categoryID + '" AND isSubcategory = 1;', (err, results, fields) => {
+                        if (!err) {
+                            try {
                                 results = JSON.parse(JSON.stringify(results));
+                            } catch {
+                                console.log("try catch 2");
+                                res.json(categories);
+                            }
 
-                                results.map((result) => subcategory.advice.push({ adviceID: result.adviceID, content: result.content }));
+                            results.map((result) => categoryToAdd.subcategories.push({ name: result.name, subcategoryID: result.subcategoryID, advice: [] }));
+
+                            categoryToAdd.subcategories.map((subcategory) => {
+                                connection.query("SELECT * FROM advice WHERE subcategoryID = '" + subcategory.subcategoryID + "' AND inInbox = 0;", (err, results, fields) => {
+                                    try {
+                                        results = JSON.parse(JSON.stringify(results));
+                                    } catch {
+                                        console.log("try catch 3");
+                                        res.json(categories);
+                                    }
+
+                                    results.map((result) => subcategory.advice.push({ adviceID: result.adviceID, content: result.content }));
+                                });
                             });
-                        });
-                        categories.push(categoryToAdd);
-                    } else {
-                        console.log(err);
-                    }
+                            categories.push(categoryToAdd);
+                        } else {
+                            console.log(err);
+                        }
+                    });
                 });
-            });
+            } catch {
+                console.log("try catch");
+                res.json(categories);
+            }
         } else {
             console.log(err);
         }
     });
     setTimeout(() => {
         res.json(categories);
-    }, 650);
+    }, 1250);
 });
 
 router.get("/api/advice/inbox/:id", verifyToken, async (req, res) => {
@@ -129,7 +144,7 @@ router.post("/api/advice/subcategories/", verifyToken, async (req, res) => {
             console.log(err);
             res.sendStatus(500);
         } else {
-            console.log(`Create category ${newCategory.name}`);
+            console.log(`Create subcategory ${newSubCategory.name}`);
             res.sendStatus(200);
         }
     });

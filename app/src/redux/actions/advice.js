@@ -1,4 +1,12 @@
-import { GET_INBOX_ADVICE, SUBMIT_INBOX_ADVICE, DELETE_INBOX_ADVICE, GET_ADVICE, SUBMIT_CATEGORY, SUBMIT_ADVICE } from "../types/advice"
+import {
+    GET_INBOX_ADVICE,
+    SUBMIT_INBOX_ADVICE,
+    DELETE_INBOX_ADVICE,
+    GET_ADVICE,
+    SUBMIT_CATEGORY,
+    SUBMIT_ADVICE,
+    SUBMIT_SUBCATEGORY,
+} from "../types/advice"
 import { v4 as uuidv4 } from "uuid"
 
 export const getInboxAdvice = (id) => async (dispatch) => {
@@ -83,9 +91,10 @@ export const submitAdvice = (advice, category, currSubcategory, id) => async (di
 
         const newSubcategory = { ...currSubcategory, advice: [newAdvice, ...currSubcategory.advice] }
 
-        const newCategory = { ...category, subcategories: [newSubcategory, ...filteredSubcategories] }
+        const updatedCategory = { ...category, subcategories: [newSubcategory, ...filteredSubcategories] }
 
-        dispatch({ type: SUBMIT_ADVICE, payload: newCategory })
+        dispatch({ type: SUBMIT_ADVICE, payload: updatedCategory })
+
         await fetch(url, {
             method: "POST",
             headers: {
@@ -103,7 +112,7 @@ export const submitCategory = (category, id) => async (dispatch) => {
     try {
         const url = "https://advicetracker.life/api/advice/categories/"
         const token = localStorage.getItem("jwtToken")
-        const newCategory = {
+        const updatedCategory = {
             name: category.title,
             categoryID: uuidv4(),
             userID: id,
@@ -117,9 +126,39 @@ export const submitCategory = (category, id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(newCategory),
+            body: JSON.stringify(updatedCategory),
         }).then(() => {
-            dispatch({ type: SUBMIT_CATEGORY, payload: { ...newCategory, subcategories: [] } })
+            dispatch({ type: SUBMIT_CATEGORY, payload: { ...updatedCategory, subcategories: [] } })
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const submitSubCategory = (name, category, id) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/advice/subcategories/"
+        const token = localStorage.getItem("jwtToken")
+        const newSubCategory = {
+            name: name,
+            categoryID: category.categoryID,
+            userID: id,
+            description: null,
+            isSubcategory: 1,
+            subcategoryID: uuidv4(),
+            advice: [],
+        }
+
+        const updatedCategory = { ...category, subcategories: [newSubCategory, ...category.subcategories] }
+
+        dispatch({ type: SUBMIT_SUBCATEGORY, payload: updatedCategory })
+        await fetch(url, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newSubCategory),
         })
     } catch (error) {
         console.log(error)
