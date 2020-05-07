@@ -6,21 +6,22 @@ import { Grid } from "@material-ui/core"
 import { connect } from "react-redux"
 import Title from "../../components/DashboardPage/Category/Title"
 import AdviceSubCategory from "../../components/DashboardPage/Display/AdviceSubCategory"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
-import { submitSubCategory } from "../../redux/actions/advice"
+import { submitSubCategory, deleteSubCategory, getAdvice } from "../../redux/actions/advice"
 import NewSubCategory from "../../components/DashboardPage/Category/NewSubCategory"
 
 const CategoryPage = (props) => {
-    const { categories, match, submitSubCategory, user } = props
+    const { categories, match, submitSubCategory, user, deleteSubCategory } = props
     const [currCategory, setCurrCategory] = useState({ test: "Test", subcategories: [] })
     const [toAddSubCategory, setToAddSubCategory] = useState(false)
     const [subCategoryName, setSubCategoryName] = useState("")
+    const history = useHistory()
 
     useEffect(() => {
         const foundCategory = categories.find((category) => category.categoryID === match.params.id)
         setCurrCategory(foundCategory)
-    }, [categories])
+    }, [categories, user.userID])
 
     const handleAddClick = () => {
         setToAddSubCategory(true)
@@ -33,8 +34,12 @@ const CategoryPage = (props) => {
     }
 
     const handleChange = (e) => {
-        console.log(e.target.value)
         setSubCategoryName(e.target.value)
+    }
+
+    const handleSubCategoryDelete = (category, subcategoryID) => {
+        history.push("/dashboard/category/" + currCategory.categoryID)
+        deleteSubCategory(category, subcategoryID)
     }
 
     return (
@@ -53,6 +58,8 @@ const CategoryPage = (props) => {
                         title={subcategory.name}
                         key={subcategory.subcategoryID}
                         advice={subcategory.advice}
+                        category={currCategory}
+                        handleDelete={handleSubCategoryDelete}
                     />
                 ))}
             </Grid>
@@ -66,6 +73,6 @@ const mapStateToProps = ({ adviceState, authState }) => ({
     user: authState.user,
 })
 
-const mapDispatchToProps = { submitSubCategory }
+const mapDispatchToProps = { submitSubCategory, deleteSubCategory, getAdvice }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage)

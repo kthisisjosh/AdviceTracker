@@ -6,7 +6,15 @@ import Inbox from "../../components/DashboardPage/Inbox/Inbox"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 
-import { getInboxAdvice, getAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory, deleteCategory } from "../../redux/actions/advice"
+import {
+    getInboxAdvice,
+    getAdvice,
+    submitInboxAdvice,
+    deleteInboxAdvice,
+    submitCategory,
+    deleteCategory,
+    deleteSubCategory,
+} from "../../redux/actions/advice"
 import { useHistory } from "react-router-dom"
 import { Grid, Typography } from "@material-ui/core"
 import Display from "../../components/DashboardPage/Display/Display"
@@ -17,6 +25,7 @@ const DashboardPage = (props) => {
         getAdvice,
         deleteInboxAdvice,
         deleteCategory,
+        deleteSubCategory,
         inboxAdvice,
         submitCategory,
         submitInboxAdvice,
@@ -82,6 +91,10 @@ const DashboardPage = (props) => {
         deleteCategory(categoryID)
     }
 
+    const handleSubCategoryDelete = (category, subcategoryID) => {
+        deleteSubCategory(category, subcategoryID)
+    }
+
     return (
         <Fragment>
             <Helmet>
@@ -112,6 +125,7 @@ const DashboardPage = (props) => {
                     toAdd={toAddCategory}
                     categories={categories}
                     handleCategoryDelete={handleCategoryDelete}
+                    handleSubCategoryDelete={handleSubCategoryDelete}
                 />
             )}
 
@@ -130,6 +144,6 @@ const mapStateToProps = ({ adviceState, authState }) => ({
     categories: adviceState.categories,
 })
 
-const mapDispatchToProps = { getAdvice, getInboxAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory, deleteCategory }
+const mapDispatchToProps = { getAdvice, getInboxAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory, deleteCategory, deleteSubCategory }
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)

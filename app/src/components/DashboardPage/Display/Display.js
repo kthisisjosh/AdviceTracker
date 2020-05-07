@@ -21,7 +21,9 @@ const Display = (props) => {
                     subcategories={category.subcategories}
                     categoryID={category.categoryID}
                     handleDelete={props.handleCategoryDelete}
+                    category={category}
                     key={category.categoryID}
+                    handleSubCategoryDelete={props.handleSubCategoryDelete}
                 />
             ))}
         </Grid>

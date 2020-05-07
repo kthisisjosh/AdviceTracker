@@ -34,15 +34,21 @@ const AdviceCategory = (props) => {
                     </Grid>
 
                     {props.subcategories.length === 0 && (
-                        <AdviceSubCategory title="There is currently no advice in this category." advice={[{ content: "<p>Add some!</p>" }]} />
+                        <AdviceSubCategory
+                            handleDelete={props.handleSubCategoryDelete}
+                            title="There is currently no advice in this category."
+                            advice={[{ content: "<p>Add some!</p>" }]}
+                        />
                     )}
                     {props.subcategories.length !== 0 &&
                         props.subcategories.map((subcategory) => (
                             <AdviceSubCategory
+                                category={props.category}
                                 subcategoryID={subcategory.subcategoryID}
                                 title={subcategory.name}
                                 key={subcategory.subcategoryID}
                                 advice={subcategory.advice}
+                                handleDelete={props.handleSubCategoryDelete}
                             />
                         ))}
                 </Grid>

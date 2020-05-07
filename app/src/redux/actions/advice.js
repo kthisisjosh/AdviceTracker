@@ -205,7 +205,7 @@ export const deleteCategory = (id) => async (dispatch) => {
 export const deleteSubCategory = (category, id) => async (dispatch) => {
     try {
         const filteredSubcategories = category.subcategories.filter((subcategory) => subcategory.subcategoryID !== id)
-        dispatch({ type: DELETE_SUBCATEGORY, payload: { ...category, subcategories: [filteredSubcategories] } })
+        dispatch({ type: DELETE_SUBCATEGORY, payload: { ...category, subcategories: filteredSubcategories } })
         const token = localStorage.getItem("jwtToken")
         const url = "https://advicetracker.life/api/advice/subcategories/" + id
         await fetch(url, {

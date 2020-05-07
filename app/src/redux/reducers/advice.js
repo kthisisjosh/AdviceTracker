@@ -37,9 +37,12 @@ export default (state = initialState, action) => {
                 categories: state.categories.filter((category) => category.categoryID !== action.payload),
             }
         case DELETE_SUBCATEGORY:
+            const filteredCategories3 = state.categories.filter((category) => {
+                return category.categoryID !== action.payload.categoryID
+            })
             return {
                 ...state,
-                categories: [...state.categories, action.payload],
+                categories: [...filteredCategories3, action.payload],
             }
         case GET_ADVICE:
             return {
