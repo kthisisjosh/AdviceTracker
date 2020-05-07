@@ -27,7 +27,7 @@ const Header = (props) => {
         <header id="header" style={{ margin: "0", backgroundColor: "#434343" }}>
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
                 <Grid item className="landing-logo" style={{ marginLeft: "14vw", marginTop: "1vh" }}>
-                    <a href="/">
+                    <a href={isAuthenticated ? "/dashboard/" : "/"}>
                         <motion.img
                             initial={{ scale: 1 }}
                             whileHover={{ scale: 1.05 }}
