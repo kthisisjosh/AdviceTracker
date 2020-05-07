@@ -26,7 +26,7 @@ exports[`<Footer /> should render and match the snapshot 1`] = `
     >
       <img
         alt="logo"
-        src="./AdviceLogo.png"
+        src="https://advicetracker.life/AdviceLogo.png"
       />
     </a>
   </div>

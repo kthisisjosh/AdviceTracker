@@ -8,7 +8,6 @@ var Events = Scroll.Events
 var scrollSpy = Scroll.scrollSpy
 
 const InboxScrollPane = (props) => {
-
     useEffect(() => {
         Events.scrollEvent.register("begin", function () {
             console.log("begin", arguments)
@@ -31,7 +30,8 @@ const InboxScrollPane = (props) => {
             style={{
                 overflow: "scroll",
                 overflowX: "hidden",
-                height: "18vw",
+                height: "auto",
+                minHeight: "18vw",
                 width: "100%",
                 marginTop: "1vh",
             }}
@@ -39,7 +39,12 @@ const InboxScrollPane = (props) => {
             {props.toAdd && <AddElement handleEditorChange={props.handleEditorChange} handleSubmit={props.handleSubmit} />}
 
             {props.inbox.map((advice) => (
-                <InboxElement advice={advice} handleAddToCategory={props.handleAddToCategory} handleDelete={props.handleDelete} key={advice.adviceID} />
+                <InboxElement
+                    advice={advice}
+                    handleAddToCategory={props.handleAddToCategory}
+                    handleDelete={props.handleDelete}
+                    key={advice.adviceID}
+                />
             ))}
         </Element>
     )

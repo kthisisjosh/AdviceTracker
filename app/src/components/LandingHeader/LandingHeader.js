@@ -14,21 +14,42 @@ const Header = () => {
     return (
         <header id="header" style={{ margin: "0" }}>
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
-                <Grid item className="landing-logo" style={{marginLeft: "14vw", marginTop:"1vh"}}>
+                <Grid item className="landing-logo" style={{ marginLeft: "14vw", marginTop: "1vh" }}>
                     <a href="/">
-                        <img alt="logo" src={darkMode.value ? "./AdviceLogoLight.png": "./AdviceLogo.png"}/>
+                        <img
+                            alt="logo"
+                            src={darkMode.value ? "https://advicetracker.life/AdviceLogoLight.png" : "https://advicetracker.life/AdviceLogo.png"}
+                        />
                     </a>
                 </Grid>
 
                 <Grid item style={{ marginLeft: "auto", marginRight: "5vw" }}>
                     <Grid item className="toggle-grid" md={6}>
                         <Toggle
-                        className="react-toggle-small"
+                            className="react-toggle-small"
                             defaultChecked={darkMode.value}
                             onChange={darkMode.toggle}
                             icons={{
-                                checked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="moon" aria-hidden src={"./moon.png"} />,
-                                unchecked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="sun" aria-hidden src={"./sun.png"} />,
+                                checked: (
+                                    <img
+                                        style={{ pointerEvents: "none" }}
+                                        width="16"
+                                        height="14"
+                                        alt="moon"
+                                        aria-hidden
+                                        src={"https://advicetracker.life/moon.png"}
+                                    />
+                                ),
+                                unchecked: (
+                                    <img
+                                        style={{ pointerEvents: "none" }}
+                                        width="16"
+                                        height="14"
+                                        alt="sun"
+                                        aria-hidden
+                                        src={"https://advicetracker.life/sun.png"}
+                                    />
+                                ),
                             }}
                         />
                     </Grid>
@@ -44,16 +65,34 @@ const Header = () => {
                     </Grid>
                 </Grid>
 
-                <Grid item className="navbar-grid" style={{ marginLeft: "auto", textAlign: "center"}}>
+                <Grid item className="navbar-grid" style={{ marginLeft: "auto", textAlign: "center" }}>
                     <Toggle
                         defaultChecked={darkMode.value}
                         onChange={darkMode.toggle}
                         icons={{
-                            checked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="moon" aria-hidden src={"./moon.png"} />,
-                            unchecked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="sun" aria-hidden src={"./sun.png"} />,
+                            checked: (
+                                <img
+                                    style={{ pointerEvents: "none" }}
+                                    width="16"
+                                    height="14"
+                                    alt="moon"
+                                    aria-hidden
+                                    src={"https://advicetracker.life/moon.png"}
+                                />
+                            ),
+                            unchecked: (
+                                <img
+                                    style={{ pointerEvents: "none" }}
+                                    width="16"
+                                    height="14"
+                                    alt="sun"
+                                    aria-hidden
+                                    src={"https://advicetracker.life/sun.png"}
+                                />
+                            ),
                         }}
                     />
-                    <Link to="/browse" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none"}}>
+                    <Link to="/browse" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
                         <Typography variant="button" style={{ textDecoration: "none" }}>
                             Browse
                         </Typography>
