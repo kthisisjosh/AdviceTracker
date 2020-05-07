@@ -10,6 +10,7 @@ import { Link, useHistory } from "react-router-dom"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 import { submitSubCategory, deleteSubCategory, getAdvice } from "../../redux/actions/advice"
 import NewSubCategory from "../../components/DashboardPage/Category/NewSubCategory"
+import { motion, AnimatePresence } from "framer-motion"
 
 const CategoryPage = (props) => {
     const { categories, match, submitSubCategory, user, deleteSubCategory } = props
@@ -51,17 +52,24 @@ const CategoryPage = (props) => {
                     <Title name={currCategory.name} description={currCategory.description} isDescription={true} />
                     <AddNewButton handleAddClick={handleAddClick} />
                 </Grid>
-                {toAddSubCategory && <NewSubCategory handleChange={handleChange} handleSubmit={handleSubmit} />}
-                {currCategory.subcategories.map((subcategory) => (
-                    <AdviceSubCategory
-                        subcategoryID={subcategory.subcategoryID}
-                        title={subcategory.name}
-                        key={subcategory.subcategoryID}
-                        advice={subcategory.advice}
-                        category={currCategory}
-                        handleDelete={handleSubCategoryDelete}
-                    />
-                ))}
+                {toAddSubCategory && (
+                    <motion.div initial={{ scale: 1, opacity: 0 }} animate={{ opacity: 1 }} positionTransition>
+                        <NewSubCategory handleChange={handleChange} handleSubmit={handleSubmit} />
+                    </motion.div>
+                )}
+
+                <AnimatePresence>
+                    {currCategory.subcategories.map((subcategory) => (
+                        <AdviceSubCategory
+                            subcategoryID={subcategory.subcategoryID}
+                            title={subcategory.name}
+                            key={subcategory.subcategoryID}
+                            advice={subcategory.advice}
+                            category={currCategory}
+                            handleDelete={handleSubCategoryDelete}
+                        />
+                    ))}
+                </AnimatePresence>
             </Grid>
             <Footer />
         </Fragment>

@@ -8,16 +8,16 @@ import { motion } from "framer-motion"
 const AdviceCategory = (props) => {
     return (
         <Grid style={{ width: "100%", height: "auto", marginBottom: "2vh" }}>
-            <motion.div
-                initial={{ scale: 1, opacity: 0 }}
-                animate={{ opacity: 1 }}
-                whileHover={{ scale: 1.01 }}
-                exit={{ opacity: 0, scale: 0 }}
-                positionTransition
-            >
-                <Paper style={{ padding: "0.25vh 1vw 1vh 1vw" }}>
-                    <Grid container direction="column">
-                        <Grid container direction="row">
+            <Paper style={{ padding: "0.25vh 1vw 1vh 1vw" }}>
+                <Grid container direction="column">
+                    <Grid container direction="row">
+                        <motion.div
+                            initial={{ scale: 1, opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            whileHover={{ scale: 1.01 }}
+                            exit={{ opacity: 0, scale: 0 }}
+                            positionTransition
+                        >
                             <Grid item>
                                 <Link to={`/dashboard/category/${props.categoryID}`} style={{ textDecoration: "none" }} key={props.categoryID}>
                                     <Grid item>
@@ -31,37 +31,37 @@ const AdviceCategory = (props) => {
                                     </Grid>
                                 </Link>
                             </Grid>
+                        </motion.div>
 
-                            <Grid item style={{ marginLeft: "auto" }}>
-                                <Tooltip title="Delete">
-                                    <IconButton onClick={() => props.handleDelete(props.categoryID)} aria-label="delete">
-                                        <DeleteIcon />
-                                    </IconButton>
-                                </Tooltip>
-                            </Grid>
+                        <Grid item style={{ marginLeft: "auto" }}>
+                            <Tooltip title="Delete">
+                                <IconButton onClick={() => props.handleDelete(props.categoryID)} aria-label="delete">
+                                    <DeleteIcon />
+                                </IconButton>
+                            </Tooltip>
                         </Grid>
-
-                        {props.subcategories.length === 0 && (
-                            <AdviceSubCategory
-                                handleDelete={props.handleSubCategoryDelete}
-                                title="There is currently no advice in this category."
-                                advice={[{ content: "<p>Add some!</p>" }]}
-                            />
-                        )}
-                        {props.subcategories.length !== 0 &&
-                            props.subcategories.map((subcategory) => (
-                                <AdviceSubCategory
-                                    category={props.category}
-                                    subcategoryID={subcategory.subcategoryID}
-                                    title={subcategory.name}
-                                    key={subcategory.subcategoryID}
-                                    advice={subcategory.advice}
-                                    handleDelete={props.handleSubCategoryDelete}
-                                />
-                            ))}
                     </Grid>
-                </Paper>
-            </motion.div>
+
+                    {props.subcategories.length === 0 && (
+                        <AdviceSubCategory
+                            handleDelete={props.handleSubCategoryDelete}
+                            title="There is currently no advice in this category."
+                            advice={[{ content: "<p>Add some!</p>" }]}
+                        />
+                    )}
+                    {props.subcategories.length !== 0 &&
+                        props.subcategories.map((subcategory) => (
+                            <AdviceSubCategory
+                                category={props.category}
+                                subcategoryID={subcategory.subcategoryID}
+                                title={subcategory.name}
+                                key={subcategory.subcategoryID}
+                                advice={subcategory.advice}
+                                handleDelete={props.handleSubCategoryDelete}
+                            />
+                        ))}
+                </Grid>
+            </Paper>
         </Grid>
     )
 }
