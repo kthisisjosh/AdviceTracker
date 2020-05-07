@@ -35,6 +35,11 @@ Array [
           <img
             alt="logo"
             src="https://advicetracker.life/AdviceLogoLight.png"
+            style={
+              Object {
+                "transform": "none",
+              }
+            }
           />
         </a>
       </div>
@@ -701,16 +706,7 @@ Array [
         "height": "500px",
       }
     }
-  >
-    <h2
-      className="MuiTypography-root MuiTypography-h2 MuiTypography-alignCenter"
-      style={
-        Object {
-          "marginTop": "200px",
-        }
-      }
-    />
-  </div>,
+  />,
   <footer
     style={
       Object {
