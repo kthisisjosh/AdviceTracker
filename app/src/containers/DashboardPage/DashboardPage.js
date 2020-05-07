@@ -7,7 +7,7 @@ import Display from "../../components/DashboardPage/Display/Display"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 import { useHistory } from "react-router-dom"
-import { Grid, Typography } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 
 import {
     getInboxAdvice,

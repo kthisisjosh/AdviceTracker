@@ -19,8 +19,8 @@ const AdviceSubCategory = (props) => {
     return (
         <Grid item style={{ marginTop: "1vh", width: "auto" }}>
             <motion.div
-                initial={{ scale: 1, opacity: 0 }}
-                animate={{ opacity: 1 }}
+                initial={{ scale: 0.7, opacity: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
                 whileHover={{ scale: 1.01 }}
                 exit={{ opacity: 0, scale: 0 }}
                 positionTransition

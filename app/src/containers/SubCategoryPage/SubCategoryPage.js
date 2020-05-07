@@ -54,7 +54,7 @@ const SubCategoryPage = (props) => {
                 <Grid item style={{ marginTop: "2vh" }}>
                     <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto", height: "auto" }}>
                         {toAddAdvice && (
-                            <motion.div initial={{ scale: 1, opacity: 0 }} animate={{ opacity: 1 }} positionTransition>
+                            <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ opacity: 1, scale: 1 }} positionTransition>
                                 <NewAdvice handleEditorChange={handleEditorChange} handleSubmit={handleAdviceSubmit} />{" "}
                             </motion.div>
                         )}
@@ -62,8 +62,8 @@ const SubCategoryPage = (props) => {
                         <AnimatePresence>
                             {currSubCategory.advice.map((advice) => (
                                 <motion.div
-                                    initial={{ scale: 1, opacity: 0 }}
-                                    animate={{ opacity: 1 }}
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
                                     whileHover={{ scale: 1.01 }}
                                     exit={{ opacity: 0, scale: 0 }}
                                     positionTransition
