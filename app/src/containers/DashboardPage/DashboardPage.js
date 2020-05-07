@@ -3,8 +3,11 @@ import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import Inbox from "../../components/DashboardPage/Inbox/Inbox"
+import Display from "../../components/DashboardPage/Display/Display"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
+import { useHistory } from "react-router-dom"
+import { Grid } from "@material-ui/core"
 
 import {
     getInboxAdvice,
@@ -15,9 +18,6 @@ import {
     deleteCategory,
     deleteSubCategory,
 } from "../../redux/actions/advice"
-import { useHistory } from "react-router-dom"
-import { Grid, Typography } from "@material-ui/core"
-import Display from "../../components/DashboardPage/Display/Display"
 
 const DashboardPage = (props) => {
     const {
@@ -67,6 +67,8 @@ const DashboardPage = (props) => {
         }
     }
 
+    // --------- Inbox --------- \\
+
     const handleAddClickInbox = () => {
         setToAddInbox(true)
     }
@@ -86,6 +88,8 @@ const DashboardPage = (props) => {
     const handleDelete = (advice) => {
         deleteInboxAdvice(advice)
     }
+
+    // --------- Display --------- \\
 
     const handleCategoryDelete = (categoryID) => {
         deleteCategory(categoryID)
@@ -116,7 +120,6 @@ const DashboardPage = (props) => {
                 handleEditorChange={handleEditorChange}
                 toAdd={toAddInbox}
             />
-
             {true && (
                 <Display
                     handleAddClick={handleAddClickCategory}
@@ -128,10 +131,7 @@ const DashboardPage = (props) => {
                     handleSubCategoryDelete={handleSubCategoryDelete}
                 />
             )}
-
-            <Grid style={{ height: "500px" }}>
-                <Typography style={{ marginTop: "200px" }} align="center" variant="h2"></Typography>
-            </Grid>
+            <Grid style={{ height: "500px" }} />
             <Footer />
         </Fragment>
     )

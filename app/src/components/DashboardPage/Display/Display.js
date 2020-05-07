@@ -3,6 +3,7 @@ import { Grid, Typography } from "@material-ui/core"
 import AddNewButton from "../Inbox/AddNewButton"
 import AdviceCategory from "./AdviceCategory.js"
 import AddNewCategory from "./AddNewCategory"
+import { motion, AnimatePresence } from "framer-motion"
 
 const Display = (props) => {
     return (
@@ -13,19 +14,27 @@ const Display = (props) => {
                 </Typography>
                 <AddNewButton handleAddClick={props.handleAddClick} />
             </Grid>
-            {props.toAdd && <AddNewCategory handleSubmit={props.handleSubmit} handleChange={props.handleChange} />}
-            {props.categories.map((category) => (
-                <AdviceCategory
-                    title={category.name}
-                    description={category.description}
-                    subcategories={category.subcategories}
-                    categoryID={category.categoryID}
-                    handleDelete={props.handleCategoryDelete}
-                    category={category}
-                    key={category.categoryID}
-                    handleSubCategoryDelete={props.handleSubCategoryDelete}
-                />
-            ))}
+
+            {props.toAdd && (
+                <motion.div initial={{ scale: 1, opacity: 0 }} animate={{ opacity: 1 }} positionTransition>
+                    <AddNewCategory handleSubmit={props.handleSubmit} handleChange={props.handleChange} />
+                </motion.div>
+            )}
+
+            <AnimatePresence>
+                {props.categories.map((category) => (
+                    <AdviceCategory
+                        title={category.name}
+                        description={category.description}
+                        subcategories={category.subcategories}
+                        categoryID={category.categoryID}
+                        handleDelete={props.handleCategoryDelete}
+                        category={category}
+                        key={category.categoryID}
+                        handleSubCategoryDelete={props.handleSubCategoryDelete}
+                    />
+                ))}
+            </AnimatePresence>
         </Grid>
     )
 }

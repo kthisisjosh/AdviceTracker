@@ -1,17 +1,21 @@
 import React from "react"
-import { Grid, Typography, Grow } from "@material-ui/core"
+import { Grid, Typography } from "@material-ui/core"
+import { motion } from "framer-motion"
 
 const BodyB = () => {
     return (
         <Grid container style={{ marginTop: "5vh", marginBottom: "10vh" }}>
             <Grid className="landing-bodyb-demo" item md={6} xs={12} style={{ textAlign: "center" }}>
-                <Grow in={true} timeout={1750}>
-                    <img
-                        alt="demo"
-                        style={{ height: "450px", width: "550px", margin: "auto", marginLeft: "2vw", borderRadius: "15px" }}
-                        src="./login-sample3.png"
-                    />
-                </Grow>
+                <motion.img
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                        default: { duration: 0.75 },
+                    }}
+                    alt="demo"
+                    style={{ height: "450px", width: "550px", margin: "auto", marginLeft: "2vw", borderRadius: "15px" }}
+                    src="./login-sample3.png"
+                />
             </Grid>
 
             <Grid item className="landing-bodyb" md={6} xs={12} style={{ height: "auto", display: "block", width: "100vw", textAlign: "center" }}>
@@ -25,7 +29,8 @@ const BodyB = () => {
                         </Typography>
                         <Typography className="landing-bodyb-body2" variant="body2" align="right">
                             If you're feeling generous, share your advice with others! Submit it under a specific category to reach the people who
-                            will benefit the most - teenagers looking for ways to maximize their youth, adults who are looking to find purpose, and more.
+                            will benefit the most - teenagers looking for ways to maximize their youth, adults who are looking to find purpose, and
+                            more.
                         </Typography>
                     </Grid>
                     <Grid item style={{ marginTop: "25px" }}>

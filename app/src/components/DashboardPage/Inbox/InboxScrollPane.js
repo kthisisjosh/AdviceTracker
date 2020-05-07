@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import Scroll from "react-scroll"
 import InboxElement from "./InboxElement"
 import AddElement from "./AddElement"
+import { motion, AnimatePresence } from "framer-motion"
 
 var Element = Scroll.Element
 var Events = Scroll.Events
@@ -36,16 +37,22 @@ const InboxScrollPane = (props) => {
                 marginTop: "1vh",
             }}
         >
-            {props.toAdd && <AddElement handleEditorChange={props.handleEditorChange} handleSubmit={props.handleSubmit} />}
+            {props.toAdd && (
+                <motion.div initial={{ scale: 1, opacity: 0 }} animate={{ opacity: 1 }} positionTransition>
+                    <AddElement handleEditorChange={props.handleEditorChange} handleSubmit={props.handleSubmit} />
+                </motion.div>
+            )}
 
-            {props.inbox.map((advice) => (
-                <InboxElement
-                    advice={advice}
-                    handleAddToCategory={props.handleAddToCategory}
-                    handleDelete={props.handleDelete}
-                    key={advice.adviceID}
-                />
-            ))}
+            <AnimatePresence>
+                {props.inbox.map((advice) => (
+                    <InboxElement
+                        advice={advice}
+                        handleAddToCategory={props.handleAddToCategory}
+                        handleDelete={props.handleDelete}
+                        key={advice.adviceID}
+                    />
+                ))}
+            </AnimatePresence>
         </Element>
     )
 }

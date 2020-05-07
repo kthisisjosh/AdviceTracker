@@ -9,6 +9,7 @@ import Advice from "../../components/DashboardPage/Display/Advice"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 import NewAdvice from "../../components/DashboardPage/Category/NewAdvice"
 import { submitAdvice } from "../../redux/actions/advice"
+import { motion, AnimatePresence } from "framer-motion"
 
 const SubCategoryPage = (props) => {
     const { categories, match, submitAdvice, user } = props
@@ -51,11 +52,26 @@ const SubCategoryPage = (props) => {
                     <AddNewButton handleAddClick={handleAddClick} />
                 </Grid>
                 <Grid item style={{ marginTop: "2vh" }}>
-                    <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
-                        {toAddAdvice && <NewAdvice handleEditorChange={handleEditorChange} handleSubmit={handleAdviceSubmit} />}
-                        {currSubCategory.advice.map((advice) => (
-                            <Advice editIcons={true} content={advice.content} key={advice.adviceID} />
-                        ))}
+                    <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto", height: "auto" }}>
+                        {toAddAdvice && (
+                            <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ opacity: 1, scale: 1 }} positionTransition>
+                                <NewAdvice handleEditorChange={handleEditorChange} handleSubmit={handleAdviceSubmit} />{" "}
+                            </motion.div>
+                        )}
+
+                        <AnimatePresence>
+                            {currSubCategory.advice.map((advice) => (
+                                <motion.div
+                                    initial={{ scale: 0.8, opacity: 0 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    whileHover={{ scale: 1.01 }}
+                                    exit={{ opacity: 0, scale: 0 }}
+                                    positionTransition
+                                >
+                                    <Advice editIcons={true} content={advice.content} key={advice.adviceID} />
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
                     </Paper>
                 </Grid>
             </Grid>

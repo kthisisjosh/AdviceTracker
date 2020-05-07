@@ -9,6 +9,7 @@ import useDarkMode from "use-dark-mode"
 import { Button } from "@material-ui/core"
 import { useDispatch } from "react-redux"
 import { LOGOUT } from "../../redux/types/auth"
+import { motion } from "framer-motion"
 
 const Header = (props) => {
     const { isAuthenticated } = props
@@ -26,8 +27,14 @@ const Header = (props) => {
         <header id="header" style={{ margin: "0", backgroundColor: "#434343" }}>
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
                 <Grid item className="landing-logo" style={{ marginLeft: "14vw", marginTop: "1vh" }}>
-                    <a href="/">
-                        <img alt="logo" src={"https://advicetracker.life/AdviceLogoLight.png"} />
+                    <a href={isAuthenticated ? "/dashboard/" : "/"}>
+                        <motion.img
+                            initial={{ scale: 1 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.999 }}
+                            alt="logo"
+                            src={"https://advicetracker.life/AdviceLogoLight.png"}
+                        />
                     </a>
                 </Grid>
 

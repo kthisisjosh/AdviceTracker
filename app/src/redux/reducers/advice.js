@@ -37,12 +37,12 @@ export default (state = initialState, action) => {
                 categories: state.categories.filter((category) => category.categoryID !== action.payload),
             }
         case DELETE_SUBCATEGORY:
-            const filteredCategories3 = state.categories.filter((category) => {
+            const filteredSubCategories = state.categories.filter((category) => {
                 return category.categoryID !== action.payload.categoryID
             })
             return {
                 ...state,
-                categories: [...filteredCategories3, action.payload],
+                categories: [...filteredSubCategories, action.payload],
             }
         case GET_ADVICE:
             return {
@@ -55,20 +55,20 @@ export default (state = initialState, action) => {
                 categories: [action.payload, ...state.categories],
             }
         case SUBMIT_SUBCATEGORY:
+            const filteredSubCategories2 = state.categories.filter((category) => {
+                return category.categoryID !== action.payload.categoryID
+            })
+            return {
+                ...state,
+                categories: [action.payload, ...filteredSubCategories2],
+            }
+        case SUBMIT_ADVICE:
             const filteredCategories = state.categories.filter((category) => {
                 return category.categoryID !== action.payload.categoryID
             })
             return {
                 ...state,
                 categories: [action.payload, ...filteredCategories],
-            }
-        case SUBMIT_ADVICE:
-            const filteredCategories2 = state.categories.filter((category) => {
-                return category.categoryID !== action.payload.categoryID
-            })
-            return {
-                ...state,
-                categories: [action.payload, ...filteredCategories2],
             }
         default:
             return state
