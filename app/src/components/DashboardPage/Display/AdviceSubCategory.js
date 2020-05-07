@@ -20,7 +20,7 @@ const AdviceSubCategory = (props) => {
             <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
                 <Grid container direction="column">
                     <Grid container direction="row" style={{ marginBottom: "0.5vh", marginTop: "-0.5vh" }}>
-                        <Grid item>
+                        <Grid item style={{ marginTop: "0.75vh" }}>
                             <Typography variant="h5" style={{ fontWeight: "bold" }}>
                                 {props.title}
                             </Typography>
