@@ -20,6 +20,7 @@ const Display = (props) => {
                     description={category.description}
                     subcategories={category.subcategories}
                     categoryID={category.categoryID}
+                    handleDelete={props.handleCategoryDelete}
                     key={category.categoryID}
                 />
             ))}

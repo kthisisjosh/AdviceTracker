@@ -41,20 +41,19 @@ const CategoryPage = (props) => {
         <Fragment>
             <Header />
             <Navbar />
-            <Grid container direction="column" style={{ margin: "2vh 15vw 2vh 15vw", width: "auto", height: "80vh" }}>
+            <Grid container direction="column" style={{ margin: "2vh 15vw 2vh 15vw", width: "auto", height: "auto", minHeight: "80vh" }}>
                 <Grid container>
                     <Title name={currCategory.name} description={currCategory.description} isDescription={true} />
                     <AddNewButton handleAddClick={handleAddClick} />
                 </Grid>
                 {toAddSubCategory && <NewSubCategory handleChange={handleChange} handleSubmit={handleSubmit} />}
                 {currCategory.subcategories.map((subcategory) => (
-                    <Link
-                        to={`/dashboard/subcategory/${subcategory.subcategoryID}`}
-                        style={{ textDecoration: "none" }}
+                    <AdviceSubCategory
+                        subcategoryID={subcategory.subcategoryID}
+                        title={subcategory.name}
                         key={subcategory.subcategoryID}
-                    >
-                        <AdviceSubCategory title={subcategory.name} key={subcategory.subcategoryID} advice={subcategory.advice} />
-                    </Link>
+                        advice={subcategory.advice}
+                    />
                 ))}
             </Grid>
             <Footer />

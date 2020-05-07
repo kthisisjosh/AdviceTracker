@@ -45,7 +45,7 @@ const SubCategoryPage = (props) => {
         <Fragment>
             <Header />
             <Navbar />
-            <Grid container direction="column" style={{ margin: "2vh 15vw 2vh 15vw", width: "auto", height: "80vh" }}>
+            <Grid container direction="column" style={{ margin: "2vh 15vw 2vh 15vw", width: "auto", height: "auto", minHeight: "80vh" }}>
                 <Grid container>
                     <Title name={currSubCategory.name} isDescription={false} />
                     <AddNewButton handleAddClick={handleAddClick} />

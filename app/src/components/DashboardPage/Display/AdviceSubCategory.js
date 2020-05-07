@@ -2,6 +2,7 @@ import React from "react"
 import { Grid, Paper, Typography, Tooltip, IconButton } from "@material-ui/core"
 import Advice from "./Advice"
 import DeleteIcon from "@material-ui/icons/Delete"
+import { Link } from "react-router-dom"
 
 const AdviceSubCategory = (props) => {
     let isTwo = false
@@ -24,7 +25,7 @@ const AdviceSubCategory = (props) => {
                                 {props.title}
                             </Typography>
                         </Grid>
-                        <Grid item>
+                        <Grid item style={{marginLeft: "auto"}}>
                             <Tooltip title="Delete">
                                 <IconButton onClick={() => props.handleDelete(props.advice)} aria-label="delete">
                                     <DeleteIcon />
@@ -43,9 +44,11 @@ const AdviceSubCategory = (props) => {
                         {isNone && <Advice editIcons={false} content="There is currently no advice here, add some!" key="123" />}
                     </Grid>
                     <Grid item style={{ marginTop: "-0.75vh", marginBottom: "-0.5vh" }}>
-                        <Typography variant="button" style={{ color: "#0047FF" }}>
-                            Show More
-                        </Typography>
+                        <Link to={`/dashboard/subcategory/${props.subcategoryID}`} style={{ textDecoration: "none" }} key={props.subcategoryID}>
+                            <Typography variant="button" style={{ color: "#0047FF" }}>
+                                Show More
+                            </Typography>
+                        </Link>
                     </Grid>
                 </Grid>
             </Paper>

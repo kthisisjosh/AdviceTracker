@@ -196,6 +196,7 @@ export const deleteCategory = (id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
         })
+        // DELETE EVERYTHING INSIDE AS WELL
     } catch (error) {
         console.log(error)
     }
@@ -214,6 +215,7 @@ export const deleteSubCategory = (category, id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
         })
+        // DELETE ALL ADVICE INSIDE AS WELL
     } catch (error) {
         console.log(error)
     }
