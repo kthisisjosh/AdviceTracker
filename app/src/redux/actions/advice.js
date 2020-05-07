@@ -2,6 +2,8 @@ import {
     GET_INBOX_ADVICE,
     SUBMIT_INBOX_ADVICE,
     DELETE_INBOX_ADVICE,
+    DELETE_CATEGORY,
+    DELETE_SUBCATEGORY,
     GET_ADVICE,
     SUBMIT_CATEGORY,
     SUBMIT_ADVICE,
@@ -170,6 +172,41 @@ export const deleteInboxAdvice = (advice) => async (dispatch) => {
         dispatch({ type: DELETE_INBOX_ADVICE, payload: advice.adviceID })
         const token = localStorage.getItem("jwtToken")
         const url = "https://advicetracker.life/api/advice/inbox/" + advice.adviceID
+        await fetch(url, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const deleteCategory = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_CATEGORY, payload: id })
+        const token = localStorage.getItem("jwtToken")
+        const url = "https://advicetracker.life/api/advice/categories/" + id
+        await fetch(url, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const deleteSubCategory = (category, id) => async (dispatch) => {
+    try {
+        const filteredSubcategories = category.subcategories.filter((subcategory) => subcategory.subcategoryID !== id)
+        dispatch({ type: DELETE_SUBCATEGORY, payload: { ...category, subcategories: [filteredSubcategories] } })
+        const token = localStorage.getItem("jwtToken")
+        const url = "https://advicetracker.life/api/advice/subcategories/" + id
         await fetch(url, {
             method: "DELETE",
             headers: {

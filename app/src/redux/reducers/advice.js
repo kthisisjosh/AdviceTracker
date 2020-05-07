@@ -2,6 +2,8 @@ import {
     GET_INBOX_ADVICE,
     SUBMIT_INBOX_ADVICE,
     DELETE_INBOX_ADVICE,
+    DELETE_CATEGORY,
+    DELETE_SUBCATEGORY,
     GET_ADVICE,
     SUBMIT_CATEGORY,
     SUBMIT_ADVICE,
@@ -28,6 +30,16 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 inboxAdvice: state.inboxAdvice.filter((advice) => advice.adviceID !== action.payload),
+            }
+        case DELETE_CATEGORY:
+            return {
+                ...state,
+                categories: state.categories.filter((category) => category.categoryID !== action.payload),
+            }
+        case DELETE_SUBCATEGORY:
+            return {
+                ...state,
+                categories: [...state.categories, action.payload],
             }
         case GET_ADVICE:
             return {

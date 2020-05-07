@@ -54,7 +54,7 @@ const SubCategoryPage = (props) => {
                     <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
                         {toAddAdvice && <NewAdvice handleEditorChange={handleEditorChange} handleSubmit={handleAdviceSubmit} />}
                         {currSubCategory.advice.map((advice) => (
-                            <Advice content={advice.content} key={advice.adviceID} />
+                            <Advice editIcons={true} content={advice.content} key={advice.adviceID} />
                         ))}
                     </Paper>
                 </Grid>
