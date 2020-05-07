@@ -28,7 +28,6 @@ const AddElement = (props) => {
                     </Tooltip>
                 </Grid>
             </Paper>
-            <Grid item></Grid>
         </Element>
     )
 }

@@ -1,5 +1,6 @@
 import React from "react"
-import { Grid, Typography, Grow } from "@material-ui/core"
+import { Grid, Typography } from "@material-ui/core"
+import { motion } from "framer-motion"
 
 const BodyA = () => {
     return (
@@ -30,13 +31,16 @@ const BodyA = () => {
             </Grid>
 
             <Grid item md={6} xs={12} className="landing-bodya-demo" style={{ textAlign: "center" }}>
-                <Grow in={true} timeout={1750}>
-                    <img
-                        alt="demo"
-                        style={{ height: "600px", width: "475px", margin: "auto", marginRight: "3vw", borderRadius: "15px" }}
-                        src="./login-sample2.png"
-                    />
-                </Grow>
+                <motion.img
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                        default: { duration: 0.75 },
+                    }}
+                    alt="demo"
+                    style={{ height: "600px", width: "475px", margin: "auto", marginRight: "3vw", borderRadius: "15px" }}
+                    src="./login-sample2.png"
+                />
             </Grid>
         </Grid>
     )

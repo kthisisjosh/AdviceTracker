@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import { slide as Menu } from "react-burger-menu"
 import Toggle from "react-toggle"
 import useDarkMode from "use-dark-mode"
+import { motion } from "framer-motion"
 
 const Header = () => {
     const darkMode = useDarkMode(true)
@@ -16,7 +17,11 @@ const Header = () => {
             <Grid container direction="row" alignItems="center" style={{ height: "60px", alignContent: "center" }}>
                 <Grid item className="landing-logo" style={{ marginLeft: "14vw", marginTop: "1vh" }}>
                     <a href="/">
-                        <img
+                        <motion.img
+                            initial={{ scale: 1 }}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            positionTransition
                             alt="logo"
                             src={darkMode.value ? "https://advicetracker.life/AdviceLogoLight.png" : "https://advicetracker.life/AdviceLogo.png"}
                         />
