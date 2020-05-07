@@ -571,7 +571,7 @@ Array [
         onTouchStart={[Function]}
         style={
           Object {
-            "backgroundColor": "F2994A",
+            "backgroundColor": "#F2994A",
           }
         }
         tabIndex={0}
@@ -671,7 +671,7 @@ Array [
         onTouchStart={[Function]}
         style={
           Object {
-            "backgroundColor": "F2994A",
+            "backgroundColor": "#F2994A",
           }
         }
         tabIndex={0}
