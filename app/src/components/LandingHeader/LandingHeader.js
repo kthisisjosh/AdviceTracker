@@ -20,8 +20,7 @@ const Header = () => {
                         <motion.img
                             initial={{ scale: 1 }}
                             whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            positionTransition
+                            whileTap={{ scale: 0.999 }}
                             alt="logo"
                             src={darkMode.value ? "https://advicetracker.life/AdviceLogoLight.png" : "https://advicetracker.life/AdviceLogo.png"}
                         />

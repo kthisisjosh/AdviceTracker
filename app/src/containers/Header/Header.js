@@ -31,7 +31,7 @@ const Header = (props) => {
                         <motion.img
                             initial={{ scale: 1 }}
                             whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
+                            whileTap={{ scale: 0.999 }}
                             alt="logo"
                             src={"https://advicetracker.life/AdviceLogoLight.png"}
                         />

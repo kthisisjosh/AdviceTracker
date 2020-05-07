@@ -52,7 +52,7 @@ const SubCategoryPage = (props) => {
                     <AddNewButton handleAddClick={handleAddClick} />
                 </Grid>
                 <Grid item style={{ marginTop: "2vh" }}>
-                    <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
+                    <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto", height: "auto" }}>
                         {toAddAdvice && (
                             <motion.div initial={{ scale: 1, opacity: 0 }} animate={{ opacity: 1 }} positionTransition>
                                 <NewAdvice handleEditorChange={handleEditorChange} handleSubmit={handleAdviceSubmit} />{" "}

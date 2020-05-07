@@ -43,11 +43,9 @@ const AdviceCategory = (props) => {
                     </Grid>
 
                     {props.subcategories.length === 0 && (
-                        <AdviceSubCategory
-                            handleDelete={props.handleSubCategoryDelete}
-                            title="There is currently no advice in this category."
-                            advice={[{ content: "<p>Add some!</p>" }]}
-                        />
+                        <Link to={`/dashboard/category/${props.categoryID}`}>
+                            <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto", height: "5vh" }} />
+                        </Link>
                     )}
                     {props.subcategories.length !== 0 &&
                         props.subcategories.map((subcategory) => (
