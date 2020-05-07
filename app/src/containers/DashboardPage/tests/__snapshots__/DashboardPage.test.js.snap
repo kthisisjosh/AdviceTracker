@@ -607,8 +607,9 @@ Array [
         id="containerElement"
         style={
           Object {
-            "height": "18vw",
+            "height": "auto",
             "marginTop": "1vh",
+            "minHeight": "18vw",
             "overflow": "scroll",
             "overflowX": "hidden",
             "width": "100%",
