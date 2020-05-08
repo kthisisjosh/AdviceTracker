@@ -51,6 +51,18 @@ body.light-mode .navbar {
     color: black !important;
 }
 
+ul {
+    list-style-type: none;
+}
+
+.ais-Hits-list {
+    padding: 0;
+}
+
+.ais-RefinementList-list {
+    padding: 0;
+}
+
 #containerElement::-webkit-scrollbar {
     width: 10px;
 }

@@ -20,20 +20,13 @@ const searchClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, process
 
 const BrowseSearchUI = () => {
     return (
-        <Grid container direction="column" style={{ margin: "5vh 15vw 15vh 14vw", width: "auto" }}>
+        <Grid container direction="column" style={{ margin: "5vh 15vw 15vh 14vw", width: "auto", height: "auto", minHeight: "60vh" }}>
             <InstantSearch searchClient={searchClient} indexName="Posts">
                 <ClearRefinements />
                 <CurrentRefinements />
                 <SearchBox />
                 <RefinementList attribute="category" />
                 <Hits hitComponent={Hit} />
-                <HitsPerPage
-                    defaultRefinement={5}
-                    items={[
-                        { value: 5, label: "Show 5 hits" },
-                        { value: 10, label: "Show 10 hits" },
-                    ]}
-                />
             </InstantSearch>
         </Grid>
     )

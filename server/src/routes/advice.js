@@ -101,7 +101,7 @@ router.patch("/api/advice/:id", verifyToken, async (req, res) => {
 router.post("/api/advice/inbox/", verifyToken, async (req, res) => {
     const newAdvice = req.body;
 
-    const queryString = "INSERT INTO advice (adviceID, userID, inInbox, content, categoryID, subcategoryID, numoflikes, datePosted) VALUES (?, ?, ?, ?, NULL, NULL, NULL, NULL)";
+    const queryString = "INSERT INTO advice (adviceID, userID, inInbox, content, categoryID, subcategoryID) VALUES (?, ?, ?, ?, NULL, NULL)";
 
     connection.query(queryString, [newAdvice.adviceID, newAdvice.userID, newAdvice.inInbox, newAdvice.content, newAdvice.categoryID], (err, results, fields) => {
         if (err) {
@@ -116,7 +116,7 @@ router.post("/api/advice/inbox/", verifyToken, async (req, res) => {
 router.post("/api/advice/", verifyToken, async (req, res) => {
     const newAdvice = req.body;
 
-    const queryString = "INSERT INTO advice (adviceID, userID, inInbox, content, categoryID, subcategoryID, numoflikes, datePosted) VALUES (?, ?, ?, ?, ?, ?, NULL, NULL)";
+    const queryString = "INSERT INTO advice (adviceID, userID, inInbox, content, categoryID, subcategoryID) VALUES (?, ?, ?, ?, ?, ?)";
 
     connection.query(queryString, [newAdvice.adviceID, newAdvice.userID, 0, newAdvice.content, newAdvice.categoryID, newAdvice.subcategoryID], (err, results, fields) => {
         if (err) {
