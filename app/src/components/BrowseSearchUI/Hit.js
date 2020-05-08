@@ -2,9 +2,11 @@ import React from "react"
 import Paper from "@material-ui/core/Paper"
 import { Typography, Grid, Avatar } from "@material-ui/core"
 
+var moment = require("moment")
+
 const Hit = ({ hit }) => {
     return (
-        <Paper style={{ marginBottom: "2.5vh", width: "auto" }}>
+        <Paper style={{ marginBottom: "2vh", width: "auto" }}>
             <Grid container direction="column" style={{ padding: "0.5vh 0.5vw" }}>
                 <Grid container direction="row" style={{ margin: "auto" }}>
                     <Grid item>
@@ -13,7 +15,7 @@ const Hit = ({ hit }) => {
                         </Avatar>
                     </Grid>
                     <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
-                        <Typography variant="body1" dangerouslySetInnerHTML={{ __html: hit.user_name }} />
+                        <Typography variant="body1">{hit.user_name}</Typography>
                     </Grid>
                     <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
                         <Typography variant="button">{hit.likes} likes</Typography>
@@ -24,11 +26,14 @@ const Hit = ({ hit }) => {
                     <Grid item style={{ paddingTop: "0.75vh", marginLeft: "0.5vw" }}>
                         <Grid container direction="row">
                             {hit.category.map((category) => (
-                                <Paper style={{padding: "0.125vh 0.25vw", marginRight: "1vh"}}>
+                                <Paper style={{ backgroundColor: "#F2994A", padding: "0.125vh 0.25vw", marginRight: "1vh" }}>
                                     <Typography variant="button">{category}</Typography>
                                 </Paper>
                             ))}
                         </Grid>
+                    </Grid>
+                    <Grid item style={{paddingTop: "1vh", marginleft: "0.5vw"}}>
+                        <Typography variant="body2" style={{color: "grey"}}>{moment(hit.post_date).fromNow()}</Typography>
                     </Grid>
                 </Grid>
                 <Grid item>
