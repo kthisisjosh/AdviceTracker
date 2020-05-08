@@ -4,8 +4,9 @@ import { getUsers, createUser } from "../../redux/actions/users"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import { Grid, Typography } from "@material-ui/core"
+import { Grid } from "@material-ui/core"
 import { Helmet } from "react-helmet"
+import BrowseSearchUI from "../../components/BrowseSearchUI/BrowseSearchUI"
 
 const FriendsPage = (props) => {
     const { users, getUsers, isAuthenticated } = props
@@ -26,11 +27,7 @@ const FriendsPage = (props) => {
             </Helmet>
             <Header />
             {isAuthenticated && <Navbar />}
-            <Grid style={{ height: "1000px" }}>
-                <Typography style={{ marginTop: "200px" }} align="center" variant="h2">
-                    Coming soon!
-                </Typography>
-            </Grid>
+            <BrowseSearchUI />
             <Footer />
         </Fragment>
     )
