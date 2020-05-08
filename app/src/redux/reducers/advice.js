@@ -9,6 +9,7 @@ import {
     SUBMIT_CATEGORY,
     SUBMIT_ADVICE,
     SUBMIT_SUBCATEGORY,
+    UPDATE_ADVICE,
 } from "../types/advice"
 
 const initialState = {
@@ -68,6 +69,10 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 categories: [action.payload, ...filteredCategories],
+            }
+        case UPDATE_ADVICE:
+            return {
+                ...state,
             }
         default:
             return state

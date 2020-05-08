@@ -8,6 +8,8 @@ import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 import { useHistory } from "react-router-dom"
 import { Grid } from "@material-ui/core"
+import Swal from "sweetalert2"
+import withReactContent from "sweetalert2-react-content"
 
 import {
     getInboxAdvice,
@@ -18,6 +20,7 @@ import {
     deleteCategory,
     deleteSubCategory,
 } from "../../redux/actions/advice"
+import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 
 const DashboardPage = (props) => {
     const {
@@ -38,6 +41,7 @@ const DashboardPage = (props) => {
     const [toAddCategory, setToAddCategory] = useState(false)
     const [submitCategoryInfo, setSubmitCategory] = useState({ title: "", description: "" })
     const [submitAdvice, setSubmitAdvice] = useState("")
+    const MySwal = withReactContent(Swal)
 
     useEffect(() => {
         if (!inboxAdvice.length && isAuthenticated) {
@@ -83,20 +87,68 @@ const DashboardPage = (props) => {
         setSubmitAdvice(content)
     }
 
-    const handleAddToCategory = (event) => {}
+    const handleAddToCategory = (event) => {
+        MySwal.fire({
+            title: <p>Where do you want to add this advice to?</p>,
+            html: (
+                <>
+                    <AddNewButton /> <AddNewButton /> <AddNewButton />
+                </>
+            ),
+        })
+    }
 
-    const handleDelete = (advice) => {
-        deleteInboxAdvice(advice)
+    const handleInboxDelete = (advice) => {
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.value) {
+                deleteInboxAdvice(advice)
+                Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success")
+            }
+        })
     }
 
     // --------- Display --------- \\
 
-    const handleCategoryDelete = (categoryID) => {
-        deleteCategory(categoryID)
+    const handleCategoryDelete = (categoryID, categoryName) => {
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.value) {
+                deleteCategory(categoryID)
+                Swal.fire("Deleted!", `The category '${categoryName}' has been succesfully deleted.`, "success")
+            }
+        })
     }
 
-    const handleSubCategoryDelete = (category, subcategoryID) => {
-        deleteSubCategory(category, subcategoryID)
+    const handleSubCategoryDelete = (category, subCategoryID, subCategoryName) => {
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.value) {
+                deleteSubCategory(category, subCategoryID)
+                Swal.fire("Deleted!", `The sub-category '${subCategoryName}' has been succesfully deleted.`, "success")
+            }
+        })
     }
 
     return (
@@ -114,7 +166,7 @@ const DashboardPage = (props) => {
             <Inbox
                 inbox={inboxAdvice}
                 handleAddToCategory={handleAddToCategory}
-                handleDelete={handleDelete}
+                handleDelete={handleInboxDelete}
                 handleAddClick={handleAddClickInbox}
                 handleSubmit={handleSubmitInbox}
                 handleEditorChange={handleEditorChange}

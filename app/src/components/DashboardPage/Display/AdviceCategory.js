@@ -35,7 +35,7 @@ const AdviceCategory = (props) => {
 
                             <Grid item style={{ marginLeft: "auto" }}>
                                 <Tooltip title="Delete">
-                                    <IconButton onClick={() => props.handleDelete(props.categoryID)} aria-label="delete">
+                                    <IconButton onClick={() => props.handleDelete(props.categoryID, props.title)} aria-label="delete">
                                         <DeleteIcon />
                                     </IconButton>
                                 </Tooltip>

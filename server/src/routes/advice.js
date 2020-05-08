@@ -75,11 +75,22 @@ router.get("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     });
 });
 
-router.put("/api/advice/inbox/:id", verifyToken, async (req, res) => {
+router.patch("/api/advice/inbox/:id", verifyToken, async (req, res) => {
     const subcategoryID = req.body.subcategoryID;
     const categoryID = req.body.categoryID;
 
     const queryString = "UPDATE advice SET inInbox = 0, categoryID = " + categoryID + " subcategoryID = " + subcategoryID + ' WHERE adviceID = "' + req.params.id + '";';
+
+    connection.query(queryString, (err, results, fields) => {
+        if (!err) res.sendStatus(200);
+        else console.log(err);
+    });
+});
+
+router.patch("/api/advice/:id", verifyToken, async (req, res) => {
+    const newContent = req.body.content;
+
+    const queryString = 'UPDATE advice SET content = "' + newContent + '" WHERE adviceID = "' + req.params.id + '";';
 
     connection.query(queryString, (err, results, fields) => {
         if (!err) res.sendStatus(200);

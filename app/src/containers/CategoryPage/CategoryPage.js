@@ -6,17 +6,20 @@ import { Grid } from "@material-ui/core"
 import { connect } from "react-redux"
 import Title from "../../components/DashboardPage/Category/Title"
 import AdviceSubCategory from "../../components/DashboardPage/Display/AdviceSubCategory"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 import { submitSubCategory, deleteSubCategory, getAdvice } from "../../redux/actions/advice"
 import NewSubCategory from "../../components/DashboardPage/Category/NewSubCategory"
 import { motion, AnimatePresence } from "framer-motion"
+import Swal from "sweetalert2"
+import withReactContent from "sweetalert2-react-content"
 
 const CategoryPage = (props) => {
     const { categories, match, submitSubCategory, user, deleteSubCategory } = props
     const [currCategory, setCurrCategory] = useState({ test: "Test", subcategories: [] })
     const [toAddSubCategory, setToAddSubCategory] = useState(false)
     const [subCategoryName, setSubCategoryName] = useState("")
+    const MySwal = withReactContent(Swal)
     const history = useHistory()
 
     useEffect(() => {
@@ -38,9 +41,22 @@ const CategoryPage = (props) => {
         setSubCategoryName(e.target.value)
     }
 
-    const handleSubCategoryDelete = (category, subcategoryID) => {
-        history.push("/dashboard/category/" + currCategory.categoryID)
-        deleteSubCategory(category, subcategoryID)
+    const handleSubCategoryDelete = (category, subCategoryID, subCategoryName) => {
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.value) {
+                history.push("/dashboard/category/" + currCategory.categoryID)
+                deleteSubCategory(category, subCategoryID)
+                Swal.fire("Deleted!", `The sub-category '${subCategoryName}' has been succesfully deleted.`, "success")
+            }
+        })
     }
 
     return (

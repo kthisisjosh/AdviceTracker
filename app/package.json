@@ -29,6 +29,8 @@
         "redux-devtools-extension": "^2.13.8",
         "redux-mock-store": "^1.5.4",
         "redux-thunk": "^2.3.0",
+        "sweetalert2": "^9.10.12",
+        "sweetalert2-react-content": "^3.0.1",
         "use-dark-mode": "^2.3.1",
         "uuid": "^7.0.3"
     },

@@ -9,6 +9,7 @@ import {
     SUBMIT_ADVICE,
     SUBMIT_SUBCATEGORY,
     DELETE_ADVICE,
+    UPDATE_ADVICE,
 } from "../types/advice"
 import { v4 as uuidv4 } from "uuid"
 
@@ -203,8 +204,6 @@ export const deleteAdvice = (id) => async (dispatch) => {
     }
 }
 
-
-
 export const deleteCategory = (id) => async (dispatch) => {
     try {
         dispatch({ type: DELETE_CATEGORY, payload: id })
@@ -217,7 +216,6 @@ export const deleteCategory = (id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
         })
-        // DELETE EVERYTHING INSIDE AS WELL
     } catch (error) {
         console.log(error)
     }
@@ -236,7 +234,26 @@ export const deleteSubCategory = (category, id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
         })
-        // DELETE ALL ADVICE INSIDE AS WELL
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updateAdvice = (content, id) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/advice/" + id
+
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ content }),
+        }).then(() => {
+            dispatch({ type: UPDATE_ADVICE, payload: {} })
+        })
     } catch (error) {
         console.log(error)
     }

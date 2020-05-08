@@ -4,13 +4,13 @@ import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import { Grid, Tooltip, Button, Paper } from "@material-ui/core"
 import { connect } from "react-redux"
-import { submitAdvice, deleteAdvice } from "../../redux/actions/advice"
+import { submitAdvice, deleteAdvice, updateAdvice } from "../../redux/actions/advice"
 import TinyMCEEditor from "../../components/DashboardPage/Inbox/TinyMCEEditor"
 import AddIcon from "@material-ui/icons/Add"
 import { useHistory } from "react-router-dom"
 
 const AdvicePage = (props) => {
-    const { categories, match, submitAdvice, user } = props
+    const { categories, match, submitAdvice, user, updateAdvice } = props
     const [adviceContent, setAdviceContent] = useState("")
     const [currAdvice, setCurrAdvice] = useState({ content: "" })
     const history = useHistory()
@@ -33,8 +33,9 @@ const AdvicePage = (props) => {
     }
 
     const handleEditSubmit = () => {
-        console.log(adviceContent)
-        history.push("/dashboard")
+        updateAdvice(adviceContent, currAdvice.adviceID)
+        setAdviceContent("")
+        setTimeout(() => history.push("/dashboard"), 1000)
     }
 
     return (
@@ -72,6 +73,6 @@ const mapStateToProps = ({ adviceState, authState }) => ({
     user: authState.user,
 })
 
-const mapDispatchToProps = { submitAdvice, deleteAdvice }
+const mapDispatchToProps = { submitAdvice, deleteAdvice, updateAdvice }
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdvicePage)

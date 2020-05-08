@@ -42,7 +42,7 @@ const AdviceSubCategory = (props) => {
                             </motion.div>
                             <Grid item style={{ marginLeft: "auto" }}>
                                 <Tooltip title="Delete">
-                                    <IconButton onClick={() => props.handleDelete(props.category, props.subcategoryID)} aria-label="delete">
+                                    <IconButton onClick={() => props.handleDelete(props.category, props.subcategoryID, props.title)} aria-label="delete">
                                         <DeleteIcon />
                                     </IconButton>
                                 </Tooltip>
