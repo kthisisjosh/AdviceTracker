@@ -11,7 +11,7 @@ const AddElement = (props) => {
         <Element style={{ margin: "2vh" }}>
             <Paper style={{ width: "100%" }}>
                 <Grid item style={{ marginLeft: "1.5vw", marginRight: "1.5vw", paddingTop: "0.75vh" }}>
-                    <TinyMCEEditor handleEditorChange={props.handleEditorChange} />
+                    <TinyMCEEditor initialValue="<p>Add your advice here!</p>" handleEditorChange={props.handleEditorChange} />
                 </Grid>
                 <Grid item style={{ marginBottom: "1vh", marginLeft: "1.5vw", paddingTop: "1vh", paddingBottom: "1vh" }}>
                     <Tooltip title="Add to Inbox">

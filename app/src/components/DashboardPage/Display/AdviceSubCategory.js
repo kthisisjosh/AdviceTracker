@@ -18,21 +18,28 @@ const AdviceSubCategory = (props) => {
 
     return (
         <Grid item style={{ marginTop: "1vh", width: "auto" }}>
-            <motion.div
-                initial={{ scale: 0.7, opacity: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.01 }}
-                exit={{ opacity: 0, scale: 0 }}
-                positionTransition
-            >
+            <motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} positionTransition>
                 <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
                     <Grid container direction="column">
                         <Grid container direction="row" style={{ marginBottom: "0.5vh", marginTop: "-0.5vh" }}>
-                            <Grid item style={{ marginTop: "0.75vh" }}>
-                                <Typography variant="h5" style={{ fontWeight: "bold" }}>
-                                    {props.title}
-                                </Typography>
-                            </Grid>
+                            <motion.div
+                                initial={{ scale: 0.7, opacity: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                whileHover={{ scale: 1.1 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                            >
+                                <Link
+                                    to={`/dashboard/subcategory/${props.subcategoryID}`}
+                                    style={{ textDecoration: "none" }}
+                                    key={props.subcategoryID + "1"}
+                                >
+                                    <Grid item style={{ marginTop: "0.75vh" }}>
+                                        <Typography variant="h5" style={{ fontWeight: "bold" }}>
+                                            {props.title}
+                                        </Typography>
+                                    </Grid>
+                                </Link>
+                            </motion.div>
                             <Grid item style={{ marginLeft: "auto" }}>
                                 <Tooltip title="Delete">
                                     <IconButton onClick={() => props.handleDelete(props.category, props.subcategoryID)} aria-label="delete">
@@ -51,12 +58,24 @@ const AdviceSubCategory = (props) => {
                             {!isTwo && !isNone && <Advice editIcons={false} content={props.advice[0].content} key={props.advice[0].adviceID} />}
                             {isNone && <Advice editIcons={false} content="There is currently no advice here, add some!" key="123" />}
                         </Grid>
+
                         <Grid item style={{ marginTop: "-0.75vh", marginBottom: "-0.5vh" }}>
-                            <Link to={`/dashboard/subcategory/${props.subcategoryID}`} style={{ textDecoration: "none" }} key={props.subcategoryID}>
-                                <Typography variant="button" style={{ color: "#0047FF" }}>
-                                    Show More
-                                </Typography>
-                            </Link>
+                            <motion.div
+                                initial={{ scale: 0.7, opacity: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                whileHover={{ scale: 1.01 }}
+                                exit={{ opacity: 0, scale: 0 }}
+                            >
+                                <Link
+                                    to={`/dashboard/subcategory/${props.subcategoryID}`}
+                                    style={{ textDecoration: "none" }}
+                                    key={props.subcategoryID}
+                                >
+                                    <Typography variant="button" style={{ color: "#0047FF" }}>
+                                        Show More
+                                    </Typography>
+                                </Link>
+                            </motion.div>
                         </Grid>
                     </Grid>
                 </Paper>

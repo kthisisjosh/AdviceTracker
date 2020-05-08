@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react"
-import Header from "../../components/LandingHeader/LandingHeader"
+import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import { Grid, Paper } from "@material-ui/core"
@@ -8,14 +8,16 @@ import Title from "../../components/DashboardPage/Category/Title"
 import Advice from "../../components/DashboardPage/Display/Advice"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 import NewAdvice from "../../components/DashboardPage/Category/NewAdvice"
-import { submitAdvice } from "../../redux/actions/advice"
+import { submitAdvice, deleteAdvice } from "../../redux/actions/advice"
 import { motion, AnimatePresence } from "framer-motion"
+import { useHistory } from "react-router-dom"
 
 const SubCategoryPage = (props) => {
-    const { categories, match, submitAdvice, user } = props
+    const { categories, match, submitAdvice, user, deleteAdvice } = props
     const [toAddAdvice, setToAddAdvice] = useState(false)
     const [adviceContent, setAdviceContent] = useState("")
     const [currSubCategory, setCurrSubCategory] = useState({ test: "Test", advice: [] })
+    const history = useHistory();
 
     useEffect(() => {
         const foundCategory = categories.find((category) =>
@@ -29,6 +31,10 @@ const SubCategoryPage = (props) => {
         setAdviceContent(content)
     }
 
+    const handleAdviceDelete = (adviceID) => {
+        deleteAdvice(adviceID)
+    }
+
     const handleAdviceSubmit = () => {
         const foundCategory = categories.find((category) =>
             category.subcategories.find((subcategory) => subcategory.subcategoryID === match.params.id)
@@ -40,6 +46,10 @@ const SubCategoryPage = (props) => {
 
     const handleAddClick = () => {
         setToAddAdvice(true)
+    }
+
+    const handleAdviceEdit = (id) => {
+        history.push("/dashboard/advice/" + id)
     }
 
     return (
@@ -59,16 +69,25 @@ const SubCategoryPage = (props) => {
                             </motion.div>
                         )}
 
-                        <AnimatePresence>
+                        <AnimatePresence key="animatepresence">
                             {currSubCategory.advice.map((advice) => (
                                 <motion.div
                                     initial={{ scale: 0.8, opacity: 0 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    whileHover={{ scale: 1.01 }}
+                                    whileHover={{ scale: 0.99 }}
                                     exit={{ opacity: 0, scale: 0 }}
                                     positionTransition
+                                    key={advice.adviceID}
+                                    style={{ WebkitPerspective: "1000" }}
                                 >
-                                    <Advice editIcons={true} content={advice.content} key={advice.adviceID} />
+                                    <Advice
+                                        handleDelete={handleAdviceDelete}
+                                        handleEdit={handleAdviceEdit}
+                                        editIcons={true}
+                                        adviceID={advice.adviceID}
+                                        content={advice.content}
+                                        key={advice.adviceID}
+                                    />
                                 </motion.div>
                             ))}
                         </AnimatePresence>
@@ -85,6 +104,6 @@ const mapStateToProps = ({ adviceState, authState }) => ({
     user: authState.user,
 })
 
-const mapDispatchToProps = { submitAdvice }
+const mapDispatchToProps = { submitAdvice, deleteAdvice }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubCategoryPage)

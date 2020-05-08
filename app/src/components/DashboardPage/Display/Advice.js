@@ -10,12 +10,12 @@ const Advice = (props) => {
             {props.editIcons && (
                 <Grid item>
                     <Tooltip title="Edit">
-                        <IconButton onClick={props.handleAddToCategory} aria-label="Edit">
+                        <IconButton onClick={() => props.handleEdit(props.adviceID)} aria-label="Edit">
                             <EditIcon />
                         </IconButton>
                     </Tooltip>
                     <Tooltip title="Delete">
-                        <IconButton onClick={() => props.handleDelete(props.advice)} aria-label="delete">
+                        <IconButton onClick={() => props.handleDelete(props.adviceID)} aria-label="delete">
                             <DeleteIcon />
                         </IconButton>
                     </Tooltip>

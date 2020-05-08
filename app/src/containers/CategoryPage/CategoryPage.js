@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react"
-import Header from "../../components/LandingHeader/LandingHeader"
+import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import { Grid } from "@material-ui/core"

@@ -4,6 +4,7 @@ import {
     DELETE_INBOX_ADVICE,
     DELETE_CATEGORY,
     DELETE_SUBCATEGORY,
+    DELETE_ADVICE,
     GET_ADVICE,
     SUBMIT_CATEGORY,
     SUBMIT_ADVICE,
@@ -17,6 +18,9 @@ const initialState = {
 }
 
 export default (state = initialState, action) => {
+    const filteredCategories = state.categories.filter((category) => {
+        return category.categoryID !== action.payload.categoryID
+    })
     switch (action.type) {
         case GET_INBOX_ADVICE:
             return { ...state, inboxAdvice: [...action.payload] }
@@ -31,18 +35,19 @@ export default (state = initialState, action) => {
                 ...state,
                 inboxAdvice: state.inboxAdvice.filter((advice) => advice.adviceID !== action.payload),
             }
+        case DELETE_ADVICE:
+            return {
+                ...state,
+            }
         case DELETE_CATEGORY:
             return {
                 ...state,
                 categories: state.categories.filter((category) => category.categoryID !== action.payload),
             }
         case DELETE_SUBCATEGORY:
-            const filteredSubCategories = state.categories.filter((category) => {
-                return category.categoryID !== action.payload.categoryID
-            })
             return {
                 ...state,
-                categories: [...filteredSubCategories, action.payload],
+                categories: [...filteredCategories, action.payload],
             }
         case GET_ADVICE:
             return {
@@ -55,17 +60,11 @@ export default (state = initialState, action) => {
                 categories: [action.payload, ...state.categories],
             }
         case SUBMIT_SUBCATEGORY:
-            const filteredSubCategories2 = state.categories.filter((category) => {
-                return category.categoryID !== action.payload.categoryID
-            })
             return {
                 ...state,
-                categories: [action.payload, ...filteredSubCategories2],
+                categories: [action.payload, ...filteredCategories],
             }
         case SUBMIT_ADVICE:
-            const filteredCategories = state.categories.filter((category) => {
-                return category.categoryID !== action.payload.categoryID
-            })
             return {
                 ...state,
                 categories: [action.payload, ...filteredCategories],

@@ -8,7 +8,7 @@ import BrowsePage from "../BrowsePage/BrowsePage"
 import SubmitPage from "../SubmitPage/SubmitPage"
 import CategoryPage from "../CategoryPage/CategoryPage"
 import SubCategoryPage from "../SubCategoryPage/SubCategoryPage"
-//import AdvicePage from "../AdvicePage/AdvicePage"
+import AdvicePage from "../AdvicePage/AdvicePage"
 import "../../app.css"
 
 //Redux
@@ -25,7 +25,7 @@ function App() {
                     <Route component={DashboardPage} exact path="/dashboard" />
                     <Route exact path="/dashboard/category/:id" component={CategoryPage} />
                     <Route exact path="/dashboard/subcategory/:id" component={SubCategoryPage} />
-                    <Route exact path="/dashboard/advice/:id" component={null} />
+                    <Route exact path="/dashboard/advice/:id" component={AdvicePage} />
                     <Route component={ProfilePage} exact path="/profile" />
                     <Route component={BrowsePage} exact path="/browse" />
                     <Route component={SubmitPage} exact path="/submit" />

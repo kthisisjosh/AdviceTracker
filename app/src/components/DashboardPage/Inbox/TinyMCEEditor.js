@@ -5,7 +5,7 @@ const TinyMCEEditor = (props) => {
     return (
         <Editor
             apiKey={process.env.REACT_APP_TINY_API_KEY}
-            initialValue="<p>Add your advice here!</p>"
+            initialValue={props.initialValue}
             init={{
                 height: 150,
                 menubar: false,

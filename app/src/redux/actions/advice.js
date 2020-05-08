@@ -8,6 +8,7 @@ import {
     SUBMIT_CATEGORY,
     SUBMIT_ADVICE,
     SUBMIT_SUBCATEGORY,
+    DELETE_ADVICE,
 } from "../types/advice"
 import { v4 as uuidv4 } from "uuid"
 
@@ -80,6 +81,7 @@ export const submitAdvice = (advice, category, currSubcategory, id) => async (di
         const newAdvice = {
             content: advice,
             inInbox: 0,
+            categoryID: category.categoryID,
             subcategoryID: currSubcategory.subcategoryID,
             userID: id,
             likes: null,
@@ -183,6 +185,25 @@ export const deleteInboxAdvice = (advice) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const deleteAdvice = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: DELETE_ADVICE, payload: id })
+        const token = localStorage.getItem("jwtToken")
+        const url = "https://advicetracker.life/api/advice/" + id
+        await fetch(url, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 
 export const deleteCategory = (id) => async (dispatch) => {
     try {

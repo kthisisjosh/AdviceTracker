@@ -11,12 +11,9 @@ const NewSubCategory = (props) => {
                         <TextField name="desc" required label="Subcategory title" fullWidth onChange={props.handleChange} />
                     </Grid>
                     <Grid item style={{ marginBottom: "0.5vh" }}>
-                        <Paper style={{ padding: "0.5vh 0.5vw 0.5vh 0.5vw", marginTop: "0.75vh", marginBottom: "0.75vh", width: "auto" }}>
-                            <Typography
-                                variant="body1"
-                                dangerouslySetInnerHTML={{ __html: "<p>There is currently no advice in this subcategory, add some!</p>" }}
-                            ></Typography>
-                        </Paper>
+                        <Paper
+                            style={{ padding: "0.5vh 0.5vw 0.5vh 0.5vw", marginTop: "0.75vh", marginBottom: "0.75vh", width: "auto", height: "5vh" }}
+                        ></Paper>
                     </Grid>
                     <Grid item style={{ marginTop: "-0.75vh", marginBottom: "-0.5vh" }}>
                         <Button
