@@ -1,19 +1,14 @@
-import React, { useEffect, Fragment } from "react"
+import React, { Fragment } from "react"
 import { connect } from "react-redux"
 import { getUsers, createUser } from "../../redux/actions/users"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import { Grid } from "@material-ui/core"
 import { Helmet } from "react-helmet"
-import BrowseSearchUI from "../../components/BrowseSearchUI/BrowseSearchUI"
+import BrowseSearchUI from "./BrowseSearchUI"
 
 const FriendsPage = (props) => {
-    const { users, getUsers, isAuthenticated } = props
-
-    useEffect(() => {
-        if (!users.length) getUsers()
-    }, [getUsers, users])
+    const { isAuthenticated, user } = props
 
     return (
         <Fragment>
@@ -27,14 +22,14 @@ const FriendsPage = (props) => {
             </Helmet>
             <Header />
             {isAuthenticated && <Navbar />}
-            <BrowseSearchUI />
+            <BrowseSearchUI location={props.location} user={user} />
             <Footer />
         </Fragment>
     )
 }
 
-const mapStateToProps = ({ userState, authState }) => ({
-    users: userState.users,
+const mapStateToProps = ({ authState }) => ({
+    user: authState.user,
     isAuthenticated: authState.isAuthenticated,
 })
 

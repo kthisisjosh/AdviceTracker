@@ -14,6 +14,7 @@
         "coveralls": "^3.0.13",
         "framer-motion": "^1.10.3",
         "moment": "^2.25.3",
+        "qs": "^6.9.4",
         "react": "^16.13.1",
         "react-burger-menu": "^2.6.13",
         "react-dom": "^16.13.1",
