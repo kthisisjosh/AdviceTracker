@@ -1,6 +1,6 @@
 import React from "react"
 import Paper from "@material-ui/core/Paper"
-import { Typography, Grid, Avatar } from "@material-ui/core"
+import { Typography, Grid, Avatar, Chip } from "@material-ui/core"
 
 var moment = require("moment")
 
@@ -23,16 +23,14 @@ const Hit = ({ hit }) => {
                     <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
                         <Typography variant="button">{hit.num_of_comments} comments</Typography>
                     </Grid>
-                    <Grid item style={{ paddingTop: "0.75vh", marginLeft: "0.5vw" }}>
+                    <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
                         <Grid container direction="row">
                             {hit.category.map((category) => (
-                                <Paper style={{ backgroundColor: "#F2994A", padding: "0.125vh 0.25vw", marginRight: "1vh" }}>
-                                    <Typography variant="button">{category}</Typography>
-                                </Paper>
+                                <Chip style={{marginRight: "0.5vw"}} label={category} size="small"/>
                             ))}
                         </Grid>
                     </Grid>
-                    <Grid item style={{paddingTop: "1vh", marginleft: "0.5vw"}}>
+                    <Grid item style={{paddingTop: "1.2vh", marginleft: "0.5vw"}}>
                         <Typography variant="body2" style={{color: "grey"}}>{moment(hit.post_date).fromNow()}</Typography>
                     </Grid>
                 </Grid>
