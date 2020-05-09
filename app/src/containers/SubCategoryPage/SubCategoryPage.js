@@ -65,7 +65,7 @@ const SubCategoryPage = (props) => {
                     <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto", height: "auto" }}>
                         {toAddAdvice && (
                             <motion.div initial={{ scale: 0.8, opacity: 0 }} animate={{ opacity: 1, scale: 1 }} positionTransition>
-                                <NewAdvice handleEditorChange={handleEditorChange} handleSubmit={handleAdviceSubmit} />{" "}
+                                <NewAdvice height={150} handleEditorChange={handleEditorChange} handleSubmit={handleAdviceSubmit} />{" "}
                             </motion.div>
                         )}
 

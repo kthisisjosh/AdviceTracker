@@ -252,7 +252,7 @@ export const updateAdvice = (content, id) => async (dispatch) => {
             },
             body: JSON.stringify({ content }),
         }).then(() => {
-            dispatch({ type: UPDATE_ADVICE, payload: {} })
+            //dispatch({ type: UPDATE_ADVICE, payload: {} })
         })
     } catch (error) {
         console.log(error)

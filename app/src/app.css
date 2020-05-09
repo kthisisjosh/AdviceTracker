@@ -51,6 +51,33 @@ body.light-mode .navbar {
     color: black !important;
 }
 
+ul {
+    list-style-type: none;
+}
+
+.ais-InfiniteHits-loadMore {
+    background-color: #F2994A; /* Green */
+    border: none;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.ais-CurrentRefinements-list {
+    padding: 0.5vw;
+}
+
+.ais-InfiniteHits-list {
+    padding: 0;
+}
+
+.ais-RefinementList-list {
+    padding: 0;
+}
+
 #containerElement::-webkit-scrollbar {
     width: 10px;
 }

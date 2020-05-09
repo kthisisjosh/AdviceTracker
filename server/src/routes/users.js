@@ -37,9 +37,9 @@ router.post("/api/users/", async (req, res) => {
                 console.log(`Already a user with userID: ${newUser.id}`);
                 res.status(200).send({ user: results[0], token });
             } else {
-                const queryString = "INSERT INTO users (userID, username, email, token) VALUES (?, ?, ?, ?)";
+                const queryString = "INSERT INTO users (userID, username, email, token, profileUrl) VALUES (?, ?, ?, ?, ?)";
 
-                connection.query(queryString, [newUser.id, newUser.username, newUser.email, token], (err, results, fields) => {
+                connection.query(queryString, [newUser.id, newUser.username, newUser.email, token, newUser.profileUrl], (err, results, fields) => {
                     if (err) {
                         console.log(err);
                         res.sendStatus(500);

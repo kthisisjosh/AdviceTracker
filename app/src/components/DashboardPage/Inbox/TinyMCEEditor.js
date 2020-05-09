@@ -7,7 +7,7 @@ const TinyMCEEditor = (props) => {
             apiKey={process.env.REACT_APP_TINY_API_KEY}
             initialValue={props.initialValue}
             init={{
-                height: 150,
+                height: props.height,
                 menubar: false,
                 plugins: [
                     "advlist autolink lists link image charmap print preview anchor",
