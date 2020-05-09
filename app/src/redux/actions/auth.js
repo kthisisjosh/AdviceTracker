@@ -19,6 +19,7 @@ export const googleLogin = (response) => async (dispatch) => {
             id: profileObj.googleId,
             username: profileObj.name,
             email: profileObj.email,
+            profileUrl: profileObj.imageUrl,
         }
         const options = {
             method: "POST",

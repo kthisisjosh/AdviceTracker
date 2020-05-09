@@ -10,12 +10,16 @@ const Hit = ({ hit }) => {
             <Grid container direction="column" style={{ padding: "0.5vh 0.5vw" }}>
                 <Grid container direction="row" style={{ margin: "auto" }}>
                     <Grid item>
-                        <Avatar alt={hit.user_name} src={hit.user_image_url}>
-                            {hit.user_name.charAt(0)}
-                        </Avatar>
+                        <a href={hit.profile_url}>
+                            <Avatar alt={hit.user_name} src={hit.user_image_url}>
+                                {hit.user_name.charAt(0)}
+                            </Avatar>
+                        </a>
                     </Grid>
                     <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
-                        <Typography variant="body1">{hit.user_name}</Typography>
+                        <a href={hit.profile_url}>
+                            <Typography variant="body1">{hit.user_name}</Typography>
+                        </a>
                     </Grid>
                     <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
                         <Typography variant="button">{hit.likes} likes</Typography>
@@ -26,12 +30,14 @@ const Hit = ({ hit }) => {
                     <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
                         <Grid container direction="row">
                             {hit.category.map((category) => (
-                                <Chip style={{marginRight: "0.5vw"}} label={category} size="small"/>
+                                <Chip style={{ marginRight: "0.5vw" }} label={category} size="small" />
                             ))}
                         </Grid>
                     </Grid>
-                    <Grid item style={{paddingTop: "1.2vh", marginleft: "0.5vw"}}>
-                        <Typography variant="body2" style={{color: "grey"}}>{moment(hit.post_date).fromNow()}</Typography>
+                    <Grid item style={{ paddingTop: "1.2vh", marginleft: "0.5vw" }}>
+                        <Typography variant="body2" style={{ color: "grey" }}>
+                            {moment(hit.post_date).fromNow()}
+                        </Typography>
                     </Grid>
                 </Grid>
                 <Grid item>
