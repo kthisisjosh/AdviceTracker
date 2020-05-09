@@ -17,6 +17,7 @@ import {
 import { Grid } from "@material-ui/core"
 import CustomSearchBox from "./CustomSearchBox"
 import CustomStats from "./CustomStats"
+import CustomSortBy from "./CustomSortBy"
 
 const searchClient = algoliasearch(process.env.REACT_APP_ALGOLIA_APP_ID, process.env.REACT_APP_ALGOLIA_API_KEY)
 
@@ -29,7 +30,7 @@ const BrowseSearchUI = () => {
                 <Grid container direction="row">
                     <Grid item md={2} xs={12} style={{ marginTop: "1em" }}>
                         <CustomStats />
-                        <SortBy
+                        <CustomSortBy
                             items={[
                                 { value: "Posts", label: "Featured" },
                                 { value: "Posts_Date_Desc", label: "Date latest" },
