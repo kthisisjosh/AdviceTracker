@@ -2,7 +2,7 @@
 Advice Tracker
 </h1>
 <p align="center">
-Made with MySQL, Express.js, React/Redux, Node.js
+Made with MySQL, Express.js, React.js/Redux, Node.js
 </p>
 <p align="center">
   <a href="https://travis-ci.org/kthisisjosh/AdviceTracker">
