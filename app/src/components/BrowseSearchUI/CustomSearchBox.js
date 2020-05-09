@@ -12,7 +12,6 @@ const CustomSearchBox = connectSearchBox(({ currentRefinement, isSearchStalled, 
         style={{
             padding: "0.5vh 0.5vw",
             display: "flex",
-            alignItems: "center",
             height: "auto",
             width: "auto",
         }}

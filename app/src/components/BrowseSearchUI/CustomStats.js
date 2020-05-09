@@ -1,11 +1,13 @@
 import React from "react"
 import { connectStats } from "react-instantsearch-dom"
-import { Typography } from "@material-ui/core"
+import { Typography, Grid } from "@material-ui/core"
 
 const CustomStats = connectStats(({ processingTimeMS, nbHits }) => (
-    <Typography variant="body2" align="center">
-        Found {nbHits} results in {processingTimeMS} ms
-    </Typography>
+    <Grid item>
+        <Typography variant="body2">
+            Found {nbHits} results in {processingTimeMS} ms
+        </Typography>
+    </Grid>
 ))
 
 export default CustomStats

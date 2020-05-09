@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { connectSortBy } from "react-instantsearch-dom"
-import { Select, Input, InputLabel, MenuItem, withStyles, InputBase } from "@material-ui/core"
+import { Select, Input, InputLabel, MenuItem, withStyles, InputBase, Grid } from "@material-ui/core"
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -36,32 +36,34 @@ const BootstrapInput = withStyles((theme) => ({
 }))(InputBase)
 
 const CustomSortBy = connectSortBy(({ items, refine, createURL }) => {
-    const [selectedRefinement, setSelectedRefinement] = useState("Featured")
+    const [selectedRefinement, setSelectedRefinement] = useState("Date latest")
     const handleChange = (event) => {
         setSelectedRefinement(event.target.value)
     }
     return (
-        <Select
-            style={{ backgroundColor: "white", width: "100%", color: "black", margin: "auto" }}
-            value={selectedRefinement}
-            input={<BootstrapInput />}
-            onChange={handleChange}
-        >
-            {items.map((item) => (
-                <MenuItem value={item.label}>
-                    <a
-                        href={createURL(item.value)}
-                        style={{ fontWeight: item.isRefined ? "bold" : "", textDecoration: "none" }}
-                        onClick={(event) => {
-                            event.preventDefault()
-                            refine(item.value)
-                        }}
-                    >
-                        {item.label}
-                    </a>
-                </MenuItem>
-            ))}
-        </Select>
+        <Grid item style={{marginRight: "5vh"}}>
+            <Select
+                style={{ backgroundColor: "white", width: "100%", color: "black", margin: "auto" }}
+                value={selectedRefinement}
+                input={<BootstrapInput />}
+                onChange={handleChange}
+            >
+                {items.map((item) => (
+                    <MenuItem value={item.label}>
+                        <a
+                            href={createURL(item.value)}
+                            style={{ fontWeight: item.isRefined ? "bold" : "", textDecoration: "none" }}
+                            onClick={(event) => {
+                                event.preventDefault()
+                                refine(item.value)
+                            }}
+                        >
+                            {item.label}
+                        </a>
+                    </MenuItem>
+                ))}
+            </Select>
+        </Grid>
     )
 })
 export default CustomSortBy
