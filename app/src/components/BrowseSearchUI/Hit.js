@@ -30,7 +30,7 @@ const Hit = ({ hit }) => {
                     <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
                         <Grid container direction="row">
                             {hit.category.map((category) => (
-                                <Chip style={{ marginRight: "0.5vw", backgroundColor: "#F2994A" }} label={category} size="small" />
+                                <Chip style={{ marginRight: "0.5vw", backgroundColor: "#F2994A" }} key={category} label={category} size="small" />
                             ))}
                         </Grid>
                     </Grid>

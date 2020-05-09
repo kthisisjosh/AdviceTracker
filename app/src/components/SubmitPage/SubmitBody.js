@@ -5,7 +5,7 @@ import NewAdvice from "../DashboardPage/Category/NewAdvice"
 const SubmitBody = (props) => {
     return (
         <Grid container direction="column">
-            <Grid item style={{ marginTop: "5vh" }}>
+            <Grid item style={{ marginTop: "2.5vh" }}>
                 <NewAdvice height="50vh" editorHeight="43vh" handleEditorChange={props.handleEditorChange} handleSubmit={props.handleSubmit} />
             </Grid>
         </Grid>
