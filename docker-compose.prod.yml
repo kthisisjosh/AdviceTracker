@@ -7,6 +7,8 @@ services:
             context: ./app
             dockerfile: Dockerfile.prod
             args:
+            - REACT_APP_ALGOLIA_API_KEY=${REACT_APP_ALGOLIA_API_KEY}
+            - REACT_APP_ALGOLIA_APP_ID=${REACT_APP_ALGOLIA_APP_ID}
             - REACT_APP_GOOGLE_CLIENT_ID=${REACT_APP_GOOGLE_CLIENT_ID}
             - REACT_APP_GITHUB_CLIENT_ID=${REACT_APP_GITHUB_CLIENT_ID}
             - REACT_APP_TINY_API_KEY=${REACT_APP_TINY_API_KEY}
