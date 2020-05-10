@@ -1,0 +1,5 @@
+# robots.txt for https://advicetracker.life/
+
+Sitemap: https://advicetracker.life/sitemaps/sitemap-index.xml
+Sitemap: https://advicetracker.life/sitemaps/sitemap.0.xml
+Sitemap: https://advicetracker.life/sitemaps/sitemap.1.xml

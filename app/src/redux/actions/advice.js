@@ -27,6 +27,7 @@ export const getInboxAdvice = (id) => async (dispatch) => {
             .then((data) => {
                 dispatch({ type: GET_INBOX_ADVICE, payload: data })
             })
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -44,6 +45,7 @@ export const getAdvice = (id) => async (dispatch) => {
             .then((data) => {
                 dispatch({ type: GET_ADVICE, payload: data })
             })
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -69,9 +71,11 @@ export const submitInboxAdvice = (advice, id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newInboxAdvice),
-        }).then(() => {
-            dispatch({ type: SUBMIT_INBOX_ADVICE, payload: newInboxAdvice })
         })
+            .then(() => {
+                dispatch({ type: SUBMIT_INBOX_ADVICE, payload: newInboxAdvice })
+            })
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -107,7 +111,9 @@ export const submitAdvice = (advice, category, currSubcategory, id) => async (di
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newAdvice),
-        }).then(() => dispatch({ type: SUBMIT_ADVICE, payload: updatedCategory }))
+        })
+            .then(() => dispatch({ type: SUBMIT_ADVICE, payload: updatedCategory }))
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -133,9 +139,11 @@ export const submitCategory = (category, id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(updatedCategory),
-        }).then(() => {
-            dispatch({ type: SUBMIT_CATEGORY, payload: { ...updatedCategory, subcategories: [] } })
         })
+            .then(() => {
+                dispatch({ type: SUBMIT_CATEGORY, payload: { ...updatedCategory, subcategories: [] } })
+            })
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -164,10 +172,12 @@ export const submitSubCategory = (name, category, id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newSubCategory),
-        }).then(() => {
-            dispatch({ type: SUBMIT_SUBCATEGORY, payload: updatedCategory })
-            setTimeout(() => null, 500)
         })
+            .then(() => {
+                dispatch({ type: SUBMIT_SUBCATEGORY, payload: updatedCategory })
+                setTimeout(() => null, 500)
+            })
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -184,7 +194,9 @@ export const deleteInboxAdvice = (advice) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        }).then(() => Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success"))
+        })
+            .then(() => Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success"))
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -201,7 +213,9 @@ export const deleteAdvice = (id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        }).then(() => Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success"))
+        })
+            .then(() => Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success"))
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -218,7 +232,9 @@ export const deleteCategory = (id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        }).then(() => Swal.fire("Deleted!", `The category has been succesfully deleted.`, "success"))
+        })
+            .then(() => Swal.fire("Deleted!", `The category has been succesfully deleted.`, "success"))
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -236,7 +252,9 @@ export const deleteSubCategory = (category, id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        }).then(() => Swal.fire("Deleted!", `The sub-category has been succesfully deleted.`, "success"))
+        })
+            .then(() => Swal.fire("Deleted!", `The sub-category has been succesfully deleted.`, "success"))
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
@@ -254,9 +272,11 @@ export const updateAdvice = (content, id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ content }),
-        }).then(() => {
-            //dispatch({ type: UPDATE_ADVICE, payload: {} })
         })
+            .then(() => {
+                //dispatch({ type: UPDATE_ADVICE, payload: {} })
+            })
+            .catch((err) => console.log(err))
     } catch (error) {
         console.log(error)
     }
