@@ -15,19 +15,22 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
-router.post("/api/posts", verifyToken, async (req, res) => {
-    const postLink = req.body;
+router.get("/api/posts/:link", verifyToken, async (req, res) => {
+    try {
+        const link = req.params.link.split(" ");
+        const queryString = "SELECT * FROM posts WHERE permalink = 'https://advicetracker.life/browse/" + link[0] + "/" + link[1] + "/';";
 
-    const queryString = "SELECT * FROM posts WHERE permalink = \'" + postLink + "\';";
-
-    connection.query(queryString, (err, results, fields) => {
-        if (err) {
-            console.log(err);
-            res.sendStatus(500);
-        } else {
-            res.json(results[0]);
-        }
-    });
+        connection.query(queryString, (err, results, fields) => {
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+            } else {
+                res.json(results[0]);
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 router.post("/api/posts", verifyToken, async (req, res) => {

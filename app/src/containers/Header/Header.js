@@ -45,8 +45,26 @@ const Header = (props) => {
                             defaultChecked={darkMode.value}
                             onChange={darkMode.toggle}
                             icons={{
-                                checked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="moon" aria-hidden src={"./moon.png"} />,
-                                unchecked: <img style={{ pointerEvents: "none" }} width="16" height="14" alt="sun" aria-hidden src={"./sun.png"} />,
+                                checked: (
+                                    <img
+                                        style={{ pointerEvents: "none" }}
+                                        width="16"
+                                        height="14"
+                                        alt="moon"
+                                        aria-hidden
+                                        src={"https://advicetracker.life/moon.png"}
+                                    />
+                                ),
+                                unchecked: (
+                                    <img
+                                        style={{ pointerEvents: "none" }}
+                                        width="16"
+                                        height="14"
+                                        alt="sun"
+                                        aria-hidden
+                                        src={"https://advicetracker.life/sun.png"}
+                                    />
+                                ),
                             }}
                         />
                     </Grid>

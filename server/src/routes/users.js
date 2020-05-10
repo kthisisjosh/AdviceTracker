@@ -16,12 +16,11 @@ router.get("/api/users/:username", verifyToken, (req, res) => {
     try {
         const queryStringInfo = "SELECT * FROM users WHERE username = '" + req.params.username.replace(/_/g, " ") + "';";
 
-        connection.query(queryStringInfo, (err, results, fields) => {
+        connection.query(queryStringInfo, (err, userResults, fields) => {
             if (!err) {
-
-                const queryStringPosts = "SELECT * FROM posts WHERE user_id = " + JSON.parse(JSON.stringify(results[0])).userID + ";";
+                const queryStringPosts = "SELECT * FROM posts WHERE user_id = " + JSON.parse(JSON.stringify(userResults[0])).userID + ";";
                 connection.query(queryStringPosts, (err, results, fields) => {
-                    if (!err) res.json({...JSON.parse(JSON.stringify(results[0])), ...JSON.parse(JSON.stringify(results))});
+                    if (!err) res.json({ ...JSON.parse(JSON.stringify(userResults[0])), posts: JSON.parse(JSON.stringify(results)) });
                     else console.log(err);
                 });
             } else {

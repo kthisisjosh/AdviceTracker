@@ -4,7 +4,13 @@ const initialState = {
     token: localStorage.getItem("jwtToken"),
     isAuthenticated: null,
     loading: true,
-    user: null,
+    user: {
+        userID: "",
+        username: "",
+        email: "",
+        token: "",
+        profileUrl: "",
+    },
 }
 
 export default (state = initialState, action) => {

@@ -95,7 +95,7 @@ exports[`<App /> should render and match the snapshot 1`] = `
           }
         }
         exact={true}
-        path="/profile"
+        path="/user/:username"
       />
       <Route
         component={
@@ -109,6 +109,19 @@ exports[`<App /> should render and match the snapshot 1`] = `
         }
         exact={true}
         path="/browse"
+      />
+      <Route
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [Function],
+            "compare": null,
+            "displayName": "Connect(PostPage)",
+            "type": [Function],
+          }
+        }
+        exact={true}
+        path="/browse/:category/:content"
       />
       <Route
         component={

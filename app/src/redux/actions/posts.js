@@ -65,7 +65,7 @@ export const createPost = (content, user, category) => async (dispatch) => {
 
 export const getPost = (categoryName, content) => async (dispatch) => {
     try {
-        const url = "https://advicetracker.life/api/posts/"
+        const url = "https://advicetracker.life/api/posts/" + categoryName + " " + content
 
         const token = localStorage.getItem("jwtToken")
         await fetch(url, {
@@ -74,7 +74,6 @@ export const getPost = (categoryName, content) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-            body: "https://advicetracker.life/" + categoryName + "/" + content,
         })
             .then((response) => response.json())
             .then((data) => {

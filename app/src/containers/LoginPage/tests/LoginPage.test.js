@@ -27,7 +27,13 @@ describe("<LoginPage />", () => {
                 token: null,
                 isAuthenticated: null,
                 loading: true,
-                user: null,
+                user: {
+                    userID: "",
+                    username: "",
+                    email: "",
+                    token: "",
+                    profileUrl: "",
+                },
             }
         })
 
