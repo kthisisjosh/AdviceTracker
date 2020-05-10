@@ -13,15 +13,46 @@ import {
 } from "../types/advice"
 
 const initialState = {
-    inboxAdvice: [],
-    categories: [],
+    inboxAdvice: [
+        {
+            content: "",
+            inInbox: 1,
+            userID: "",
+            likes: null,
+            datePosted: null,
+            comments: [],
+            adviceID: "",
+        },
+    ],
+    categories: [
+        {
+            name: "",
+            categoryID: "",
+            description: "",
+            subcategories: [
+                {
+                    name: "",
+                    subcategoryID: "",
+                    advice: [
+                        {
+                            adviceID: "",
+                            content: "",
+                        },
+                    ],
+                },
+            ],
+        },
+    ],
     browseAdvice: [],
 }
 
 export default (state = initialState, action) => {
-    const filteredCategories = state.categories.filter((category) => {
-        return category.categoryID !== action.payload.categoryID
-    })
+    let filteredCategories = []
+    if (state.categories[0].name !== "") {
+        filteredCategories = state.categories.filter((category) => {
+            return category.categoryID !== action.payload.categoryID
+        })
+    }
     switch (action.type) {
         case GET_INBOX_ADVICE:
             return { ...state, inboxAdvice: [...action.payload] }

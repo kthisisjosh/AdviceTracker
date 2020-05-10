@@ -30,16 +30,16 @@ const PostPage = (props) => {
             <Header />
             <Navbar />
             <Grid container direction="column" style={{ margin: "2.5vh 15vw 15vh 14vw", width: "auto", height: "auto", minHeight: "60vh" }}>
-                <Hit hit={{...currentPost, category: currentPost.category.split(",")}} />
+                <Hit hit={{ ...currentPost, category: currentPost.category.split(",") }} />
             </Grid>
             <Footer />
         </Fragment>
     )
 }
 
-const mapStateToProps = ({ authState, postsState }) => ({
-    isAuthenticated: authState.isAuthenticated,
-    user: authState.user,
+const mapStateToProps = ({ sessionState, postsState }) => ({
+    isAuthenticated: sessionState.authenticated,
+    user: sessionState.user,
     currentPost: postsState.currentPost,
 })
 

@@ -27,9 +27,9 @@ const FriendsPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ authState }) => ({
-    user: authState.user,
-    isAuthenticated: authState.isAuthenticated,
+const mapStateToProps = ({ sessionState }) => ({
+    user: sessionState.user,
+    isAuthenticated: sessionState.authenticated,
 })
 
 const mapDispatchToProps = {}

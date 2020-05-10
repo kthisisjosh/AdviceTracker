@@ -32,7 +32,7 @@ const DashboardPage = (props) => {
         inboxAdvice,
         submitCategory,
         submitInboxAdvice,
-        isAuthenticated,
+        session,
         user,
         categories,
     } = props
@@ -44,14 +44,15 @@ const DashboardPage = (props) => {
     const MySwal = withReactContent(Swal)
 
     useEffect(() => {
-        if (!inboxAdvice.length && isAuthenticated.authenticated) {
-            getInboxAdvice(user.userID)
-            getAdvice(user.userID)
-        } else if (isAuthenticated.checked && !isAuthenticated.authenticated) {
-            console.log(isAuthenticated)
+        if ((!inboxAdvice.length || inboxAdvice) && session.authenticated && session.checked) {
+            setTimeout(() => {
+                getInboxAdvice(user.userID)
+                getAdvice(user.userID)
+            }, 1000)
+        } else if (session.checked && !session.authenticated) {
             history.push("/login")
         }
-    }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated, getAdvice])
+    }, [getInboxAdvice, history, inboxAdvice.length, session, getAdvice, user])
 
     // --------- Category --------- \\
     const handleAddClickCategory = () => {
@@ -187,10 +188,9 @@ const DashboardPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ adviceState, authState, sessionState }) => ({
+const mapStateToProps = ({ adviceState, sessionState }) => ({
     inboxAdvice: adviceState.inboxAdvice,
-    isAuthenticated: sessionState,
-    user: authState.user,
+    user: sessionState.user,
     categories: adviceState.categories,
     session: sessionState,
 })

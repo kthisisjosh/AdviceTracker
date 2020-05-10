@@ -98,9 +98,9 @@ const SubmitPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ authState }) => ({
-    isAuthenticated: authState.isAuthenticated,
-    user: authState.user,
+const mapStateToProps = ({ sessionState }) => ({
+    isAuthenticated: sessionState.authenticated,
+    user: sessionState.user,
 })
 
 const mapDispatchToProps = { createPost }

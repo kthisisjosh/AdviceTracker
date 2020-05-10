@@ -15,7 +15,7 @@ import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 
 const CategoryPage = (props) => {
-    const { categories, match, submitSubCategory, user, deleteSubCategory } = props
+    const { categories, match, submitSubCategory, user, deleteSubCategory, checked, isAuthenticated, getAdvice } = props
     const [currCategory, setCurrCategory] = useState({ test: "Test", subcategories: [] })
     const [toAddSubCategory, setToAddSubCategory] = useState(false)
     const [subCategoryName, setSubCategoryName] = useState("")
@@ -23,8 +23,11 @@ const CategoryPage = (props) => {
     const history = useHistory()
 
     useEffect(() => {
-        const foundCategory = categories.find((category) => category.categoryID === match.params.id)
-        setCurrCategory(foundCategory)
+        if (checked && isAuthenticated) {
+            getAdvice(user.userID)
+            const foundCategory = categories.find((category) => category.categoryID === match.params.id) || categories[0]
+            setCurrCategory(foundCategory)
+        }
     }, [categories, user.userID])
 
     const handleAddClick = () => {
@@ -91,9 +94,11 @@ const CategoryPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ adviceState, authState }) => ({
+const mapStateToProps = ({ adviceState, sessionState }) => ({
     categories: adviceState.categories,
-    user: authState.user,
+    user: sessionState.user,
+    isAuthenticated: sessionState.authenticated,
+    checked: sessionState.checked,
 })
 
 const mapDispatchToProps = { submitSubCategory, deleteSubCategory, getAdvice }

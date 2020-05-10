@@ -68,9 +68,9 @@ const AdvicePage = (props) => {
     )
 }
 
-const mapStateToProps = ({ adviceState, authState }) => ({
+const mapStateToProps = ({ adviceState, sessionState }) => ({
     categories: adviceState.categories,
-    user: authState.user,
+    user: sessionState.user,
 })
 
 const mapDispatchToProps = { submitAdvice, deleteAdvice, updateAdvice }

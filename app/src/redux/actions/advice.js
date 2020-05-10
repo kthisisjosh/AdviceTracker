@@ -16,6 +16,7 @@ import Swal from "sweetalert2"
 
 export const getInboxAdvice = (id) => async (dispatch) => {
     try {
+        if (id === "" || id === null) return null
         const url = "https://advicetracker.life/api/advice/inbox/" + id
         const token = localStorage.getItem("jwtToken")
         await fetch(url, {
@@ -99,8 +100,6 @@ export const submitAdvice = (advice, category, currSubcategory, id) => async (di
 
         const updatedCategory = { ...category, subcategories: [newSubcategory, ...filteredSubcategories] }
 
-        dispatch({ type: SUBMIT_ADVICE, payload: updatedCategory })
-
         await fetch(url, {
             method: "POST",
             headers: {
@@ -108,7 +107,7 @@ export const submitAdvice = (advice, category, currSubcategory, id) => async (di
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newAdvice),
-        })
+        }).then(() => dispatch({ type: SUBMIT_ADVICE, payload: updatedCategory }))
     } catch (error) {
         console.log(error)
     }
@@ -158,7 +157,6 @@ export const submitSubCategory = (name, category, id) => async (dispatch) => {
 
         const updatedCategory = { ...category, subcategories: [newSubCategory, ...category.subcategories] }
 
-        dispatch({ type: SUBMIT_SUBCATEGORY, payload: updatedCategory })
         await fetch(url, {
             method: "POST",
             headers: {
@@ -166,6 +164,9 @@ export const submitSubCategory = (name, category, id) => async (dispatch) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(newSubCategory),
+        }).then(() => {
+            dispatch({ type: SUBMIT_SUBCATEGORY, payload: updatedCategory })
+            setTimeout(() => null, 500)
         })
     } catch (error) {
         console.log(error)
@@ -200,7 +201,7 @@ export const deleteAdvice = (id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        })
+        }).then(() => Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success"))
     } catch (error) {
         console.log(error)
     }
