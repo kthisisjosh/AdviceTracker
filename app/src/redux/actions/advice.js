@@ -12,6 +12,7 @@ import {
     UPDATE_ADVICE,
 } from "../types/advice"
 import { v4 as uuidv4 } from "uuid"
+import Swal from "sweetalert2"
 
 export const getInboxAdvice = (id) => async (dispatch) => {
     try {
@@ -115,6 +116,7 @@ export const submitAdvice = (advice, category, currSubcategory, id) => async (di
 
 export const submitCategory = (category, id) => async (dispatch) => {
     try {
+        console.log(id)
         const url = "https://advicetracker.life/api/advice/categories/"
         const token = localStorage.getItem("jwtToken")
         const updatedCategory = {
@@ -181,7 +183,7 @@ export const deleteInboxAdvice = (advice) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        })
+        }).then(() => Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success"))
     } catch (error) {
         console.log(error)
     }
@@ -215,7 +217,7 @@ export const deleteCategory = (id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        })
+        }).then(() => Swal.fire("Deleted!", `The category has been succesfully deleted.`, "success"))
     } catch (error) {
         console.log(error)
     }
@@ -233,7 +235,7 @@ export const deleteSubCategory = (category, id) => async (dispatch) => {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
-        })
+        }).then(() => Swal.fire("Deleted!", `The sub-category has been succesfully deleted.`, "success"))
     } catch (error) {
         console.log(error)
     }

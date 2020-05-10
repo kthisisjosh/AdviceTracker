@@ -54,7 +54,6 @@ const CategoryPage = (props) => {
             if (result.value) {
                 history.push("/dashboard/category/" + currCategory.categoryID)
                 deleteSubCategory(category, subCategoryID)
-                Swal.fire("Deleted!", `The sub-category '${subCategoryName}' has been succesfully deleted.`, "success")
             }
         })
     }

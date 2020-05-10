@@ -83,7 +83,6 @@ const SubCategoryPage = (props) => {
                                     exit={{ opacity: 0, scale: 0 }}
                                     positionTransition
                                     key={advice.adviceID}
-                                    style={{ WebkitPerspective: "1000" }}
                                 >
                                     <Advice
                                         handleDelete={handleAdviceDelete}

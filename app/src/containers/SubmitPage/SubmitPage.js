@@ -61,8 +61,7 @@ const SubmitPage = (props) => {
             confirmButtonText: "Yes, post it!",
         }).then((result) => {
             if (result.value) {
-                setTimeout(() => history.push("/browse"), 750)
-                createPost(adviceContent, user, categories)
+                createPost(adviceContent, user, categories, history)
             }
         })
     }

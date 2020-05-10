@@ -44,10 +44,11 @@ const DashboardPage = (props) => {
     const MySwal = withReactContent(Swal)
 
     useEffect(() => {
-        if (!inboxAdvice.length && isAuthenticated) {
+        if (!inboxAdvice.length && isAuthenticated.authenticated) {
             getInboxAdvice(user.userID)
             getAdvice(user.userID)
-        } else if (!isAuthenticated) {
+        } else if (isAuthenticated.checked && !isAuthenticated.authenticated) {
+            console.log(isAuthenticated)
             history.push("/login")
         }
     }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated, getAdvice])
@@ -58,7 +59,7 @@ const DashboardPage = (props) => {
     }
 
     const handleSubmitCategory = () => {
-        submitCategory(submitCategoryInfo, user.userID)
+        submitCategory(submitCategoryInfo, user.userID || user.id)
         setSubmitCategory({ title: "", description: "" })
         setToAddCategory(false)
     }
@@ -110,7 +111,6 @@ const DashboardPage = (props) => {
         }).then((result) => {
             if (result.value) {
                 deleteInboxAdvice(advice)
-                Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success")
             }
         })
     }
@@ -129,7 +129,6 @@ const DashboardPage = (props) => {
         }).then((result) => {
             if (result.value) {
                 deleteCategory(categoryID)
-                Swal.fire("Deleted!", `The category '${categoryName}' has been succesfully deleted.`, "success")
             }
         })
     }
@@ -146,7 +145,6 @@ const DashboardPage = (props) => {
         }).then((result) => {
             if (result.value) {
                 deleteSubCategory(category, subCategoryID)
-                Swal.fire("Deleted!", `The sub-category '${subCategoryName}' has been succesfully deleted.`, "success")
             }
         })
     }
@@ -189,11 +187,12 @@ const DashboardPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ adviceState, authState }) => ({
+const mapStateToProps = ({ adviceState, authState, sessionState }) => ({
     inboxAdvice: adviceState.inboxAdvice,
-    isAuthenticated: authState.isAuthenticated,
+    isAuthenticated: sessionState,
     user: authState.user,
     categories: adviceState.categories,
+    session: sessionState,
 })
 
 const mapDispatchToProps = { getAdvice, getInboxAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory, deleteCategory, deleteSubCategory }

@@ -17,12 +17,7 @@ const LoginPage = (props) => {
     const { googleLogin, githubLogin, isAuthenticated, user } = props
     const history = useHistory()
 
-    useEffect(() => {
-        if (isAuthenticated) {
-            history.push("/dashboard")
-        } else {
-        }
-    }, [isAuthenticated, user, history])
+    useEffect(() => {}, [isAuthenticated, user, history])
 
     return (
         <>
@@ -90,7 +85,9 @@ const LoginPage = (props) => {
                             <div style={{ display: "inline-block", paddingTop: "50px" }}>
                                 <GoogleLogin
                                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-                                    onSuccess={googleLogin}
+                                    onSuccess={(res) => {
+                                        googleLogin(res, history)
+                                    }}
                                     onFailure={googleLogin}
                                     disabled={false}
                                 />
