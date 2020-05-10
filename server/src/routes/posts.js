@@ -16,6 +16,21 @@ const connection = mysql.createConnection({
 });
 
 router.post("/api/posts", verifyToken, async (req, res) => {
+    const postLink = req.body;
+
+    const queryString = "SELECT * FROM posts WHERE permalink = \'" + postLink + "\';";
+
+    connection.query(queryString, (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            res.json(results[0]);
+        }
+    });
+});
+
+router.post("/api/posts", verifyToken, async (req, res) => {
     const {
         content,
         content_stripped,
@@ -54,7 +69,8 @@ router.post("/api/posts", verifyToken, async (req, res) => {
         })
         .then(({ objectID }) => {
             console.log("Succesfully saved object with id " + objectID);
-        }).catch((e) => console.log(e));
+        })
+        .catch((e) => console.log(e));
 
     const queryString =
         "INSERT INTO posts (content, content_stripped, category, likes, post_date, post_date_timestamp, user_id, user_name, profile_url, user_image_url, permalink, comments, num_of_comments, post_id, objectID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

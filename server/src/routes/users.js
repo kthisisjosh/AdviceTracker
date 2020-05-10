@@ -12,13 +12,25 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
-router.get("/api/users", verifyToken, async (req, res) => {
-    const queryString = "SELECT * FROM users";
+router.get("/api/users/:username", verifyToken, (req, res) => {
+    try {
+        const queryStringInfo = "SELECT * FROM users WHERE username = '" + req.params.username.replace(/_/g, " ") + "';";
 
-    connection.query(queryString, (err, results, fields) => {
-        if (!err) res.json(results);
-        else console.log(err);
-    });
+        connection.query(queryStringInfo, (err, results, fields) => {
+            if (!err) {
+
+                const queryStringPosts = "SELECT * FROM posts WHERE user_id = " + JSON.parse(JSON.stringify(results[0])).userID + ";";
+                connection.query(queryStringPosts, (err, results, fields) => {
+                    if (!err) res.json({...JSON.parse(JSON.stringify(results[0])), ...JSON.parse(JSON.stringify(results))});
+                    else console.log(err);
+                });
+            } else {
+                console.log(err);
+            }
+        });
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 router.post("/api/users/", async (req, res) => {
@@ -49,21 +61,6 @@ router.post("/api/users/", async (req, res) => {
                     }
                 });
             }
-        }
-    });
-});
-
-router.delete("/api/users/:id", verifyToken, (req, res) => {
-    const queryString = "DELETE FROM users WHERE id = ?";
-
-    connection.query(queryString, [req.params.id], (err, results, fields) => {
-        if (err) {
-            console.log(err);
-            res.sendStatus(500);
-        } else {
-            console.log(`Successfully deleted user with ID ${req.params.id}`);
-
-            res.sendStatus(200);
         }
     });
 });

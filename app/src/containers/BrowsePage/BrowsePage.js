@@ -1,6 +1,5 @@
 import React, { Fragment } from "react"
 import { connect } from "react-redux"
-import { getUsers, createUser } from "../../redux/actions/users"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
@@ -33,6 +32,6 @@ const mapStateToProps = ({ authState }) => ({
     isAuthenticated: authState.isAuthenticated,
 })
 
-const mapDispatchToProps = { getUsers, createUser }
+const mapDispatchToProps = {}
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsPage)

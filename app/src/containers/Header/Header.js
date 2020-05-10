@@ -12,7 +12,7 @@ import { LOGOUT } from "../../redux/types/auth"
 import { motion } from "framer-motion"
 
 const Header = (props) => {
-    const { isAuthenticated } = props
+    const { isAuthenticated, user } = props
     const darkMode = useDarkMode(false)
     const history = useHistory()
     const dispatch = useDispatch()
@@ -53,7 +53,10 @@ const Header = (props) => {
                     <Grid item md={6}>
                         <Menu right noOverlay>
                             {isAuthenticated && (
-                                <Link to="/profile" style={{ marginBottom: "2vw", textDecoration: "none", color: "white" }}>
+                                <Link
+                                    to={"/user/" + user.username.replace(/ /g, "_") + "/"}
+                                    style={{ marginBottom: "2vw", textDecoration: "none", color: "white" }}
+                                >
                                     <Typography variant="button">Profile</Typography>
                                 </Link>
                             )}
@@ -94,7 +97,11 @@ const Header = (props) => {
                         }}
                     />
                     {isAuthenticated && (
-                        <Link to="/profile" className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
+                        <Link
+                            to={"/user/" + user.username.replace(/ /g, "_") + "/"}
+                            className="landing-header-link"
+                            style={{ margin: "0 0 0 5vw", textDecoration: "none" }}
+                        >
                             <Typography variant="button" style={{ textDecoration: "none" }}>
                                 Profile
                             </Typography>
@@ -113,6 +120,7 @@ const Header = (props) => {
 
 const mapStateToProps = ({ authState }) => ({
     isAuthenticated: authState.isAuthenticated,
+    user: authState.user,
 })
 
 export default connect(mapStateToProps)(Header)

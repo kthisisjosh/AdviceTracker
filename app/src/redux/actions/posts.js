@@ -1,4 +1,4 @@
-import { CREATE_POST } from "../types/posts"
+import { CREATE_POST, GET_POST } from "../types/posts"
 import { v4 as uuidv4 } from "uuid"
 import Swal from "sweetalert2"
 
@@ -28,7 +28,15 @@ export const createPost = (content, user, category) => async (dispatch) => {
             user_name: user.username,
             profile_url: "https://advicetracker.life/profile/" + user.userID,
             user_image_url: user.profileUrl,
-            permalink: "tbd",
+            permalink:
+                "https://advicetracker.life/browse/" +
+                category[0].replace(/ /g, "_") +
+                "/" +
+                content
+                    .replace(/<[^>]*>?/gm, "")
+                    .slice(0, 40)
+                    .replace(/ /g, "_") +
+                "/",
             comments: null,
             num_of_comments: 0,
             post_id: uuidv4(),
@@ -50,5 +58,29 @@ export const createPost = (content, user, category) => async (dispatch) => {
             })
             //dispatch({ type: CREATE_POST, payload: {} })
         })
-    } catch (error) {}
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getPost = (categoryName, content) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/posts/"
+
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: "https://advicetracker.life/" + categoryName + "/" + content,
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                dispatch({ type: GET_POST, payload: data })
+            })
+    } catch (error) {
+        console.log(error)
+    }
 }

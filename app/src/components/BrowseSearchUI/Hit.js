@@ -8,20 +8,20 @@ const Hit = ({ hit }) => {
     return (
         <a
             style={{ textDecoration: "none" }}
-            href={"https://advicetracker.life/browse/" + hit.category[0] + "/" + hit.content_stripped.slice(0, 40).replace(/ /g, "_") + "/"}
+            href={hit.permalink}
         >
             <Paper style={{ marginBottom: "2vh", width: "auto" }}>
                 <Grid container direction="column" style={{ padding: "0.5vh 0.5vw" }}>
                     <Grid container direction="row" style={{ margin: "auto" }}>
                         <Grid item>
-                            <a href={"https://advicetracker.life/profile/" + hit.user_name.replace(/ /g, "_")}>
+                            <a href={"/user/" + hit.user_name.replace(/ /g, "_")}>
                                 <Avatar alt={hit.user_name} src={hit.user_image_url}>
                                     {hit.user_name.charAt(0)}
                                 </Avatar>
                             </a>
                         </Grid>
                         <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
-                            <a href={"https://advicetracker.life/profile/" + hit.user_name.replace(/ /g, "_")}>
+                            <a href={"/user/" + hit.user_name.replace(/ /g, "_")}>
                                 <Typography variant="body1">{hit.user_name}</Typography>
                             </a>
                         </Grid>

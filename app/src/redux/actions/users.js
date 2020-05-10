@@ -1,32 +1,23 @@
-import { GET_USERS, CREATE_USER, DELETE_USER } from "../types/users"
-import { v4 as uuidv4 } from "uuid"
+import { GET_USER_INFO } from "../types/users"
 
-export const getUsers = () => async (dispatch) => {
-    await fetch("https://advicetracker.life/api/mock")
-        .then((response) => response.json())
-        .then((data) => {
-            dispatch({ type: GET_USERS, payload: data })
+export const getUserInfo = (username) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/users/" + username
+
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
         })
-}
-
-export const createUser = (user) => async (dispatch) => {
-    if (user.id === null) {
-        user.id = uuidv4()
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data)
+                dispatch({ type: GET_USER_INFO, payload: data })
+            })
+    } catch (error) {
+        console.log(error)
     }
-    await fetch("https://advicetracker.life/api/mock", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-    }).then(() => {
-        dispatch({ type: CREATE_USER, payload: user })
-    })
-}
-
-export const deleteUser = (id) => async (dispatch) => {
-    dispatch({ type: DELETE_USER, payload: id })
-
-    await fetch("https://advicetracker.life/api/mock/" + id, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" },
-    })
 }

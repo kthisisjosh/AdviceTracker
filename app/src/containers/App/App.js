@@ -26,8 +26,9 @@ function App() {
                     <Route exact path="/dashboard/category/:id" component={CategoryPage} />
                     <Route exact path="/dashboard/subcategory/:id" component={SubCategoryPage} />
                     <Route exact path="/dashboard/advice/:id" component={AdvicePage} />
-                    <Route component={ProfilePage} exact path="/profile" />
+                    <Route component={ProfilePage} exact path="/user/:username" />
                     <Route component={BrowsePage} exact path="/browse" />
+                    <Route component={null} exact path="/browse/:category/:content" />
                     <Route component={SubmitPage} exact path="/submit" />
                 </Switch>
             </Router>
