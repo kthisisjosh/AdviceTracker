@@ -10,6 +10,7 @@
         "@testing-library/react": "^9.5.0",
         "@testing-library/user-event": "^7.2.1",
         "@tinymce/tinymce-react": "^3.5.0",
+        "algolia-sitemap": "^2.2.0",
         "algoliasearch": "^4.2.0",
         "coveralls": "^3.0.13",
         "framer-motion": "^1.10.3",
