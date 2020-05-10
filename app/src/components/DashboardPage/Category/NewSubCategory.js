@@ -1,5 +1,5 @@
 import React from "react"
-import { Paper, Grid, Button, Tooltip, Input, Typography, TextField } from "@material-ui/core"
+import { Paper, Grid, Button, TextField } from "@material-ui/core"
 import AddIcon from "@material-ui/icons/Add"
 
 const NewSubCategory = (props) => {

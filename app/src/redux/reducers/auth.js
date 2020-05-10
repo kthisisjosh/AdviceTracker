@@ -1,4 +1,5 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from "../types/auth"
+import { sessionService } from "redux-react-session"
 
 const initialState = {
     token: localStorage.getItem("jwtToken"),
@@ -21,6 +22,8 @@ export default (state = initialState, action) => {
         case LOGIN_FAIL:
         case LOGOUT:
             localStorage.removeItem("jwtToken")
+            sessionService.deleteSession()
+            sessionService.deleteUser()
             return initialState
         default:
             return state

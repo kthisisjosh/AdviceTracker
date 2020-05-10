@@ -8,31 +8,51 @@ import Title from "../../components/DashboardPage/Category/Title"
 import Advice from "../../components/DashboardPage/Display/Advice"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 import NewAdvice from "../../components/DashboardPage/Category/NewAdvice"
-import { submitAdvice, deleteAdvice } from "../../redux/actions/advice"
+import { submitAdvice, deleteAdvice, getAdvice } from "../../redux/actions/advice"
 import { motion, AnimatePresence } from "framer-motion"
 import { useHistory } from "react-router-dom"
+import Swal from "sweetalert2"
+import withReactContent from "sweetalert2-react-content"
 
 const SubCategoryPage = (props) => {
-    const { categories, match, submitAdvice, user, deleteAdvice } = props
+    const { categories, match, submitAdvice, user, deleteAdvice, checked, isAuthenticated, getAdvice } = props
     const [toAddAdvice, setToAddAdvice] = useState(false)
     const [adviceContent, setAdviceContent] = useState("")
     const [currSubCategory, setCurrSubCategory] = useState({ test: "Test", advice: [] })
     const history = useHistory()
+    const MySwal = withReactContent(Swal)
 
     useEffect(() => {
-        const foundCategory = categories.find((category) =>
-            category.subcategories.find((subcategory) => subcategory.subcategoryID === match.params.id)
-        )
-        const foundSubCategory = foundCategory.subcategories.find((subcategory) => subcategory.subcategoryID === match.params.id)
-        setCurrSubCategory(foundSubCategory)
-    }, [categories, match.params.id])
+        if (checked && isAuthenticated) {
+            getAdvice(user.userID)
+            const foundCategory =
+                categories.find((category) => category.subcategories.find((subcategory) => subcategory.subcategoryID === match.params.id)) ||
+                categories[0]
+            const foundSubCategory =
+                foundCategory.subcategories.find((subcategory) => subcategory.subcategoryID === match.params.id) || foundCategory.subcategories[0]
+            setCurrSubCategory(foundSubCategory)
+        }
+    }, [categories, match.params.id, checked, isAuthenticated, user.userID, getAdvice])
 
     const handleEditorChange = (content, editor) => {
         setAdviceContent(content)
     }
 
     const handleAdviceDelete = (adviceID) => {
-        deleteAdvice(adviceID)
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.value) {
+                history.push("/dashboard")
+                deleteAdvice(adviceID)
+            }
+        })
     }
 
     const handleAdviceSubmit = () => {
@@ -83,7 +103,6 @@ const SubCategoryPage = (props) => {
                                     exit={{ opacity: 0, scale: 0 }}
                                     positionTransition
                                     key={advice.adviceID}
-                                    style={{ WebkitPerspective: "1000" }}
                                 >
                                     <Advice
                                         handleDelete={handleAdviceDelete}
@@ -104,11 +123,13 @@ const SubCategoryPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ adviceState, authState }) => ({
+const mapStateToProps = ({ adviceState, sessionState }) => ({
     categories: adviceState.categories,
-    user: authState.user,
+    user: sessionState.user,
+    checked: sessionState.checked,
+    isAuthenticated: sessionState.authenticated,
 })
 
-const mapDispatchToProps = { submitAdvice, deleteAdvice }
+const mapDispatchToProps = { submitAdvice, deleteAdvice, getAdvice }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubCategoryPage)

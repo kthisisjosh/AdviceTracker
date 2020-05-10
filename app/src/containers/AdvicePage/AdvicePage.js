@@ -10,7 +10,7 @@ import AddIcon from "@material-ui/icons/Add"
 import { useHistory } from "react-router-dom"
 
 const AdvicePage = (props) => {
-    const { categories, match, submitAdvice, user, updateAdvice } = props
+    const { categories, match, updateAdvice } = props
     const [adviceContent, setAdviceContent] = useState("")
     const [currAdvice, setCurrAdvice] = useState({ content: "" })
     const history = useHistory()
@@ -68,9 +68,9 @@ const AdvicePage = (props) => {
     )
 }
 
-const mapStateToProps = ({ adviceState, authState }) => ({
+const mapStateToProps = ({ adviceState, sessionState }) => ({
     categories: adviceState.categories,
-    user: authState.user,
+    user: sessionState.user,
 })
 
 const mapDispatchToProps = { submitAdvice, deleteAdvice, updateAdvice }

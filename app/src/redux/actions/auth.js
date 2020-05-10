@@ -1,4 +1,5 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL } from "../types/auth"
+import { sessionService } from "redux-react-session"
 import Swal from "sweetalert2"
 
 const Toast = Swal.mixin({
@@ -12,7 +13,7 @@ const Toast = Swal.mixin({
     },
 })
 
-export const googleLogin = (response) => async (dispatch) => {
+export const googleLogin = (response, history) => async (dispatch) => {
     const profileObj = response.profileObj
     try {
         const newUser = {
@@ -30,11 +31,22 @@ export const googleLogin = (response) => async (dispatch) => {
         await fetch(url, options)
             .then((response) => response.json())
             .then((data) => {
-                dispatch({ type: LOGIN_SUCCESS, payload: data })
-                Toast.fire({
-                    icon: "success",
-                    title: "Signed in successfully",
-                })
+                sessionService
+                    .saveSession({ token: data.user.token })
+                    .then(() => {
+                        sessionService
+                            .saveUser(data.user)
+                            .then(() => {
+                                dispatch({ type: LOGIN_SUCCESS, payload: data })
+                                history.push("/dashboard")
+                                Toast.fire({
+                                    icon: "success",
+                                    title: "Signed in successfully",
+                                })
+                            })
+                            .catch((err) => console.log(err))
+                    })
+                    .catch((err) => console.log(err))
             })
             .catch(() => {
                 dispatch({ type: LOGIN_FAIL })

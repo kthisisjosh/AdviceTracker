@@ -3,15 +3,13 @@ import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
 import { Grid } from "@material-ui/core"
-import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 import { getPost } from "../../redux/actions/posts"
 import Hit from "../../components/BrowseSearchUI/Hit"
 
 const PostPage = (props) => {
-    const { isAuthenticated, user, getPost, match, currentPost } = props
-    const history = useHistory()
+    const { getPost, match, currentPost } = props
 
     useEffect(() => {
         getPost(match.params.category, match.params.content)
@@ -30,16 +28,14 @@ const PostPage = (props) => {
             <Header />
             <Navbar />
             <Grid container direction="column" style={{ margin: "2.5vh 15vw 15vh 14vw", width: "auto", height: "auto", minHeight: "60vh" }}>
-                <Hit hit={{...currentPost, category: currentPost.category.split(",")}} />
+                <Hit hit={{ ...currentPost, category: currentPost.category.split(",") }} />
             </Grid>
             <Footer />
         </Fragment>
     )
 }
 
-const mapStateToProps = ({ authState, postsState }) => ({
-    isAuthenticated: authState.isAuthenticated,
-    user: authState.user,
+const mapStateToProps = ({ sessionState, postsState }) => ({
     currentPost: postsState.currentPost,
 })
 

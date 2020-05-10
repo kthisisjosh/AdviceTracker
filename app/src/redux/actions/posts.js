@@ -13,7 +13,7 @@ const Toast = Swal.mixin({
     },
 })
 
-export const createPost = (content, user, category) => async (dispatch) => {
+export const createPost = (content, user, category, history) => async (dispatch) => {
     var moment = require("moment")
     try {
         const url = "https://advicetracker.life/api/posts/"
@@ -52,6 +52,7 @@ export const createPost = (content, user, category) => async (dispatch) => {
             },
             body: JSON.stringify(newPost),
         }).then(() => {
+            setTimeout(() => history.push("/browse"), 750)
             Toast.fire({
                 icon: "success",
                 title: "Sucessfully created post.",

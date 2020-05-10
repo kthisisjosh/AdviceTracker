@@ -29,7 +29,7 @@ const CustomSearchBox = connectSearchBox(({ currentRefinement, isSearchStalled, 
                 onChange: (event) => refine(event.currentTarget.value),
                 "aria-label": "search advicetracker",
             }}
-            value={null}
+            value={currentRefinement}
         />
         <IconButton
             disabled

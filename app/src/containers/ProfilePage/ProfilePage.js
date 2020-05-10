@@ -68,9 +68,9 @@ const ProfilePage = (props) => {
     )
 }
 
-const mapStateToProps = ({ authState, userState }) => ({
-    isAuthenticated: authState.isAuthenticated,
-    user: authState.user,
+const mapStateToProps = ({ sessionState, userState }) => ({
+    isAuthenticated: sessionState.authenticated,
+    user: sessionState.user,
     currentUser: userState.currentUser,
 })
 

@@ -61,8 +61,7 @@ const SubmitPage = (props) => {
             confirmButtonText: "Yes, post it!",
         }).then((result) => {
             if (result.value) {
-                setTimeout(() => history.push("/browse"), 750)
-                createPost(adviceContent, user, categories)
+                createPost(adviceContent, user, categories, history)
             }
         })
     }
@@ -99,9 +98,9 @@ const SubmitPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ authState }) => ({
-    isAuthenticated: authState.isAuthenticated,
-    user: authState.user,
+const mapStateToProps = ({ sessionState }) => ({
+    isAuthenticated: sessionState.authenticated,
+    user: sessionState.user,
 })
 
 const mapDispatchToProps = { createPost }

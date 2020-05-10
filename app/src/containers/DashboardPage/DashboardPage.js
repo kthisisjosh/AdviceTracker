@@ -32,7 +32,7 @@ const DashboardPage = (props) => {
         inboxAdvice,
         submitCategory,
         submitInboxAdvice,
-        isAuthenticated,
+        session,
         user,
         categories,
     } = props
@@ -44,13 +44,15 @@ const DashboardPage = (props) => {
     const MySwal = withReactContent(Swal)
 
     useEffect(() => {
-        if (!inboxAdvice.length && isAuthenticated) {
-            getInboxAdvice(user.userID)
-            getAdvice(user.userID)
-        } else if (!isAuthenticated) {
+        if ((!inboxAdvice.length || inboxAdvice) && session.authenticated && session.checked) {
+            setTimeout(() => {
+                getInboxAdvice(user.userID)
+                getAdvice(user.userID)
+            }, 1000)
+        } else if (session.checked && !session.authenticated) {
             history.push("/login")
         }
-    }, [getInboxAdvice, history, inboxAdvice.length, isAuthenticated, getAdvice])
+    }, [getInboxAdvice, history, inboxAdvice.length, session, getAdvice, user])
 
     // --------- Category --------- \\
     const handleAddClickCategory = () => {
@@ -58,7 +60,7 @@ const DashboardPage = (props) => {
     }
 
     const handleSubmitCategory = () => {
-        submitCategory(submitCategoryInfo, user.userID)
+        submitCategory(submitCategoryInfo, user.userID || user.id)
         setSubmitCategory({ title: "", description: "" })
         setToAddCategory(false)
     }
@@ -110,7 +112,6 @@ const DashboardPage = (props) => {
         }).then((result) => {
             if (result.value) {
                 deleteInboxAdvice(advice)
-                Swal.fire("Deleted!", `The advice has been succesfully deleted.`, "success")
             }
         })
     }
@@ -129,7 +130,6 @@ const DashboardPage = (props) => {
         }).then((result) => {
             if (result.value) {
                 deleteCategory(categoryID)
-                Swal.fire("Deleted!", `The category '${categoryName}' has been succesfully deleted.`, "success")
             }
         })
     }
@@ -146,7 +146,6 @@ const DashboardPage = (props) => {
         }).then((result) => {
             if (result.value) {
                 deleteSubCategory(category, subCategoryID)
-                Swal.fire("Deleted!", `The sub-category '${subCategoryName}' has been succesfully deleted.`, "success")
             }
         })
     }
@@ -189,11 +188,11 @@ const DashboardPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ adviceState, authState }) => ({
+const mapStateToProps = ({ adviceState, sessionState }) => ({
     inboxAdvice: adviceState.inboxAdvice,
-    isAuthenticated: authState.isAuthenticated,
-    user: authState.user,
+    user: sessionState.user,
     categories: adviceState.categories,
+    session: sessionState,
 })
 
 const mapDispatchToProps = { getAdvice, getInboxAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory, deleteCategory, deleteSubCategory }

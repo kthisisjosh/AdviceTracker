@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { connectSortBy } from "react-instantsearch-dom"
-import { Select, Input, InputLabel, MenuItem, withStyles, InputBase, Grid } from "@material-ui/core"
+import { Select, MenuItem, withStyles, InputBase, Grid } from "@material-ui/core"
 
 const BootstrapInput = withStyles((theme) => ({
     root: {
@@ -49,7 +49,7 @@ const CustomSortBy = connectSortBy(({ items, refine, createURL }) => {
                 onChange={handleChange}
             >
                 {items.map((item) => (
-                    <MenuItem value={item.label}>
+                    <MenuItem value={item.label} key={item.label}>
                         <a
                             href={createURL(item.value)}
                             style={{ fontWeight: item.isRefined ? "bold" : "", textDecoration: "none" }}
@@ -57,6 +57,7 @@ const CustomSortBy = connectSortBy(({ items, refine, createURL }) => {
                                 event.preventDefault()
                                 refine(item.value)
                             }}
+                            key={item.label}
                         >
                             {item.label}
                         </a>
