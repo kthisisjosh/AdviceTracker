@@ -66,12 +66,9 @@ export const createPost = (content, user, category) => async (dispatch) => {
 export const getPost = (categoryName, content) => async (dispatch) => {
     try {
         const url = "https://advicetracker.life/api/posts/" + categoryName + " " + content
-
-        const token = localStorage.getItem("jwtToken")
         await fetch(url, {
             method: "GET",
             headers: {
-                Authorization: `Bearer ${token}`,
                 "Content-Type": "application/json",
             },
         })

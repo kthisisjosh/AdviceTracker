@@ -15,7 +15,7 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
-router.get("/api/posts/:link", verifyToken, async (req, res) => {
+router.get("/api/posts/:link", async (req, res) => {
     try {
         const link = req.params.link.split(" ");
         const queryString = "SELECT * FROM posts WHERE permalink = 'https://advicetracker.life/browse/" + link[0] + "/" + link[1] + "/';";

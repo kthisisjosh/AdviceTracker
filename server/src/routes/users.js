@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
     database: process.env.MYSQL_DATABASE,
 });
 
-router.get("/api/users/:username", verifyToken, (req, res) => {
+router.get("/api/users/:username", (req, res) => {
     try {
         const queryStringInfo = "SELECT * FROM users WHERE username = '" + req.params.username.replace(/_/g, " ") + "';";
 
