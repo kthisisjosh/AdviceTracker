@@ -32,7 +32,7 @@ const SubCategoryPage = (props) => {
                 foundCategory.subcategories.find((subcategory) => subcategory.subcategoryID === match.params.id) || foundCategory.subcategories[0]
             setCurrSubCategory(foundSubCategory)
         }
-    }, [categories, match.params.id, checked, isAuthenticated, user.userID])
+    }, [categories, match.params.id, checked, isAuthenticated, user.userID, getAdvice])
 
     const handleEditorChange = (content, editor) => {
         setAdviceContent(content)

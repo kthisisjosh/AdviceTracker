@@ -28,7 +28,7 @@ const CategoryPage = (props) => {
             const foundCategory = categories.find((category) => category.categoryID === match.params.id) || categories[0]
             setCurrCategory(foundCategory)
         }
-    }, [categories, user.userID])
+    }, [categories, user.userID, checked, getAdvice, match.params.id, isAuthenticated])
 
     const handleAddClick = () => {
         setToAddSubCategory(true)

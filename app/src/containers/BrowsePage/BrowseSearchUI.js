@@ -52,7 +52,7 @@ const BrowseSearchUI = ({ location, user }) => {
             >
                 <CustomSearchBox />
                 <Grid container direction="row">
-                    <Grid container direction="column" md={2} sm={12} style={{ marginTop: "1em" }}>
+                    <Grid item md={2} sm={12} style={{ marginTop: "1em" }}>
                         <CustomStats />
                         <CustomSortBy
                             items={[
