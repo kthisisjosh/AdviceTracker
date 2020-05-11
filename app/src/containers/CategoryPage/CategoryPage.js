@@ -2,20 +2,21 @@ import React, { Fragment, useEffect, useState } from "react"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import { Grid } from "@material-ui/core"
+import { Grid, IconButton, Tooltip, TextField } from "@material-ui/core"
 import { connect } from "react-redux"
 import Title from "../../components/DashboardPage/Category/Title"
 import AdviceSubCategory from "../../components/DashboardPage/Display/AdviceSubCategory"
 import { useHistory } from "react-router-dom"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
-import { submitSubCategory, deleteSubCategory, getAdvice } from "../../redux/actions/advice"
+import { submitSubCategory, deleteSubCategory, getAdvice, updateCategory } from "../../redux/actions/advice"
 import NewSubCategory from "../../components/DashboardPage/Category/NewSubCategory"
 import { motion, AnimatePresence } from "framer-motion"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
+import EditIcon from "@material-ui/icons/EditOutlined"
 
 const CategoryPage = (props) => {
-    const { categories, match, submitSubCategory, user, deleteSubCategory, checked, isAuthenticated, getAdvice, token } = props
+    const { categories, match, submitSubCategory, user, deleteSubCategory, checked, isAuthenticated, getAdvice, token, updateCategory } = props
     const [currCategory, setCurrCategory] = useState({ test: "Test", subcategories: [] })
     const [toAddSubCategory, setToAddSubCategory] = useState(false)
     const [subCategoryName, setSubCategoryName] = useState("")
@@ -35,13 +36,30 @@ const CategoryPage = (props) => {
         setToAddSubCategory(true)
     }
 
+    const handleRenameClick = async () => {
+        const { value: formValues } = await Swal.fire({
+            title: "Rename the category & description",
+            html:
+                '<input id="swal-input1" class="swal2-input" value="' +
+                currCategory.name +
+                '">' +
+                '<input id="swal-input2" class="swal2-input" value="' +
+                currCategory.description +
+                '">',
+            focusConfirm: false,
+            preConfirm: () => {
+                updateCategory(document.getElementById("swal-input1").value, document.getElementById("swal-input2").value, currCategory.categoryID, history)
+            },
+        })
+    }
+
     const handleSubmit = () => {
         submitSubCategory(subCategoryName, currCategory, user.userID)
         setSubCategoryName("")
         setToAddSubCategory(false)
     }
 
-    const handleChange = (e) => {
+    const handleSubCategoryChange = (e) => {
         setSubCategoryName(e.target.value)
     }
 
@@ -67,13 +85,24 @@ const CategoryPage = (props) => {
             <Header />
             <Navbar />
             <Grid container direction="column" style={{ margin: "2vh 15vw 2vh 15vw", width: "auto", height: "auto", minHeight: "80vh" }}>
-                <Grid container>
-                    <Title name={currCategory.name} description={currCategory.description} isDescription={true} />
-                    <AddNewButton handleAddClick={handleAddClick} />
+                <Grid container direction="row">
+                    <Grid item>
+                        <Title name={currCategory.name} description={currCategory.description} isDescription={true} />
+                    </Grid>
+                    <Grid item style={{ marginLeft: "0.6vw", marginTop: "0.4vh" }}>
+                        <Tooltip title="Rename">
+                            <IconButton onClick={handleRenameClick} aria-label="Rename" style={{ color: "grey" }}>
+                                <EditIcon />
+                            </IconButton>
+                        </Tooltip>
+                    </Grid>
+                    <Grid item style={{ marginTop: "1.1vh", marginLeft: "1vw" }}>
+                        <AddNewButton handleAddClick={handleAddClick} />
+                    </Grid>
                 </Grid>
                 {toAddSubCategory && (
                     <motion.div initial={{ scale: 1, opacity: 0 }} animate={{ opacity: 1 }} positionTransition>
-                        <NewSubCategory handleChange={handleChange} handleSubmit={handleSubmit} />
+                        <NewSubCategory handleSubCategoryChange={handleSubCategoryChange} handleSubmit={handleSubmit} />
                     </motion.div>
                 )}
 
@@ -103,6 +132,6 @@ const mapStateToProps = ({ adviceState, sessionState }) => ({
     token: sessionState.user.token,
 })
 
-const mapDispatchToProps = { submitSubCategory, deleteSubCategory, getAdvice }
+const mapDispatchToProps = { submitSubCategory, deleteSubCategory, getAdvice, updateCategory }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryPage)

@@ -297,3 +297,57 @@ export const updateAdvice = (content, id) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const updateCategory = (name, description, id, history) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/advice/categories/" + id
+
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, description }),
+        })
+            .then(() => {
+                Toast.fire({
+                    icon: "success",
+                    title: "Successfully edited category.",
+                })
+                history.push("/dashboard")
+                //dispatch({ type: UPDATE_ADVICE, payload: newCategory })
+            })
+            .catch((err) => console.log(err))
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updateSubCategory = (name, id, history) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/advice/subcategories/" + id
+
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name }),
+        })
+            .then(() => {
+                Toast.fire({
+                    icon: "success",
+                    title: "Successfully edited sub-category.",
+                })
+                history.push("/dashboard")
+                //dispatch({ type: UPDATE_ADVICE, payload: newCategory })
+            })
+            .catch((err) => console.log(err))
+    } catch (error) {
+        console.log(error)
+    }
+}
