@@ -24,7 +24,7 @@ const ProfilePage = (props) => {
                     name="description"
                     content={currentUser.username + "'s User Profile - Find & save valuable advice on the way by browsing user submitted advice."}
                 />
-                <link rel="canonical" href={"/user/" + currentUser.username.replace(/ /g, "_") + "/"} />
+                <link rel="canonical" href={"https://advicetracker.life/user/" + currentUser.username.replace(/ /g, "_") + "/"} />
             </Helmet>
             <Header />
             {isAuthenticated && <Navbar />}

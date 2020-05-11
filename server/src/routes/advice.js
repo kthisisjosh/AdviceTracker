@@ -66,7 +66,7 @@ router.get("/api/advice/:id", async (req, res) => {
     }, 1250);
 });
 
-router.get("/api/advice/inbox/:id", verifyToken, async (req, res) => {
+router.get("/api/advice/inbox/:id", async (req, res) => {
     const queryString = "SELECT * FROM advice WHERE inInbox = 1 AND userID =" + req.params.id + ";";
 
     connection.query(queryString, (err, results, fields) => {

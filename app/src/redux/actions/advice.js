@@ -14,6 +14,17 @@ import {
 import { v4 as uuidv4 } from "uuid"
 import Swal from "sweetalert2"
 
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2500,
+    onOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer)
+        toast.addEventListener("mouseleave", Swal.resumeTimer)
+    },
+})
+
 export const getInboxAdvice = (id) => async (dispatch) => {
     try {
         if (id === "" || id === null) return null
@@ -25,6 +36,7 @@ export const getInboxAdvice = (id) => async (dispatch) => {
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data)
                 dispatch({ type: GET_INBOX_ADVICE, payload: data })
             })
             .catch((err) => console.log(err))
@@ -33,7 +45,7 @@ export const getInboxAdvice = (id) => async (dispatch) => {
     }
 }
 
-export const getAdvice = (id) => async (dispatch) => {
+export const getAdvice = (id, categories) => async (dispatch) => {
     try {
         const url = "https://advicetracker.life/api/advice/" + id
         const token = localStorage.getItem("jwtToken")
@@ -43,7 +55,7 @@ export const getAdvice = (id) => async (dispatch) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                dispatch({ type: GET_ADVICE, payload: data })
+                if (JSON.stringify(data) !== JSON.stringify(categories)) dispatch({ type: GET_ADVICE, payload: data })
             })
             .catch((err) => console.log(err))
     } catch (error) {
@@ -274,6 +286,10 @@ export const updateAdvice = (content, id) => async (dispatch) => {
             body: JSON.stringify({ content }),
         })
             .then(() => {
+                Toast.fire({
+                    icon: "success",
+                    title: "Successfully edited advice.",
+                })
                 //dispatch({ type: UPDATE_ADVICE, payload: {} })
             })
             .catch((err) => console.log(err))

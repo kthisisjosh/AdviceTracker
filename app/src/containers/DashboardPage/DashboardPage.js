@@ -35,6 +35,7 @@ const DashboardPage = (props) => {
         session,
         user,
         categories,
+        token,
     } = props
     const history = useHistory()
     const [toAddInbox, setToAddInbox] = useState(false)
@@ -45,10 +46,9 @@ const DashboardPage = (props) => {
 
     useEffect(() => {
         if ((!inboxAdvice.length || inboxAdvice) && session.authenticated && session.checked) {
-            setTimeout(() => {
-                getInboxAdvice(user.userID)
-                getAdvice(user.userID)
-            }, 1000)
+            localStorage.setItem("jwtToken", token)
+            getInboxAdvice(user.userID)
+            getAdvice(user.userID)
         } else if (session.checked && !session.authenticated) {
             history.push("/login")
         }
@@ -193,6 +193,7 @@ const mapStateToProps = ({ adviceState, sessionState }) => ({
     user: sessionState.user,
     categories: adviceState.categories,
     session: sessionState,
+    token: sessionState.user.token,
 })
 
 const mapDispatchToProps = { getAdvice, getInboxAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory, deleteCategory, deleteSubCategory }

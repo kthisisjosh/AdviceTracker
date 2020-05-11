@@ -15,7 +15,7 @@ import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 
 const SubCategoryPage = (props) => {
-    const { categories, match, submitAdvice, user, deleteAdvice, checked, isAuthenticated, getAdvice } = props
+    const { categories, match, submitAdvice, user, deleteAdvice, checked, isAuthenticated, getAdvice, token } = props
     const [toAddAdvice, setToAddAdvice] = useState(false)
     const [adviceContent, setAdviceContent] = useState("")
     const [currSubCategory, setCurrSubCategory] = useState({ test: "Test", advice: [] })
@@ -24,7 +24,8 @@ const SubCategoryPage = (props) => {
 
     useEffect(() => {
         if (checked && isAuthenticated) {
-            getAdvice(user.userID)
+            localStorage.setItem("jwtToken", token)
+            getAdvice(user.userID, categories)
             const foundCategory =
                 categories.find((category) => category.subcategories.find((subcategory) => subcategory.subcategoryID === match.params.id)) ||
                 categories[0]
@@ -49,8 +50,8 @@ const SubCategoryPage = (props) => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.value) {
-                history.push("/dashboard")
                 deleteAdvice(adviceID)
+                setTimeout(() => history.push("/dashboard"), 500)
             }
         })
     }
@@ -128,6 +129,7 @@ const mapStateToProps = ({ adviceState, sessionState }) => ({
     user: sessionState.user,
     checked: sessionState.checked,
     isAuthenticated: sessionState.authenticated,
+    token: sessionState.user.token,
 })
 
 const mapDispatchToProps = { submitAdvice, deleteAdvice, getAdvice }

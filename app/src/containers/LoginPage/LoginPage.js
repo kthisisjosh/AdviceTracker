@@ -14,11 +14,12 @@ import { Helmet } from "react-helmet"
 import { motion } from "framer-motion"
 
 const LoginPage = (props) => {
-    const { googleLogin, githubLogin, isAuthenticated, user, checked } = props
+    const { googleLogin, githubLogin, isAuthenticated, user, checked, token } = props
     const history = useHistory()
 
     useEffect(() => {
         if (checked && isAuthenticated) {
+            localStorage.setItem("jwtToken", token)
             history.push("/dashboard")
         }
     }, [isAuthenticated, user, history])
@@ -115,6 +116,7 @@ const mapStateToProps = ({ sessionState }) => ({
     isAuthenticated: sessionState.authenticated,
     checked: sessionState.checked,
     user: sessionState.user,
+    token: sessionState.user.token,
 })
 
 export default connect(mapStateToProps, { googleLogin, githubLogin })(LoginPage)

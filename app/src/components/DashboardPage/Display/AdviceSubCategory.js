@@ -18,7 +18,7 @@ const AdviceSubCategory = (props) => {
 
     return (
         <Grid item style={{ marginTop: "1vh", width: "auto" }}>
-            <motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} positionTransition>
+            <motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }}>
                 <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
                     <Grid container direction="column">
                         <Grid container direction="row" style={{ marginBottom: "0.5vh", marginTop: "-0.5vh" }}>
@@ -42,7 +42,10 @@ const AdviceSubCategory = (props) => {
                             </motion.div>
                             <Grid item style={{ marginLeft: "auto" }}>
                                 <Tooltip title="Delete">
-                                    <IconButton onClick={() => props.handleDelete(props.category, props.subcategoryID, props.title)} aria-label="delete">
+                                    <IconButton
+                                        onClick={() => props.handleDelete(props.category, props.subcategoryID, props.title)}
+                                        aria-label="delete"
+                                    >
                                         <DeleteIcon />
                                     </IconButton>
                                 </Tooltip>

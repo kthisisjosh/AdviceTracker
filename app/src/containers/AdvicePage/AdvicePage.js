@@ -10,23 +10,26 @@ import AddIcon from "@material-ui/icons/Add"
 import { useHistory } from "react-router-dom"
 
 const AdvicePage = (props) => {
-    const { categories, match, updateAdvice } = props
+    const { categories, match, updateAdvice, checked, isAuthenticated, token } = props
     const [adviceContent, setAdviceContent] = useState("")
     const [currAdvice, setCurrAdvice] = useState({ content: "" })
     const history = useHistory()
 
     useEffect(() => {
-        const foundCategory = categories.find((category) =>
-            category.subcategories.find((subcategory) => subcategory.advice.find((advice) => advice.adviceID === match.params.id))
-        )
-        const foundSubCategory = foundCategory.subcategories.find((subcategory) =>
-            subcategory.advice.filter((advice) => advice.adviceID === match.params.id)
-        )
-        const foundAdvice = foundSubCategory.advice.filter((advice) => advice.adviceID === match.params.id)
+        if (checked && isAuthenticated) {
+            localStorage.setItem("jwtToken", token)
+            const foundCategory = categories.find((category) =>
+                category.subcategories.find((subcategory) => subcategory.advice.find((advice) => advice.adviceID === match.params.id))
+            )
+            const foundSubCategory = foundCategory.subcategories.find((subcategory) =>
+                subcategory.advice.find((advice) => advice.adviceID === match.params.id)
+            )
+            const foundAdvice = foundSubCategory.advice.filter((advice) => advice.adviceID === match.params.id)
 
-        setCurrAdvice(...foundAdvice)
-        setAdviceContent(currAdvice.content)
-    }, [categories, match.params.id])
+            setCurrAdvice(...foundAdvice)
+            setAdviceContent(currAdvice.content)
+        }
+    }, [categories, match.params.id, checked, isAuthenticated, currAdvice])
 
     const handleEditorChange = (content, editor) => {
         setAdviceContent(content)
@@ -71,6 +74,9 @@ const AdvicePage = (props) => {
 const mapStateToProps = ({ adviceState, sessionState }) => ({
     categories: adviceState.categories,
     user: sessionState.user,
+    checked: sessionState.checked,
+    isAuthenticated: sessionState.authenticated,
+    token: sessionState.user.token,
 })
 
 const mapDispatchToProps = { submitAdvice, deleteAdvice, updateAdvice }
