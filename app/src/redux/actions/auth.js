@@ -1,5 +1,6 @@
 import { LOGIN_SUCCESS, LOGIN_FAIL } from "../types/auth"
 import { sessionService } from "redux-react-session"
+import { submitAdvice, submitCategory, submitSubCategory, getAdvice } from "./advice"
 import Swal from "sweetalert2"
 
 const Toast = Swal.mixin({
@@ -13,7 +14,7 @@ const Toast = Swal.mixin({
     },
 })
 
-export const googleLogin = (response, history) => async (dispatch) => {
+export const googleLogin = (response, history, categories) => async (dispatch) => {
     const profileObj = response.profileObj
     try {
         const newUser = {
@@ -32,12 +33,12 @@ export const googleLogin = (response, history) => async (dispatch) => {
             .then((response) => response.json())
             .then((data) => {
                 sessionService
-                    .saveSession({ token: data.user.token })
+                    .saveSession({ token: data.token })
                     .then(() => {
                         sessionService
                             .saveUser(data.user)
                             .then(() => {
-                                dispatch({ type: LOGIN_SUCCESS, payload: data })
+                                dispatch({ type: LOGIN_SUCCESS, payload: { ...data, token: data.token } })
                                 history.push("/dashboard")
                                 Toast.fire({
                                     icon: "success",

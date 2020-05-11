@@ -63,7 +63,7 @@ router.get("/api/advice/:id", async (req, res) => {
     });
     setTimeout(() => {
         res.json(categories);
-    }, 1250);
+    }, 750);
 });
 
 router.get("/api/advice/inbox/:id", async (req, res) => {
@@ -91,6 +91,31 @@ router.patch("/api/advice/:id", verifyToken, async (req, res) => {
     const newContent = req.body.content;
 
     const queryString = 'UPDATE advice SET content = "' + newContent + '" WHERE adviceID = "' + req.params.id + '";';
+
+    connection.query(queryString, (err, results, fields) => {
+        if (!err) res.sendStatus(200);
+        else console.log(err);
+    });
+});
+
+router.patch("/api/advice/categories/:id", verifyToken, async (req, res) => {
+    const newCategory = req.body;
+
+    console.log(req.body);
+    console.log(newCategory);
+
+    const queryString = "UPDATE categories SET name = '" + newCategory.name + "', description = '" + newCategory.description + "' WHERE categoryID = '" + req.params.id + "' AND isSubcategory = 0;";
+
+    connection.query(queryString, (err, results, fields) => {
+        if (!err) res.sendStatus(200);
+        else console.log(err);
+    });
+});
+
+router.patch("/api/advice/subcategories/:id", verifyToken, async (req, res) => {
+    const newSubCategory = req.body;
+
+    const queryString = "UPDATE categories SET name = '" + newSubCategory.name + "' WHERE subcategoryID = '" + req.params.id + "' AND isSubcategory = 1;";
 
     connection.query(queryString, (err, results, fields) => {
         if (!err) res.sendStatus(200);

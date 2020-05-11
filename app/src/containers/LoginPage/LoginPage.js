@@ -14,7 +14,7 @@ import { Helmet } from "react-helmet"
 import { motion } from "framer-motion"
 
 const LoginPage = (props) => {
-    const { googleLogin, githubLogin, isAuthenticated, user, checked, token } = props
+    const { googleLogin, githubLogin, isAuthenticated, user, checked, token, categories } = props
     const history = useHistory()
 
     useEffect(() => {
@@ -91,7 +91,7 @@ const LoginPage = (props) => {
                                 <GoogleLogin
                                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
                                     onSuccess={(res) => {
-                                        googleLogin(res, history)
+                                        googleLogin(res, history, categories)
                                     }}
                                     onFailure={googleLogin}
                                     disabled={false}
@@ -112,11 +112,12 @@ const LoginPage = (props) => {
     )
 }
 
-const mapStateToProps = ({ sessionState }) => ({
+const mapStateToProps = ({ sessionState, adviceState }) => ({
     isAuthenticated: sessionState.authenticated,
     checked: sessionState.checked,
     user: sessionState.user,
     token: sessionState.user.token,
+    categories: adviceState.categories,
 })
 
 export default connect(mapStateToProps, { googleLogin, githubLogin })(LoginPage)

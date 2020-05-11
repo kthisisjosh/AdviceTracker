@@ -48,7 +48,7 @@ const DashboardPage = (props) => {
         if ((!inboxAdvice.length || inboxAdvice) && session.authenticated && session.checked) {
             localStorage.setItem("jwtToken", token)
             getInboxAdvice(user.userID)
-            getAdvice(user.userID)
+            getAdvice(user.userID, categories)
         } else if (session.checked && !session.authenticated) {
             history.push("/login")
         }

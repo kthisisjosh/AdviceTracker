@@ -36,7 +36,6 @@ export const getInboxAdvice = (id) => async (dispatch) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 dispatch({ type: GET_INBOX_ADVICE, payload: data })
             })
             .catch((err) => console.log(err))
@@ -291,6 +290,60 @@ export const updateAdvice = (content, id) => async (dispatch) => {
                     title: "Successfully edited advice.",
                 })
                 //dispatch({ type: UPDATE_ADVICE, payload: {} })
+            })
+            .catch((err) => console.log(err))
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updateCategory = (name, description, id, history) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/advice/categories/" + id
+
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, description }),
+        })
+            .then(() => {
+                Toast.fire({
+                    icon: "success",
+                    title: "Successfully edited category.",
+                })
+                history.push("/dashboard")
+                //dispatch({ type: UPDATE_ADVICE, payload: newCategory })
+            })
+            .catch((err) => console.log(err))
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updateSubCategory = (name, id, history) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/advice/subcategories/" + id
+
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name }),
+        })
+            .then(() => {
+                Toast.fire({
+                    icon: "success",
+                    title: "Successfully edited sub-category.",
+                })
+                history.push("/dashboard")
+                //dispatch({ type: UPDATE_ADVICE, payload: newCategory })
             })
             .catch((err) => console.log(err))
     } catch (error) {

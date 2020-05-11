@@ -1,5 +1,6 @@
 const express = require("express");
 const mysql = require("mysql");
+const { v4: uuidv4 } = require("uuid");
 const router = new express.Router();
 
 const verifyToken = require("../middleware/verifyToken");
@@ -45,9 +46,81 @@ router.post("/api/users/", async (req, res) => {
             res.sendStatus(500);
         } else {
             if (results.length != 0) {
-                console.log(`Already a user with userID: ${newUser.id}`);
                 res.status(200).send({ user: results[0], token });
             } else {
+                const categoryID = uuidv4();
+                const firstSubCategoryID = uuidv4();
+                const secondSubCategoryID = uuidv4();
+
+                const inboxAdviceQueryString = "INSERT INTO advice (adviceID, userID, inInbox, content, categoryID, subcategoryID) VALUES (?, ?, ?, ?, NULL, NULL)";
+                connection.query(
+                    inboxAdviceQueryString,
+                    [uuidv4(), newUser.id, 1, "<p>This is the inbox. This is where all the advice you haven't sorted out yet will go. Feel free to delete this!</p>"],
+                    (err, results, fields) => {
+                        if (err) {
+                            console.log(err);
+                            res.sendStatus(500);
+                        }
+                    }
+                );
+                const adviceQueryString = "INSERT INTO advice (adviceID, userID, inInbox, content, categoryID, subcategoryID) VALUES (?, ?, ?, ?, ?, ?)";
+                connection.query(
+                    adviceQueryString,
+                    [
+                        uuidv4(),
+                        newUser.id,
+                        0,
+                        "<p>Each category is comprised of multiple sub-categories. These sub-categories can contain as much advice as you want. For example, this advice is in the '<strong>Sorting</strong>' sub-category in the '<strong>Advice Tracker</strong>' category!</p>",
+                        categoryID,
+                        firstSubCategoryID,
+                    ],
+                    (err, results, fields) => {
+                        if (err) {
+                            console.log(err);
+                            res.sendStatus(500);
+                        }
+                    }
+                );
+                connection.query(
+                    adviceQueryString,
+                    [uuidv4(), newUser.id, 0, "<p>Advice that still needs to be sorted are put in the '<strong>Inbox</strong>' section.</p>", categoryID, firstSubCategoryID],
+                    (err, results, fields) => {
+                        if (err) {
+                            console.log(err);
+                            res.sendStatus(500);
+                        }
+                    }
+                );
+                connection.query(
+                    adviceQueryString,
+                    [uuidv4(), newUser.id, 0, "<p>Don't forget to see what other people can offer in the '<strong>Browse</strong>' tab in the Nav Bar!</p>", categoryID, secondSubCategoryID],
+                    (err, results, fields) => {
+                        if (err) {
+                            console.log(err);
+                            res.sendStatus(500);
+                        }
+                    }
+                );
+                const categoryQueryString = "INSERT INTO categories (name, categoryID, userID, description, isSubcategory, subcategoryID) VALUES (?, ?, ?, ?, ?, ?)";
+                connection.query(categoryQueryString, ["Advice Tracker", categoryID, newUser.id, "Tips on how to use Advice Tracker!", 0, null], (err, results, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.sendStatus(500);
+                    }
+                });
+                connection.query(categoryQueryString, ["Sorting", categoryID, newUser.id, null, 1, firstSubCategoryID], (err, results, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.sendStatus(500);
+                    }
+                });
+                connection.query(categoryQueryString, ["Finding Other Advice", categoryID, newUser.id, null, 1, secondSubCategoryID], (err, results, fields) => {
+                    if (err) {
+                        console.log(err);
+                        res.sendStatus(500);
+                    }
+                });
+
                 const queryString = "INSERT INTO users (userID, username, email, token, profileUrl) VALUES (?, ?, ?, ?, ?)";
 
                 connection.query(queryString, [newUser.id, newUser.username, newUser.email, token, newUser.profileUrl], (err, results, fields) => {
@@ -55,8 +128,7 @@ router.post("/api/users/", async (req, res) => {
                         console.log(err);
                         res.sendStatus(500);
                     } else {
-                        console.log(`Successfully created user with ID ${newUser.id}`);
-                        res.status(200).send({ user: newUser, token });
+                        res.status(200).send({ user: { userID: newUser.id, email: newUser.email, username: newUser.username, profileUrl: newUser.profileUrl, token: token }, token });
                     }
                 });
             }

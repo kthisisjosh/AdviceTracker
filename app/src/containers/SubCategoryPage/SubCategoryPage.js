@@ -2,20 +2,21 @@ import React, { Fragment, useEffect, useState } from "react"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import { Grid, Paper } from "@material-ui/core"
+import { Grid, Paper, Tooltip, IconButton } from "@material-ui/core"
 import { connect } from "react-redux"
 import Title from "../../components/DashboardPage/Category/Title"
 import Advice from "../../components/DashboardPage/Display/Advice"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 import NewAdvice from "../../components/DashboardPage/Category/NewAdvice"
-import { submitAdvice, deleteAdvice, getAdvice } from "../../redux/actions/advice"
+import { submitAdvice, deleteAdvice, getAdvice, updateSubCategory } from "../../redux/actions/advice"
 import { motion, AnimatePresence } from "framer-motion"
 import { useHistory } from "react-router-dom"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
+import EditIcon from "@material-ui/icons/EditOutlined"
 
 const SubCategoryPage = (props) => {
-    const { categories, match, submitAdvice, user, deleteAdvice, checked, isAuthenticated, getAdvice, token } = props
+    const { categories, match, submitAdvice, user, deleteAdvice, updateSubCategory, checked, isAuthenticated, getAdvice, token } = props
     const [toAddAdvice, setToAddAdvice] = useState(false)
     const [adviceContent, setAdviceContent] = useState("")
     const [currSubCategory, setCurrSubCategory] = useState({ test: "Test", advice: [] })
@@ -37,6 +38,17 @@ const SubCategoryPage = (props) => {
 
     const handleEditorChange = (content, editor) => {
         setAdviceContent(content)
+    }
+
+    const handleRenameClick = async () => {
+        const { value: formValues } = await Swal.fire({
+            title: "Rename the sub-category",
+            html: '<input id="swal-input1" class="swal2-input" value="' + currSubCategory.name + '">',
+            focusConfirm: false,
+            preConfirm: () => {
+                updateSubCategory(document.getElementById("swal-input1").value, currSubCategory.subcategoryID, history)
+            },
+        })
     }
 
     const handleAdviceDelete = (adviceID) => {
@@ -78,9 +90,20 @@ const SubCategoryPage = (props) => {
             <Header />
             <Navbar />
             <Grid container direction="column" style={{ margin: "2vh 15vw 2vh 15vw", width: "auto", height: "auto", minHeight: "80vh" }}>
-                <Grid container>
-                    <Title name={currSubCategory.name} isDescription={false} />
-                    <AddNewButton handleAddClick={handleAddClick} />
+                <Grid container direction="row">
+                    <Grid item>
+                        <Title name={currSubCategory.name} isDescription={false} />
+                    </Grid>
+                    <Grid item style={{ marginLeft: "0.6vw", marginTop: "0.4vh" }}>
+                        <Tooltip title="Rename">
+                            <IconButton onClick={handleRenameClick} aria-label="Rename" style={{ color: "grey" }}>
+                                <EditIcon />
+                            </IconButton>
+                        </Tooltip>
+                    </Grid>
+                    <Grid item style={{ marginTop: "1.1vh", marginLeft: "1vw" }}>
+                        <AddNewButton handleAddClick={handleAddClick} />
+                    </Grid>
                 </Grid>
                 <Grid item style={{ marginTop: "2vh" }}>
                     <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto", height: "auto" }}>
@@ -132,6 +155,6 @@ const mapStateToProps = ({ adviceState, sessionState }) => ({
     token: sessionState.user.token,
 })
 
-const mapDispatchToProps = { submitAdvice, deleteAdvice, getAdvice }
+const mapDispatchToProps = { submitAdvice, deleteAdvice, getAdvice, updateSubCategory }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SubCategoryPage)
