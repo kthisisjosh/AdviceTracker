@@ -63,7 +63,7 @@ router.get("/api/advice/:id", async (req, res) => {
     });
     setTimeout(() => {
         res.json(categories);
-    }, 1250);
+    }, 750);
 });
 
 router.get("/api/advice/inbox/:id", async (req, res) => {
