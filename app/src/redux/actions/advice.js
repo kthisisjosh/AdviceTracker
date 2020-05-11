@@ -36,7 +36,6 @@ export const getInboxAdvice = (id) => async (dispatch) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 dispatch({ type: GET_INBOX_ADVICE, payload: data })
             })
             .catch((err) => console.log(err))
