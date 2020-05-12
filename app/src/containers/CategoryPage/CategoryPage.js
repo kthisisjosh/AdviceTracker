@@ -102,7 +102,7 @@ const CategoryPage = (props) => {
                 </Grid>
                 {toAddSubCategory && (
                     <motion.div initial={{ scale: 1, opacity: 0 }} animate={{ opacity: 1 }} positionTransition>
-                        <NewSubCategory handleSubCategoryChange={handleSubCategoryChange} handleSubmit={handleSubmit} />
+                        <NewSubCategory handleChange={handleSubCategoryChange} handleSubmit={handleSubmit} />
                     </motion.div>
                 )}
 
