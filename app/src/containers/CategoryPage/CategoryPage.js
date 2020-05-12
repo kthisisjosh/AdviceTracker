@@ -2,10 +2,10 @@ import React, { Fragment, useEffect, useState } from "react"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import { Grid, IconButton, Tooltip, TextField } from "@material-ui/core"
+import { Grid, IconButton, Tooltip } from "@material-ui/core"
 import { connect } from "react-redux"
 import Title from "../../components/DashboardPage/Category/Title"
-import AdviceSubCategory from "../../components/DashboardPage/Display/AdviceSubCategory"
+import AdviceSubCategory from "./AdviceSubCategory"
 import { useHistory } from "react-router-dom"
 import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 import { submitSubCategory, deleteSubCategory, getAdvice, updateCategory } from "../../redux/actions/advice"
@@ -102,7 +102,7 @@ const CategoryPage = (props) => {
                 </Grid>
                 {toAddSubCategory && (
                     <motion.div initial={{ scale: 1, opacity: 0 }} animate={{ opacity: 1 }} positionTransition>
-                        <NewSubCategory handleSubCategoryChange={handleSubCategoryChange} handleSubmit={handleSubmit} />
+                        <NewSubCategory handleChange={handleSubCategoryChange} handleSubmit={handleSubmit} />
                     </motion.div>
                 )}
 
@@ -111,6 +111,7 @@ const CategoryPage = (props) => {
                         <AdviceSubCategory
                             subcategoryID={subcategory.subcategoryID}
                             title={subcategory.name}
+                            color={subcategory.color}
                             key={subcategory.subcategoryID}
                             advice={subcategory.advice}
                             category={currCategory}

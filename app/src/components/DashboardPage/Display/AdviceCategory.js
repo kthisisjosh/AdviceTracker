@@ -1,6 +1,6 @@
 import React from "react"
 import { Paper, Grid, Typography, Tooltip, IconButton } from "@material-ui/core"
-import AdviceSubCategory from "./AdviceSubCategory"
+import AdviceSubCategory from "../../../containers/CategoryPage/AdviceSubCategory"
 import { Link } from "react-router-dom"
 import DeleteIcon from "@material-ui/icons/Delete"
 import { motion, AnimatePresence } from "framer-motion"
@@ -55,6 +55,7 @@ const AdviceCategory = (props) => {
                                         subcategoryID={subcategory.subcategoryID}
                                         title={subcategory.name}
                                         key={subcategory.subcategoryID}
+                                        color={subcategory.color}
                                         advice={subcategory.advice}
                                         handleDelete={props.handleSubCategoryDelete}
                                     />

@@ -47,7 +47,6 @@ const SubmitPage = (props) => {
             icon: "success",
             title: `Successfully added to the ${category} category.`,
         })
-        console.log(categories)
     }
 
     const handleSubmit = () => {
@@ -61,7 +60,15 @@ const SubmitPage = (props) => {
             confirmButtonText: "Yes, post it!",
         }).then((result) => {
             if (result.value) {
-                createPost(adviceContent, user, categories, history)
+                if (categories.length === 0) {
+                    MySwal.fire({
+                        title: "Invalid category.",
+                        text: "Please add at least one category.",
+                        icon: "warning",
+                    })
+                } else {
+                    createPost(adviceContent, user, categories, history)
+                }
             }
         })
     }

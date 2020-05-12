@@ -350,3 +350,30 @@ export const updateSubCategory = (name, id, history) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const updateSubCategoryColor = (newColor, id, history) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/advice/color/subcategories/" + id
+
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "PATCH",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ newColor }),
+        })
+            .then(() => {
+                Toast.fire({
+                    icon: "success",
+                    title: "Successfully changed sub-category color.",
+                })
+                history.go()
+                //dispatch({ type: UPDATE_ADVICE, payload: newCategory })
+            })
+            .catch((err) => console.log(err))
+    } catch (error) {
+        console.log(error)
+    }
+}

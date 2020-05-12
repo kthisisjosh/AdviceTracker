@@ -10,6 +10,18 @@ import { Button } from "@material-ui/core"
 import { useDispatch } from "react-redux"
 import { LOGOUT } from "../../redux/types/auth"
 import { motion } from "framer-motion"
+import Swal from "sweetalert2"
+
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 2500,
+    onOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer)
+        toast.addEventListener("mouseleave", Swal.resumeTimer)
+    },
+})
 
 const Header = (props) => {
     const { isAuthenticated, user } = props
@@ -20,6 +32,10 @@ const Header = (props) => {
 
     const handleLogout = () => {
         dispatch({ type: LOGOUT })
+        Toast.fire({
+            icon: "success",
+            title: "Signed out successfully",
+        })
         history.push("/")
     }
 

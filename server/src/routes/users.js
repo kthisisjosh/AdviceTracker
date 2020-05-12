@@ -101,20 +101,20 @@ router.post("/api/users/", async (req, res) => {
                         }
                     }
                 );
-                const categoryQueryString = "INSERT INTO categories (name, categoryID, userID, description, isSubcategory, subcategoryID) VALUES (?, ?, ?, ?, ?, ?)";
-                connection.query(categoryQueryString, ["Advice Tracker", categoryID, newUser.id, "Tips on how to use Advice Tracker!", 0, null], (err, results, fields) => {
+                const categoryQueryString = "INSERT INTO categories (name, categoryID, userID, description, isSubcategory, subcategoryID, color) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                connection.query(categoryQueryString, ["Advice Tracker", categoryID, newUser.id, "Tips on how to use Advice Tracker!", 0, null, null], (err, results, fields) => {
                     if (err) {
                         console.log(err);
                         res.sendStatus(500);
                     }
                 });
-                connection.query(categoryQueryString, ["Sorting", categoryID, newUser.id, null, 1, firstSubCategoryID], (err, results, fields) => {
+                connection.query(categoryQueryString, ["Sorting", categoryID, newUser.id, null, 1, firstSubCategoryID, "#AFF4E4"], (err, results, fields) => {
                     if (err) {
                         console.log(err);
                         res.sendStatus(500);
                     }
                 });
-                connection.query(categoryQueryString, ["Finding Other Advice", categoryID, newUser.id, null, 1, secondSubCategoryID], (err, results, fields) => {
+                connection.query(categoryQueryString, ["Finding Other Advice", categoryID, newUser.id, null, 1, secondSubCategoryID, "#AFF4E4"], (err, results, fields) => {
                     if (err) {
                         console.log(err);
                         res.sendStatus(500);

@@ -92,4 +92,19 @@ router.post("/api/posts", verifyToken, async (req, res) => {
     );
 });
 
+router.delete("/api/posts/:id", verifyToken, async (req, res) => {
+    const queryString = "DELETE FROM posts WHERE objectID ='" + req.params.id + "';";
+
+    index.deleteObject(req.params.id);
+
+    connection.query(queryString, [req.params.id], (err, results, fields) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(200);
+        }
+    });
+});
+
 module.exports = router;

@@ -8,7 +8,7 @@ const NewSubCategory = (props) => {
             <Paper style={{ padding: "1vh 1vw 1vh 1vw", width: "auto", backgroundColor: "#AFF4E4" }}>
                 <Grid container direction="column">
                     <Grid item style={{ marginBottom: "0.5v", marginTop: "-0.5vh" }}>
-                        <TextField name="desc" required label="Subcategory title" fullWidth onChange={props.handleChange} />
+                        <TextField name="name" required label="Subcategory title" fullWidth onChange={props.handleChange} />
                     </Grid>
                     <Grid item style={{ marginBottom: "0.5vh" }}>
                         <Paper
