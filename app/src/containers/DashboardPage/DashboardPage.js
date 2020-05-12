@@ -182,7 +182,6 @@ const DashboardPage = (props) => {
                     handleSubCategoryDelete={handleSubCategoryDelete}
                 />
             )}
-            <Grid style={{ height: "500px" }} />
             <Footer />
         </Fragment>
     )

@@ -6,7 +6,7 @@ const BodyA = () => {
     return (
         <Grid container>
             <Grid item md={6} xs={12} style={{ height: "auto", display: "block", width: "100vw", textAlign: "center" }}>
-                <Grid className="landing-bodya" item style={{ width: "35vw", margin: "0 auto", marginLeft: "14vw", display: "inline-block" }}>
+                <Grid className="landing-bodya" item style={{ width: "35vw", margin: "0 auto", marginLeft: "13vw", display: "inline-block" }}>
                     <Typography className="landing-bodya-h4" variant="h4" align="left">
                         Never forget the crucial advice you are given
                     </Typography>
@@ -16,7 +16,7 @@ const BodyA = () => {
                         </Typography>
                         <Typography className="landing-bodya-body2" variant="body2" align="left">
                             Create multiple categories to efficiently sort advice your way. Create sub-categories from those categories to have full
-                            customization and control.
+                            customization and control over how you sort things.
                         </Typography>
                     </Grid>
                     <Grid item style={{ marginTop: "25px" }}>

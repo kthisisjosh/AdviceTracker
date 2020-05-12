@@ -10,7 +10,7 @@ const Hero = () => {
         <Grid container>
             <Grid className="landing-hero-wrap" item md={6} xs={12} style={{ height: "auto", display: "block", width: "100vw", textAlign: "left" }}>
                 <Grid className="landing-hero" item style={{ width: "35vw", margin: "150px auto", marginLeft: "14vw", display: "inline-block" }}>
-                    <Typography className="landing-hero-h2" variant="h2" align="left">
+                    <Typography className="landing-hero-h2" variant="h2" align="left" style={{ fontWeight: "bold" }}>
                         Keep all of your advice in one place
                     </Typography>
                     <Typography className="landing-hero-body" variant="body1" align="left" style={{ marginTop: "25px" }}>

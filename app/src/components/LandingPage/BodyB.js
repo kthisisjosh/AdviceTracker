@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 const BodyB = () => {
     return (
-        <Grid container style={{ marginTop: "5vh", marginBottom: "10vh" }}>
+        <Grid container style={{ marginTop: "10vh", marginBottom: "10vh" }}>
             <Grid className="landing-bodyb-demo" item md={6} xs={12} style={{ textAlign: "center" }}>
                 <motion.img
                     initial={{ scale: 0, opacity: 0 }}
@@ -13,13 +13,13 @@ const BodyB = () => {
                         default: { duration: 0.75 },
                     }}
                     alt="demo"
-                    style={{ height: "450px", width: "550px", margin: "auto", marginLeft: "2vw", borderRadius: "15px" }}
+                    style={{ height: "500px", width: "475px", margin: "auto", marginLeft: "2vw", borderRadius: "15px" }}
                     src="./login-sample3.png"
                 />
             </Grid>
 
             <Grid item className="landing-bodyb" md={6} xs={12} style={{ height: "auto", display: "block", width: "100vw", textAlign: "center" }}>
-                <Grid item className="landing-bodyb" style={{ width: "35vw", margin: "auto", marginRight: "10vw", display: "inline-block" }}>
+                <Grid item className="landing-bodyb" style={{ width: "35vw", margin: "auto", marginRight: "13vw", display: "inline-block" }}>
                     <Typography className="landing-bodyb-h4" variant="h4" align="right">
                         Discover awesome advice on the way
                     </Typography>
