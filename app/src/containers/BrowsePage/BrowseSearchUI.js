@@ -9,6 +9,7 @@ import CustomStats from "../../components/BrowseSearchUI/CustomStats"
 import CustomSortBy from "../../components/BrowseSearchUI/CustomSortBy"
 import CustomClearRefinements from "../../components/BrowseSearchUI/CustomClearRefinements"
 import { useHistory } from "react-router-dom"
+import CustomRefinementList from "../../components/BrowseSearchUI/CustomRefinementList"
 
 const createURL = (state) => `?${qs.stringify(state)}`
 
@@ -62,11 +63,8 @@ const BrowseSearchUI = ({ location, user }) => {
                             ]}
                             defaultRefinement="Posts_Date_Desc"
                         />
-                        <Grid item style={{ minHeight: "10vh", height: "auto", marginTop: "2vh", textAlign: "left" }}>
-                            <CurrentRefinements />
-                        </Grid>
                         <CustomClearRefinements />
-                        <RefinementList attribute="category" limit={15} searchable />
+                        <CustomRefinementList attribute="category" limit={15} searchable />
                     </Grid>
                     <Grid item md={10} sm={12}>
                         <InfiniteHits hitComponent={Hit} />
