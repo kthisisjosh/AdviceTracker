@@ -111,6 +111,7 @@ const CategoryPage = (props) => {
                         <AdviceSubCategory
                             subcategoryID={subcategory.subcategoryID}
                             title={subcategory.name}
+                            color={subcategory.color}
                             key={subcategory.subcategoryID}
                             advice={subcategory.advice}
                             category={currCategory}

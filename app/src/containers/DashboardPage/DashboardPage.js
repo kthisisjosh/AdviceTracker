@@ -52,7 +52,7 @@ const DashboardPage = (props) => {
         } else if (session.checked && !session.authenticated) {
             history.push("/login")
         }
-    }, [getInboxAdvice, history, inboxAdvice.length, session, getAdvice, user])
+    }, [getInboxAdvice, history, inboxAdvice.length, session, getAdvice, user, categories])
 
     // --------- Category --------- \\
     const handleAddClickCategory = () => {

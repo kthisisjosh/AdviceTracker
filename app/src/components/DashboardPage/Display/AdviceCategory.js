@@ -55,6 +55,7 @@ const AdviceCategory = (props) => {
                                         subcategoryID={subcategory.subcategoryID}
                                         title={subcategory.name}
                                         key={subcategory.subcategoryID}
+                                        color={subcategory.color}
                                         advice={subcategory.advice}
                                         handleDelete={props.handleSubCategoryDelete}
                                     />

@@ -2,13 +2,16 @@ import React, { useState } from "react"
 import { Grid, Paper, Typography, Tooltip, IconButton } from "@material-ui/core"
 import Advice from "../../components/DashboardPage/Display/Advice"
 import DeleteIcon from "@material-ui/icons/Delete"
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import { motion } from "framer-motion"
-import { BlockPicker } from "react-color"
+import { TwitterPicker } from "react-color"
+import { connect } from "react-redux"
+import { updateSubCategoryColor } from "../../redux/actions/advice"
 
 const AdviceSubCategory = (props) => {
+    const { updateSubCategoryColor, subcategoryID, title, color } = props
     const [displayColorPicker, setDisplayColorPicker] = useState(false)
-    const [color, setColor] = useState({ r: "241", g: "112", b: "19", a: "1" })
+    const history = useHistory()
     let isTwo = false
     let isNone = false
 
@@ -22,7 +25,7 @@ const AdviceSubCategory = (props) => {
     return (
         <Grid item style={{ marginTop: "1vh", width: "auto" }}>
             <motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }}>
-                <Paper style={{ backgroundColor: "#AFF4E4", padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
+                <Paper style={{ backgroundColor: color, padding: "1vh 1vw 1vh 1vw", width: "auto" }}>
                     <Grid container direction="column">
                         <Grid container direction="row" style={{ marginBottom: "0.5vh", marginTop: "-0.5vh" }}>
                             <motion.div
@@ -32,13 +35,9 @@ const AdviceSubCategory = (props) => {
                                 exit={{ opacity: 0, scale: 0 }}
                             >
                                 <Grid item style={{ marginTop: "0.75vh" }}>
-                                    <Link
-                                        to={`/dashboard/subcategory/${props.subcategoryID}`}
-                                        style={{ textDecoration: "none" }}
-                                        key={props.subcategoryID + "1"}
-                                    >
+                                    <Link to={`/dashboard/subcategory/${subcategoryID}`} style={{ textDecoration: "none" }} key={subcategoryID + "1"}>
                                         <Typography variant="h5" style={{ fontWeight: "bold" }}>
-                                            {props.title}
+                                            {title}
                                         </Typography>
                                     </Link>
                                 </Grid>
@@ -60,7 +59,7 @@ const AdviceSubCategory = (props) => {
                                             width: "36px",
                                             height: "14px",
                                             borderRadius: "2px",
-                                            background: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
+                                            background: color,
                                         }}
                                     />
                                 </div>
@@ -81,16 +80,18 @@ const AdviceSubCategory = (props) => {
                                             }}
                                             onClick={() => setDisplayColorPicker(false)}
                                         />
-                                        <BlockPicker color={color} onChange={(color) => setColor(color.rgb)} />
+                                        <TwitterPicker
+                                            color={color}
+                                            onChangeComplete={(color) => {
+                                                updateSubCategoryColor(color.hex, subcategoryID, history)
+                                            }}
+                                        />
                                     </div>
                                 ) : null}
                             </Grid>
                             <Grid item style={{ marginLeft: "auto" }}>
                                 <Tooltip title="Delete">
-                                    <IconButton
-                                        onClick={() => props.handleDelete(props.category, props.subcategoryID, props.title)}
-                                        aria-label="delete"
-                                    >
+                                    <IconButton onClick={() => props.handleDelete(props.category, subcategoryID, props.title)} aria-label="delete">
                                         <DeleteIcon />
                                     </IconButton>
                                 </Tooltip>
@@ -114,11 +115,7 @@ const AdviceSubCategory = (props) => {
                                 whileHover={{ scale: 1.01 }}
                                 exit={{ opacity: 0, scale: 0 }}
                             >
-                                <Link
-                                    to={`/dashboard/subcategory/${props.subcategoryID}`}
-                                    style={{ textDecoration: "none" }}
-                                    key={props.subcategoryID}
-                                >
+                                <Link to={`/dashboard/subcategory/${subcategoryID}`} style={{ textDecoration: "none" }} key={subcategoryID}>
                                     <Typography variant="button" style={{ color: "#0047FF" }}>
                                         Show More
                                     </Typography>
@@ -132,4 +129,10 @@ const AdviceSubCategory = (props) => {
     )
 }
 
-export default AdviceSubCategory
+const mapStateToProps = ({ sessionState }) => ({
+    user: sessionState.user,
+})
+
+const mapDispatchToProps = { updateSubCategoryColor }
+
+export default connect(mapStateToProps, mapDispatchToProps)(AdviceSubCategory)

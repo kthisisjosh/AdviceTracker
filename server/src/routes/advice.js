@@ -33,7 +33,7 @@ router.get("/api/advice/:id", async (req, res) => {
                                 res.json(categories);
                             }
 
-                            results.map((result) => categoryToAdd.subcategories.push({ name: result.name, subcategoryID: result.subcategoryID, advice: [] }));
+                            results.map((result) => categoryToAdd.subcategories.push({ name: result.name, subcategoryID: result.subcategoryID, color: result.color, advice: [] }));
 
                             categoryToAdd.subcategories.map((subcategory) => {
                                 connection.query("SELECT * FROM advice WHERE subcategoryID = '" + subcategory.subcategoryID + "' AND inInbox = 0;", (err, results, fields) => {
@@ -101,9 +101,6 @@ router.patch("/api/advice/:id", verifyToken, async (req, res) => {
 router.patch("/api/advice/categories/:id", verifyToken, async (req, res) => {
     const newCategory = req.body;
 
-    console.log(req.body);
-    console.log(newCategory);
-
     const queryString = "UPDATE categories SET name = '" + newCategory.name + "', description = '" + newCategory.description + "' WHERE categoryID = '" + req.params.id + "' AND isSubcategory = 0;";
 
     connection.query(queryString, (err, results, fields) => {
@@ -112,8 +109,19 @@ router.patch("/api/advice/categories/:id", verifyToken, async (req, res) => {
     });
 });
 
+router.patch("/api/advice/subcategories/:id", verifyToken, async (req, res) => {
+    const newSubCategory = req.body;
+
+    const queryString = "UPDATE categories SET name = '" + newSubCategory.name + "' WHERE subcategoryID = '" + req.params.id + "' AND isSubcategory = 1;";
+
+    connection.query(queryString, (err, results, fields) => {
+        if (!err) res.sendStatus(200);
+        else console.log(err);
+    });
+});
+
 router.patch("/api/advice/color/subcategories/:id", verifyToken, async (req, res) => {
-    const newColor = req.body;
+    const newColor = req.body.newColor;
 
     const queryString = "UPDATE categories SET color = '" + newColor + "' WHERE subcategoryID = '" + req.params.id + "' AND isSubcategory = 1;";
 
@@ -122,8 +130,6 @@ router.patch("/api/advice/color/subcategories/:id", verifyToken, async (req, res
         else console.log(err);
     });
 });
-
-router.patch("/api/advice/subcategories")
 
 router.post("/api/advice/inbox/", verifyToken, async (req, res) => {
     const newAdvice = req.body;
