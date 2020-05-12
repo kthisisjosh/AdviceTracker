@@ -10,7 +10,7 @@ const Hit = ({ hit }) => {
             style={{ textDecoration: "none" }}
             href={hit.permalink}
         >
-            <Paper style={{ marginBottom: "2vh", width: "auto" }}>
+            <Paper style={{ marginBottom: "2vh", width: "auto" }} variant="outlined">
                 <Grid container direction="column" style={{ padding: "0.5vh 0.5vw" }}>
                     <Grid container direction="row" style={{ margin: "auto" }}>
                         <Grid item>

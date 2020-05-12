@@ -22,7 +22,7 @@ const CategorySubmitBody = (props) => {
                             backgroundColor: "white",
                             color: "black",
                             marginRight: "0.5vw",
-                            border: "2px solid black",
+                            border: "2px solid #d1d1e0",
                             overflow: "hidden",
                             borderRadius: 4,
                             backgroundColor: "#fcfcfb",

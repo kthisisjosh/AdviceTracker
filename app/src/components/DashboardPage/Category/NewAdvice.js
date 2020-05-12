@@ -5,7 +5,7 @@ import AddIcon from "@material-ui/icons/Add"
 
 const NewAdvice = (props) => {
     return (
-        <Paper style={{ width: "100%", height: props.height }}>
+        <Paper style={{ width: "100%", height: props.height }} variant="outlined">
             <Grid item style={{ marginLeft: "1.5vw", marginRight: "1.5vw", paddingTop: "1.5vh" }}>
                 <TinyMCEEditor height={props.editorHeight} initialValue="<p>Add your advice here!</p>" handleEditorChange={props.handleEditorChange} />
             </Grid>

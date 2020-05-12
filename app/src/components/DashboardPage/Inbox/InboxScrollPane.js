@@ -31,8 +31,7 @@ const InboxScrollPane = (props) => {
             style={{
                 overflow: "scroll",
                 overflowX: "hidden",
-                height: "auto",
-                minHeight: "18vw",
+                height: "15vw",
                 width: "100%",
                 marginTop: "1vh",
             }}

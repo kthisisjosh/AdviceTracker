@@ -1,10 +1,10 @@
 import React from "react"
 
 import { Highlight, connectRefinementList } from "react-instantsearch-dom"
-import { Grid, Button, TextField } from "@material-ui/core"
+import { Grid, Button } from "@material-ui/core"
 
 const CustomRefinementList = connectRefinementList(({ items, isFromSearch, refine, searchForItems, createURL }) => (
-    <Grid container direction="column" style={{ marginTop: "2.5vh" }}>
+    <Grid container direction="column" style={{ marginTop: "2vh" }}>
         <Grid item style={{ marginBottom: "0.5vh" }}>
             <input
                 style={{ height: "40px", borderRadius: "5px"}}

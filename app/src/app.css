@@ -34,7 +34,7 @@ body.dark-mode .login-demo-grid {
 }
 
 body.dark-mode .submitpage-divider {
-    background-color: white;
+    background-color: #a3a3c2;
 }
 
 body.dark-mode .login-grid {
@@ -64,7 +64,7 @@ ul {
 }
 
 .ais-InfiniteHits-loadMore {
-    background-color: #F2994A; /* Green */
+    background-color: #f2994a; /* Green */
     border: none;
     color: white;
     border-radius: 4px;

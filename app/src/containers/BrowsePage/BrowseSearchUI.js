@@ -3,7 +3,7 @@ import Hit from "../../components/BrowseSearchUI/Hit"
 import algoliasearch from "algoliasearch"
 import qs from "qs"
 import { InstantSearch, RefinementList, CurrentRefinements, InfiniteHits } from "react-instantsearch-dom"
-import { Grid } from "@material-ui/core"
+import { Grid, Divider } from "@material-ui/core"
 import CustomSearchBox from "../../components/BrowseSearchUI/CustomSearchBox"
 import CustomStats from "../../components/BrowseSearchUI/CustomStats"
 import CustomSortBy from "../../components/BrowseSearchUI/CustomSortBy"
@@ -63,6 +63,7 @@ const BrowseSearchUI = ({ location, user }) => {
                             ]}
                             defaultRefinement="Posts_Date_Desc"
                         />
+                        <Divider style={{ margin: "2vh 2.5vw 2vh 0" }} variant="middle" className="submitpage-divider" />
                         <CustomClearRefinements />
                         <CustomRefinementList attribute="category" limit={15} searchable />
                     </Grid>

@@ -9,7 +9,7 @@ const Display = (props) => {
     return (
         <Grid style={{ marginTop: "2vh", marginRight: "15vw", marginBottom: "20vh", marginLeft: "15vw", width: "auto", height: "auto", minHeight: "30vh" }}>
             <Grid container style={{ marginBottom: "2.5vh" }}>
-                <Typography variant="h4" align="left" style={{ marginRight: "2.5vw" }}>
+                <Typography variant="h4" align="left" style={{ marginRight: "2.5vw", fontWeight: "bold" }}>
                     Categories
                 </Typography>
                 <AddNewButton handleAddClick={props.handleAddClick} />
