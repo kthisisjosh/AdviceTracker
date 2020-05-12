@@ -28,17 +28,13 @@ const ProfilePage = (props) => {
             </Helmet>
             <Header />
             {isAuthenticated && <Navbar />}
-            <Grid container direction="column" style={{ height: "1000px", width: "100vw" }}>
-                <Grid
-                    container
-                    direction="row"
-                    style={{ width: "auto", backgroundColor: "white", marginLeft: "15%", marginRight: "15%", height: "auto" }}
-                >
+            <Grid container direction="column" style={{ height: "auto", width: "100vw", marginTop: "2.5vh", minHeight: "75vh" }}>
+                <Grid container direction="row" style={{ width: "auto", marginLeft: "15%", marginRight: "15%", height: "auto" }}>
                     <Grid item style={{ marginTop: "2vh", marginRight: "2vw" }}>
                         <a href={"/user/" + currentUser.username.replace(/ /g, "_")}>
                             <Avatar
-                                style={{ height: "10vh", width: "5vw" }}
-                                variant="rounded"
+                                style={{ height: "110px", width: "110px" }}
+                                variant="circle"
                                 alt={currentUser.username}
                                 src={currentUser.profileUrl}
                             >
@@ -47,12 +43,12 @@ const ProfilePage = (props) => {
                         </a>
                     </Grid>
                     <Grid item>
-                        <Typography style={{ marginTop: "50px", color: "black", fontWeight: "bold" }} align="center" variant="h3">
+                        <Typography style={{ marginTop: "50px", fontWeight: "bold" }} align="center" variant="h3">
                             {currentUser.username}
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container style={{ width: "70vw", marginLeft: "15%", marginRight: "15%" }}>
+                <Grid container style={{ width: "70vw", marginLeft: "15%", marginRight: "15%", marginTop: "5vh" }}>
                     <Grid item>
                         <Typography variant="h4">Submitted Advice</Typography>
                     </Grid>
