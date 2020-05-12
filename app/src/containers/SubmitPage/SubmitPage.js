@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react"
 import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import Footer from "../../components/Footer/Footer"
-import { Typography, Grid, Chip } from "@material-ui/core"
+import { Typography, Grid, Chip, Divider } from "@material-ui/core"
 import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
@@ -66,8 +66,14 @@ const SubmitPage = (props) => {
                         text: "Please add at least one category.",
                         icon: "warning",
                     })
+                } else if (categories.length >= 5) {
+                    MySwal.fire({
+                        title: "Invalid number of categories.",
+                        text: "Please add a maximum of 4 categories. Copy and paste your advice and refresh the page to try again.",
+                        icon: "warning",
+                    })
                 } else {
-                    createPost(adviceContent, user, categories, history)
+                    createPost(adviceContent, user, [...new Set(categories)], history)
                 }
             }
         })
@@ -92,6 +98,7 @@ const SubmitPage = (props) => {
                     </Typography>
                 </Grid>
                 <UserInfo user={user} />
+                <Divider style={{ margin: "3.5vh 0 1.5vh 0" }} variant="middle" className="submitpage-divider" />
                 <CategorySubmitBody handleCategorySubmit={handleCategorySubmit} />
                 <Grid item style={{ marginTop: "1.5vh" }}>
                     {categories.map((category) => (

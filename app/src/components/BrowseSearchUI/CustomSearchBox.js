@@ -22,7 +22,7 @@ const CustomSearchBox = connectSearchBox(({ currentRefinement, isSearchStalled, 
                 marginLeft: 1,
                 flex: 1,
             }}
-            placeholder="Search AdviceTracker"
+            placeholder="Search for specific advice, categories, or users"
             inputProps={{
                 typeof: "search",
                 "aria-valuetext": { currentRefinement },

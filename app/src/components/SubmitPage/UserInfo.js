@@ -13,8 +13,8 @@ const UserInfo = (props) => {
                 </Link>
             </Grid>
             <Grid item style={{ marginTop: "0.5vh", marginLeft: "0.75vw" }}>
-                <Link to={"/user/" + props.user.username.replace(/ /g, "_") + "/"} style={{ textDecoration: "none", color: "white" }}>
-                    <Typography variant="body1">{props.user.username}</Typography>
+                <Link to={"/user/" + props.user.username.replace(/ /g, "_") + "/"} style={{ textDecoration: "none" }}>
+                    <Typography className="userinfo-username" variant="h6">{props.user.username}</Typography>
                 </Link>
             </Grid>
         </Grid>

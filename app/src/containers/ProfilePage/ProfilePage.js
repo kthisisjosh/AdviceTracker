@@ -3,7 +3,7 @@ import Header from "../Header/Header"
 import Navbar from "../../components/Navbar/Navbar"
 import { connect } from "react-redux"
 import { useHistory } from "react-router-dom"
-import { Grid, Typography, Avatar } from "@material-ui/core"
+import { Grid, Typography, Avatar, Divider } from "@material-ui/core"
 import { Helmet } from "react-helmet"
 import { getUserInfo } from "../../redux/actions/users"
 import Hit from "../../components/BrowseSearchUI/Hit"
@@ -48,7 +48,10 @@ const ProfilePage = (props) => {
                         </Typography>
                     </Grid>
                 </Grid>
-                <Grid container style={{ width: "70vw", marginLeft: "15%", marginRight: "15%", marginTop: "5vh" }}>
+                <Grid item style={{marginLeft: "15%", marginRight: "15%"}}>
+                    <Divider style={{ margin: "5vh 0 1.5vh 0" }} variant="middle" className="submitpage-divider" />
+                </Grid>
+                <Grid container style={{ width: "70vw", marginLeft: "15%", marginRight: "15%", marginTop: "2.5vh" }}>
                     <Grid item>
                         <Typography variant="h4">Submitted Advice</Typography>
                     </Grid>

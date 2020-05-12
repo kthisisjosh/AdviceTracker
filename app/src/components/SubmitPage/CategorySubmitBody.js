@@ -18,7 +18,21 @@ const CategorySubmitBody = (props) => {
             <Grid container direction="row" style={{ marginTop: "0.5vh" }}>
                 <Grid item>
                     <TextField
-                        style={{ backgroundColor: "white", color: "black", marginRight: "0.5vw" }}
+                        style={{
+                            backgroundColor: "white",
+                            color: "black",
+                            marginRight: "0.5vw",
+                            border: "2px solid black",
+                            overflow: "hidden",
+                            borderRadius: 4,
+                            backgroundColor: "#fcfcfb",
+                            "&:hover": {
+                                backgroundColor: "#fff",
+                            },
+                            "&$focused": {
+                                backgroundColor: "#fff",
+                            },
+                        }}
                         value={categoryName}
                         onChange={(e) => setCategoryName(e.target.value)}
                         variant="standard"

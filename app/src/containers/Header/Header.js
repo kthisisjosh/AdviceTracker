@@ -136,13 +136,17 @@ const Header = (props) => {
                             className="landing-header-link"
                             style={{ margin: "0 0 0 5vw", textDecoration: "none" }}
                         >
-                            <Typography variant="button" style={{ textDecoration: "none" }}>
+                            <Typography variant="button" style={{ textDecoration: "none", color: "white" }}>
                                 Profile
                             </Typography>
                         </Link>
                     )}
-                    <Button onClick={handleLogout} className="landing-header-link" style={{ margin: "0 0 0 5vw", textDecoration: "none" }}>
-                        <Typography variant="button" style={{ textDecoration: "none" }}>
+                    <Button
+                        onClick={handleLogout}
+                        className="landing-header-link"
+                        style={{ margin: "0 0 0 5vw", textDecoration: "none", color: "white" }}
+                    >
+                        <Typography variant="button" style={{ textDecoration: "none", color: "white" }}>
                             {logout}
                         </Typography>
                     </Button>

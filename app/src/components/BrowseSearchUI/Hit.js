@@ -20,18 +20,15 @@ const Hit = ({ hit }) => {
                                 </Avatar>
                             </a>
                         </Grid>
-                        <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
+                        <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw", marginRight: "0.25vw" }}>
                             <a href={"/user/" + hit.user_name.replace(/ /g, "_")}>
                                 <Typography variant="body1">{hit.user_name}</Typography>
                             </a>
                         </Grid>
-                        <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
+                        <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw", marginRight: "0.25vw" }}>
                             <Typography variant="button">{hit.likes} likes</Typography>
                         </Grid>
-                        <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
-                            <Typography variant="button">{hit.num_of_comments} comments</Typography>
-                        </Grid>
-                        <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw" }}>
+                        <Grid item style={{ paddingTop: "1vh", marginLeft: "0.5vw", marginRight: "0.25vw" }}>
                             <Grid container direction="row">
                                 {hit.category.map((category) => (
                                     <Chip style={{ marginRight: "0.5vw", backgroundColor: "#F2994A" }} key={category} label={category} size="small" />

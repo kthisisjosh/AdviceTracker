@@ -9,7 +9,7 @@ const AdviceCategory = (props) => {
     return (
         <Grid style={{ width: "100%", height: "auto", marginBottom: "2vh" }}>
             <motion.div initial={{ scale: 0.7, opacity: 0 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0 }} positionTransition>
-                <Paper style={{ padding: "0.25vh 1vw 1vh 1vw" }}>
+                <Paper style={{ padding: "0.25vh 1vw 1vh 1vw" }} variant="outlined">
                     <Grid container direction="column">
                         <Grid container direction="row">
                             <motion.div

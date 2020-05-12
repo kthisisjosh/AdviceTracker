@@ -33,6 +33,10 @@ body.dark-mode .login-demo-grid {
     background-color: #00172c !important;
 }
 
+body.dark-mode .submitpage-divider {
+    background-color: white;
+}
+
 body.dark-mode .login-grid {
     background-color: #001931 !important;
     color: rgb(255, 245, 245);
@@ -40,6 +44,10 @@ body.dark-mode .login-grid {
 
 body.dark-mode .landing-header-link {
     color: rgb(255, 245, 245);
+}
+
+body.dark-mode .userinfo-username {
+    color: white;
 }
 
 body.light-mode {
