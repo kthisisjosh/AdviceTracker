@@ -12,6 +12,7 @@ const PostPage = (props) => {
     const { getPost, match, currentPost } = props
 
     useEffect(() => {
+        console.log(match.params.category, match.params.content)
         getPost(match.params.category, match.params.content)
     }, [])
 

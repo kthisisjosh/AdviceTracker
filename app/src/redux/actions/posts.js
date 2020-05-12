@@ -75,6 +75,7 @@ export const getPost = (categoryName, content) => async (dispatch) => {
         })
             .then((response) => response.json())
             .then((data) => {
+                console.log(data)
                 dispatch({ type: GET_POST, payload: data })
             })
     } catch (error) {
