@@ -1,11 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import { Grid, Paper, Typography, Tooltip, IconButton } from "@material-ui/core"
-import Advice from "./Advice"
+import Advice from "../../components/DashboardPage/Display/Advice"
 import DeleteIcon from "@material-ui/icons/Delete"
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { BlockPicker } from "react-color"
 
 const AdviceSubCategory = (props) => {
+    const [displayColorPicker, setDisplayColorPicker] = useState(false)
+    const [color, setColor] = useState({ r: "241", g: "112", b: "19", a: "1" })
     let isTwo = false
     let isNone = false
 
@@ -28,18 +31,60 @@ const AdviceSubCategory = (props) => {
                                 whileHover={{ scale: 1.1 }}
                                 exit={{ opacity: 0, scale: 0 }}
                             >
-                                <Link
-                                    to={`/dashboard/subcategory/${props.subcategoryID}`}
-                                    style={{ textDecoration: "none" }}
-                                    key={props.subcategoryID + "1"}
-                                >
-                                    <Grid item style={{ marginTop: "0.75vh" }}>
+                                <Grid item style={{ marginTop: "0.75vh" }}>
+                                    <Link
+                                        to={`/dashboard/subcategory/${props.subcategoryID}`}
+                                        style={{ textDecoration: "none" }}
+                                        key={props.subcategoryID + "1"}
+                                    >
                                         <Typography variant="h5" style={{ fontWeight: "bold" }}>
                                             {props.title}
                                         </Typography>
-                                    </Grid>
-                                </Link>
+                                    </Link>
+                                </Grid>
                             </motion.div>
+                            <Grid item style={{ marginLeft: "1vw", marginTop: "1vh" }}>
+                                <div
+                                    style={{
+                                        padding: "5px",
+                                        background: "#fff",
+                                        borderRadius: "1px",
+                                        boxShadow: "0 0 0 1px rgba(0,0,0,.1)",
+                                        display: "inline-block",
+                                        cursor: "pointer",
+                                    }}
+                                    onClick={() => setDisplayColorPicker((prev) => !prev)}
+                                >
+                                    <div
+                                        style={{
+                                            width: "36px",
+                                            height: "14px",
+                                            borderRadius: "2px",
+                                            background: `rgba(${color.r}, ${color.g}, ${color.b}, ${color.a})`,
+                                        }}
+                                    />
+                                </div>
+                                {displayColorPicker ? (
+                                    <div
+                                        style={{
+                                            position: "absolute",
+                                            zIndex: "2",
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                position: "fixed",
+                                                top: "0px",
+                                                right: "0px",
+                                                bottom: "0px",
+                                                left: "0px",
+                                            }}
+                                            onClick={() => setDisplayColorPicker(false)}
+                                        />
+                                        <BlockPicker color={color} onChange={(color) => setColor(color.rgb)} />
+                                    </div>
+                                ) : null}
+                            </Grid>
                             <Grid item style={{ marginLeft: "auto" }}>
                                 <Tooltip title="Delete">
                                     <IconButton
