@@ -1,4 +1,5 @@
 const algoliaSitemap = require("algolia-sitemap")
+const fetch = require("node-fetch")
 
 try {
     const algoliaConfig = {
@@ -12,7 +13,7 @@ try {
     algoliaSitemap({
         algoliaConfig,
         sitemapLoc: "https://advicetracker.life/sitemaps",
-        outputFolder: "sitemaps",
+        outputFolder: "public/sitemaps",
         hitToParams,
     })
 } catch (error) {

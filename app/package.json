@@ -64,5 +64,8 @@
         ]
     },
     "proxy": "https://advicetracker.life/",
-    "homepage": "https://advicetracker.life/"
+    "homepage": "https://advicetracker.life/",
+    "devDependencies": {
+        "node-fetch": "^2.6.0"
+    }
 }
