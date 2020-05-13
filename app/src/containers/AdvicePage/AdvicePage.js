@@ -57,7 +57,7 @@ const AdvicePage = (props) => {
                                 variant="contained"
                                 onClick={handleEditSubmit}
                                 type="submit"
-                                style={{ backgroundColor: "F2994A" }}
+                                style={{ backgroundColor: "#F2994A" }}
                                 startIcon={<AddIcon />}
                             >
                                 Add

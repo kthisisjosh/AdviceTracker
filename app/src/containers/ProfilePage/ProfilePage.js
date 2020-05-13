@@ -28,7 +28,7 @@ const ProfilePage = (props) => {
             </Helmet>
             <Header />
             {isAuthenticated && <Navbar />}
-            <Grid container direction="column" style={{ height: "auto", width: "100vw", marginTop: "2.5vh", minHeight: "75vh" }}>
+            <Grid className="profile-grid" container direction="column" style={{ height: "auto", width: "100vw", marginTop: "2.5vh", minHeight: "75vh" }}>
                 <Grid container direction="row" style={{ width: "auto", marginLeft: "15%", marginRight: "15%", height: "auto" }}>
                     <Grid item style={{ marginTop: "2vh", marginRight: "2vw" }}>
                         <a href={"/user/" + currentUser.username.replace(/ /g, "_")}>

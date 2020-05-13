@@ -21,7 +21,7 @@ const NewSubCategory = (props) => {
                             variant="contained"
                             onClick={props.handleSubmit}
                             type="submit"
-                            style={{ backgroundColor: "F2994A" }}
+                            style={{ backgroundColor: "#F2994A" }}
                             startIcon={<AddIcon />}
                         >
                             Add

@@ -52,7 +52,7 @@ export const createPost = (content, user, category, history) => async (dispatch)
             },
             body: JSON.stringify(newPost),
         }).then(() => {
-            setTimeout(() => history.push("/browse"), 750)
+            setTimeout(() => history.push("/browse"), 1000)
             Toast.fire({
                 icon: "success",
                 title: "Sucessfully created post.",
@@ -75,9 +75,30 @@ export const getPost = (categoryName, content) => async (dispatch) => {
         })
             .then((response) => response.json())
             .then((data) => {
-                console.log(data)
                 dispatch({ type: GET_POST, payload: data })
             })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const deletePost = (id) => async (dispatch) => {
+    try {
+        const url = "https://advicetracker.life/api/posts/" + id
+        const token = localStorage.getItem("jwtToken")
+        await fetch(url, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        }).then((response) => {
+            Toast.fire({
+                icon: "success",
+                title: "Sucessfully deleted post.",
+            })
+            response.json()
+        })
     } catch (error) {
         console.log(error)
     }

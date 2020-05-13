@@ -47,6 +47,7 @@ const CustomSortBy = connectSortBy(({ items, refine, createURL }) => {
                 value={selectedRefinement}
                 input={<BootstrapInput />}
                 onChange={handleChange}
+                className="browse-select"
             >
                 {items.map((item) => (
                     <MenuItem value={item.label} key={item.label}>

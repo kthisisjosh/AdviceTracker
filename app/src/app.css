@@ -435,7 +435,22 @@ Note: Beware of modifying this element as it can break the animations - you shou
         margin-left: 5px !important;
     }
     .inbox-grid {
-        margin: 1vh 1vw 1vh 1vw !important;
+        margin: 2vh 2vw 2vh 1.8vw !important;
+    }
+    .categories-grid {
+        margin: 2vh 5vw 8vh 2vw !important;
+    }
+    .category-grid {
+        margin: 2vh 6vw 8vh 3vw !important;
+    }
+    .browse-refinements {
+        left: 500px !important;
+    }
+    .browse-select {
+        width: 91vw !important;
+    }
+    .profile-grid {
+        margin: 2vh 0vw 4vh -10vw !important;
     }
     #containerElement {
         height: 25vh !important;

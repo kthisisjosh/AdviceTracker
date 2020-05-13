@@ -7,9 +7,10 @@ import Display from "../../components/DashboardPage/Display/Display"
 import { connect } from "react-redux"
 import { Helmet } from "react-helmet"
 import { useHistory } from "react-router-dom"
-import { Grid } from "@material-ui/core"
+import { Button } from "@material-ui/core"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
+import AddIcon from "@material-ui/icons/Add"
 
 import {
     getInboxAdvice,
@@ -19,8 +20,8 @@ import {
     submitCategory,
     deleteCategory,
     deleteSubCategory,
+    submitAdvice,
 } from "../../redux/actions/advice"
-import AddNewButton from "../../components/DashboardPage/Inbox/AddNewButton"
 
 const DashboardPage = (props) => {
     const {
@@ -36,12 +37,13 @@ const DashboardPage = (props) => {
         user,
         categories,
         token,
+        submitAdvice,
     } = props
     const history = useHistory()
     const [toAddInbox, setToAddInbox] = useState(false)
     const [toAddCategory, setToAddCategory] = useState(false)
     const [submitCategoryInfo, setSubmitCategory] = useState({ title: "", description: "" })
-    const [submitAdvice, setSubmitAdvice] = useState("")
+    const [submitAdviceContent, setSubmitAdviceContent] = useState("")
     const MySwal = withReactContent(Swal)
 
     useEffect(() => {
@@ -80,23 +82,58 @@ const DashboardPage = (props) => {
     }
 
     const handleSubmitInbox = () => {
-        submitInboxAdvice(submitAdvice, user.userID)
-        setSubmitAdvice("")
+        submitInboxAdvice(submitAdviceContent, user.userID)
+        setSubmitAdviceContent("")
         setToAddInbox(false)
     }
 
     const handleEditorChange = (content, editor) => {
-        setSubmitAdvice(content)
+        setSubmitAdviceContent(content)
     }
 
-    const handleAddToCategory = (event) => {
+    const handleCategoryAddClick = (advice, subcategory, category) => {
+        MySwal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.value) {
+                submitAdvice(advice.content, category, subcategory, user.userID)
+                deleteInboxAdvice(advice)
+            }
+        })
+    }
+
+    const handleAddToCategory = (advice) => {
+        const displayHtml = (
+            <>
+                {" "}
+                {categories.map((category) => {
+                    return (
+                        <>
+                            <h4>{category.name}</h4>
+                            {category.subcategories.map((subcategory) => (
+                                <Button
+                                    variant="contained"
+                                    onClick={() => handleCategoryAddClick(advice, subcategory, category)}
+                                    style={{ backgroundColor: "#F2994A", marginRight: "0.25vw" }}
+                                    startIcon={<AddIcon />}
+                                >
+                                    {subcategory.name}
+                                </Button>
+                            ))}
+                        </>
+                    )
+                })}
+            </>
+        )
         MySwal.fire({
             title: <p>Where do you want to add this advice to?</p>,
-            html: (
-                <>
-                    <AddNewButton /> <AddNewButton /> <AddNewButton />
-                </>
-            ),
+            html: displayHtml,
         })
     }
 
@@ -195,6 +232,15 @@ const mapStateToProps = ({ adviceState, sessionState }) => ({
     token: sessionState.user.token,
 })
 
-const mapDispatchToProps = { getAdvice, getInboxAdvice, submitInboxAdvice, deleteInboxAdvice, submitCategory, deleteCategory, deleteSubCategory }
+const mapDispatchToProps = {
+    submitAdvice,
+    getAdvice,
+    getInboxAdvice,
+    submitInboxAdvice,
+    deleteInboxAdvice,
+    submitCategory,
+    deleteCategory,
+    deleteSubCategory,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)

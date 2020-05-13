@@ -24,7 +24,7 @@ const InboxElement = (props) => {
                     </Grid>
                     <Grid item style={{ marginBottom: "1vh", marginLeft: "1vw" }}>
                         <Tooltip title="Add to category">
-                            <IconButton onClick={props.handleAddToCategory} aria-label="add to category">
+                            <IconButton onClick={() => props.handleAddToCategory(props.advice)} aria-label="add to category">
                                 <LibraryAddIcon />
                             </IconButton>
                         </Tooltip>

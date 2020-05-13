@@ -91,7 +91,7 @@ const SubmitPage = (props) => {
             </Helmet>
             <Header />
             <Navbar />
-            <Grid container direction="column" style={{ margin: "2.5vh 15vw 15vh 14vw", width: "auto", height: "auto", minHeight: "60vh" }}>
+            <Grid className="category-grid" container direction="column" style={{ margin: "2.5vh 15vw 15vh 14vw", width: "auto", height: "auto", minHeight: "60vh" }}>
                 <Grid item>
                     <Typography variant="h4" style={{ fontWeight: "bold" }}>
                         Submit Your Own Advice

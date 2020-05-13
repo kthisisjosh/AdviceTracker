@@ -11,6 +11,7 @@ const CustomRefinementList = connectRefinementList(({ items, isFromSearch, refin
                 type="search"
                 placeholder="Search for categories"
                 onChange={(event) => searchForItems(event.currentTarget.value)}
+                className="browse-select"
             />
         </Grid>
         {items.map((item) => (

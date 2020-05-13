@@ -43,7 +43,12 @@ const BrowseSearchUI = ({ location, user }) => {
     }
 
     return (
-        <Grid container direction="column" style={{ margin: "2.5vh 15vw 15vh 14vw", width: "auto", height: "auto", minHeight: "60vh" }}>
+        <Grid
+            className="category-grid"
+            container
+            direction="column"
+            style={{ margin: "2.5vh 15vw 15vh 14vw", width: "auto", height: "auto", minHeight: "60vh" }}
+        >
             <InstantSearch
                 searchClient={searchClient}
                 indexName="Posts"
@@ -59,7 +64,6 @@ const BrowseSearchUI = ({ location, user }) => {
                             items={[
                                 { value: "Posts", label: "Featured" },
                                 { value: "Posts_Date_Desc", label: "Date latest" },
-                                { value: "Posts_Likes_Desc", label: "Likes desc." },
                             ]}
                             defaultRefinement="Posts_Date_Desc"
                         />

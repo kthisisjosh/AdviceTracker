@@ -48,7 +48,7 @@ const initialState = {
 
 export default (state = initialState, action) => {
     let filteredCategories = []
-    if (action.payload === DELETE_SUBCATEGORY || action.payload === SUBMIT_SUBCATEGORY || action.payload === SUBMIT_ADVICE) {
+    if (action.type === DELETE_SUBCATEGORY || action.type === SUBMIT_SUBCATEGORY || action.type === SUBMIT_ADVICE) {
         filteredCategories = state.categories.filter((category) => {
             return category.categoryID !== action.payload.categoryID
         })

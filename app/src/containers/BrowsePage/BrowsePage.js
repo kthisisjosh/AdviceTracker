@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer"
 import { Helmet } from "react-helmet"
 import BrowseSearchUI from "./BrowseSearchUI"
 
-const FriendsPage = (props) => {
+const BrowsePage = (props) => {
     const { isAuthenticated, user } = props
 
     return (
@@ -34,4 +34,4 @@ const mapStateToProps = ({ sessionState }) => ({
 
 const mapDispatchToProps = {}
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendsPage)
+export default connect(mapStateToProps, mapDispatchToProps)(BrowsePage)
