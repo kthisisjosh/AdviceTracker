@@ -208,17 +208,15 @@ const DashboardPage = (props) => {
                 handleEditorChange={handleEditorChange}
                 toAdd={toAddInbox}
             />
-            {true && (
-                <Display
-                    handleAddClick={handleAddClickCategory}
-                    handleSubmit={handleSubmitCategory}
-                    handleChange={handleCategoryChange}
-                    toAdd={toAddCategory}
-                    categories={categories}
-                    handleCategoryDelete={handleCategoryDelete}
-                    handleSubCategoryDelete={handleSubCategoryDelete}
-                />
-            )}
+            <Display
+                handleAddClick={handleAddClickCategory}
+                handleSubmit={handleSubmitCategory}
+                handleChange={handleCategoryChange}
+                toAdd={toAddCategory}
+                categories={categories}
+                handleCategoryDelete={handleCategoryDelete}
+                handleSubCategoryDelete={handleSubCategoryDelete}
+            />
             <Footer />
         </Fragment>
     )
