@@ -26,3 +26,14 @@ https://trello.com/b/tDeajdxb
 - Track & organize advice into categories/sub-categories.
 - Submit & share advice with others - like or comment on other advice posts to let them know what you think.
 - Supported by a rich-text editor - format it however you like.
+- Dark mode
+
+# Installation
+
+Coming soon
+
+# Showcase
+
+Coming soon
+
+#### Landing Page
