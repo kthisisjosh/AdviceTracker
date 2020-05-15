@@ -36,4 +36,10 @@ Coming soon
 
 Coming soon
 
-#### Landing Page
+<details>
+  <summary>More Screenshots</summary>
+  Coming soon
+</details>
+
+## License
+MIT
