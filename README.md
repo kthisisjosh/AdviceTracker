@@ -1,5 +1,5 @@
 <h1 align="center">
-Advice Tracker
+<img src="https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/AdviceLogo.png"/>
 </h1>
 <p align="center">
 Made with MySQL, Express.js, React.js/Redux, Node.js
@@ -15,13 +15,13 @@ Made with MySQL, Express.js, React.js/Redux, Node.js
   
 Never forget great advice again. Track, sort, and discover advice from people around the world.
 
+View the [trello board.](https://trello.com/b/tDeajdxb)
+
 ## Table of Contents
 * [Features](#features)
 * [Getting Started](#getting-started)
 * [Showcase](#showcase)
 * [License](#license)
-
-View the [trello board.](https://trello.com/b/tDeajdxb)
 
 # Features
 - Track & organize advice into categories/sub-categories.
