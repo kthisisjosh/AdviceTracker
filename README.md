@@ -15,12 +15,13 @@ Made with MySQL, Express.js, React.js/Redux, Node.js
   
 Never forget great advice again. Track, sort, and discover advice from people around the world.
 
-# Progress
+## Table of Contents
+* [Features](#features)
+* [Getting Started](#getting-started)
+* [Showcase](#showcase)
+* [License](#license)
 
-Currently in development.
-
-Trello board:
-https://trello.com/b/tDeajdxb
+View the [trello board.](https://trello.com/b/tDeajdxb)
 
 # Features
 - Track & organize advice into categories/sub-categories.
@@ -28,7 +29,7 @@ https://trello.com/b/tDeajdxb
 - Supported by a rich-text editor - format it however you like.
 - Dark mode
 
-# Installation
+# Getting Started
 
 Coming soon
 
