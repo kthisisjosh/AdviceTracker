@@ -30,7 +30,7 @@ Made with MySQL, Express.js, React.js/Redux, Node.js
 - Submit & share advice with people around the world 🔗.
 - Supported by a rich-text editor via [Tiny MCE 5](https://www.tiny.cloud/features) - format it however you like ⌨️.
 - Search upon many user-submitted advice via Algolia's [InstantSearch API](https://www.algolia.com/products/instantsearch/) 🔍.
-- Dark mode 🌙.
+- Dark theme 🌙.
 - MySQL database, server, and client served on a DigitalOcean droplet 💧.
 
 ### Future Updates
@@ -45,6 +45,9 @@ View the [trello board.](https://trello.com/b/tDeajdxb)
 <details>
   <summary>More Screenshots</summary>
   
+  Landing Page
+  <img src="https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/Landing.JPG"/>
+  
   Dashboard Page
   <img src="https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/Dashboard.JPG"/>
   
@@ -56,6 +59,7 @@ View the [trello board.](https://trello.com/b/tDeajdxb)
   
   Profile Page
   <img src="https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/Profile.JPG"/>
+  
 </details>
 
 ## Getting Started
