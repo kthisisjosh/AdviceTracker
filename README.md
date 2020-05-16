@@ -23,6 +23,7 @@ View the [trello board.](https://trello.com/b/tDeajdxb)
 - [Table of Contents](#table-of-contents)
 - [Features](#features)
 - [Showcase](#showcase)
+- [Getting Started](#getting-started)
 - [Docker](#docker)
 - [License](#license)
 
@@ -36,11 +37,22 @@ View the [trello board.](https://trello.com/b/tDeajdxb)
 
 ## Showcase
 
-Coming soon
+![Showcase](https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/Showcase.gif)
 
 <details>
   <summary>More Screenshots</summary>
-  Coming soon
+  
+  Dashboard Page
+  <img src="https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/Dashboard.JPG"/>
+  
+  Category Page
+  <img src="https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/Category.JPG"/>
+  
+  Browse Page
+  <img src="https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/Browse.JPG"/>
+  
+  Profile Page
+  <img src="https://github.com/kthisisjosh/readme-assets/blob/master/advicetracker/Profile.JPG"/>
 </details>
 
 ## Getting Started
