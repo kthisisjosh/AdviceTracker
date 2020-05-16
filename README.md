@@ -22,7 +22,7 @@ Made with MySQL, Express.js, React.js/Redux, Node.js
 - [Showcase](#showcase)
 - [Getting Started](#getting-started)
 - [Docker](#docker)
-- [Support](#support)
+- [Support](#support-)
 - [License](#license)
 
 ## Features
