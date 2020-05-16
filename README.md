@@ -18,7 +18,6 @@ Made with MySQL, Express.js, React.js/Redux, Node.js
 </p>
 
 ## Table of Contents
-- [Table of Contents](#table-of-contents)
 - [Features](#features)
 - [Showcase](#showcase)
 - [Getting Started](#getting-started)
@@ -35,7 +34,7 @@ Made with MySQL, Express.js, React.js/Redux, Node.js
 - MySQL database, server, and client served on a DigitalOcean droplet 💧.
 
 ### Future Updates
-- Implement and like & comment system.
+- Implement a like & comment system.
 
 View the [trello board.](https://trello.com/b/tDeajdxb)
 
