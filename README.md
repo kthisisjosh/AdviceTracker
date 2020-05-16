@@ -17,8 +17,6 @@ Made with MySQL, Express.js, React.js/Redux, Node.js
   Never forget great advice again. Track, sort, and discover advice from people around the world.
 </p>
 
-View the [trello board.](https://trello.com/b/tDeajdxb)
-
 ## Table of Contents
 - [Table of Contents](#table-of-contents)
 - [Features](#features)
@@ -29,11 +27,16 @@ View the [trello board.](https://trello.com/b/tDeajdxb)
 
 ## Features
 - Track & organize advice into categories/sub-categories 📚.
-- Submit & share advice with others - like or comment on other advice posts to let them know what you think 🔗.
+- Submit & share advice with people around the world 🔗.
 - Supported by a rich-text editor via [Tiny MCE 5](https://www.tiny.cloud/features) - format it however you like ⌨️.
 - Search upon many user-submitted advice via Algolia's [InstantSearch API](https://www.algolia.com/products/instantsearch/) 🔍.
 - Dark mode 🌙.
 - MySQL database, server, and client served on a DigitalOcean droplet 💧.
+
+### Future Updates
+- Implement and like & comment system.
+
+View the [trello board.](https://trello.com/b/tDeajdxb)
 
 ## Showcase
 
@@ -115,13 +118,16 @@ This application is dockerized 🐳
 `$ docker-compose build server` <br/>
 `$ docker-compose build db` <br/>
 
-When spinning up the container, make sure to include the environment variables declared in the `docker-compose.prod.yml`
+When spinning up the containers, make sure to include the all environment variables declared in the `docker-compose.prod.yml`.
 
 #### Example
 
 ```sh
 $ docker run -e ALGOLIA_API_KEY=<YOUR_ALGOLIA_API_KEY> ALGOLIA_APP_ID=<YOUR_ALGOLIA_APP_ID> -d <container>
 ```
+
+## Support ⭐
+If you like the project, please star the repo.
 
 ## License
 [MIT](https://github.com/kthisisjosh/AdviceTracker/blob/master/LICENSE)
