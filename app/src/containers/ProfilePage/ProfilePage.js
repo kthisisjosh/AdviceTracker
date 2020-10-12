@@ -8,10 +8,14 @@ import { Helmet } from "react-helmet"
 import { getUserInfo } from "../../redux/actions/users"
 import Hit from "../../components/BrowseSearchUI/Hit"
 import Footer from "../../components/Footer/Footer"
+import { useMediaQuery } from 'react-responsive'
 
 const ProfilePage = (props) => {
     const { isAuthenticated, user, match, getUserInfo, currentUser } = props
     const history = useHistory()
+    const isDesktop = useMediaQuery({
+        query: '(min-device-width: 600px)'
+    })
 
     useEffect(() => {
         getUserInfo(match.params.username)
@@ -43,7 +47,7 @@ const ProfilePage = (props) => {
                         </a>
                     </Grid>
                     <Grid item>
-                        <Typography style={{ marginTop: "50px", fontWeight: "bold" }} align="center" variant="h3">
+                        <Typography style={{ marginTop: "50px", fontWeight: "bold" }} align="center" variant={isDesktop ? "h3" : "h5"}>
                             {currentUser.username}
                         </Typography>
                     </Grid>
@@ -53,7 +57,7 @@ const ProfilePage = (props) => {
                 </Grid>
                 <Grid container style={{ width: "70vw", marginLeft: "15%", marginRight: "15%", marginTop: "2.5vh" }}>
                     <Grid item>
-                        <Typography variant="h4">Submitted Advice</Typography>
+                        <Typography variant={isDesktop ? "h4" : "h5"}>Submitted Advice</Typography>
                     </Grid>
                     {currentUser.posts.map((post) => (
                         <Grid item style={{ width: "100%" }}>

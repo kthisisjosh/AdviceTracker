@@ -12,10 +12,14 @@ import Grid from "@material-ui/core/Grid"
 import { useHistory } from "react-router-dom"
 import { Helmet } from "react-helmet"
 import { motion } from "framer-motion"
+import { useMediaQuery } from 'react-responsive'
 
 const LoginPage = (props) => {
     const { googleLogin, githubLogin, isAuthenticated, user, checked, token, categories } = props
     const history = useHistory()
+    const isDesktop = useMediaQuery({
+        query: '(min-device-width: 1300px)'
+    })
 
     useEffect(() => {
         if (checked && isAuthenticated) {
@@ -77,14 +81,14 @@ const LoginPage = (props) => {
                     <Paper
                         className="login-paper"
                         elevation={3}
-                        style={{ margin: "70px 350px 50px 150px", position: "absolute", width: "460px", height: "500px" }}
+                        style={{ margin: "70px 350px 50px 150px", position: "absolute", width: isDesktop ? "32.5%" : "75%", height: "500px" }}
                     >
                         <div style={{ width: "460px, height: 200px" }}>
                             <Button style={{ marginTop: "50px" }}>Registration</Button>
                             <Button style={{ marginTop: "50px" }}>Sign-in</Button>
                         </div>
-                        <div style={{ position: "relative", width: "460px", height: "50px", backgroundColor: "#FAFAFA", alignText: "center" }}>
-                            <Typography style={{ paddingLeft: "8px", paddingTop: "12.5px" }}>Sign in with social</Typography>
+                        <div style={{ position: "relative", width: "100%", height: "50px", backgroundColor: "#FAFAFA", alignText: "center" }}>
+                            <Typography style={{ paddingLeft: "8px", paddingTop: "12.5px" }}>Sign-up/Sign-in with social</Typography>
                         </div>
                         <div style={{ textAlign: "center", height: "300px", backgroundColor: "#FEFEFE" }}>
                             <div style={{ display: "inline-block", paddingTop: "50px" }}>
@@ -98,11 +102,6 @@ const LoginPage = (props) => {
                                 />
                             </div>
                             <div style={{ paddingTop: "50px" }}></div>
-                            <div style={{ paddingTop: "75px" }}>
-                                <Button style={{ width: "350px", height: "50px", backgroundColor: "#F2994A", color: "#FFFFFF" }}>
-                                    Register Coming Soon!
-                                </Button>
-                            </div>
                         </div>
                     </Paper>
                 </Grid>
