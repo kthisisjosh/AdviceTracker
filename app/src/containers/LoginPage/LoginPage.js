@@ -59,7 +59,7 @@ const LoginPage = (props) => {
                         initial={{ scale: 0.25, opacity: 0.5 }}
                         animate={{ opacity: 1, scale: 1 }}
                         alt="login-demo"
-                        src="./login-sample.JPG"
+                        src="./login-sample.jpg"
                         style={{ height: "550px", width: "500px", margin: "75px 15px 35px 15px", borderRadius: "15px" }}
                     />
                 </Grid>

@@ -544,7 +544,7 @@ Array [
     >
       <img
         alt="login-demo"
-        src="./login-sample.JPG"
+        src="./login-sample.jpg"
         style={
           Object {
             "borderRadius": "15px",
