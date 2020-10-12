@@ -35,7 +35,7 @@ const Hero = () => {
                     }}
                     alt="demo"
                     style={{ height: "500px", width: "450px", margin: "100px 100px 100px 100px", borderRadius: "15px" }}
-                    src="./login-sample.JPG"
+                    src="./login-sample.jpg"
                 />
             </Grid>
         </Grid>
