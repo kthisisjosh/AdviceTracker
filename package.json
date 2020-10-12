@@ -21,8 +21,7 @@
   "homepage": "https://github.com/kthisisjosh/AdviceTracker#readme",
   "dependencies": {
     "concurrently": "^5.1.0",
-    "dotenv": "^8.2.0",
-    "react-responsive": "^8.1.0"
+    "dotenv": "^8.2.0"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
