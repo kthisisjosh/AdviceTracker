@@ -99,7 +99,7 @@ const DashboardPage = (props) => {
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes, add it to the " + subcategory.name + " sub-category under the " + category.name + " category!",
         }).then((result) => {
             if (result.value) {
                 submitAdvice(advice.content, category, subcategory, user.userID)
@@ -109,7 +109,11 @@ const DashboardPage = (props) => {
     }
 
     const handleAddToCategory = (advice) => {
-        const displayHtml = (
+        var displayHtml = null
+        if (categories.length == 0) {
+            displayHtml = (<><h4>There are no categories to add it to. Add some!</h4></>)
+        } else {
+            displayHtml = (
             <>
                 {" "}
                 {categories.map((category) => {
@@ -131,6 +135,7 @@ const DashboardPage = (props) => {
                 })}
             </>
         )
+        }
         MySwal.fire({
             title: <p>Where do you want to add this advice to?</p>,
             html: displayHtml,

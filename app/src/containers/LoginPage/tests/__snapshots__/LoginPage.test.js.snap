@@ -576,7 +576,7 @@ Array [
             "height": "500px",
             "margin": "70px 350px 50px 150px",
             "position": "absolute",
-            "width": "460px",
+            "width": "75%",
           }
         }
       >
@@ -651,7 +651,7 @@ Array [
               "backgroundColor": "#FAFAFA",
               "height": "50px",
               "position": "relative",
-              "width": "460px",
+              "width": "100%",
             }
           }
         >
@@ -664,7 +664,7 @@ Array [
               }
             }
           >
-            Sign in with social
+            Sign-up/Sign-in with social
           </p>
         </div>
         <div
@@ -773,45 +773,6 @@ Array [
               }
             }
           />
-          <div
-            style={
-              Object {
-                "paddingTop": "75px",
-              }
-            }
-          >
-            <button
-              className="MuiButtonBase-root MuiButton-root MuiButton-text"
-              disabled={false}
-              onBlur={[Function]}
-              onDragLeave={[Function]}
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onKeyUp={[Function]}
-              onMouseDown={[Function]}
-              onMouseLeave={[Function]}
-              onMouseUp={[Function]}
-              onTouchEnd={[Function]}
-              onTouchMove={[Function]}
-              onTouchStart={[Function]}
-              style={
-                Object {
-                  "backgroundColor": "#F2994A",
-                  "color": "#FFFFFF",
-                  "height": "50px",
-                  "width": "350px",
-                }
-              }
-              tabIndex={0}
-              type="button"
-            >
-              <span
-                className="MuiButton-label"
-              >
-                Register Coming Soon!
-              </span>
-            </button>
-          </div>
         </div>
       </div>
     </div>
