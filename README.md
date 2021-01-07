@@ -8,9 +8,6 @@ Made with MySQL, Express.js, React.js/Redux, Node.js
   <a href="https://travis-ci.org/kthisisjosh/AdviceTracker">
     <img src="https://travis-ci.org/kthisisjosh/AdviceTracker.svg?branch=master" />
   </a>
-  <a href="https://coveralls.io/github/kthisisjosh/AdviceTracker?branch=master">
-    <img src="https://coveralls.io/repos/github/kthisisjosh/AdviceTracker/badge.svg?branch=master" />
-  </a>
 </p>
   
 <p align="center">
